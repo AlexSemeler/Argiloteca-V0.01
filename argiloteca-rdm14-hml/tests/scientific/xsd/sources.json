@@ -1,0 +1,26 @@
+[
+  {
+    "file": "oai_dc.xsd",
+    "source": "https://www.openarchives.org/OAI/2.0/oai_dc.xsd",
+    "retrieved": "2026-10-18",
+    "upstream_sha256": "7383d21bca49c1186627e820a5da7ec209febfc5b4295fada39720ad0cebee9a",
+    "local_sha256": "02f34f1674d9d1aa86fffabffd85cd5bdd734cc6ae421ad8bf5d4a34533b8d05",
+    "transform": "local import paths; serialize root without external DTD; schema declarations retained"
+  },
+  {
+    "file": "simpledc20021212.xsd",
+    "source": "https://www.dublincore.org/schemas/xmls/simpledc20021212.xsd",
+    "retrieved": "2026-10-18",
+    "upstream_sha256": "e9542e0cd08b59ad3ad994f50226dd7e6707792327b08f46eaa6250dd728d3aa",
+    "local_sha256": "3b9a7e9afa372b46d7956708c4eb5ec3fa0f063c153ab999eeccc23a60926e50",
+    "transform": "local import paths; serialize root without external DTD; schema declarations retained"
+  },
+  {
+    "file": "xml.xsd",
+    "source": "https://www.w3.org/2001/03/xml.xsd",
+    "retrieved": "2026-10-18",
+    "upstream_sha256": "0ed94db44402526e7a683424d0bd4b65e5bc50e65d9b9a762b11b30bae06d0c8",
+    "local_sha256": "6b389476be0cdaab05efaf41e61432f44e8ab91ce0195ca0292e5693bbcd5d67",
+    "transform": "local import paths; serialize root without external DTD; schema declarations retained"
+  }
+]

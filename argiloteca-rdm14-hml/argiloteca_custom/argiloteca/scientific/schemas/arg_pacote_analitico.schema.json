@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_pacote_analitico.schema.json",
+  "title": "arg:pacote_analitico",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["pacote_id", "record_id", "analysis_type", "items"],
+  "properties": {
+    "pacote_id": {"type": "string", "minLength": 1},
+    "record_id": {"type": "string", "minLength": 1},
+    "analysis_type": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string"},
+    "versao_processamento": {"type": "string"},
+    "source": {"type": "object", "additionalProperties": true},
+    "summary": {"type": "object", "additionalProperties": true},
+    "items": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {"$ref": "arg_drx.schema.json"},
+          {"type": "object", "additionalProperties": true}
+        ]
+      }
+    },
+    "manifest_path": {"type": "string"},
+    "observacoes": {"type": "string"}
+  }
+}

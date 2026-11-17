@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_drx.schema.json",
+  "title": "arg:drx",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "analise_id",
+    "codigo_amostra",
+    "arquivo_raw",
+    "raw_sha256"
+  ],
+  "properties": {
+    "analise_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "codigo_amostra": {
+      "type": "string",
+      "minLength": 1
+    },
+    "arquivo_raw": {
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_sha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "tamanho_bytes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "formato_raw": {
+      "type": "string"
+    },
+    "preparo": {
+      "type": "string"
+    },
+    "processamento_id": {
+      "type": "string"
+    },
+    "versao_processamento": {
+      "type": "string"
+    },
+    "data_processamento": {
+      "type": "string"
+    },
+    "two_theta_min": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "two_theta_max": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "numero_pontos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "picos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "two_theta"
+        ],
+        "properties": {
+          "two_theta": {
+            "type": "number"
+          },
+          "intensidade": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "d_spacing": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "fwhm": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "prominencia": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "minerais_candidatos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "mineral"
+        ],
+        "properties": {
+          "mineral": {
+            "type": "string",
+            "minLength": 1
+          },
+          "score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "confianca": {
+            "type": "string"
+          },
+          "evidencia": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "relatorio_html": {
+      "type": "string"
+    },
+    "relatorio_pdf": {
+      "type": "string"
+    },
+    "observacoes": {
+      "type": "string"
+    },
+    "wavelength_angstrom": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "exclusiveMinimum": 0
+    },
+    "axis_provenance": {
+      "type": "string"
+    },
+    "primary_status": {
+      "type": "string"
+    },
+    "vinculo": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "state",
+        "revision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "confirmed"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "curva_url": {
+      "type": "string"
+    },
+    "arquivo_url": {
+      "type": "string"
+    },
+    "evidencias_estruturais": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

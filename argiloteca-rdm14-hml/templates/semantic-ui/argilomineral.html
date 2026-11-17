@@ -1,0 +1,340 @@
+{# argilomineral.html #}
+{% from "_argilo_helpers.html" import mineral_name_popup, mineral_source_link %}
+
+<link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='vendor/leaflet-1.9.4/leaflet.css') }}" />
+<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static', filename='vendor/leaflet-1.9.4/leaflet.js') }}"></script>
+
+<style>
+  .argilomineral-item {
+    padding: 1.2em 0;
+  }
+
+  .argilomineral-card {
+    border: 1px solid rgba(92, 111, 140, 0.18);
+    border-left: 5px solid var(--arg-color-mineral);
+    border-radius: 0.8rem;
+    background: linear-gradient(180deg, #fcfcfe 0%, var(--arg-color-mineral-soft) 100%);
+    padding: 1.2em;
+    box-shadow: 0 10px 24px var(--arg-color-shadow);
+  }
+
+  .argilomineral-header {
+    margin-bottom: 1em;
+    padding-bottom: 0.8em;
+    border-bottom: 1px solid var(--arg-color-border-soft);
+  }
+
+  .argilomineral-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--arg-color-text);
+    margin-bottom: 0.25em;
+  }
+
+  .argilomineral-subtitle {
+    font-size: 0.95rem;
+    color: var(--arg-color-text-muted);
+  }
+
+  .argilomineral-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+  }
+
+  .argilomineral-block {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(92, 111, 140, 0.12);
+    border-radius: 0.4rem;
+    padding: 0.9em 1em;
+  }
+
+  .argilomineral-block-full {
+    grid-column: 1 / -1;
+  }
+
+  .argilomineral-block-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin-bottom: 0.7em;
+    color: var(--arg-color-mineral);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .argilomineral-field {
+    margin-bottom: 0.55em;
+    line-height: 1.45;
+  }
+
+  .argilomineral-field:last-child {
+    margin-bottom: 0;
+  }
+
+  .argilomineral-label {
+    font-weight: 600;
+    color: var(--arg-color-text);
+  }
+
+  .argilomineral-map {
+    width: 100%;
+    height: 340px;
+    margin-top: 0.8em;
+    border: 1px solid rgba(92, 111, 140, 0.22);
+    border-radius: 0.4rem;
+  }
+
+  .argilomineral-map-empty {
+    margin-top: 0.8em;
+    padding: 0.8em;
+    background: var(--arg-color-partial-soft);
+    border: 1px solid rgba(177, 132, 59, 0.24);
+    border-radius: 0.4rem;
+    color: var(--arg-color-text-muted);
+  }
+
+  .argilomineral-map-link {
+    display: inline-block;
+    margin-top: 0.6em;
+  }
+
+  .argilomineral-popup-title {
+    font-weight: 700;
+    margin-bottom: 0.2em;
+  }
+
+  @media (max-width: 768px) {
+    .argilomineral-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .argilomineral-block-full {
+      grid-column: auto;
+    }
+  }
+</style>
+
+<dt class="ui tiny header">{{ _("Argilominerais descritos no registro:") }}</dt>
+<dd>
+  {% if field_value and field_value is sequence and field_value is not string %}
+    <div class="ui relaxed divided list">
+      {% for value in field_value %}
+
+	        {% set nome = value.get("nome") or _("(sem nome)") %}
+	        {% set grupo = value.get("grupo_mineralogico") or value.get("grupo") %}
+	        {% set resumo = value.get("descricao_curta") %}
+	        {% set descricao = value.get("descricao") %}
+        {% set estrutura = value.get("estrutura_cristalina") %}
+        {% set propriedades = value.get("propriedades_especiais") %}
+        {% set origem = value.get("origem_formacao") %}
+        {% set era = value.get("era_geologica") %}
+        {% set formacao = value.get("formacao_geologica") %}
+        {% set usos = value.get("usos_aplicacoes") %}
+
+        {% set lat_raw = value.get("latitude") %}
+        {% set lon_raw = value.get("longitude") %}
+        {% set alt_raw = value.get("altitude") %}
+
+        {% set lat_txt = (lat_raw|string)|replace(',', '.')|trim if lat_raw not in [none, ""] else none %}
+        {% set lon_txt = (lon_raw|string)|replace(',', '.')|trim if lon_raw not in [none, ""] else none %}
+        {% set alt_txt = (alt_raw|string)|trim if alt_raw not in [none, ""] else none %}
+
+        {% set map_id = "argilomineral-map-" ~ loop.index %}
+
+        <div class="item argilomineral-item">
+          <div class="content">
+            <div class="argilomineral-card">
+
+	              <div class="argilomineral-header">
+	                <div class="argilomineral-title">{{ mineral_name_popup(value, nome, resumo) }}</div>
+	                {% if grupo %}
+	                  <div class="argilomineral-subtitle">{{ _("Grupo mineral:") }} {{ grupo }}</div>
+	                {% endif %}
+              </div>
+
+              <div class="argilomineral-grid">
+
+	                {% if descricao %}
+	                  <div class="argilomineral-block argilomineral-block-full">
+	                    <div class="argilomineral-block-title">{{ _("Descrição mineralógica") }}</div>
+	                    <div class="argilomineral-field">{{ descricao }}</div>
+	                  </div>
+	                {% endif %}
+
+	                {% if value.get("formula_ideal") or value.get("classe_estrutural") or value.get("sistema_cristalino") or value.get("external_source") or value.get("external_uri") %}
+	                  <div class="argilomineral-block">
+	                    <div class="argilomineral-block-title">{{ _("Enriquecimento semântico") }}</div>
+
+	                    {% if value.get("formula_ideal") %}
+	                      <div class="argilomineral-field">
+	                        <span class="argilomineral-label">{{ _("Fórmula ideal:") }}</span>
+	                        {{ value.get("formula_ideal") }}
+	                      </div>
+	                    {% endif %}
+
+	                    {% if value.get("classe_estrutural") %}
+	                      <div class="argilomineral-field">
+	                        <span class="argilomineral-label">{{ _("Classe estrutural:") }}</span>
+	                        {{ value.get("classe_estrutural") }}
+	                      </div>
+	                    {% endif %}
+
+	                    {% if value.get("sistema_cristalino") %}
+	                      <div class="argilomineral-field">
+	                        <span class="argilomineral-label">{{ _("Sistema cristalino:") }}</span>
+	                        {{ value.get("sistema_cristalino") }}
+	                      </div>
+	                    {% endif %}
+
+	                    {% if value.get("external_source") or value.get("external_uri") %}
+	                      <div class="argilomineral-field">
+	                        <span class="argilomineral-label">{{ _("Fonte externa:") }}</span>
+	                        {{ mineral_source_link(value) }}
+	                      </div>
+	                    {% endif %}
+	                  </div>
+	                {% endif %}
+
+                {% if estrutura or propriedades %}
+                  <div class="argilomineral-block">
+                    <div class="argilomineral-block-title">{{ _("Caracterização") }}</div>
+
+                    {% if estrutura %}
+                      <div class="argilomineral-field">
+                        <span class="argilomineral-label">{{ _("Estrutura cristalina:") }}</span>
+                        {{ estrutura }}
+                      </div>
+                    {% endif %}
+
+                    {% if propriedades %}
+                      <div class="argilomineral-field">
+                        <span class="argilomineral-label">{{ _("Propriedades especiais:") }}</span>
+                        {{ propriedades }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                {% if origem or era or formacao %}
+                  <div class="argilomineral-block">
+                    <div class="argilomineral-block-title">{{ _("Contexto geológico") }}</div>
+
+                    {% if origem %}
+                      <div class="argilomineral-field">
+                        <span class="argilomineral-label">{{ _("Origem / formação:") }}</span>
+                        {{ origem }}
+                      </div>
+                    {% endif %}
+
+                    {% if era %}
+                      <div class="argilomineral-field">
+                        <span class="argilomineral-label">{{ _("Era geológica:") }}</span>
+                        {{ era }}
+                      </div>
+                    {% endif %}
+
+                    {% if formacao %}
+                      <div class="argilomineral-field">
+                        <span class="argilomineral-label">{{ _("Formação geológica:") }}</span>
+                        {{ formacao }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                {% if usos %}
+                  <div class="argilomineral-block argilomineral-block-full">
+                    <div class="argilomineral-block-title">{{ _("Usos e aplicações") }}</div>
+                    <div class="argilomineral-field">{{ usos }}</div>
+                  </div>
+                {% endif %}
+
+                {% if lat_raw or lon_raw or alt_raw %}
+                  <div class="argilomineral-block argilomineral-block-full">
+                    <div class="argilomineral-block-title">{{ _("Localização") }}</div>
+
+                    <div class="argilomineral-field">
+                      {% if lat_raw %}
+                        <span class="argilomineral-label">{{ _("Lat.:") }}</span> {{ lat_raw }}
+                      {% endif %}
+                      {% if lon_raw %}
+                        {% if lat_raw %}| {% endif %}
+                        <span class="argilomineral-label">{{ _("Long.:") }}</span> {{ lon_raw }}
+                      {% endif %}
+                      {% if alt_raw %}
+                        {% if lat_raw or lon_raw %}| {% endif %}
+                        <span class="argilomineral-label">{{ _("Alt.:") }}</span> {{ alt_raw }} {{ _("m") }}
+                      {% endif %}
+                    </div>
+
+                    {% if lat_txt and lon_txt %}
+                      <div id="{{ map_id }}" class="argilomineral-map"></div>
+
+                      <script nonce="{{ csp_nonce() }}">
+                        (function() {
+                          var lat = parseFloat({{ lat_txt|tojson }});
+                          var lon = parseFloat({{ lon_txt|tojson }});
+
+                          if (isNaN(lat) || isNaN(lon) || (lat === 0 && lon === 0)) {
+                            var el = document.getElementById({{ map_id|tojson }});
+                            if (el) {
+                              el.outerHTML = '<div class="argilomineral-map-empty">{{ _("Não foi possível gerar o mapa com as coordenadas informadas.") }}</div>';
+                            }
+                            return;
+                          }
+
+                          var container = document.getElementById({{ map_id|tojson }});
+                          if (!container) return;
+
+                          var map = L.map(container).setView([lat, lon], 11);
+
+                          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '&copy; OpenStreetMap contributors'
+                          }).addTo(map);
+
+                          var popupContent = `
+                            <div class="argilomineral-popup-title">{{ nome|e }}</div>
+                            {% if grupo %}
+                              <div><strong>{{ _("Grupo:") }}</strong> {{ grupo|e }}</div>
+                            {% endif %}
+                            <div><strong>{{ _("Latitude:") }}</strong> ${lat}</div>
+                            <div><strong>{{ _("Longitude:") }}</strong> ${lon}</div>
+                            {% if alt_txt %}
+                              <div><strong>{{ _("Altitude:") }}</strong> {{ alt_txt|e }} m</div>
+                            {% endif %}
+                          `;
+
+                          L.marker([lat, lon]).addTo(map).bindPopup(popupContent).openPopup();
+
+                          setTimeout(function() {
+                            map.invalidateSize();
+                          }, 200);
+                        })();
+                      </script>
+
+                      {% set osm_view_url = "https://www.openstreetmap.org/?mlat=" ~ lat_txt ~ "&mlon=" ~ lon_txt ~ "#map=11/" ~ lat_txt ~ "/" ~ lon_txt %}
+                      <a class="argilomineral-map-link"
+                         href="{{ osm_view_url }}"
+                         target="_blank"
+                         rel="noopener noreferrer">
+                        {{ _("Abrir mapa em nova aba") }}
+                      </a>
+                    {% else %}
+                      <div class="argilomineral-map-empty">
+                        {{ _("Não foi possível gerar o mapa com as coordenadas informadas.") }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <em>{{ _("Nenhum argilomineral descrito.") }}</em>
+  {% endif %}
+</dd>

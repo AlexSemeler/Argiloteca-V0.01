@@ -1,0 +1,55 @@
+/* One compact size for public, account, administration and footer layouts. */
+.argilo-language-selector {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  gap: 0;
+  width: 52px;
+  height: 28px;
+  padding: 1px;
+  border: 1px solid var(--arg-color-control-border);
+  border-radius: 999px;
+  background: var(--arg-color-surface);
+  margin-inline-end: .5rem;
+}
+.argilo-language-selector .argilo-language-option,
+#rdm-footer-element .argilo-language-selector .argilo-language-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 0 0 24px;
+  width: 24px;
+  min-width: 24px;
+  max-width: 24px;
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  color: var(--arg-color-primary-strong);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+/* Override the native menu's larger link padding and mobile link colors. */
+#invenio-nav.ui.menu .ui.menu .item .argilo-language-selector a.argilo-language-option { padding: 0; }
+.argilo-site-header #invenio-nav.ui.menu #invenio-menu.ui.menu .item .argilo-language-selector a.argilo-language-option { color: var(--arg-color-primary-strong); }
+.argilo-language-selector .argilo-language-option:hover { background: var(--arg-color-surface-analytic); }
+.argilo-language-selector .argilo-language-option[aria-current="true"],
+.argilo-site-header #invenio-nav.ui.menu #invenio-menu.ui.menu .item .argilo-language-selector a.argilo-language-option[aria-current="true"],
+#rdm-footer-element .argilo-language-selector .argilo-language-option[aria-current="true"] {
+  background: var(--arg-color-primary-strong);
+  color: white;
+}
+.argilo-language-selector .argilo-language-option:focus-visible {
+  outline: 3px solid var(--arg-color-focus);
+  outline-offset: 2px;
+}
+.cover-page .argilo-language-selector { justify-content: center; margin: 0 0 1rem; }
+#rdm-footer-element .argilo-language-selector { margin: 0; }

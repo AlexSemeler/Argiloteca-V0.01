@@ -1,0 +1,64 @@
+{# argilo_tab_mineralogia.html #}
+{% from "_argilo_helpers.html" import get_cf, field_row, mineral_fact_row, mineral_name_popup, mineral_source_link %}
+
+{% set cf = record.custom_fields if record.custom_fields is defined else {} %}
+{% set minerais = cf.get("arg:argilominerais", []) %}
+
+<div class="ui stacked segment arg-section arg-section-mineral">
+  <h3 class="ui dividing header">{{ _("Argilominerais descritos neste registro") }}</h3>
+
+  {% if minerais and minerais is sequence and minerais is not string %}
+    <div class="ui styled fluid accordion argilo-minerais-accordion">
+      {% for m in minerais %}
+        {% set nome = argilo_resolve_mineral_name(m) or m.get("nome") or "Argilomineral " ~ loop.index %}
+        {% set grupo = argilo_resolve_mineral_group(m) %}
+        {% set resumo = argilo_resolve_mineral_summary(m) %}
+        <div class="{{ 'active ' if loop.first else '' }}title argilo-mineral-title">
+          <i class="dropdown icon"></i>
+          <span class="ui small label">{{ loop.index }}</span>
+          {{ mineral_name_popup(m, nome, resumo, 'argilo-mineral-title-trigger') }}
+          {% if grupo not in [none, '', [], {}] %}
+            <span class="ui basic tiny label">{{ grupo }}</span>
+          {% endif %}
+        </div>
+        <div class="{{ 'active ' if loop.first else '' }}content argilo-mineral-content">
+          <div class="ui relaxed divided items">
+            {{ field_row(_("Nome científico padronizado"), m.get("nome_cientifico_padronizado")) }}
+            {{ field_row(_("Status de rastreabilidade"), m.get("traceability_status")) }}
+            {{ field_row(_("Relação com a amostra"), m.get("relation_to_sample")) }}
+            {{ field_row(_("Nível de evidência"), m.get("evidence_level")) }}
+            {{ field_row(_("Requer revisão humana"), _("Sim") if m.get("requires_human_review") else _("Não")) }}
+            {{ field_row(_("Nota de validação"), m.get("validation_notes")) }}
+            {{ mineral_fact_row(_("Fórmula ideal"), m.get("formula_ideal"), m) }}
+            {{ field_row(_("Grupo mineralógico"), grupo) }}
+            {{ field_row(_("Subgrupo mineralógico"), m.get("subgrupo_mineralogico")) }}
+            {{ field_row(_("Classe estrutural"), m.get("classe_estrutural")) }}
+            {{ mineral_fact_row(_("Sistema cristalino"), m.get("sistema_cristalino"), m) }}
+            {{ field_row(_("Classificação Strunz"), m.get("classificacao_strunz")) }}
+            {{ field_row(_("Classificação Dana"), m.get("classificacao_dana")) }}
+            {{ field_row(_("Descrição mineralógica"), m.get("descricao")) }}
+            {{ field_row(_("Estrutura cristalina (legado)"), m.get("estrutura_cristalina")) }}
+            {{ field_row(_("Propriedades especiais"), m.get("propriedades_especiais")) }}
+            {{ field_row(_("Propriedades relevantes"), m.get("propriedades_relevantes")) }}
+            {{ field_row(_("Origem / formação"), m.get("origem_formacao")) }}
+            {{ field_row(_("Ambiente típico de formação"), m.get("ambiente_tipico_formacao")) }}
+            {{ field_row(_("Era geológica"), m.get("era_geologica")) }}
+            {{ field_row(_("Formação geológica"), m.get("formacao_geologica")) }}
+            {{ field_row(_("Usos e aplicações"), m.get("usos_aplicacoes")) }}
+            {{ field_row(_("Sinônimos"), m.get("sinonimos")) }}
+            {{ field_row(_("Fonte da síntese"), m.get("fonte_descricao")) }}
+            {{ field_row(_("Proveniência"), m.get("observacao_proveniencia")) }}
+            {{ field_row(_("Fonte externa"), mineral_source_link(m)) }}
+            {{ field_row(_("Licença da fonte"), m.get("licenca_fonte")) }}
+            {{ field_row(_("Última sincronização"), m.get("data_ultima_sincronizacao")) }}
+            {{ field_row(_("Latitude aproximada"), m.get("latitude")) }}
+            {{ field_row(_("Longitude aproximada"), m.get("longitude")) }}
+            {{ field_row(_("Altitude aproximada (m)"), m.get("altitude")) }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="ui message arg-validation-optional">{{ _("Nenhum argilomineral foi cadastrado neste registro.") }}</div>
+  {% endif %}
+</div>

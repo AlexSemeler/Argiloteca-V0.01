@@ -1,0 +1,46 @@
+/* Extends the inherited administrative palette and typography. */
+.pop-workspace { --pop-ink: #4a2f23; --pop-line: #d9cec6; color: var(--pop-ink); }
+.pop-toolbar { display: flex; align-items: start; justify-content: space-between; gap: 1.5rem; margin: 1.4rem 0; }
+.pop-toolbar .oa-intro { max-width: 70ch; margin: 0; }
+.pop-toolbar form { flex-shrink: 0; }
+.pop-links { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; margin: 1rem 0; }
+.pop-counts { font-size: 1.18rem; line-height: 1.7; }
+.pop-workspace .oa-section { margin-top: 2rem; }
+.pop-workspace caption { text-align: left; max-width: 75ch; padding: .5rem 0 1rem; color: var(--pop-ink); }
+.pop-workspace .oa-scroll { max-width: 100%; overflow-x: auto; }
+.pop-workspace th, .pop-workspace td { font-variant-numeric: tabular-nums; }
+.pop-sources { min-width: 660px; }
+.pop-list { min-width: 650px; }
+.pop-list td:nth-child(2) { max-width: 30rem; min-width: 12rem; overflow-wrap: anywhere; }
+.pop-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1rem 0; }
+.pop-filters .field { margin: 0 !important; flex: 1 1 10rem; }
+.pop-filters input, .pop-filters select { min-height: 2.8rem; }
+.pop-workspace a { text-underline-offset: .18em; }
+.pop-workspace :focus-visible { outline: 3px solid #875334; outline-offset: 3px; }
+.pop-workspace ::selection { background: #eed2bc; color: #352218; }
+.pop-workspace input, .pop-workspace textarea { caret-color: var(--pop-ink); }
+.pop-workspace pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 70ch; }
+.pop-years { max-width: 52rem; margin: 1rem 0; }
+.pop-years a { display: grid; grid-template-columns: 8rem 1fr 5rem; gap: 1rem; align-items: center; padding: .4rem 0; }
+.pop-years meter { width: 100%; height: 1rem; accent-color: #875334; }
+.pop-years strong { text-align: right; font-variant-numeric: tabular-nums; }
+.pop-history { line-height: 1.9; padding-left: 1.2rem; }
+.pop-author-form { max-width: 48rem; }
+@media (max-width: 700px) {
+ .pop-toolbar { flex-direction: column; gap: 1rem; }
+ .pop-filters { display: grid; grid-template-columns: 1fr; }
+ .pop-filters .field { min-width: 0; }
+ .pop-years a { grid-template-columns: 6.5rem 1fr 3rem; gap: .5rem; }
+ .pop-nav .button { flex: 1 1 46%; }
+}
+.pop-mobile-help { display: none; }
+.pop-workspace meter::-webkit-meter-optimum-value { background: #875334; }
+.pop-workspace meter::-moz-meter-bar { background: #875334; }
+body:has(.pop-workspace) .argilo-robo-launcher { position: static !important; inset: auto !important; width: fit-content; margin: 1rem 1rem 1rem auto; }
+@media (max-width: 767px) {
+ .pop-mobile-help { display: block; font-size: .9rem; }
+ .pop-workspace .ui.unstackable.table thead { display: table-header-group !important; }
+ .pop-workspace .ui.unstackable.table tbody { display: table-row-group !important; }
+ .pop-workspace .ui.unstackable.table tr { display: table-row !important; }
+ .pop-workspace .ui.unstackable.table :is(th,td) { display: table-cell !important; }
+}

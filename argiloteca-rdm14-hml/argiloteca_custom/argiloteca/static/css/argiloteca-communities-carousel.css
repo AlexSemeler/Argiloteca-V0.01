@@ -1,0 +1,29 @@
+/* Community discovery: native horizontal scrolling with optional motion. */
+.argilo-community-carousel { padding-block: 2rem; }
+.argilo-community-carousel__header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.argilo-community-carousel__header h2 { margin: 0; color: var(--arg-color-primary-strong); }
+.argilo-community-carousel__header a { display: inline-flex; align-items: center; gap: .5rem; }
+.argilo-community-carousel__controls { display: flex; align-items: center; gap: .5rem; margin-block: 1rem; flex-wrap: wrap; }
+.argilo-community-carousel__controls[hidden] { display: none; }
+.argilo-community-carousel__controls button { min-width: 44px; min-height: 44px; padding: .65rem .85rem; border: 1px solid var(--arg-color-control-border); border-radius: var(--arg-radius-control); background: var(--arg-color-surface); color: var(--arg-color-primary-strong); font: inherit; font-weight: 700; cursor: pointer; }
+.argilo-community-carousel__controls button:hover { background: var(--arg-color-surface-analytic); }
+.argilo-community-carousel__controls [data-carousel-toggle] { display: inline-grid; place-items: center; }
+.argilo-community-carousel__controls [data-carousel-toggle][hidden] { display: none; }
+.argilo-community-carousel__controls [data-carousel-toggle] span { grid-area: 1 / 1; }
+.argilo-community-carousel__controls .argilo-carousel-button-sizer { visibility: hidden; }
+.argilo-community-carousel__controls [data-carousel-prev] svg { transform: rotate(180deg); }
+.argilo-community-carousel__track { display: flex; gap: 1.25rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-color: var(--arg-color-primary-strong) var(--arg-color-surface-analytic); padding: .25rem .25rem 1rem; }
+.argilo-community-carousel__item { flex: 0 0 calc((100% - 2.5rem) / 3); min-width: 0; scroll-snap-align: start; }
+.argilo-community-carousel__item a { display: block; color: var(--arg-color-primary-strong); }
+.argilo-community-carousel__item img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; background: var(--arg-color-surface-analytic); border-radius: var(--arg-radius-control); }
+.argilo-community-carousel__item h3 { font-size: 1.2rem; line-height: 1.4; margin: .75rem 0 .5rem; overflow-wrap: anywhere; }
+.argilo-community-carousel__item p { margin: 0; line-height: 1.5; }
+.argilo-community-carousel__credits { margin-top: .75rem; font-size: .9rem; }
+.argilo-community-carousel__credits summary { cursor: pointer; color: var(--arg-color-primary-strong); }
+@media (max-width: 991px) { .argilo-community-carousel__item { flex-basis: calc((100% - 1.25rem) / 2); } }
+@media (max-width: 600px) {
+  .argilo-community-carousel__item { flex-basis: 88%; }
+  .argilo-community-carousel__track { gap: 1rem; }
+  #main .communities-frontpage .flex { flex-wrap: wrap; gap: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) { .argilo-community-carousel__track { scroll-behavior: auto; } }

@@ -1,0 +1,21 @@
+{# Based on Invenio App RDM, Copyright (C) 2020 CERN and Northwestern University, MIT License. #}
+{% extends config.BASE_TEMPLATE %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_module_nav, render_breadcrumb with context %}
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-workspace.css') }}?v=20261016-ui-1">
+{% endblock %}
+{% block page_body %}
+<div class="argilo-dashboard-page">
+  <div class="argilo-page-header">
+    {{ render_breadcrumb([{"label": _("Início"), "href": "/"}, {"label": _("Meu painel"), "href": None}]) }}
+
+  </div>
+  {% block user_dashboard_header %}
+    {% include "invenio_app_rdm/users/header.html" %}
+  {% endblock %}
+  <div class="ui container rel-mt-2">
+    {% block user_dashboard_body %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

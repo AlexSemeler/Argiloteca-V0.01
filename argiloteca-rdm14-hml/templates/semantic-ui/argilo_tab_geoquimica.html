@@ -1,0 +1,287 @@
+{# argilo_tab_geoquimica.html #}
+{% from "_argilo_helpers.html" import field_row %}
+
+{% set cf = record.custom_fields if record.custom_fields is defined else {} %}
+{% set record_dom_id = (record.id if record.id is defined else "record") | string %}
+{% set geoquimica_id = "argilo-geoquimica-" ~ record_dom_id|replace("/", "-")|replace(":", "-") %}
+{% set payload = {
+  "composicao_global": cf.get("arg:composicao_quimica_global") or cf.get("arg:composicao_descricao_componentes"),
+  "descricao_componentes": cf.get("arg:descricao_componentes") or cf.get("arg:composicao_descricao_componentes"),
+  "proporcoes": cf.get("arg:proporcoes_resultados_principais") or cf.get("arg:composicao_proporcoes"),
+  "analise_resultado": cf.get("arg:analise_resultado"),
+} %}
+{% set composicao_global = cf.get("arg:composicao_quimica_global") if cf else {} %}
+{% set amostras = cf.get("arg:amostras", []) if cf else [] %}
+{% set composicao_codigo_amostra = composicao_global.get("codigo_amostra") if composicao_global is mapping else none %}
+{% set composicao_amostra = namespace(item=none) %}
+{% if composicao_codigo_amostra and amostras %}
+  {% for amostra in amostras %}
+    {% if amostra.get("codigo_amostra") == composicao_codigo_amostra %}
+      {% set composicao_amostra.item = amostra %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div id="{{ geoquimica_id }}" class="argilo-geoquimica">
+  <style>
+    #{{ geoquimica_id }} .argilo-geo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-card {
+      border: 1px solid rgba(182, 95, 58, 0.18);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      background: linear-gradient(180deg, #fefcf9 0%, var(--arg-color-chemistry-soft) 100%);
+      min-height: 100%;
+      box-shadow: 0 10px 20px rgba(34, 48, 57, 0.05);
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--arg-color-chemistry);
+      margin-bottom: 0.5rem;
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-value {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--arg-color-text);
+      line-height: 1.2;
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-caption {
+      margin-top: 0.5rem;
+      color: var(--arg-color-text-muted);
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-table th,
+    #{{ geoquimica_id }} .argilo-geo-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--arg-color-border-soft);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-bar-track {
+      height: 0.75rem;
+      background: #f1e4dc;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    #{{ geoquimica_id }} .argilo-geo-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--arg-color-chemistry) 0%, var(--arg-color-support) 100%);
+    }
+  </style>
+
+  <div class="ui stacked segment arg-section arg-section-chemistry">
+    <h3 class="ui dividing header">{{ _("Resumo geoquímico") }}</h3>
+    <div class="argilo-geo-grid" data-role="summary-cards"></div>
+    <div class="ui info message arg-validation-optional" data-role="summary-empty">
+      {{ _("Nao informado explicitamente no dataset do PANGAEA.") }}
+    </div>
+  </div>
+
+  <div class="ui stacked segment arg-section arg-section-chemistry">
+    <h3 class="ui dividing header">{{ _("Tabela composicional") }}</h3>
+    {% if composicao_codigo_amostra %}
+      <div class="ui mini message arg-validation-ok">
+        <strong>{{ _("Amostra associada") }}:</strong>
+        {{ composicao_codigo_amostra }}
+        {% if composicao_amostra.item and composicao_amostra.item.get("local_coleta") %}
+          <div class="text-muted argilo-inline-spacer">
+            <strong>{{ _("Localização") }}:</strong>
+            {{ composicao_amostra.item.get("local_coleta") }}
+          </div>
+        {% endif %}
+        {% if composicao_amostra.item and composicao_amostra.item.get("contexto_geologico") %}
+          <div class="text-muted argilo-inline-spacer">
+            <strong>{{ _("Contexto geológico") }}:</strong>
+            {{ composicao_amostra.item.get("contexto_geologico") }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div data-role="composition-table"></div>
+    <div class="ui message arg-validation-optional" data-role="composition-empty">
+      {{ _("Nao informado explicitamente no dataset do PANGAEA.") }}
+    </div>
+  </div>
+
+  <div class="ui stacked segment arg-section arg-section-analysis">
+    <h3 class="ui dividing header">{{ _("Interpretação") }}</h3>
+    <div class="ui relaxed divided items">
+      {{ field_row(_("Descrição dos componentes"), payload.descricao_componentes) }}
+      {{ field_row(_("Proporções / resultados principais"), payload.proporcoes) }}
+      {{ field_row(_("Resultado da análise"), payload.analise_resultado) }}
+    </div>
+  </div>
+
+  <script nonce="{{ csp_nonce() }}">
+    (function () {
+      const root = document.getElementById({{ geoquimica_id | tojson }});
+      if (!root) return;
+
+      const payload = {{ payload | tojson }};
+      const summaryCards = root.querySelector('[data-role="summary-cards"]');
+      const summaryEmpty = root.querySelector('[data-role="summary-empty"]');
+      const compositionTable = root.querySelector('[data-role="composition-table"]');
+      const compositionEmpty = root.querySelector('[data-role="composition-empty"]');
+
+      function parseMaybeJson(value) {
+        if (!value) return null;
+        if (typeof value === 'object') return value;
+        if (typeof value !== 'string') return null;
+
+        const trimmed = value.trim();
+        if (!trimmed) return null;
+
+        if (
+          (trimmed.startsWith('{') && trimmed.endsWith('}')) ||
+          (trimmed.startsWith('[') && trimmed.endsWith(']'))
+        ) {
+          try {
+            return JSON.parse(trimmed);
+          } catch (error) {
+            return null;
+          }
+        }
+
+        return null;
+      }
+
+      function toEntries(value) {
+        if (!value || typeof value !== 'object' || Array.isArray(value)) return [];
+        return Object.entries(value).filter(function ([, item]) {
+          return item !== null && item !== '';
+        });
+      }
+
+      function toNumericEntries(value) {
+        return toEntries(value)
+          .map(function ([label, item]) {
+            const numeric = Number(item);
+            return Number.isFinite(numeric) ? [label, numeric] : null;
+          })
+          .filter(Boolean);
+      }
+
+      function formatValue(value) {
+        if (typeof value === 'number') {
+          return value.toLocaleString(window.argiloLocale, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2,
+          });
+        }
+        return String(value);
+      }
+
+      function renderSummaryCards(entries) {
+        if (!entries.length) {
+          summaryEmpty.style.display = '';
+          return;
+        }
+
+        summaryEmpty.style.display = 'none';
+        summaryCards.innerHTML = '';
+
+        entries.slice(0, 6).forEach(function ([label, value]) {
+          const card = document.createElement('div');
+          card.className = 'argilo-geo-card';
+
+          const labelEl = document.createElement('div');
+          labelEl.className = 'argilo-geo-label';
+          labelEl.textContent = label.replace(/_/g, ' ');
+
+          const valueEl = document.createElement('div');
+          valueEl.className = 'argilo-geo-value';
+          valueEl.textContent = formatValue(value);
+
+          card.appendChild(labelEl);
+          card.appendChild(valueEl);
+
+          summaryCards.appendChild(card);
+        });
+      }
+
+      function renderComposition(entries) {
+        if (!entries.length) {
+          compositionEmpty.style.display = '';
+          return;
+        }
+
+        compositionEmpty.style.display = 'none';
+
+        const maxValue = Math.max.apply(
+          null,
+          entries.map(function ([, value]) {
+            return value;
+          })
+        );
+        const normalizedMaxValue = maxValue > 0 ? maxValue : 1;
+
+        const table = document.createElement('table');
+        table.className = 'ui celled table argilo-geo-table';
+
+        const thead = document.createElement('thead');
+        const headRow = document.createElement('tr');
+        ['Componente', 'Teor', window.argiloT("Distribuição relativa")].forEach(function (label) {
+          const th = document.createElement('th');
+          th.textContent = label;
+          headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        entries
+          .sort(function (a, b) { return b[1] - a[1]; })
+          .forEach(function ([label, value]) {
+            const row = document.createElement('tr');
+
+            const labelCell = document.createElement('td');
+            labelCell.textContent = label;
+
+            const valueCell = document.createElement('td');
+            valueCell.textContent = formatValue(value);
+
+            const barCell = document.createElement('td');
+            const track = document.createElement('div');
+            track.className = 'argilo-geo-bar-track';
+            const fill = document.createElement('div');
+            fill.className = 'argilo-geo-bar-fill';
+            fill.style.width = ((value / normalizedMaxValue) * 100).toFixed(2) + '%';
+            track.appendChild(fill);
+            barCell.appendChild(track);
+
+            row.appendChild(labelCell);
+            row.appendChild(valueCell);
+            row.appendChild(barCell);
+            tbody.appendChild(row);
+          });
+
+        table.appendChild(tbody);
+        compositionTable.innerHTML = '';
+        compositionTable.appendChild(table);
+      }
+
+      const composicaoGlobal = parseMaybeJson(payload.composicao_global);
+      const proporcoes = parseMaybeJson(payload.proporcoes);
+
+      renderSummaryCards(toEntries(proporcoes));
+      renderComposition(toNumericEntries(composicaoGlobal));
+    })();
+  </script>
+</div>

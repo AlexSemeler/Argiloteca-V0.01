@@ -1,0 +1,6 @@
+# Separate CUDA training environment; never install in Invenio or the CPU VM.
+torch>=2.6,<3
+transformers>=4.51,<5
+peft>=0.17,<0.19
+datasets>=3,<5
+accelerate>=1,<2

@@ -1,0 +1,26 @@
+/* Dashboard and deposit use the shared scientific palette; preserve semantic action states. */
+.argilo-dashboard-page, .argilo-deposit-page { color: var(--arg-color-text); }
+.argilo-dashboard-page #dashboard-user-header-container { background: var(--arg-color-surface-analytic); border-color: var(--arg-color-border); }
+.argilo-dashboard-page .argilo-workspace-action { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; }
+.argilo-dashboard-page .ui.primary.button, .argilo-dashboard-page .ui.search.button,
+.argilo-deposit-page #deposit-form .ui.primary.button:not(.negative):not(.positive):not(.red):not(.green) { background: var(--arg-color-primary-strong); color: white; }
+.argilo-dashboard-page .argilo-dashboard-tabs { flex-wrap: wrap; gap: .25rem; }
+.argilo-dashboard-page .argilo-dashboard-tabs .item { gap: .5rem; min-height: 44px; }
+.argilo-dashboard-page .argilo-dashboard-tabs .active.item { color: var(--arg-color-primary-strong); border-color: var(--arg-color-primary-strong); }
+.argilo-dashboard-page .ui.pagination.menu .active.item { background: var(--arg-color-primary-strong); color: white; }
+.argilo-deposit-page #deposit-form .ui.segment:not(.error):not(.warning):not(.positive):not(.negative) { border-color: var(--arg-color-border); }
+:is(.argilo-dashboard-page, .argilo-deposit-page) :is(a, button, input, select, textarea, [tabindex]):focus-visible { outline: 3px solid var(--arg-color-focus); outline-offset: 3px; }
+:is(.argilo-dashboard-page, .argilo-deposit-page) :is(input, textarea)::placeholder { color: var(--arg-color-muted); opacity: 1; }
+:is(.argilo-dashboard-page, .argilo-deposit-page) :is(input, textarea) { caret-color: var(--arg-color-primary-strong); }
+:is(.argilo-dashboard-page, .argilo-deposit-page) ::selection { background: var(--arg-color-border); color: var(--arg-color-text); }
+@media (max-width: 767px) {
+  .argilo-dashboard-page #dashboard-user-header-container > .page-subheader { flex-wrap: wrap; gap: 1rem; }
+  .argilo-dashboard-page #dashboard-user-header-container h1 { overflow-wrap: anywhere; }
+  .argilo-dashboard-page .ui.container > .ui.relaxed.grid { margin-left: -14px; margin-right: -14px; }
+}
+/* Keep scientific field hints legible after the deposit bundle loads its theme. */
+.argilo-deposit-page #deposit-form .ui.form input::placeholder,
+.argilo-deposit-page #deposit-form .ui.form textarea::placeholder {
+  color: var(--arg-color-muted);
+  opacity: 1;
+}

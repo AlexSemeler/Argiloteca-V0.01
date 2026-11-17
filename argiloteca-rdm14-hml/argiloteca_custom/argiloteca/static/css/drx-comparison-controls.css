@@ -1,0 +1,45 @@
+/* Same editorial identity as /drx; the scientific plot and pane hooks stay intact. */
+#main .argilo-drx--editorial .argilo-workbench { --awb-brown: var(--arg-color-primary-strong); --awb-line: var(--arg-color-border); --awb-ground: var(--arg-color-surface-page); --awb-panel: var(--arg-color-surface-analytic); border-radius: 12px; }
+#main .argilo-drx--editorial .awb-header { border-radius: 12px 12px 0 0; }
+#main .argilo-drx--editorial .awb-title { padding-block: 24px; }
+#main .argilo-drx--editorial .awb-title h1 { font-size: 30px; line-height: 1.2; }
+#main .argilo-drx--editorial .awb-title p { line-height: 1.65; max-width: 74ch; }
+#main .argilo-drx--editorial .ui.button { min-height: 44px; border-radius: 7px; gap: 8px; padding: 10px 12px; line-height: 1.4; white-space: normal; text-decoration: none; }
+#main .argilo-drx--editorial .ui.button .argilo-icon { width: 19px; height: 19px; flex: 0 0 auto; }
+#main .argilo-drx--editorial .ui.button:disabled { cursor: not-allowed; }
+#main .argilo-drx--editorial :is(button,a,summary,select):focus-visible { outline: 3px solid var(--arg-color-focus); outline-offset: 3px; }
+#main .argilo-drx--editorial ::selection { background: #e7c3a0; color: #332415; }
+#main .argilo-drx--editorial .awb-views a { gap: 7px; min-height: 44px; }
+#main .argilo-drx--editorial .awb-help.ui.button { font-size: 14px; max-width: 280px; flex-shrink: 0; }
+#main .argilo-drx--editorial .awb-sample-actions [data-role=clear-selection] { border: 1px solid var(--awb-line); background: transparent; text-decoration: none; padding: 10px 12px; }
+#main .argilo-drx--editorial .awb-sample-actions [data-role=clear-selection]:hover { background: var(--arg-color-surface-soft); }
+#main .argilo-drx--editorial .awb-panel-heading h2 { display: flex; align-items: center; gap: 7px; line-height: 1.3; }
+#main .argilo-drx--editorial .awb-panel-heading h2 .argilo-icon { width: 21px; height: 21px; }
+#main .argilo-drx--editorial .awb-chart-toolbar { gap: 10px; }
+#main .argilo-drx--editorial .awb-chart-toolbar select { min-height: 44px; }
+#main .argilo-drx--editorial .awb-export>div { top: calc(100% + 6px); width: 210px; border: 0; border-radius: 8px; box-shadow: 0 7px 22px #302b2724; padding: 8px; }
+#main .argilo-drx--editorial .awb-export>div .ui.button { width: 100%; justify-content: flex-start; }
+#main .argilo-drx--editorial .awb-inspector-tabs button { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; }
+#main .argilo-drx--editorial .awb-inspector-tabs .argilo-icon { width: 17px; height: 17px; }
+#main .argilo-drx--editorial .awb-remove { min-width: 28px; min-height: 32px; }
+#main .argilo-drx--editorial .awb-remove svg { stroke-width: 1.75; }
+#main .argilo-drx--editorial .awb-text-button[data-awb-open-quality] { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; }
+@media (max-width: 767px) {
+  #main .argilo-drx--editorial .awb-title { flex-wrap: wrap; gap: 14px; }
+  #main .argilo-drx--editorial .awb-title h1 { font-size: 24px; }
+  #main .argilo-drx--editorial .awb-help.ui.button { font-size: 14px; max-width: 100%; width: 100%; justify-content: flex-start; }
+  #main .argilo-drx--editorial .awb-header-actions>.ui.button { font-size: 14px; max-width: 140px; }
+  #main .argilo-drx--editorial .awb-chart-toolbar>.argilo-drx__toolbar-group { flex-basis: 100%; }
+  #main .argilo-drx--editorial .awb-chart-toolbar label { display: block; width: 100%; }
+  #main .argilo-drx--editorial .awb-chart-toolbar [data-role=toggle-peaks] { max-width: none; }
+  #main .argilo-drx--editorial .awb-chart-toolbar .awb-export>summary svg { display: block; }
+  #main .argilo-drx--editorial .awb-mobile-tabs button { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0; padding: 9px 4px; }
+  #main .argilo-drx--editorial .awb-mobile-tabs .argilo-icon { width: 19px; height: 19px; }
+  #main .argilo-drx--editorial .awb-panel-heading { flex-wrap: wrap; }
+}
+@media (max-width: 767px) {
+  #main .argilo-drx--editorial .awb-chart-toolbar [data-role=reset-zoom] { width: auto; min-width: 44px; padding: 10px 12px; }
+  #main .argilo-drx--editorial .awb-chart-toolbar [data-role=reset-zoom] span { display: inline; }
+  #main .argilo-drx--editorial .awb-chart-toolbar .awb-export>summary .argilo-icon { display: block; }
+  #main .argilo-drx--editorial .awb-export { margin-inline-start: 0; }
+}

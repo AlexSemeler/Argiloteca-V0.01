@@ -1,0 +1,48 @@
+/* Operate: inherit the native Argiloteca administration and its SVG actions. */
+.knowledge-admin {max-width:1160px;color:#38291f;line-height:1.55;}
+.knowledge-admin section {margin-block:2.5rem;padding-block-start:1.2rem;border-top:1px solid #ded1c1;scroll-margin-top:2rem;}
+.knowledge-admin h2 {font-size:1.45rem;color:#563a27;margin-bottom:1rem;}
+.knowledge-admin p {max-width:75ch;}
+.knowledge-actions {display:flex;flex-wrap:wrap;gap:.6rem;align-items:end;margin-block:1rem;}
+.knowledge-admin label {display:block;font-weight:600;}
+.knowledge-actions input {display:block;max-width:100%;padding:.65rem;border:1px solid #897866;border-radius:4px;}
+.knowledge-status {display:flex;gap:1.5rem;flex-wrap:wrap;margin-block:1.5rem;font-variant-numeric:tabular-nums;}
+.knowledge-status dt {font-weight:700;}
+.knowledge-status dd {margin:0;overflow-wrap:anywhere;}
+.knowledge-status > div {min-width:130px;max-width:100%;}
+.knowledge-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;}
+.knowledge-fields .field {min-width:0;}
+.knowledge-admin .knowledge-check {display:flex;align-items:flex-start;gap:.7rem;margin-block:1.1rem;font-weight:400;max-width:75ch;}
+.knowledge-check input {flex:0 0 auto;margin-top:.35rem;accent-color:#70492f;}
+.knowledge-admin :is(input,textarea,select):focus-visible {outline:3px solid #8b4a24;outline-offset:3px;}
+.knowledge-admin ::selection {background:#ead4bd;color:#38291f;}
+.knowledge-admin :is(input,textarea) {caret-color:#70492f;}
+.knowledge-admin :is(button,a):focus-visible {outline:3px solid #8b4a24;outline-offset:3px;}
+.knowledge-warning {padding:1rem;background:#fff3d9;color:#62410c;border:1px solid #d4af68;}
+.knowledge-empty {padding:1.25rem;background:#f7f2eb;}
+.knowledge-table {overflow-x:auto;}
+.knowledge-table small {display:block;}
+.knowledge-hash {overflow-wrap:anywhere;font-variant-numeric:tabular-nums;}
+.knowledge-review {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;margin-block:1.5rem;align-items:start;}
+.knowledge-review figure {margin:0;}
+.knowledge-review img {width:100%;height:auto;border:1px solid #ded1c1;}
+.knowledge-review figcaption {font-size:.9rem;}
+.knowledge-review textarea {width:100%;resize:vertical;min-height:25rem;line-height:1.6;}
+.knowledge-admin details {padding-block:.8rem;}
+.knowledge-admin summary {cursor:pointer;font-weight:700;overflow-wrap:anywhere;}
+.knowledge-version {display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-block:.8rem;}
+.knowledge-admin .ui.button {min-height:44px;white-space:normal;}
+@media(max-width:800px) {.knowledge-fields,.knowledge-review {grid-template-columns:minmax(0,1fr);}.knowledge-actions {align-items:stretch;}.knowledge-actions > * {max-width:100%;}.knowledge-table {max-width:100%;}.knowledge-admin .ui.button {max-width:100%;overflow-wrap:anywhere;}}
+/* Source review must stay unobstructed. The assistant remains available after
+   the page content, in the normal document flow, on this surface only. */
+.argilo-admin-content .argilo-robo-launcher {position:static;display:inline-flex;width:fit-content;max-width:100%;height:auto;right:auto;bottom:auto;margin:1.5rem 0 0 auto;}
+.argilo-admin-content .argilo-robo-launcher span {display:inline;}
+
+.knowledge-openalex {overflow-wrap:anywhere;}
+.knowledge-pdf-row {padding-block:1.3rem;border-bottom:1px solid #ded1c1;}
+.knowledge-pdf-row h2 {font-size:1.15rem;margin:0 0 .5rem;}
+.knowledge-openalex .knowledge-actions select {display:block;min-height:44px;max-width:100%;}
+.knowledge-openalex .knowledge-actions label {min-width:0;}
+@media(max-width:800px) {.knowledge-openalex .knowledge-actions > label {width:100%;}.knowledge-openalex .knowledge-actions select {width:100%;}}
+
+.knowledge-openalex :is(input,textarea)::placeholder {color:#6c5847;opacity:1;}

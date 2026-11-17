@@ -1,0 +1,69 @@
+{% set cf = record.metadata.custom_fields if record.metadata.custom_fields else {} %}
+
+<style>
+  .argilo-sections {
+    margin-top: 1.5rem;
+  }
+  .argilo-section {
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--arg-color-border-soft);
+    border-left: 5px solid var(--arg-color-primary);
+    border-radius: 0.8rem;
+    background: linear-gradient(180deg, #fffdfb 0%, var(--arg-color-surface-soft) 100%);
+    overflow: hidden;
+    box-shadow: 0 10px 24px var(--arg-color-shadow);
+  }
+  .argilo-section-header {
+    padding: 0.9rem 1rem;
+    background: rgba(138, 97, 72, 0.08);
+    border-bottom: 1px solid var(--arg-color-border-soft);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--arg-color-primary-strong);
+  }
+  .argilo-section-body {
+    padding: 1rem;
+  }
+  .argilo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem 1.2rem;
+  }
+  .argilo-field {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--arg-color-border-soft);
+    border-radius: 0.4rem;
+    padding: 0.75rem 0.85rem;
+  }
+  .argilo-field-full {
+    grid-column: 1 / -1;
+  }
+  .argilo-label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--arg-color-text);
+  }
+  .argilo-value {
+    color: var(--arg-color-text-muted);
+    line-height: 1.5;
+    white-space: pre-line;
+  }
+  @media (max-width: 768px) {
+    .argilo-grid {
+      grid-template-columns: 1fr;
+    }
+    .argilo-field-full {
+      grid-column: auto;
+    }
+  }
+</style>
+
+<div class="argilo-sections">
+  <section class="argilo-section">
+    <div class="argilo-section-header">{{ _("Metadados geocientíficos") }}</div>
+    <div class="argilo-section-body">
+      <div class="argilo-value">{{ _("Use as abas do registro para navegar entre as seções mineralógicas, geológicas, amostrais, analíticas, espaciais e relacionais.") }}</div>
+    </div>
+  </section>
+</div>

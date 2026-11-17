@@ -1,0 +1,9 @@
+/* Each selection is confined to its named form and visible page. */
+(()=>{'use strict';
+ const choices=id=>Array.from(document.querySelectorAll('[data-bulk-select]')).filter(el=>el.dataset.bulkSelect===id&&!el.disabled);
+ const update=id=>{const rows=choices(id),count=rows.filter(el=>el.checked).length;const status=Array.from(document.querySelectorAll('[data-bulk-count]')).find(el=>el.dataset.bulkCount===id);if(status)status.textContent=`${status.dataset.label}: ${count}`;const form=document.getElementById(id);if(form){const submit=form.querySelector('[data-bulk-submit]');if(submit)submit.disabled=!count;const all=form.querySelector('[data-bulk-all]');if(all){all.disabled=!rows.length;all.setAttribute('aria-pressed',String(rows.length>0&&count===rows.length));}}};
+ document.querySelectorAll('[data-bulk-form]').forEach(form=>update(form.id));
+ document.querySelectorAll('[data-bulk-import-all],[data-bulk-import-clear]').forEach(button=>{const form=document.getElementById(button.dataset.bulkImportAll||button.dataset.bulkImportClear);if(form)button.disabled=!Array.from(form.elements).some(el=>el.type==='checkbox'&&el.name===button.dataset.name&&!el.disabled);});
+ document.addEventListener('change',event=>{if(event.target.matches('[data-bulk-select]'))update(event.target.dataset.bulkSelect);});
+ document.addEventListener('click',event=>{const button=event.target.closest('button');if(!button)return;let id=button.dataset.bulkAll||button.dataset.bulkClear;if(id){choices(id).forEach(el=>{el.checked=Boolean(button.dataset.bulkAll);});update(id);}id=button.dataset.bulkImportAll||button.dataset.bulkImportClear;if(id){const form=document.getElementById(id);if(form)Array.from(form.elements).filter(el=>el.type==='checkbox'&&el.name===button.dataset.name&&!el.disabled).forEach(el=>{el.checked=Boolean(button.dataset.bulkImportAll);});}});
+})();

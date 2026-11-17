@@ -1,0 +1,79 @@
+# macOS and IDE state
+.DS_Store
+.idea/
+
+# Local assistant tooling and workspace-specific files
+.agents/
+.impeccable/
+.ollamassist/
+.tools/
+
+# Generated, temporary and research-workspace material
+/output/
+/tmp/
+/replica/
+/deliverables/
+/scripts/
+/povoamento/
+/PRODUCT.md
+
+# Application-local data, databases, queues and restricted corpora
+/argiloteca-rdm14-hml/data/
+/argiloteca-rdm14-hml/app_data/drx-library/
+/argiloteca-rdm14-hml/app_data/drx-review/
+/argiloteca-rdm14-hml/app_data/ui-terminology/
+/argiloteca-rdm14-hml/app_data/mineralogia/
+/argiloteca-rdm14-hml/services/argiloclay-intelligence/storage/
+/argiloteca-rdm14-hml/services/argiloclay-intelligence/training/seed/
+/argiloteca-rdm14-hml/services/argiloclay-intelligence/.models/
+/argiloteca-rdm14-hml/services/argiloclay-intelligence/.venv/
+/argiloteca-rdm14-hml/services/argiloclay-intelligence/data/
+/argiloteca-rdm14-hml/argiloteca_custom/argiloteca/data/
+/argiloteca-rdm14-hml/argiloteca_custom/argiloteca/static/data/
+/argiloteca-rdm14-hml/argiloteca_custom/docs/restricted_raw_review_hml_20261020.md
+# This local operator utility targets a personal account.
+/argiloteca-rdm14-hml/scripts/trocar-senha
+
+# Credentials, local environments and private TLS material
+.env
+.env.*
+!.env.example
+!**/.env.example
+**/.local-tls/
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+**/credentials.json
+**/secrets.json
+
+# Local datasets, databases, backups and archives
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.bak
+*.backup
+*.enc
+
+# Python and test/build outputs
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+**/.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+build/
+dist/
+*.log
+
+# JavaScript dependencies and generated frontend output
+node_modules/
+**/node_modules/

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Add four fields to the current RDM record/draft indices and seed owned vocabularies.
+set -Eeuo pipefail
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common.sh"
+require_command docker
+compose_migrated exec -T web-ui python -m argiloteca.scientific.install

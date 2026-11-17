@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_referencia_drx_webmineral.schema.json",
+  "title": "arg:referencia_drx_webmineral",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "argilomineral_id",
+    "source",
+    "source_url",
+    "usage",
+    "validation_status",
+    "reference_kind",
+    "has_drx_reference",
+    "lines"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$"
+    },
+    "argilomineral_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$"
+    },
+    "mineral": {
+      "type": "string"
+    },
+    "title_pt": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "vocabulary_source": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "const": "WebMineral"
+    },
+    "source_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "webmineral_url": {
+      "type": "string"
+    },
+    "local_html": {
+      "type": "string"
+    },
+    "source_status": {
+      "type": "string"
+    },
+    "usage": {
+      "type": "string",
+      "const": "triagem_drx"
+    },
+    "validation_status": {
+      "type": "string",
+      "const": "auxiliary_not_confirmatory"
+    },
+    "reference_kind": {
+      "type": "string",
+      "const": "xray_powder_diffraction"
+    },
+    "has_drx_reference": {
+      "type": "boolean"
+    },
+    "lines_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["d_angstrom", "relative_intensity"],
+        "properties": {
+          "d_angstrom": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "relative_intensity": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "has_chemical_composition": {
+      "type": "boolean"
+    },
+    "chemical_formula": {
+      "type": "string"
+    },
+    "empirical_formula": {
+      "type": "string"
+    },
+    "chemical_composition": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "chemical_formula": {
+          "type": "string"
+        },
+        "empirical_formula": {
+          "type": "string"
+        },
+        "molecular_weight_g_mol": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "total_oxide_percent": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "elements_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "oxides_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "elements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["element", "symbol", "weight_percent"],
+            "properties": {
+              "element": {
+                "type": "string"
+              },
+              "symbol": {
+                "type": "string"
+              },
+              "weight_percent": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "oxides": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["oxide", "weight_percent"],
+            "properties": {
+              "oxide": {
+                "type": "string"
+              },
+              "weight_percent": {
+                "type": "number",
+                "minimum": 0
+              },
+              "source_element": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "composition_entries": {
+          "type": "array"
+        }
+      }
+    },
+    "has_crystallography": {
+      "type": "boolean"
+    },
+    "has_structural_classification": {
+      "type": "boolean"
+    },
+    "has_structure_reference": {
+      "type": "boolean"
+    },
+    "has_auxiliary_qc": {
+      "type": "boolean"
+    },
+    "webmineral_crystallography": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "has_crystallography": {
+          "type": "boolean"
+        },
+        "xray_summary": {
+          "type": "string"
+        },
+        "axial_ratios": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "raw": {
+              "type": "string"
+            },
+            "a_to_b": {
+              "type": ["number", "null"]
+            },
+            "b_to_b": {
+              "type": ["number", "null"]
+            },
+            "c_to_b": {
+              "type": ["number", "null"]
+            }
+          }
+        },
+        "cell_parameters": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "raw": {
+              "type": "string"
+            },
+            "has_cell_parameters": {
+              "type": "boolean"
+            },
+            "a_angstrom": {
+              "type": ["number", "null"],
+              "exclusiveMinimum": 0
+            },
+            "b_angstrom": {
+              "type": ["number", "null"],
+              "exclusiveMinimum": 0
+            },
+            "c_angstrom": {
+              "type": ["number", "null"],
+              "exclusiveMinimum": 0
+            },
+            "alpha_deg": {
+              "type": ["number", "null"],
+              "minimum": 0
+            },
+            "beta_deg": {
+              "type": ["number", "null"],
+              "minimum": 0
+            },
+            "gamma_deg": {
+              "type": ["number", "null"],
+              "minimum": 0
+            },
+            "volume_angstrom3": {
+              "type": ["number", "null"],
+              "exclusiveMinimum": 0
+            },
+            "calculated_density_g_cm3": {
+              "type": ["number", "null"],
+              "minimum": 0
+            },
+            "z": {
+              "type": ["number", "null"],
+              "minimum": 0
+            }
+          }
+        },
+        "crystal_system": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "raw": {
+              "type": "string"
+            },
+            "crystal_system": {
+              "type": "string"
+            },
+            "hm_symbol": {
+              "type": "string"
+            },
+            "space_group": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "webmineral_classification": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "has_structural_classification": {
+          "type": "boolean"
+        },
+        "dana": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "strunz": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "webmineral_structure_reference": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "has_structure_reference": {
+          "type": "boolean"
+        },
+        "jpowd_model": {
+          "type": "string"
+        },
+        "structure_reference": {
+          "type": "string"
+        }
+      }
+    },
+    "webmineral_auxiliary_qc": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "has_auxiliary_qc": {
+          "type": "boolean"
+        },
+        "density": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "electron_density": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "photoelectric": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "radioactivity": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "webmineral_descriptive_properties": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "classifier_feature_groups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "classifier_feature_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_snapshot": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["source_file", "sha256"],
+      "properties": {
+        "source_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        }
+      }
+    }
+  }
+}

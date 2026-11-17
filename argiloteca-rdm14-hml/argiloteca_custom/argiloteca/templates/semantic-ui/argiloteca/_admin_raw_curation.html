@@ -1,0 +1,40 @@
+<section class="rl-upload" aria-labelledby="rl-curation-title">
+  <h2 id="rl-curation-title">{{ t('Publicação de trio curado', 'Curated trio publication') }}</h2>
+  <p>{{ t('Confira os vínculos N/G/C, o anonimato e os direitos dos arquivos antes de preparar o depósito. Os resultados automáticos continuam provisórios.', 'Review N/G/C links, anonymity and file rights before preparing the deposit. Automatic results remain provisional.') }}</p>
+  {% if curation_error %}<div class="ui negative message" role="alert">{{ t('Não foi possível preparar o rascunho. Confira os campos e as confirmações. Se houver um rascunho vinculado, abra-o; se o erro persistir, solicite a revisão administrativa do vínculo antes de tentar novamente.', 'The draft could not be prepared. Check the fields and confirmations. If a linked draft exists, open it; if the error persists, request administrative review of the link before retrying.') }}</div>{% endif %}
+  {% if not curation.eligible %}
+    {% set reasons = {
+      'test_only': t('Envio de teste: preparação para publicação bloqueada.', 'Test submission: preparation for publication blocked.'),
+      'complete_trio_required': t('É necessário um único trio completo N/G/C, sem duplicatas ou arquivos sem preparo confirmado.', 'One complete N/G/C trio is required, without duplicates or files with unconfirmed preparation.'),
+      'already_in_public_inventory': t('Este grupo já está disponível no inventário público. Revise o registro existente para evitar duplicação.', 'This group is already in the public inventory. Review the existing record to avoid duplication.'),
+      'format_or_integrity_requires_review': t('Formato, cabeçalho, integridade ou aquisição exigem revisão. Os arquivos permanecem restritos.', 'Format, header, integrity or acquisition require review. Files remain restricted.')
+    } %}
+    <p class="rr-notice"><strong>{{ reasons.get(curation.reason, t('Trio indisponível para publicação. Requer revisão.', 'Trio unavailable for publication. Review required.')) }}</strong></p>
+  {% elif draft_link and linked_state == 'published' %}
+    <p>{{ t('O trio foi publicado pelo fluxo nativo do Invenio. Originais e resultados da área administrativa continuam preservados e restritos.', 'The trio was published through the native Invenio workflow. Originals and administrative results remain preserved and restricted.') }}</p>
+    <a class="ui primary button" href="/records/{{ draft_link.draft_id|urlencode }}">{{ t('Abrir registro publicado', 'Open published record') }}</a>
+  {% elif draft_link and linked_state == 'unavailable' %}
+    <p class="rr-notice">{{ t('O rascunho vinculado está indisponível ou foi excluído. Solicite a revisão administrativa do vínculo. Um novo rascunho não será criado automaticamente.', 'The linked draft is unavailable or has been deleted. Request administrative review of the link. A new draft will not be created automatically.') }}</p>
+  {% elif draft_link %}
+    <p>{{ t('Já existe um rascunho vinculado a este trio. A preparação não publica registros. Complete os metadados e confirme a publicação no formulário do Invenio.', 'A draft is already linked to this trio. Preparation does not publish records. Complete the metadata and confirm publication in the Invenio form.') }}</p>
+    <a class="ui primary button" href="/uploads/{{ draft_link.draft_id|urlencode }}">{{ render_icon('arrow') }} {{ t('Revisar e publicar no Invenio', 'Review and publish in Invenio') }}</a>
+  {% else %}
+    <p id="rl-curation-help">{{ t('Esta ação cria somente um rascunho privado com as três cópias anônimas. A publicação e a abertura do acesso serão confirmadas por você no formulário nativo do Invenio. Originais e escores de classificação não serão anexados.', 'This action creates only a private draft with the three anonymous copies. You will confirm publication and public access in the native Invenio form. Originals and classification scores will not be attached.') }}</p>
+    <p>{{ t('Autoria, data e licença podem ficar pendentes para preenchimento no Invenio antes da publicação. Não atribuímos autoria nem licença automaticamente.', 'Authorship, date and license may remain pending for completion in Invenio before publication. We do not assign authorship or a license automatically.') }}</p>
+    <form class="ui form rl-curation-form" method="post" action="{{ url_for('argiloteca_scientific.admin_raw_prepare_draft',item_id=row.id) }}" aria-describedby="rl-curation-help">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <div class="field"><label for="rl-title">{{ t('Título do conjunto de dados', 'Dataset title') }}</label><input id="rl-title" name="title" required maxlength="300" value="{{ request.form.get('title', t('Trio DRX N/G/C — ', 'N/G/C XRD trio — ') + row.sample_code) }}"></div>
+      <div class="rl-curation-fields">
+        <div class="field"><label for="rl-family">{{ t('Sobrenome do autor responsável', 'Responsible author family name') }}</label><input id="rl-family" name="family_name" maxlength="100" autocomplete="off" value="{{ request.form.get('family_name','') }}"></div>
+        <div class="field"><label for="rl-given">{{ t('Nome do autor responsável', 'Responsible author given name') }}</label><input id="rl-given" name="given_name" maxlength="100" autocomplete="off" value="{{ request.form.get('given_name','') }}"></div>
+        <div class="field"><label for="rl-date">{{ t('Data de publicação dos dados', 'Data publication date') }}</label><input id="rl-date" name="publication_date" type="date" value="{{ request.form.get('publication_date','') }}"></div>
+        <div class="field"><label for="rl-license">{{ t('Licença dos dados', 'Data license') }}</label><select id="rl-license" name="license"><option value="">{{ t('Definir no Invenio antes de publicar', 'Set in Invenio before publishing') }}</option>{% for value,label in [('cc-by-4.0','CC BY 4.0'),('cc0-1.0','CC0 1.0')] %}<option value="{{ value }}" {% if request.form.get('license')==value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
+      </div>
+      <div class="field"><label for="rl-description">{{ t('Descrição e contexto do preparo', 'Description and preparation context') }}</label><textarea id="rl-description" name="description" rows="3" maxlength="10000">{{ request.form.get('description','') }}</textarea></div>
+      <label class="rl-confirm"><input type="checkbox" name="confirm_links" value="yes" required> <span>{{ t('Revisei os arquivos e confirmo os vínculos e preparos N/G/C da mesma amostra.', 'I reviewed the files and confirm the N/G/C links and preparations belong to the same sample.') }}</span></label>
+      <label class="rl-confirm"><input type="checkbox" name="confirm_anonymity" value="yes" required> <span>{{ t('Conferi as cópias anônimas e os metadados que serão disponibilizados.', 'I checked the anonymous copies and the metadata to be made available.') }}</span></label>
+      <label class="rl-confirm"><input type="checkbox" name="confirm_rights" value="yes"> <span>{{ t('Se escolhi uma licença, confirmo que tenho autorização para disponibilizar os dados sob ela.', 'If I selected a license, I confirm I am authorized to make the data available under it.') }}</span></label>
+      <button class="ui primary button" type="submit">{{ render_icon('arrow') }} {{ t('Preparar rascunho para publicação', 'Prepare draft for publication') }}</button>
+    </form>
+  {% endif %}
+</section>

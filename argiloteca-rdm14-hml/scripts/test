@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/common.sh"
+
+require_command curl
+require_command docker
+require_env_file
+
+set -a
+source "${ENV_FILE}"
+set +a
+
+"${SCRIPT_DIR}/status"
+
+python_version="$(compose_migrated exec --no-TTY web-ui python --version 2>&1)"
+node_version="$(compose_migrated exec --no-TTY web-ui node --version 2>&1)"
+rdm_version="$(compose_migrated exec --no-TTY web-ui python -c 'import invenio_app_rdm; print(invenio_app_rdm.__version__)')"
+postgres_version="$(compose_migrated exec --no-TTY db psql -U "${HML_DB_USER}" -d "${HML_MIGRATED_DB_NAME:-argiloteca-rdm14-migrated}" -Atc 'show server_version;')"
+search_version="$(curl --fail --silent "http://127.0.0.1:${HML_OPENSEARCH_PORT}" | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"]["number"])')"
+redis_version="$(compose exec --no-TTY cache redis-server --version | sed -E 's/.*v=([^ ]+).*/\1/')"
+rabbitmq_version="$(compose exec --no-TTY mq rabbitmqctl version)"
+record_count="$(curl --insecure --fail --silent "https://127.0.0.1:${HML_HTTPS_PORT}/api/records?size=1" | python3 -c 'import json,sys; print(json.load(sys.stdin)["hits"]["total"])')"
+postgres_major="${postgres_version%%.*}"
+search_major="${search_version%%.*}"
+search_remainder="${search_version#*.}"
+search_minor="${search_remainder%%.*}"
+
+[[ "${python_version}" == Python\ 3.14.* ]] || die "Python inesperado: ${python_version}"
+[[ "${node_version}" == v24.* ]] || die "Node.js inesperado: ${node_version}"
+[[ "${rdm_version}" == "14.0.4" ]] || die "InvenioRDM inesperado: ${rdm_version}"
+(( postgres_major >= 15 )) || die "PostgreSQL incompatível: ${postgres_version}"
+(( search_major > 2 || (search_major == 2 && search_minor >= 12) )) || die "OpenSearch incompatível: ${search_version}"
+[[ "${record_count}" == "${HML_EXPECTED_PUBLIC_RECORDS:-1328}" ]] || die "contagem pública divergente: ${record_count} registros"
+
+curl --fail --silent --output /dev/null "http://127.0.0.1:${HML_HTTP_PORT}/"
+curl --insecure --fail --silent --output /dev/null "https://127.0.0.1:${HML_HTTPS_PORT}/"
+worker_node="celery@$(compose_migrated exec --no-TTY worker hostname)"
+worker_ping="$(compose_migrated exec --no-TTY worker celery -A invenio_app.celery inspect ping --destination "${worker_node}" --timeout 15)"
+grep -q 'pong' <<<"${worker_ping}" || die "worker Celery não respondeu ao ping"
+
+printf 'Python: %s\n' "${python_version}"
+printf 'Node.js: %s\n' "${node_version}"
+printf 'InvenioRDM: %s\n' "${rdm_version}"
+printf 'PostgreSQL: %s\n' "${postgres_version}"
+printf 'OpenSearch: %s\n' "${search_version}"
+printf 'Redis: %s\n' "${redis_version}"
+printf 'RabbitMQ: %s\n' "${rabbitmq_version}"
+printf 'Registros: %s\n' "${record_count}"
+printf 'Smoke test da homologação migrada aprovado.\n'

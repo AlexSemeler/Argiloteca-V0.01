@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+ENV_FILE="${PROJECT_DIR}/.env"
+
+if [[ -e "${ENV_FILE}" ]]; then
+  printf 'Mantendo o arquivo local existente: %s\n' "${ENV_FILE}"
+  exit 0
+fi
+
+command -v openssl >/dev/null 2>&1 || {
+  printf 'ERRO: openssl é necessário para gerar credenciais locais.\n' >&2
+  exit 1
+}
+
+umask 077
+db_password="$(openssl rand -hex 24)"
+mq_password="$(openssl rand -hex 24)"
+opensearch_password="A$(openssl rand -hex 16)a1!"
+secret_key="$(openssl rand -hex 32)"
+
+{
+  printf '%s\n' 'COMPOSE_PROJECT_NAME=argiloteca-rdm14-hml'
+  printf '%s\n' 'DOCKER_WEB_IP_BIND=127.0.0.1'
+  printf '%s\n' 'DOCKER_SERVICES_IP_BIND=127.0.0.1'
+  printf '%s\n' 'HML_HTTP_PORT=5180'
+  printf '%s\n' 'HML_HTTPS_PORT=5101'
+  printf '%s\n' 'HML_WEB_UI_PORT=15100'
+  printf '%s\n' 'HML_WEB_API_PORT=15101'
+  printf '%s\n' 'HML_DB_PORT=15433'
+  printf '%s\n' 'HML_REDIS_PORT=16380'
+  printf '%s\n' 'HML_RABBITMQ_PORT=15675'
+  printf '%s\n' 'HML_RABBITMQ_MANAGEMENT_PORT=15676'
+  printf '%s\n' 'HML_OPENSEARCH_PORT=19300'
+  printf '%s\n' 'HML_OPENSEARCH_METRICS_PORT=19700'
+  printf '%s\n' 'HML_FLOWER_PORT=15555'
+  printf '%s\n' 'HML_DB_USER=argiloteca_rdm14_hml'
+  printf '%s\n' 'HML_DB_NAME=argiloteca_rdm14_hml'
+  printf '%s\n' 'HML_MIGRATED_DB_NAME=argiloteca-rdm14-migrated'
+  printf '%s\n' 'HML_EXPECTED_PUBLIC_RECORDS=1328'
+  printf 'HML_DB_PASSWORD=%s\n' "${db_password}"
+  printf '%s\n' 'HML_RABBITMQ_USER=argiloteca_rdm14_hml'
+  printf 'HML_RABBITMQ_PASSWORD=%s\n' "${mq_password}"
+  printf 'HML_OPENSEARCH_ADMIN_PASSWORD=%s\n' "${opensearch_password}"
+  printf 'INVENIO_SECRET_KEY=%s\n' "${secret_key}"
+} > "${ENV_FILE}"
+
+chmod 600 "${ENV_FILE}"
+printf 'Credenciais exclusivas de homologação geradas em %s (modo 600).\n' "${ENV_FILE}"

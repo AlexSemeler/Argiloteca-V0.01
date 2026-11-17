@@ -1,0 +1,29 @@
+subjects:
+  pid-type: sub
+  schemes:
+    - id: FOS
+      name: Fields of Science and Technology
+      uri: "http://www.oecd.org/science/inno/38235147.pdf"
+      data-file: vocabularies/subjects_oecd_fos.yaml
+
+# Argiloteca-controlled vocabularies copied from the validated v12 corpus.
+grupo_mineralogico:
+  pid-type: argg
+  data-file: vocabularies/grupo_mineralogico.jsonl
+argilominerais:
+  pid-type: argm
+  data-file: vocabularies/argilominerais.jsonl
+tempo_geologico:
+  pid-type: tgeo
+  data-file: vocabularies/tempo_geologico.jsonl
+# Minimal example vocabularies
+# can be used for quick testing, or a basis for building your own customized vocabularies.
+#names:
+#  pid-type: names
+#  data-file: vocabularies/names.yaml
+#licenses:
+#  pid-type: lic
+#  data-file: vocabularies/cc_licences.csv
+#languages:
+#  pid-type: lng
+#  data-file: vocabularies/languages.yaml

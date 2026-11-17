@@ -1,0 +1,141 @@
+/* Administrative and deposit workflows share the existing Argiloteca tokens. */
+.argilo-workflow-lead { color: var(--arg-color-muted); max-width: 72ch; line-height: 1.6; margin-bottom: 2rem; }
+.argilo-workflow-links { display: flex; flex-wrap: wrap; gap: .75rem; }
+.argilo-workflow-links .ui.button { display: inline-flex; align-items: center; gap: .5rem; margin: 0; min-height: 44px; }
+.argilo-admin-shell { display: grid; grid-template-columns: 240px minmax(0,1fr); grid-template-rows: auto 1fr; min-height: 100vh; color: var(--arg-color-text); background: var(--arg-color-surface-page); }
+.argilo-admin-header { grid-column: 1/-1; display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 2rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--arg-color-accent); background: var(--arg-color-surface); }
+.argilo-admin-brand { display: flex; align-items: center; gap: .75rem; color: var(--arg-color-primary-strong); }
+.argilo-admin-brand img { object-fit: contain; }
+.argilo-admin-brand > span { display: grid; gap: .25rem; }
+.argilo-admin-brand strong { font-family: var(--arg-font-heading); font-size: 1.3rem; }
+.argilo-admin-brand span > span { color: var(--arg-color-muted); }
+.argilo-admin-utilities { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1.25rem; margin-left: auto; }
+.argilo-admin-utilities > a { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; }
+.argilo-admin-utilities .ui.dropdown > .text.button { color: var(--arg-color-primary-strong); }
+.argilo-admin-shell .argilo-admin-sidebar { padding: 1.5rem 1rem; border-right: 1px solid var(--arg-color-border); background: var(--arg-color-surface); min-width: 0; }
+.argilo-admin-navigation a { display: flex; align-items: center; gap: .75rem; min-height: 44px; padding: .65rem .75rem; border-radius: var(--arg-radius-control); color: var(--arg-color-primary-strong); }
+.argilo-admin-navigation a:hover, .argilo-admin-navigation a.is-active { background: var(--arg-color-surface-soft); color: var(--arg-color-primary-strong); }
+.argilo-admin-navigation a.is-active { font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+.argilo-admin-nav-group { margin-top: 1.5rem; }
+.argilo-admin-nav-group h2 { font-size: .95rem; line-height: 1.4; margin: 0 0 .4rem; padding-inline: .75rem; color: var(--arg-color-muted); }
+.argilo-admin-versions { margin: 2rem .75rem 0; font-size: .85rem; color: var(--arg-color-muted); }
+.argilo-admin-versions summary { cursor: pointer; min-height: 44px; padding-block: .75rem; }
+.argilo-admin-versions dl { overflow-wrap: anywhere; }
+.argilo-admin-versions dd { margin: 0 0 .75rem; }
+.argilo-admin-shell > #admin-main-content { min-width: 0; width: auto !important; margin: 0 !important; padding: 2rem !important; }
+.argilo-admin-shell #admin-main-content > .ui.container { padding: 0 !important; margin: 0 !important; width: 100%; }
+.argilo-admin-shell #admin-main-content h1 { font-size: 1.8rem; color: var(--arg-color-primary-strong); line-height: 1.3; }
+.argilo-admin-directory { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem 3rem; max-width: 1100px; margin-block: 2rem 3rem; }
+.argilo-admin-directory-group h2, .argilo-admin-authoring h2 { font-size: 1.25rem; margin: 0 0 .75rem; }
+.argilo-admin-directory-group ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--arg-color-border); }
+.argilo-admin-directory-group li { border-bottom: 1px solid var(--arg-color-border); }
+.argilo-admin-directory-group a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 48px; padding: .75rem .25rem; }
+.argilo-admin-directory-group a:hover { background: var(--arg-color-surface-soft); }
+.argilo-admin-authoring { padding-top: 2rem; border-top: 1px solid var(--arg-color-accent); max-width: 1100px; }
+.argilo-admin-authoring p { max-width: 72ch; line-height: 1.6; margin-bottom: 1.5rem; }
+.argilo-admin-shell .ui.form { max-width: 100%; }
+.argilo-admin-shell .ui.table { background: var(--arg-color-surface); }
+.argilo-admin-shell .ui.table th { background: var(--arg-color-surface-soft); color: var(--arg-color-text); }
+.argilo-admin-shell .ui.table td { overflow-wrap: anywhere; }
+.argilo-admin-shell :is(input,select,textarea) { max-width: 100%; min-width: 0; }
+.argilo-admin-shell .ui.green.button { background: var(--arg-color-primary-strong); color: white; }
+.argilo-admin-shell .ui.green.button:is(:hover,:focus) { background: var(--arg-color-primary-hover); color: white; }
+.argilo-admin-shell .ui.buttons { flex-wrap: wrap; }
+.argilo-admin-skip { position: fixed; top: .5rem; left: .5rem; z-index: 20; transform: translateY(-200%); padding: .75rem; background: white; }
+.argilo-admin-skip:focus { transform: none; }
+.argilo-admin-toggle { display: none !important; }
+.argilo-deposit-heading.ui.container { margin-top: 2rem; }
+.argilo-deposit-heading h1 { color: var(--arg-color-primary-strong); font-size: 1.8rem; line-height: 1.3; margin: 1rem 0 .5rem; }
+.argilo-deposit-heading p { color: var(--arg-color-muted); line-height: 1.6; max-width: 72ch; }
+.argilo-deposit-tabs { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; border-bottom: 1px solid var(--arg-color-accent); padding-block: .5rem; margin-top: 1rem; }
+.argilo-deposit-tabs a { display: inline-flex; gap: .5rem; align-items: center; padding: .75rem .25rem; min-height: 44px; }
+.argilo-deposit-tabs a[aria-current] { color: var(--arg-color-primary-strong); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .6em; }
+@media (max-width: 991px) {
+  .argilo-admin-shell { grid-template-columns: minmax(0,1fr); }
+  .argilo-admin-shell .argilo-admin-sidebar { border-right: 0; border-bottom: 1px solid var(--arg-color-border); }
+  .argilo-admin-navigation { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .5rem 1rem; }
+  .argilo-admin-nav-group { margin-top: .5rem; }
+  .argilo-admin-toggle { display: inline-flex !important; gap: .5rem; align-items: center; min-height: 44px; margin-left: auto !important; }
+  .argilo-admin-utilities { width: 100%; justify-content: space-between; margin: 0; }
+  .argilo-admin-header { padding: 1rem; }
+  .argilo-admin-shell > #admin-main-content { padding: 1.5rem !important; }
+}
+@media (max-width: 767px) {
+  .argilo-admin-directory { grid-template-columns: minmax(0,1fr); gap: 2rem; }
+  .argilo-admin-shell > #admin-main-content { padding: 1rem !important; }
+  .argilo-admin-shell #admin-main-content > .ui.container > .ui.grid > .column { width: 100% !important; }
+  .argilo-admin-shell .ui.table { display: block; max-width: 100%; overflow-x: auto; }
+  .argilo-admin-shell :is(input,select,textarea) { font-size: 16px; }
+  .argilo-admin-utilities .ui.button { min-height: 44px; }
+  .argilo-deposit-tabs { gap: .25rem 1rem; }
+  .argilo-deposit-tabs a { padding-inline: 0; }
+}
+@media (max-width: 380px) { .argilo-admin-navigation { grid-template-columns: minmax(0,1fr); } }
+/* Native action groups allocate fixed fractions; allow long translated labels to reflow. */
+.argilo-admin-shell .ui.table .ui.buttons { display: flex; flex-wrap: wrap; gap: .35rem; width: auto; min-width: 230px; max-width: 320px; background: transparent; box-shadow: none; }
+.argilo-admin-shell .ui.table .ui.buttons > .ui.button { width: auto !important; flex: 1 1 130px !important; min-height: 44px; height: auto; white-space: normal; line-height: 1.4; }
+.argilo-admin-shell .ui.table .ui.buttons > .ui.dropdown { flex: 0 0 auto; }
+.argilo-admin-shell .ui.action.input > .ui.button { background: var(--arg-color-primary-strong); color: white; }
+.argilo-admin-shell .ui.action.input > .ui.button:is(:hover,:focus) { background: var(--arg-color-primary-hover); color: white; }
+
+/* Long bilingual action labels must stay inside the workflow at mobile widths. */
+.argilo-workflow-links .ui.button { max-width: 100%; white-space: normal; line-height: 1.4; justify-content: center; box-sizing: border-box; }
+
+/* Task UI has a readable scale independent of Semantic UI's 14px rem base. */
+.argilo-admin-shell { font-size: 16px; line-height: 1.55; }
+.argilo-admin-shell :is(h1,h2,h3,h4,h5,h6) { color: var(--arg-color-primary-strong); text-wrap: balance; }
+.argilo-admin-nav-group h2, .argilo-admin-versions { font-size: 14px; }
+.argilo-admin-shell :is(.argilo-workflow-lead,.argilo-admin-authoring p,.rr-lead) { font-size: 17px; line-height: 1.65; }
+.argilo-admin-shell .ui.form :is(label,input,textarea,select),
+.argilo-admin-shell .ui.button,
+.argilo-admin-shell .ui.action.input > input { font-size: 16px; }
+.argilo-admin-shell .ui.table { font-size: 15px; line-height: 1.55; }
+.argilo-admin-shell .ui.table :is(input,select,button) { font-size: 16px; }
+.argilo-admin-shell :is(button,a,input,select,textarea,summary):focus-visible,
+#science-main :is(button,a,input,select,textarea,summary):focus-visible { outline: 3px solid var(--arg-color-primary-strong); outline-offset: 3px; }
+.argilo-admin-shell :is(a,button,input,select,textarea,summary),
+#science-main :is(a,button,input,select,textarea,summary) { scroll-margin-block: 1.5rem; }
+.argilo-admin-shell .ui.button { white-space: normal; line-height: 1.4; }
+.argilo-admin-utilities #user-profile-dropdown { min-width: 0; max-width: 100%; }
+.argilo-admin-utilities #user-profile-dropdown-btn { float: none; margin: 0; max-width: 100%; }
+.argilo-admin-utilities #user-profile-dropdown-btn span { overflow-wrap: anywhere; }
+.argilo-admin-utilities #user-profile-menu { right: 0; left: auto; max-width: min(320px, calc(100vw - 2rem)); }
+.argilo-admin-directory-group a > span { min-width: 0; overflow-wrap: anywhere; }
+.argilo-admin-shell :is(.ui.form,.argilo-admin-content) { min-width: 0; }
+.argilo-admin-shell #admin-main-content :is(.flex,.full-width) { min-width: 0; max-width: 100%; }
+.argilo-admin-shell .ui.table :is(td.collapsing,th.collapsing) { white-space: normal; }
+.argilo-admin-shell .ui.table td.collapsing > div { min-width: 0; max-width: 100%; }
+.argilo-admin-shell .ui.table td.collapsing .ui.button { max-width: 100%; }
+.argilo-admin-shell .ui.table :is(th,td), .argilo-admin-versions { font-variant-numeric: tabular-nums; }
+
+/* Scientific forms retain their native field structure, validation and actions. */
+#science-main { font-size: 17px; line-height: 1.65; }
+#science-main .ui.form { font-size: 17px; }
+#science-main :is(h2,h3,h4,legend) { color: var(--arg-color-primary-strong); }
+#science-main .ui.form :is(label,input,textarea,select,.ui.button) { font-size: 16px; }
+#science-main .ui.form .science-field .science-presence { font-size: 16px; min-width: 0; width: 125px; min-height: 44px; }
+#science-main :is(.science-help,.science-field-help,.science-field > span) { font-size: 15px; line-height: 1.6; }
+#science-main :is(.science-author h3,.science-form-guide h2) { font-size: 18px; }
+#science-main .science-block > summary { color: white; min-height: 44px; }
+#science-main :is(.science-publication-review,#science-record-links) .ui.button { white-space: normal; line-height: 1.4; max-width: 100%; }
+#science-main :is(.science-panel,.science-object,.science-form-guide) { overflow-wrap: anywhere; }
+@media (max-width:767px) {
+  #science-main .science-field { grid-template-columns: minmax(0,1fr); }
+  #science-main .ui.form .science-field .science-presence { width: 100%; }
+  #science-main .science-field > :nth-child(n+3) { grid-column: 1; }
+  .argilo-admin-brand, .argilo-admin-utilities { min-width: 0; }
+  .argilo-admin-utilities { gap: .75rem; }
+  .argilo-admin-shell #admin-main-content .flex:has(> .column-mobile) { flex-direction: column; align-items: stretch; gap: .75rem; }
+  .argilo-admin-shell #admin-main-content .auto-column-grid.triple { grid-template-columns: minmax(0,1fr); gap: .75rem; }
+  .argilo-admin-shell #admin-main-content .column-mobile { width: 100%; }
+  .argilo-admin-shell #admin-main-content .ui.buttons { max-width: 100%; }
+  .argilo-admin-shell #admin-main-content .ui.buttons > .ui.button { flex-shrink: 1; min-width: 0; max-width: 100%; }
+  .argilo-admin-shell #admin-main-content .ui.action.input { min-width: 0; width: 100%; }
+  .argilo-admin-shell #admin-main-content .ui.pagination.menu { display: flex; flex-wrap: wrap; max-width: 100%; min-width: 0; justify-content: center; }
+  .argilo-admin-shell #admin-main-content .ui.grid > .middle.aligned.row > .column { width: 100% !important; text-align: left !important; }
+}
+/* Reuse the native account dropdown on mobile instead of its always-open menu. */
+@media (max-width:991px) {
+  .argilo-admin-utilities #user-profile-dropdown { display: block !important; }
+  .argilo-admin-utilities > .sub-menu.mobile.tablet.only { display: none !important; }
+}

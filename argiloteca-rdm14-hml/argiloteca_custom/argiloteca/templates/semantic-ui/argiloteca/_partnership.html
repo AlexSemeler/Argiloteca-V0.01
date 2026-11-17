@@ -1,0 +1,13 @@
+{% macro partnership_marks() -%}
+<div class="argilo-partner-marks" aria-label="{{ _('Instituições parceiras') }}">
+  <a href="https://www.ufrgs.br/site/" class="argilo-partner-marks__ufrgs" aria-label="{{ _('Universidade Federal do Rio Grande do Sul — site oficial') }}">
+    <img src="{{ url_for('argiloteca.static', filename='images/partners/ufrgs.svg') }}" width="120" height="100" alt="UFRGS" loading="lazy">
+  </a>
+  <a href="https://petrobras.com.br/" class="argilo-partner-marks__petrobras" aria-label="{{ _('Petrobras — site oficial') }}">
+    <img src="{{ url_for('argiloteca.static', filename='images/partners/petrobras.svg') }}" width="189" height="37" alt="Petrobras" loading="lazy">
+  </a>
+  <a href="https://www.ufrgs.br/argilas/" class="argilo-partner-marks__cpaa" aria-label="{{ _('CPAA — Centro de Pesquisa em Argilas e Argilominerais') }}">
+    <img src="{{ url_for('argiloteca.static', filename='images/partners/cpaa.png') }}" width="2048" height="1027" alt="CPAA" loading="lazy">
+  </a>
+</div>
+{%- endmacro %}

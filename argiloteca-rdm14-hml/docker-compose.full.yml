@@ -1,0 +1,184 @@
+# Example of a full infrastructure stack
+#
+# Note, this file is not suitable for a production deployment. It is only an
+# example of all the infrastructure components needed in a real production
+# deployment.
+#
+# Usage::
+#
+#   $ docker compose up -f docker-compose.full.yml -d
+#
+# Following services are included:
+# - Frontend: Nginx (exposed ports: 40 and 443)
+# - UI application: UWSGI (not exposed)
+# - API application: UWSGI (not exposed)
+# - Cache: Redis (exposed port: 6379)
+# - DB: PostgreSQL (exposed port: 5432)
+# - Message queue: RabbitMQ (exposed ports: 5672, 15672)
+# - Search platform: (OpenSearch) (exposed ports: 9200, 9600)
+# - OpenSearch Dashboard/Kibana (view OS/ES indexes) (exposed ports: 5601)
+#
+name: argiloteca-rdm14-hml
+
+services:
+  cache:
+    extends:
+      file: docker-services.yml
+      service: cache
+  db:
+    extends:
+      file: docker-services.yml
+      service: db
+  mq:
+    extends:
+      file: docker-services.yml
+      service: mq
+  flower:
+    extends:
+      file: docker-services.yml
+      service: flower
+    depends_on:
+      mq:
+        condition: service_healthy
+  search:
+    extends:
+      file: docker-services.yml
+      service: search
+  # Frontend
+  frontend:
+    extends:
+      file: docker-services.yml
+      service: frontend
+    volumes:
+      - static_data:/opt/invenio/var/instance/static
+    depends_on:
+      web-ui:
+        condition: service_healthy
+      web-api:
+        condition: service_healthy
+    ports:
+      - "${DOCKER_WEB_IP_BIND:-127.0.0.1}:${HML_HTTP_PORT:-5180}:80"
+      - "${DOCKER_WEB_IP_BIND:-127.0.0.1}:${HML_HTTPS_PORT:-5101}:443"
+    healthcheck:
+      test: ["CMD", "wget", "--no-check-certificate", "--spider", "--quiet", "https://localhost/"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+  # UI Application
+  web-ui:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["cp -a /opt/invenio/static-dist/. /opt/invenio/var/instance/static/ && python /opt/invenio/var/instance/app_data/ui-terminology/apply.py && uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
+    depends_on:
+      cache:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+      mq:
+        condition: service_healthy
+      search:
+        condition: service_healthy
+    image: argiloteca-rdm14-hml:14.0.4
+    ports:
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_WEB_UI_PORT:-15100}:5000"
+    volumes:
+      - static_data:/opt/invenio/var/instance/static
+      - uploaded_data:/opt/invenio/var/instance/data
+      - archived_data:/opt/invenio/var/instance/archive
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.create_connection(('127.0.0.1', 9000), 3); assert s.recv(1) == b'{'"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  # API Rest Application
+  web-api:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["uwsgi /opt/invenio/var/instance/uwsgi_rest.ini"]
+    depends_on:
+      cache:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+      mq:
+        condition: service_healthy
+      search:
+        condition: service_healthy
+    image: argiloteca-rdm14-hml:14.0.4
+    ports:
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_WEB_API_PORT:-15101}:5000"
+    volumes:
+      - uploaded_data:/opt/invenio/var/instance/data
+      - archived_data:/opt/invenio/var/instance/archive
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.create_connection(('127.0.0.1', 9001), 3); assert s.recv(1) == b'{'"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  # Worker
+  worker:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["celery -A invenio_app.celery worker --loglevel=INFO"]
+    image: argiloteca-rdm14-hml:14.0.4
+    volumes:
+      - uploaded_data:/opt/invenio/var/instance/data
+    depends_on:
+      search:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+      mq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A invenio_app.celery inspect ping --destination celery@$$HOSTNAME --timeout 15 | grep -q pong"]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+      start_period: 30s
+
+  # Jobs scheduler
+  scheduler:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["celery -A invenio_app.celery beat --scheduler invenio_jobs.services.scheduler:RunScheduler --loglevel=INFO"]
+    image: argiloteca-rdm14-hml:14.0.4
+    depends_on:
+      mq:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "from pathlib import Path; assert b'invenio_jobs.services.scheduler:RunScheduler' in Path('/proc/1/cmdline').read_bytes()"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+volumes:
+  db_data:
+    name: argiloteca-rdm14-hml-db
+  mq_data:
+    name: argiloteca-rdm14-hml-mq
+  search_data:
+    name: argiloteca-rdm14-hml-search
+  static_data:
+    name: argiloteca-rdm14-hml-static
+  uploaded_data:
+    name: argiloteca-rdm14-hml-uploaded
+  archived_data:
+    name: argiloteca-rdm14-hml-archived
+
+networks:
+  default:
+    name: argiloteca-rdm14-hml-net

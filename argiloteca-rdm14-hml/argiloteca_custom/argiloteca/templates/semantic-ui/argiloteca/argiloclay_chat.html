@@ -1,0 +1,94 @@
+{% extends "invenio_theme/page.html" %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% from "semantic-ui/argiloteca/_argiloclay_icons.html" import chat_icon %}
+{% block head_title %}<title>ArgiloClay-Robo · {{ _('Conversa de pesquisa') }}</title>{% endblock %}
+{% block css %}
+  {{ super() }}
+  <link rel="preload" href="{{ url_for('argiloteca.static', filename='fonts/catamaran/catamaran-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-theme.css') }}?v=20261019-cpaa-type-2">
+  {% include "semantic-ui/argiloteca/language_selector_styles.html" %}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloclay-chat.css') }}?v=20261029-active-3">
+{% endblock %}
+{% block bypasslinks %}<a class="chat-skip" href="#chat-input">{{ _('Ir para a mensagem') }}</a>{% endblock %}
+{% block body_inner %}
+<div class="clay-chat" data-chat-app>
+  <header class="chat-header">
+    <div class="chat-identity">
+      <img src="{{ url_for('argiloteca.static', filename='images/argiloclay-robo-v1.png') }}" alt="" width="52" height="56">
+      <div><h1>ArgiloClay-Robo</h1><p>{{ _('Conversa de pesquisa') }} <span class="chat-badge">{{ _('Consulta documental') }}</span></p></div>
+    </div>
+    <div class="chat-tools">
+      <a class="chat-button chat-back-link" href="{{ url_for('invenio_app_rdm.index') }}">{{ render_icon('home') }}<span>{{ _('Voltar ao acervo') }}</span></a>
+      <button type="button" class="chat-button" data-new-chat title="{{ _('Nova conversa') }}" aria-label="{{ _('Nova conversa') }}">{{ chat_icon('plus') }}<span>{{ _('Nova conversa') }}</span></button>
+      <button type="button" class="chat-button" popovertarget="chat-history" title="{{ _('Conversas desta sessão') }}" aria-label="{{ _('Conversas desta sessão') }}">{{ chat_icon('history') }}<span>{{ _('Conversas') }}</span></button>
+      <button type="button" class="chat-button" data-toggle-sources aria-controls="chat-sources" aria-expanded="false" title="{{ _('Fontes e evidências') }}" aria-label="{{ _('Fontes e evidências') }}">{{ render_icon('catalog') }}<span>{{ _('Fontes') }}</span><span class="chat-source-count" data-source-count>0</span></button>
+      {% include "semantic-ui/argiloteca/language_selector.html" %}
+    </div>
+  </header>
+  <div class="chat-layout">
+    <main class="chat-conversation" id="main">
+      <div class="chat-scroll" data-chat-scroll>
+        <section class="chat-welcome" data-welcome aria-labelledby="chat-welcome-title">
+          <img src="{{ url_for('argiloteca.static', filename='images/argiloclay-robo-v1.png') }}" alt="" width="104" height="112">
+          <h2 id="chat-welcome-title">{{ _('Olá! Vamos explorar a Argiloteca?') }}</h2>
+          <p>{{ _('Posso explicar argilominerais, encontrar publicações relacionadas e consultar as fontes científicas revisadas. Escolha uma pergunta para começar.') }}</p>
+          <div class="chat-suggestions" aria-label="{{ _('Sugestões de perguntas') }}">
+            {% for question in [ _('O que são argilominerais?'), _('O que são argilas?'), _('O que é caulinita?'), _('Explique as esmectitas e as tendências de pesquisa no acervo.') ] + (chat_book_suggestions|default([])) %}
+            <button type="button" data-suggestion data-question="{{ question }}"><span>{{ question }}</span>{{ chat_icon('arrow') }}</button>
+            {% endfor %}
+          </div>
+          <button type="button" class="chat-button chat-demo-button" data-demo>{{ render_icon('layers') }}{{ _('Explorar uma conversa de exemplo') }}</button>
+        </section>
+        <div class="chat-messages" data-messages aria-label="{{ _('Mensagens da conversa') }}"></div>
+      </div>
+      <div class="chat-composer-region">
+        <div class="chat-session-actions" data-session-actions hidden>
+          <span>{{ _('Somente nesta sessão do navegador') }}</span>
+          <button type="button" class="chat-text-button" data-export>{{ chat_icon('download') }}{{ _('Exportar conversa') }}</button>
+        </div>
+        <form class="chat-composer" data-composer>
+          <label for="chat-input" class="chat-sr-only">{{ _('Mensagem para o ArgiloClay-Robo') }}</label>
+          <textarea id="chat-input" name="message" rows="2" maxlength="2000" placeholder="{{ _('Pergunte sobre argilominerais, amostras ou análises…') }}" aria-describedby="chat-prototype-note" required></textarea>
+          <div class="chat-composer-bottom"><span class="chat-input-hint">{{ _('Enter para enviar · Shift+Enter para nova linha') }}</span><span class="chat-char-count" data-char-count>0/2000</span><button type="button" class="chat-text-button chat-cancel" data-cancel-request hidden>{{ _('Interromper consulta') }}</button><button type="submit" class="chat-send" aria-label="{{ _('Enviar') }}" disabled>{{ chat_icon('send') }}<span>{{ _('Enviar') }}</span></button></div>
+        </form>
+        <p id="chat-prototype-note" class="chat-prototype-note">{{ _('Consultando a disponibilidade das fontes…') }}</p>
+        <p class="chat-status" data-chat-status role="status" aria-live="polite"></p>
+      </div>
+    </main>
+    <dialog id="chat-sources" class="chat-sources" aria-labelledby="chat-sources-title">
+      <header class="chat-sources-header"><h2 id="chat-sources-title">{{ _('Fontes e evidências') }}</h2><button type="button" class="chat-icon-button" data-close-sources aria-label="{{ _('Recolher fontes') }}">{{ chat_icon('close') }}</button></header>
+      <div class="chat-sources-empty" data-sources-empty>{{ render_icon('catalog') }}<h3>{{ _('As fontes da conversa ficam aqui') }}</h3><p>{{ _('Envie uma pergunta para consultar as fontes da Argiloteca.') }}</p></div>
+      <div data-live-sources hidden></div>
+      <div data-demo-sources hidden>
+        <p class="chat-demo-note">{{ _('Fontes fictícias de demonstração. Não foram recuperadas do acervo.') }}</p>
+        <div class="chat-source-list" aria-label="{{ _('Fontes da resposta de exemplo') }}">
+          <button type="button" class="chat-source-item" data-source="1" aria-pressed="true"><span class="chat-source-number">1</span><span><strong>{{ _('Ficha da amostra ARG-DEMO-01') }}</strong><small>{{ _('Registro fictício · amostra e campanha') }}</small></span></button>
+          <button type="button" class="chat-source-item" data-source="2" aria-pressed="false"><span class="chat-source-number">2</span><span><strong>{{ _('Pacote DRX da ARG-DEMO-01') }}</strong><small>{{ _('Documento fictício · arquivos e preparações') }}</small></span></button>
+        </div>
+        <section class="chat-source-detail" data-source-detail="1" tabindex="-1">
+          <h3>{{ _('Trecho de demonstração') }}</h3><blockquote>{{ _('A amostra ARG-DEMO-01 pertence à campanha CAMP-DEMO-01. Seus arquivos analíticos são relacionados pelo identificador da amostra.') }}</blockquote>
+          <dl><dt>{{ _('Identificador') }}</dt><dd>DEMO-AMOSTRA-01</dd><dt>{{ _('Tipo de fonte') }}</dt><dd>{{ _('Ficha de amostra fictícia') }}</dd><dt>{{ _('Origem') }}</dt><dd>{{ _('Exemplo local da interface') }}</dd></dl>
+        </section>
+        <section class="chat-source-detail" data-source-detail="2" tabindex="-1" hidden>
+          <h3>{{ _('Trecho de demonstração') }}</h3><blockquote>{{ _('O pacote de exemplo reúne três arquivos ilustrativos: ARG-DEMO-01_N.raw, ARG-DEMO-01_G.raw e ARG-DEMO-01_C.raw. Nenhum arquivo real foi processado.') }}</blockquote>
+          <dl><dt>{{ _('Identificador') }}</dt><dd>DEMO-DRX-01</dd><dt>{{ _('Tipo de fonte') }}</dt><dd>{{ _('Pacote analítico fictício') }}</dd><dt>{{ _('Origem') }}</dt><dd>{{ _('Exemplo local da interface') }}</dd></dl>
+        </section>
+        <a class="chat-support-link" href="{{ url_for('argiloteca.drx_guide') }}" target="_blank" rel="noopener">{{ _('Material de apoio: técnica e painel DRX') }}{{ chat_icon('arrow') }}</a>
+      </div>
+    </dialog>
+  </div>
+</div>
+<div id="chat-history" class="chat-history" popover="auto" aria-labelledby="chat-history-title"><h2 id="chat-history-title">{{ _('Conversas desta sessão') }}</h2><p>{{ _('Disponíveis apenas nesta janela. Não são salvas no repositório.') }}</p><div data-history-list></div></div>
+<template id="chat-user-template"><article class="chat-message chat-message--user"><h2 class="chat-sr-only">{{ _('Você') }}</h2><p data-message-text></p></article></template>
+<template id="chat-assistant-template"><article class="chat-message chat-message--assistant"><header class="chat-answer-header"><strong>ArgiloClay-Robo</strong><span>{{ _('Consulta documental') }}</span></header><p data-message-text></p><button type="button" class="chat-text-button" data-copy>{{ chat_icon('copy') }}{{ _('Copiar') }}</button></article></template>
+<template id="chat-demo-template"><article class="chat-message chat-message--assistant chat-demo-answer"><header class="chat-answer-header"><strong>ArgiloClay-Robo</strong><span>{{ _('Resposta de exemplo') }}</span></header><h2>{{ _('Da amostra aos arquivos de análise') }}</h2><p>{{ _('Neste exemplo fictício, a amostra ARG-DEMO-01 está ligada à campanha CAMP-DEMO-01.') }} <button type="button" class="chat-citation" data-citation="1" aria-label="{{ _('Consultar fonte de exemplo 1') }}">1</button></p><p>{{ _('O pacote analítico ilustra como reunir os arquivos e seus contextos de preparação em uma mesma conversa.') }} <button type="button" class="chat-citation" data-citation="2" aria-label="{{ _('Consultar fonte de exemplo 2') }}">2</button></p><ul><li>{{ _('Identificar a amostra e a campanha de origem.') }}</li><li>{{ _('Manter o vínculo entre o arquivo, a preparação e a análise.') }}</li><li>{{ _('Conferir o trecho e a origem antes de interpretar uma resposta.') }}</li></ul><p class="chat-demo-note">{{ _('Este conteúdo foi escrito para demonstrar a interface. Não é uma análise científica nem uma resposta gerada por IA.') }}</p><button type="button" class="chat-text-button" data-copy>{{ chat_icon('copy') }}{{ _('Copiar') }}</button></article></template>
+<script id="chat-messages-config" type="application/json" nonce="{{ csp_nonce() }}">{{ {
+ 'newTitle': _('Nova conversa'), 'demoTitle': _('Exemplo: amostra e análise DRX'), 'demoQuestion': _('Como a amostra ARG-DEMO-01 se conecta à campanha e aos arquivos de DRX?'),
+ 'queryUrl': url_for('argiloteca.argiloclay_query'), 'jobsUrl': url_for('argiloteca.argiloclay_jobs'), 'jobUrlPattern': url_for('argiloteca.argiloclay_job', key='__JOB__'), 'statusUrl': url_for('argiloteca.argiloclay_status'), 'verifyUrl': url_for('argiloteca.argiloclay_verify'), 'csrfToken': chat_csrf_token, 'accountScope': chat_account_scope,
+ 'verifyingHistory': _('Verificando o acesso atual às fontes deste histórico…'), 'staleHistory': _('As fontes deste histórico mudaram ou não puderam ser verificadas. Envie uma nova pergunta para consultar os dados atuais.'),
+ 'loading': _('Consultando fontes…'), 'cancelled': _('Consulta interrompida.'), 'unavailable': _('Assistente indisponível. O acervo continua operacional; tente novamente.'), 'connected': _('Consulta documental conectada ao acervo. Respostas com fontes.'), 'context': _('Contexto'), 'noEvidence': _('Não há evidência suficiente para responder.'), 'source': _('Fonte'), 'page': _('Página'), 'identifier': _('Identificador'), 'origin': _('Origem'), 'updated': _('Atualização'), 'openRecord': _('Abrir registro'),
+ 'copied': _('Texto copiado.'), 'copyError': _('Não foi possível copiar. Selecione o texto e use a opção Copiar do navegador.'), 'emptyHistory': _('Nenhuma conversa iniciada.'), 'sessionError': _('O navegador não permitiu guardar o histórico. A conversa continua disponível até recarregar esta página.'), 'sent': _('Resposta recebida com fontes.'), 'user': _('Você'), 'assistant': 'ArgiloClay-Robo', 'exportTitle': _('Conversa — ArgiloClay-Robo'), 'exportNote': _('Respostas documentais exigem conferência das fontes. Conversas de exemplo usam fontes fictícias.')
+}|tojson }}</script>
+<noscript><p class="chat-no-script">{{ _('Ative JavaScript para consultar as fontes na conversa.') }}</p></noscript>
+{% endblock %}
+{% block javascript %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static', filename='js/argiloclay-chat.js') }}?v=20261029-active-3" defer></script>{% endblock %}

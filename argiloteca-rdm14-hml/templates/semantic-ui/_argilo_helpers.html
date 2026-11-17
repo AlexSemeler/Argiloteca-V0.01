@@ -1,0 +1,112 @@
+{# _argilo_helpers.html #}
+{% macro get_cf(record, key, default='—') -%}
+  {%- set cf = record.custom_fields if record.custom_fields is defined else {} -%}
+  {%- if cf and key in cf and cf[key] not in [none, '', [], {}] -%}
+    {{ cf[key] }}
+  {%- else -%}
+    {{ default }}
+  {%- endif -%}
+{%- endmacro %}
+
+{% macro field_row(label, value) -%}
+  <div class="item">
+    <div class="content">
+      <div class="header">{{ label }}</div>
+      <div class="description argilo-field-description">
+        {{ value if value not in [none, '', [], {}] else '—' }}
+      </div>
+    </div>
+  </div>
+{%- endmacro %}
+
+{% macro mineral_fact_row(label, value, mineral) -%}
+  <div class="item">
+    <div class="content">
+      <div class="header">{{ label }}</div>
+      <div class="description argilo-field-description">
+        {% if value not in [none, '', [], {}] %}
+          {{ value }}
+          {% if mineral.get("external_uri") %}
+            <span class="ui tiny basic label">
+              <a href="{{ mineral.get("external_uri") }}" target="_blank" rel="noopener noreferrer">{{ _("Mindat") }}</a>
+            </span>
+          {% endif %}
+        {% else %}
+          —
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{%- endmacro %}
+
+{% macro mineral_source_link(mineral) -%}
+  {% if argilo_resolve_mineral_reference is defined %}
+    {% set reference = argilo_resolve_mineral_reference(mineral) %}
+    {% set reference_source = reference.source %}
+    {% set reference_id = reference.id %}
+    {% set reference_uri = reference.uri %}
+  {% else %}
+    {% set reference_source = mineral.get("external_source") %}
+    {% set reference_id = mineral.get("external_id") %}
+    {% set reference_uri = mineral.get("external_uri") %}
+  {% endif %}
+  {% if reference_uri %}
+    <a href="{{ reference_uri }}" target="_blank" rel="noopener noreferrer">
+      {{ reference_source or _("Fonte externa") }}{% if reference_id %} #{{ reference_id }}{% endif %}
+    </a>
+  {% else %}
+    {{ reference_source if reference_source else '—' }}
+  {% endif %}
+{%- endmacro %}
+
+{% macro mineral_name_popup(mineral, label=None, summary=None, class_name='') -%}
+  {% set fallback_name = mineral.get("nome") or mineral.get("nome_cientifico_padronizado") %}
+  {% if argilo_resolve_mineral_name is defined %}
+    {% set resolved_name = argilo_resolve_mineral_name(mineral) %}
+  {% else %}
+    {% set resolved_name = fallback_name %}
+  {% endif %}
+  {% if argilo_resolve_mineral_summary is defined %}
+    {% set resolved_summary = argilo_resolve_mineral_summary(mineral) %}
+  {% else %}
+    {% set resolved_summary = mineral.get("descricao_curta") %}
+  {% endif %}
+  {% if argilo_resolve_mineral_reference is defined %}
+    {% set reference = argilo_resolve_mineral_reference(mineral) %}
+    {% set reference_source = reference.source %}
+    {% set reference_id = reference.id %}
+    {% set reference_uri = reference.uri %}
+  {% else %}
+    {% set reference_source = mineral.get("external_source") %}
+    {% set reference_id = mineral.get("external_id") %}
+    {% set reference_uri = mineral.get("external_uri") %}
+  {% endif %}
+  {% set tooltip = summary if summary not in [none, '', [], {}] else resolved_summary %}
+  {% set display_name = label if label not in [none, '', [], {}] else resolved_name or fallback_name %}
+  {% if display_name and tooltip %}
+    <span class="argilo-mineral-popup {{ class_name }}">
+      <button
+        type="button"
+        class="ui button basic compact tiny argilo-mineral-popup-trigger popup-trigger"
+        aria-label="{{ _("Ver resumo científico do argilomineral %(name)s", name=display_name) }}"
+        aria-expanded="false"
+      >
+        {{ display_name }}
+      </button>
+      <div class="ui flowing popup top left transition hidden popup-content">
+        <div class="content">
+          <p class="argilo-popup-summary">{{ tooltip }}</p>
+          {% if reference_uri %}
+            <a href="{{ reference_uri }}" target="_blank" rel="noopener noreferrer">
+              {{ reference_source or _("Fonte externa") }}{% if reference_id %} #{{ reference_id }}{% endif %}
+            </a>
+          {% elif reference_source %}
+            <span>{{ reference_source }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </span>
+  {% elif display_name %}
+    {{ display_name }}
+  {% endif %}
+{%- endmacro %}

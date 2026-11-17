@@ -1,0 +1,83 @@
+/* Uses the native deposit's content + action-sidebar structure. */
+.arg-science-editor.ui.container { padding-block: 1.5rem 3rem; }
+.science-editor-layout { display: grid; grid-template-columns: minmax(0,11fr) minmax(260px,5fr); gap: 2rem; align-items: start; }
+.science-editor-content, .science-editor-sidebar { min-width: 0; }
+.science-panel, .science-block { padding: 1.5rem; border: 1px solid var(--arg-color-border); background: var(--arg-color-surface); border-radius: var(--arg-radius-panel); margin: 0 0 1.5rem; min-width: 0; }
+.science-panel h2, .science-block > summary { font-size: 1.25rem; line-height: 1.4; color: var(--arg-color-text); }
+.science-panel h2 { margin: 0 0 1.25rem; }
+.science-block > summary { cursor: pointer; font-weight: 700; padding-block: .25rem; }
+.science-block[open] > summary { margin-bottom: 1rem; }
+.science-block:not([open]) > summary { margin-bottom: 0; }
+.science-object { padding: 1rem; margin: 1rem 0; border: 1px solid var(--arg-color-border); min-width: 0; border-radius: var(--arg-radius-control); }
+.science-object legend { font-weight: 700; padding-inline: .3rem; }
+.science-field { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .5rem 1rem; align-items: center; margin: 1.25rem 0; }
+.science-field > label { font-weight: 700; margin: 0; overflow-wrap: anywhere; }
+.science-field > * { min-width: 0; }
+.arg-science-editor .ui.form .science-field .science-presence { width: 115px; font-size: .85rem; padding: .5rem; }
+.science-field > :nth-child(n+3) { grid-column: 1/-1; }
+.science-field > input:not([type=checkbox]), .science-field > textarea { width: 100%; }
+.science-field > span, .science-help, .science-field-help { color: var(--arg-color-muted); font-size: .95rem; line-height: 1.55; }
+.science-field-help { margin: 0; }
+.science-json { width: 100%; min-height: 120px; font-family: monospace; }
+.science-profile { display: flex; align-items: center; gap: .5rem; margin-block: 1.25rem .5rem; font-weight: 700; min-height: 44px; }
+.science-relationships { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-block: 1rem; }
+.science-relationships a { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; text-decoration: underline; }
+.science-editor-sidebar { position: sticky; top: 1.5rem; }
+.science-deposit-actions p { line-height: 1.6; color: var(--arg-color-muted); }
+.science-deposit-actions .science-record-state { color: var(--arg-color-text); font-weight: 700; }
+.science-actions { display: grid; gap: .75rem; margin-block: 1rem; }
+.science-actions .ui.button { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; margin: 0; }
+.science-publication-review { border-top: 1px solid var(--arg-color-border); padding-top: 1rem; }
+.science-publication-review .ui.button { min-height: 44px; margin-bottom: .5rem; }
+#science-record-links { display: grid; gap: .5rem; }
+#science-record-links .ui.button { min-height: 44px; margin: 0; }
+.science-form-guide { padding-inline: .5rem; }
+.science-form-guide h2 { font-size: 1rem; margin-bottom: .75rem; }
+.science-form-guide > a { display: block; padding-block: .65rem; text-decoration: underline; }
+.science-form-guide p { color: var(--arg-color-muted); line-height: 1.6; margin-top: 1rem; }
+.science-form-guide summary { cursor: pointer; padding-block: .75rem; min-height: 44px; }
+#science-errors:not(:empty) { border: 1px solid var(--arg-color-error); border-radius: var(--arg-radius-control); padding: 1rem; margin-bottom: 1.5rem; color: var(--arg-color-error); background: var(--arg-color-error-soft); }
+#science-errors a { color: inherit; text-decoration: underline; }
+#science-status:not(:empty) { padding: .75rem; background: var(--arg-color-surface-soft); border-radius: var(--arg-radius-control); margin-block: .75rem; line-height: 1.5; }
+.science-repeat-item { margin: 1.25rem 0; border-top: 1px solid var(--arg-color-border); padding-top: 1rem; }
+.science-repeat-item h4 { margin-top: .5rem; }
+.science-repeat-item .ui.button, .science-object > .ui.button { min-height: 44px; }
+.science-object pre, #science-errors pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.arg-science-editor .ui.form .science-field select { box-sizing: border-box; min-width: 0; max-width: 100%; width: 100%; }
+.science-section-note { color: var(--arg-color-muted); line-height: 1.6; margin-top: 1rem; }
+#science-main :is(section,details) { scroll-margin-top: 1rem; }
+@media(max-width:991px) {
+  .science-editor-layout { grid-template-columns: minmax(0,1fr); gap: 0; }
+  .science-editor-sidebar { position: static; }
+  .science-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .science-editor-sidebar .science-form-guide { margin-top: 1.5rem; }
+}
+@media(max-width:767px) {
+  .science-panel, .science-block { padding: 1rem; }
+  .science-object { padding: .75rem; }
+  .science-field { gap: .5rem; }
+  .arg-science-editor .ui.form :is(input,select,textarea) { font-size: 16px; }
+  .arg-science-editor .ui.form .science-field .science-presence { width: 100px; font-size: .85rem; }
+  .science-actions { grid-template-columns: minmax(0,1fr); }
+}
+.science-authors { border: 0; margin: 1.5rem 0; padding: 0; min-width: 0; }
+.science-authors > legend { font-weight: 700; margin-bottom: .5rem; }
+.science-author { border: 1px solid var(--arg-color-border); border-radius: var(--arg-radius-control); padding: 1rem; margin-bottom: 1rem; }
+.science-author h3 { font-size: 1rem; margin: 0 0 1rem; }
+.science-authors .ui.button { min-height: 44px; }
+.arg-science-editor .ui.form :is(input,textarea,select) { box-sizing: border-box; }
+/* Accordions echo the native upload form and retain their disclosure behavior. */
+.science-block > summary { background: var(--arg-color-primary-strong); color: white; margin: -1.5rem; padding: 1rem 1.5rem; border-radius: var(--arg-radius-panel); }
+.science-block[open] > summary { margin: -1.5rem -1.5rem 1.25rem; border-radius: var(--arg-radius-panel) var(--arg-radius-panel) 0 0; }
+@media(max-width:767px) {
+ .science-block > summary { margin: -1rem; padding: 1rem; }
+ .science-block[open] > summary { margin: -1rem -1rem 1rem; }
+}
+
+/* Section titles and disclosure summaries share the CPAA heading role. */
+.arg-science-editor .science-block > summary { font-family: var(--arg-font-heading); }
+.arg-science-editor .science-profile-panel { border-top-color: var(--arg-color-accent); }
+/* Publication remains an explicit confirmed action; its action color is Argiloteca brown. */
+.arg-science-editor .ui.positive.button { background: var(--arg-color-primary-strong); color: #fff; }
+.arg-science-editor .ui.positive.button:is(:hover, :focus) { background: var(--arg-color-primary-hover); color: #fff; }
+.arg-science-editor .science-actions .ui.button { white-space: normal; line-height: 1.4; }

@@ -1,0 +1,328 @@
+{
+  "generated_at": "2026-10-18T17:59:56.627483+00:00",
+  "scope": "local homologation; not externally published or scientifically approved",
+  "status": "operational and end-to-end verified in homologation",
+  "profile": "1.0.0-hml.1",
+  "original_schemas": 14,
+  "source_integrity": "all 14 byte-identical to user inputs",
+  "mapped_properties": 302,
+  "registered_custom_fields": 50,
+  "legacy_custom_fields_retained": 46,
+  "unit_contract_tests": {
+    "passed": 10,
+    "failed": 0,
+    "evidence": "unit-tests-final.log"
+  },
+  "native_service_integration": {
+    "passed_checks": 27,
+    "evidence": "integration.json"
+  },
+  "independent_SQL": {
+    "verified": true,
+    "matches_anonymous_REST": true,
+    "matches_typed_XML": true,
+    "evidence": "persisted-final.json; final-api-record.json; final-record.xml"
+  },
+  "search_reindex": {
+    "started": "2026-10-18T17:37:04.159762+00:00",
+    "indices": [
+      {
+        "class": "ScientificRecord",
+        "alias": "argiloteca-rdm14-migrated-rdmrecords-records-record-v7.0.0",
+        "indexed": 2164,
+        "SQL_content_unchanged_sha256": "e91869f48850d71c1cdc6c4371020a9f4513b5328a510709b66cab682d184eaf"
+      },
+      {
+        "class": "ScientificDraft",
+        "alias": "argiloteca-rdm14-migrated-rdmrecords-drafts-draft-v6.0.0",
+        "indexed": 54,
+        "SQL_content_unchanged_sha256": "98e6152ee6387ece95d2dd9bb34430a4ca42ac48fd91f6bfbcf750afb08742ed"
+      }
+    ],
+    "finished": "2026-10-18T17:37:39.150859+00:00"
+  },
+  "oai_http": {
+    "identify": {
+      "repositoryName": "Argiloteca — Homologação",
+      "granularity": "YYYY-MM-DDThh:mm:ssZ",
+      "deletedRecord": "no",
+      "baseURL": "https://127.0.0.1:5101/oai2d"
+    },
+    "formats": [
+      "marcxml",
+      "oai_dc",
+      "dcat",
+      "marc21",
+      "datacite",
+      "oai_datacite",
+      "datacite4",
+      "oai_datacite4",
+      "argiloteca"
+    ],
+    "mixed-identifiers": {
+      "pages": 2,
+      "identifiers": 15,
+      "payloads": 0,
+      "duplicates": 0
+    },
+    "mixed-records": {
+      "pages": 2,
+      "identifiers": 15,
+      "payloads": 15,
+      "duplicates": 0
+    },
+    "all-records": {
+      "pages": 124,
+      "identifiers": 1234,
+      "payloads": 1234,
+      "duplicates": 0
+    },
+    "anonymous exposure": {
+      "public_profiles_and_legacy": true,
+      "restricted_and_drafts_absent": true,
+      "restricted_file_metadata_harvested": true
+    }
+  },
+  "oai_sets": {
+    "all-sets": {
+      "pages": 2,
+      "identifiers": 11,
+      "payloads": 0,
+      "duplicates": 0
+    }
+  },
+  "oai_validation": {
+    "mixed-records": {
+      "status": "valid",
+      "verb": "ListRecords",
+      "pages": 2,
+      "identifiers": 15,
+      "payloads_schema_validated": 15,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "all-records": {
+      "status": "valid",
+      "verb": "ListRecords",
+      "pages": 124,
+      "identifiers": 1234,
+      "payloads_schema_validated": 1234,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "mixed-identifiers": {
+      "status": "valid",
+      "verb": "ListIdentifiers",
+      "pages": 2,
+      "identifiers": 15,
+      "payloads_schema_validated": 0,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "all-sets": {
+      "status": "valid",
+      "verb": "ListSets",
+      "pages": 2,
+      "identifiers": 11,
+      "payloads_schema_validated": 0,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "identify": {
+      "status": "valid",
+      "verb": "Identify",
+      "pages": 1,
+      "identifiers": 0,
+      "payloads_schema_validated": 0,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": "YYYY-MM-DDThh:mm:ssZ",
+      "deletedRecord": "no",
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "formats": {
+      "status": "valid",
+      "verb": "ListMetadataFormats",
+      "pages": 1,
+      "identifiers": 0,
+      "payloads_schema_validated": 0,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "get-scientific": {
+      "status": "valid",
+      "verb": "GetRecord",
+      "pages": 1,
+      "identifiers": 1,
+      "payloads_schema_validated": 1,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "get-legacy": {
+      "status": "valid",
+      "verb": "GetRecord",
+      "pages": 1,
+      "identifiers": 1,
+      "payloads_schema_validated": 1,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "get-files_restricted": {
+      "status": "valid",
+      "verb": "GetRecord",
+      "pages": 1,
+      "identifiers": 1,
+      "payloads_schema_validated": 1,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "restricted": {
+      "status": "valid",
+      "verb": null,
+      "pages": 1,
+      "identifiers": 0,
+      "payloads_schema_validated": 0,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [
+        "idDoesNotExist"
+      ],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "draft": {
+      "status": "valid",
+      "verb": null,
+      "pages": 1,
+      "identifiers": 0,
+      "payloads_schema_validated": 0,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [
+        "idDoesNotExist"
+      ],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "unsupported": {
+      "status": "valid",
+      "verb": null,
+      "pages": 1,
+      "identifiers": 0,
+      "payloads_schema_validated": 0,
+      "records_with_independent_xpath_checks": 0,
+      "expected_errors": [
+        "cannotDisseminateFormat"
+      ],
+      "granularity": null,
+      "deletedRecord": null,
+      "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+    },
+    "independent XPath": {
+      "zero": true,
+      "false": true,
+      "null": true,
+      "precision": true,
+      "leading_zero_identifier": true,
+      "metadata_only_update_value": true,
+      "unknowns_filtered": true
+    },
+    "full scientific roundtrip": {
+      "all_eight_blocks": true,
+      "all_declared_nested_properties": true
+    },
+    "final committed SQL to XML": {
+      "status": "valid",
+      "all_eight_blocks": true,
+      "typed_value_comparison": true
+    }
+  },
+  "incremental_and_access": {
+    "incremental_exact_second": {
+      "from": "2026-10-18T17:43:09Z",
+      "until": "2026-10-18T17:43:09Z",
+      "identifiers": [
+        "oai:hml.argiloteca.invalid:4wy5b-k2304"
+      ],
+      "datestamps": [
+        "2026-10-18T17:43:09Z"
+      ],
+      "scientific_only_value": "Incremental QA — updated only a scientific field"
+    },
+    "withdrawal_and_file_access": {
+      "former_public_identifier_rejected": true,
+      "public_metadata_restricted_file": true,
+      "anonymous_content_denied": true,
+      "deletedRecord": "no; reconciliation required"
+    }
+  },
+  "native_soft_delete": true,
+  "authenticated_foreign_owner_checks": "permissions.log: all five returned 403",
+  "playwright": {
+    "passed": 6,
+    "scenarios": [
+      "create/save/reopen nested fields",
+      "Portuguese and 390px mobile",
+      "publish and read-only viewer",
+      "English/native deposit/search/facets",
+      "edit all scientific blocks with false/zero/null preservation",
+      "final image stale revision 409 and correct publish"
+    ],
+    "evidence": [
+      "playwright-fill.log",
+      "playwright-pt-mobile.log",
+      "playwright-publish.log",
+      "playwright-en-search.log",
+      "playwright-full-edit.log",
+      "playwright-final-image.log"
+    ]
+  },
+  "XSD_sha256": "a4ba3e6458d9f5564a465f98a73afce876773910f787d1fe76cd3fb17775125b",
+  "image": "argiloteca-rdm14-hml:metadata-20261018-final",
+  "running_image_id": "sha256:817a6f80073f88d1735dcfa36f0c600f6ae0fb0337564e33519b11205464efd4",
+  "healthy_processes": [
+    "argiloteca-rdm14-hml-web-ui-1",
+    "argiloteca-rdm14-hml-web-api-1",
+    "argiloteca-rdm14-hml-worker-1",
+    "argiloteca-rdm14-hml-scheduler-1"
+  ],
+  "schema_and_content_migration": "No SQL DDL or legacy-content conversion. Additive mapping and native JSONB storage.",
+  "idempotent_installer": "Second run added no mappings; existing vocabularies retained",
+  "backup": "Pre-change PostgreSQL custom dump verified readable; previous image tag retained. Private backup excluded from Git.",
+  "external_publication": {
+    "status": "blocked",
+    "reason": "Public controlled namespace/XSD domain and external collection not established"
+  },
+  "limits": [
+    "Experimental HML profile; source anyOf/additionalProperties remain permissive",
+    "No guarantee of arbitrary decimal precision beyond native JSON/JavaScript transport",
+    "Native OAI deletedRecord=no requires periodic full reconciliation",
+    "Preexisting missing statistics-index warnings remain"
+  ],
+  "git": "No commit; existing staged skill files preserved; no git add .",
+  "QA_cleanup": "Temporary QA accounts disabled; browser closed; temporary plaintext login credentials removed."
+}

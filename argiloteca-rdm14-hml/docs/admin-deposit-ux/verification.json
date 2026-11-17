@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-18",
+  "live_browser": "Existing authenticated Firefox session, read-only inspection",
+  "live_routes_checked": [
+    "/administration/",
+    "/administration/records",
+    "/administration/drafts",
+    "/administration/communities",
+    "/administration/vocabulary-types",
+    "/administration/pages",
+    "/administration/banners",
+    "/administration/domains",
+    "/administration/oai-pmh",
+    "/administration/users",
+    "/administration/requests",
+    "/administration/moderation",
+    "/administration/jobs",
+    "/uploads/new",
+    "/scientific/deposit"
+  ],
+  "live_languages": [
+    "pt",
+    "en"
+  ],
+  "fixture_report": "output/admin-deposit-ux/confirm.json",
+  "fixture_cases": 16,
+  "fixture_overflow": 0,
+  "fixture_js_errors": [],
+  "fixture_actions": {
+    "referenceHints": 2,
+    "referenceValues": [
+      "UX-CAMP-001",
+      "UX-001"
+    ],
+    "publicationConfirmation": true,
+    "requestsBeforeConfirmation": 0,
+    "saveCount": 1,
+    "customFieldsPreserved": true,
+    "csrfSent": true,
+    "linkToSameNativeRecord": "/uploads/synthetic-ui-only",
+    "title": "SINTÉTICO — UI fixture / ação & < >",
+    "preservedSampleValues": {
+      "altitude_m": null,
+      "campanha_id": "UX-CAMP-001",
+      "codigo_amostra": "UX-001",
+      "descricao_local": "",
+      "extra_preserved": {
+        "false": false,
+        "null": null,
+        "zero": 0
+      },
+      "latitude": 0
+    },
+    "errorFocus": "science-metadata-title",
+    "readonlyAllDisabled": true,
+    "readonlySaveButtons": 0,
+    "adminMenuOpen": true,
+    "adminMenuClosed": true
+  },
+  "syntax": {
+    "jinja_templates": 51,
+    "javascript": true,
+    "catalogs": {
+      "en": 3741,
+      "pt": 3741
+    }
+  },
+  "anonymous_status": {
+    "administration": 403,
+    "scientific_deposit": 302,
+    "native_deposit": 302
+  },
+  "detector": {
+    "findings": [],
+    "limitation": "Jinja URL resolution reported unavailable; scan scoped to layout"
+  },
+  "real_records_created_or_published": 0,
+  "account_or_permission_changes": 0,
+  "persistence_test": "simulated requests only; native backend persistence unchanged"
+}

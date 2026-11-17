@@ -1,0 +1,58 @@
+/* Mineral reading surface: full available width, stable scientific content. */
+.argilo-mineral-page { width: 100%; max-width: none; margin: 0; padding: 1rem clamp(1rem,3vw,2.5rem) 3rem; box-sizing: border-box; font-size: 17px; color: var(--arg-color-text); }
+#main:has(.argilo-mineral-page) .argilo-page-header { max-width: none; padding-inline: clamp(1rem,3vw,2.5rem); margin-bottom: 0; }
+.argilo-mineral-page :is(p,li) { line-height: 1.7; overflow-wrap: anywhere; }
+.argilo-mineral-page p { margin-block: 0 1rem; }
+.argilo-mineral-page a:not(.button) { text-decoration: underline; }
+.argilo-mineral-hero { padding: 1.5rem; margin-block-end: 1.5rem; }
+.argilo-mineral-hero-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,400px); gap: 2rem; align-items: start; }
+.argilo-mineral-title { font-size: 40px; line-height: 1.15; margin-block: 0 .75rem; overflow-wrap: anywhere; }
+.argilo-mineral-subtitle { color: var(--arg-color-muted); font-size: 17px; }
+.argilo-mineral-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: 1.25rem; }
+.argilo-mineral-tag { display: inline-block; padding: .4rem .75rem; font-size: 15px; border-radius: 6px; background: var(--arg-color-surface-soft); color: var(--arg-color-primary-strong); overflow-wrap: anywhere; }
+.argilo-mineral-media-card { min-width: 0; }
+.argilo-mineral-media-card img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: contain; background: var(--arg-color-surface-soft); border-radius: 8px; }
+.argilo-mineral-media-meta { font-size: 14px; color: var(--arg-color-muted); }
+.argilo-mineral-media-meta p { margin-block: .4rem; line-height: 1.5; }
+.argilo-mineral-links { display: flex; flex-wrap: wrap; gap: .75rem; margin-block-start: 1.25rem; }
+.argilo-mineral-page .ui.button { margin: 0; }
+.argilo-mineral-sections { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; padding-block: .5rem; margin-block: 1.5rem; border-block: 1px solid var(--arg-color-border); }
+.argilo-mineral-sections a { display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; }
+.argilo-mineral-grid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 2rem; align-items: start; }
+.argilo-mineral-card { min-width: 0; background: var(--arg-color-surface); border: 1px solid var(--arg-color-border); border-radius: var(--arg-radius-panel); padding: 1.5rem; margin-block-end: 1.5rem; }
+.argilo-mineral-card h2 { font-size: 26px; line-height: 1.3; margin-block: 0 1rem; }
+.argilo-mineral-card h3 { font-size: 21px; line-height: 1.35; margin-block: 0 .75rem; }
+.argilo-mineral-card > p { max-width: 75ch; }
+.argilo-mineral-tech-list { display: grid; gap: 1.5rem; }
+.argilo-mineral-tech-item { padding-block-start: 1.25rem; border-block-start: 1px solid var(--arg-color-border); }
+.argilo-mineral-tech-title { font-weight: 700; color: var(--arg-color-primary-strong); margin-block-end: .5rem; }
+.argilo-mineral-tech-value { white-space: pre-line; overflow-wrap: anywhere; max-width: 75ch; }
+.argilo-mineral-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; }
+.argilo-mineral-fact { padding-block: .85rem; border-block-start: 1px solid var(--arg-color-border); min-width: 0; }
+.argilo-mineral-fact-label,.argilo-mineral-source-fact-label { display: block; color: var(--arg-color-muted); font-size: 14px; font-weight: 700; margin-block-end: .35rem; }
+.argilo-mineral-fact-value { white-space: pre-line; overflow-wrap: anywhere; line-height: 1.6; }
+.argilo-mineral-fact-value a { overflow-wrap: anywhere; }
+.argilo-mineral-source-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; }
+.argilo-mineral-source-card { min-width: 0; padding-block-start: 1rem; border-block-start: 1px solid var(--arg-color-border); }
+.argilo-mineral-source-badge { font-size: 14px; color: var(--arg-color-muted); margin-block-end: .75rem; }
+.argilo-mineral-source-meta { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1rem; }
+.argilo-mineral-source-facts,.argilo-mineral-source-sample-facts { display: grid; gap: 1rem; }
+.argilo-mineral-source-fact { padding-block: .75rem; border-block-end: 1px solid var(--arg-color-border); }
+.argilo-mineral-source-sample { margin-block: 1rem; padding-block-start: 1rem; border-block-start: 1px solid var(--arg-color-border); }
+.argilo-mineral-source-sample-title { display: block; font-weight: 700; margin-block-end: .75rem; }
+.argilo-mineral-source-sample-code { font-size: 14px; color: var(--arg-color-muted); margin-inline-start: .5rem; }
+.argilo-mineral-map-actions { display: flex; justify-content: flex-end; margin-block-start: 1rem; }
+.argilo-mineral-license-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.5rem; }
+.argilo-mineral-license-item { min-width: 0; padding-block-start: 1rem; border-block-start: 1px solid var(--arg-color-border); }
+.argilo-mineral-license-text { white-space: pre-line; overflow-wrap: anywhere; }
+@media (min-width: 1600px) { .argilo-mineral-grid { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); } }
+@media (max-width: 1100px) { .argilo-mineral-grid { grid-template-columns: minmax(0,1fr); gap: 0; } .argilo-mineral-license-grid { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 767px) { .argilo-mineral-page { padding-inline: 1rem; } .argilo-mineral-hero-grid,.argilo-mineral-source-grid { grid-template-columns: minmax(0,1fr); gap: 1.5rem; } .argilo-mineral-hero,.argilo-mineral-card { padding: 1rem; } .argilo-mineral-title { font-size: 32px; } .argilo-mineral-facts { grid-template-columns: minmax(0,1fr); } .argilo-mineral-card h2 { font-size: 24px; } .argilo-mineral-links .ui.button { flex: 1 1 100%; } }
+@media print { .argilo-mineral-page { padding: 0; } .argilo-mineral-grid { display: block; } .argilo-mineral-card { break-inside: auto; } .argilo-mineral-links,.argilo-mineral-sections { display: none; } }
+
+/* Short descriptions do not reserve an empty column beside the mineral facts. */
+.argilo-mineral-grid--brief { grid-template-columns: minmax(0,1fr); gap: 0; }
+.argilo-mineral-grid--brief .argilo-mineral-facts { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.argilo-mineral-hero #mineral-drx-availability { border: 0; border-block-start: 1px solid var(--arg-color-border); border-radius: 0; padding: 1.25rem 0 0; margin-block: 1.5rem 0 !important; background: transparent; }
+@media (max-width: 1100px) { .argilo-mineral-grid--brief .argilo-mineral-facts { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 767px) { .argilo-mineral-grid--brief .argilo-mineral-facts { grid-template-columns: minmax(0,1fr); } }

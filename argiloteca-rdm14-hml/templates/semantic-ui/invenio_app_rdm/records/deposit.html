@@ -1,0 +1,18 @@
+{% extends "argiloteca_native/invenio_app_rdm/records/deposit.html" %}
+{% from "semantic-ui/argiloteca/deposit_navigation.html" import deposit_navigation with context %}
+{% block css %}{{ super() }}<link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/argiloteca-workflows.css') }}?v=20261019-cpaa-workflows-1">{% endblock %}
+{% block page_body %}
+{{ deposit_navigation(record_id=record.id if record and record.id else none) }}
+{# A draft can already have direct administrative community memberships without
+   a review request. Pass its real default through the native preselection input;
+   the native reducer otherwise assumes every first-version community has a review. #}
+{% if record and not record.get('is_published') and not preselectedCommunity %}
+  {% set parent = record.get('parent', {}) %}
+  {% set default_community = record.get('expanded', {}).get('parent', {}).get('communities', {}).get('default') %}
+  {% if not parent.get('review') and not record.get('review') and default_community and default_community.get('id') == parent.get('communities', {}).get('default') %}
+    <input id="deposits-draft-community" type="hidden" name="deposits-draft-community"
+           value='{{ default_community | tojson }}'>
+  {% endif %}
+{% endif %}
+{{ super() }}
+{% endblock %}

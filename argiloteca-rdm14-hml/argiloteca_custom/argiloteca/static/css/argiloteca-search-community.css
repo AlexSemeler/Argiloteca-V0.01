@@ -1,0 +1,17 @@
+/* Search and community controls share the scientific module palette. */
+.argilo-discovery-navigation { width: 100%; padding-top: .75rem; padding-bottom: .75rem; }
+#main .ui.search.button,
+#main .ui.primary.button,
+#main .ui.pagination.menu .active.item { background: var(--arg-color-primary-strong); color: white; }
+#main .ui.pagination.menu .item { color: var(--arg-color-primary-strong); }
+#main .ui.pagination.menu .active.item { color: white; }
+#main .ui.secondary.pointing.menu .active.item { color: var(--arg-color-primary-strong); border-color: var(--arg-color-primary-strong); }
+#main .page-subheader-outer { background: var(--arg-color-surface-analytic); border-color: var(--arg-color-border); }
+#main .ui.input input::placeholder { color: var(--arg-color-muted); opacity: 1; }
+#main :is(a, button, input, select, [tabindex]):focus-visible { outline: 3px solid var(--arg-color-focus); outline-offset: 3px; }
+#main input { caret-color: var(--arg-color-primary-strong); }
+#main ::selection { background: var(--arg-color-border); color: var(--arg-color-text); }
+#main .ui.pagination.menu { border-color: var(--arg-color-border); }
+@media (max-width: 767px) {
+  #main .ui.container > .ui.relaxed.grid { margin-left: -14px; margin-right: -14px; }
+}

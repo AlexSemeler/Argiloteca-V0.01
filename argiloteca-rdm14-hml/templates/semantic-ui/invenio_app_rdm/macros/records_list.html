@@ -1,0 +1,19 @@
+{#
+SPDX-FileCopyrightText: 2019-2022 CERN
+SPDX-FileCopyrightText: 2024 KTH Royal Institute of Technology.
+SPDX-License-Identifier: MIT
+The native loader/data attributes are preserved; the home requests three records.
+#}
+{% macro records_list(title=_("Recent uploads"), fetch_url="/api/records?sort=newest&size=10") %}
+<div id="records-list" data-fetch-url="{{ fetch_url }}" data-title="{{ title }}">
+  <div class="ui container"><h2 class="ui header">{{ title }}</h2>
+    <div class="argilo-loading-records" role="status" aria-label="{{ _('Carregando registros...') }}">
+    {% for n in range(3) %}
+      <div class="ui fluid placeholder"><div class="header"><div class="line"></div><div class="line"></div></div><div class="paragraph"><div class="line"></div><div class="line"></div><div class="line"></div></div></div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{{ webpack['overridable-registry.js'] }}
+{{ webpack['invenio-app-rdm-frontpage.js'] }}
+{% endmacro %}

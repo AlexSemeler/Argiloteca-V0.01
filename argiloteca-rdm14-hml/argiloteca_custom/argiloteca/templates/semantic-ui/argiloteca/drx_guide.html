@@ -1,0 +1,71 @@
+{% extends "invenio_app_rdm/page.html" %}
+{% set title = review_text("Análise de argilominerais por DRX", "Clay mineral analysis by XRD") %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% macro local(value) %}{% if value is mapping %}{{ review_text(value.pt, value.en) }}{% else %}{{ value }}{% endif %}{% endmacro %}
+{% block css %}{{ super() }}<link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/drx-guide.css') }}?v=20261024-2">{% endblock %}
+{% block page_body %}
+<article class="ui container argilo-drx-guide" aria-labelledby="drx-guide-title">
+  <nav class="argilo-drx-guide__breadcrumb" aria-label="{{ review_text('Trilha de navegação', 'Breadcrumb') }}"><a href="/">{{ review_text('Início', 'Home') }}</a><span aria-hidden="true">/</span><span>{{ review_text('Sobre DRX', 'About XRD') }}</span></nav>
+  <header class="argilo-drx-guide__hero" id="inicio-drx">
+    <div>
+      <h1 id="drx-guide-title">{{ title }}</h1>
+      <p class="argilo-drx-guide__lead">{{ review_text('Da preparação da amostra à revisão das evidências: conheça a metodologia que orienta a comparação de difratogramas na Argiloteca.', 'From sample preparation to evidence review: explore the methodology guiding diffractogram comparison in Argiloteca.') }}</p>
+      <p>{{ review_text('Este guia reúne uma síntese de leitura e o texto integral da metodologia revisada. O conjunto de referência descrito utiliza amostras padrão do LDRX/CPGq/IGEO/UFRGS.', 'This guide combines reading summaries with the full revised methodology. The described reference set uses standard samples from LDRX/CPGq/IGEO/UFRGS.') }}</p>
+      <div class="argilo-drx-guide__actions">
+        <a class="ui primary button" href="{{ url_for('argiloteca.drx_comparacao') }}">{{ render_icon('drx') }}{{ review_text('Comparar difratogramas', 'Compare diffractograms') }}</a>
+        <a class="ui basic button" href="{{ url_for('argiloteca.analises_index') }}">{{ render_icon('analyses') }}{{ review_text('Consultar análises', 'Browse analyses') }}</a>
+        <a class="ui basic button" download href="{{ url_for('argiloteca.drx_guide_pdf', ln=review_text('pt', 'en')) }}">{{ render_icon('download') }}{{ review_text('Gerar documento completo · PDF', 'Generate complete document · PDF') }}</a>
+      </div>
+      <p class="argilo-drx-guide__source-label">{{ review_text('O PDF reúne as sínteses e todos os textos integrais, inclusive as seções recolhidas. O texto original permanece em português.', 'The PDF includes summaries and every full-text section, including collapsed sections. The original text remains in Portuguese.') }}</p>
+    </div>
+    <figure class="argilo-drx-guide__hero-image">
+      <img src="{{ url_for('argiloteca.static', filename='images/drx/methodology/preparation.jpg') }}" width="1536" height="1024" fetchpriority="high" decoding="async" alt="{{ review_text('Ilustração conceitual de pó de argila, almofariz, suspensão e lâminas de vidro em uma bancada.', 'Conceptual illustration of clay powder, a mortar, a suspension and glass slides on a bench.') }}">
+      <figcaption>{{ review_text('Preparo de amostras · ilustração conceitual gerada por IA. Não retrata o laboratório ou uma amostra analisada.', 'Sample preparation · AI-generated conceptual illustration. It does not depict the laboratory or an analysed sample.') }}</figcaption>
+    </figure>
+  </header>
+  <aside class="argilo-drx-guide__notice" aria-label="{{ review_text('Limites de interpretação', 'Interpretation limits') }}">{{ render_icon('shield') }}<p><strong>{{ review_text('Protótipo de pesquisa · revisão técnica necessária.', 'Research prototype · technical review required.') }}</strong> {{ review_text('O painel organiza curvas e evidências para apoiar a interpretação. Similaridade e escores não representam teor mineral, probabilidade calibrada ou validação independente.', 'The workbench organises curves and evidence to support interpretation. Similarity and scores do not represent mineral content, calibrated probability or independent validation.') }}</p></aside>
+  <div class="argilo-drx-guide__layout" id="metodologia">
+    <aside class="argilo-drx-guide__index">
+      <details open>
+        <summary>{{ render_icon('catalog') }}{{ review_text('Nesta página', 'On this page') }}</summary>
+        <nav aria-label="{{ review_text('Seções da metodologia', 'Methodology sections') }}">
+          {% for section in methodology.sections %}<a href="#{{ section.id }}">{{ local(section.title) }}</a>{% endfor %}
+        </nav>
+      </details>
+    </aside>
+    <div class="argilo-drx-guide__body">
+      <div class="argilo-drx-guide__reading-note"><p>{{ review_text('Leia a síntese de cada tópico ou expanda “Texto integral” para consultar a redação e as tabelas originais. Os parâmetros descrevem o procedimento documentado; confira a versão e a proveniência de cada execução.', 'Read each topic summary or expand “Full text” to consult the original wording and tables. Parameters describe the documented procedure; check each execution’s version and provenance.') }}</p>
+        <details class="argilo-drx-guide__source"><summary>{{ review_text('Texto integral · apresentação do documento', 'Full text · original introduction in Portuguese') }}</summary><div lang="pt">{% for paragraph in methodology.intro %}<p>{{ paragraph }}</p>{% endfor %}</div></details>
+      </div>
+      {% for section in methodology.sections %}
+      <section class="argilo-drx-guide__section" aria-labelledby="{{ section.id }}">
+        <h2 id="{{ section.id }}">{{ render_icon(section.icon) }}{{ local(section.title) }}</h2>
+        {% if section.id == 'tecnica' %}
+          <figure class="argilo-drx-guide__layers">
+            <img src="{{ url_for('argiloteca.static', filename='images/drx/methodology/layers.jpg') }}" width="1536" height="1024" loading="lazy" decoding="async" alt="{{ review_text('Ilustração conceitual de partículas lamelares sobrepostas, em tons de argila.', 'Conceptual illustration of overlapping platy particles in clay tones.') }}">
+            <figcaption>{{ review_text('Hábito lamelar · ilustração gerada por IA, sem escala. Não é uma micrografia nem identifica uma espécie mineral.', 'Lamellar habit · AI-generated illustration without a scale. It is not a micrograph and does not identify a mineral species.') }}</figcaption>
+          </figure>
+        {% endif %}
+        {% for paragraph in section.summary %}<p>{{ local(paragraph) }}</p>{% endfor %}
+        {% if section.id == 'tecnica' %}<div class="argilo-drx-guide__reference-gallery">
+          <figure class="argilo-drx-figure argilo-drx-figure--instrument">
+            <img src="{{ url_for('argiloteca.static', filename='images/drx/diffractometer-sufangxi.jpg') }}" width="960" height="1280" loading="lazy" decoding="async" alt="{{ _('Exemplo de um difratômetro de raios X em laboratório, com fonte, suporte da amostra e detector dentro do gabinete.') }}">
+            <figcaption><strong>{{ _('Do equipamento ao difratograma') }}</strong>{{ _('Exemplo ilustrativo de um difratômetro; a fotografia não representa o laboratório da Argiloteca.') }}<span class="argilo-drx-figure__credit">Sufangxi · <a href="https://commons.wikimedia.org/wiki/File:X-ray_diffractometer-1.jpg">Wikimedia Commons</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></span></figcaption>
+          </figure>
+          {% include "semantic-ui/argiloteca/_drx_bragg_figure.html" %}
+        </div><div class="argilo-drx-guide__equation"><strong>nλ = 2d sin θ</strong><p>{{ review_text('Lei de Bragg · λ: comprimento de onda; d: espaçamento interplanar; θ: metade de 2θ; n: ordem de difração. O procedimento descrito adota n = 1.', 'Bragg’s law · λ: wavelength; d: interplanar spacing; θ: half of 2θ; n: diffraction order. The described procedure uses n = 1.') }}</p></div>{% endif %}
+        {% if section.id == 'preparo' %}<dl class="argilo-drx-guide__treatments"><div><dt>{{ render_icon('layers') }}N · {{ review_text('Natural', 'Natural') }}</dt><dd>{{ review_text('Condição de referência antes dos tratamentos.', 'Reference condition before treatment.') }}</dd></div><div><dt>{{ render_icon('analyses') }}G · {{ review_text('Glicolada', 'Glycolated') }}</dt><dd>{{ review_text('Etilenoglicol · 60 °C · 2–3 h.', 'Ethylene glycol · 60 °C · 2–3 h.') }}</dd></div><div><dt>{{ render_icon('heat') }}H/C · {{ review_text('Aquecida', 'Heated') }}</dt><dd>550 °C · 2 h.</dd></div></dl>{% endif %}
+        {% if section.table %}<div class="argilo-drx-guide__table-scroll" role="region" aria-label="{{ local(section.table.caption) }}" tabindex="0"><table><caption>{{ local(section.table.caption) }}</caption><thead><tr>{% for heading in section.table.headers %}<th scope="col">{{ local(heading) }}</th>{% endfor %}</tr></thead><tbody>{% for row in section.table.rows %}<tr>{% for cell in row %}{% if loop.first %}<th scope="row">{{ local(cell) }}</th>{% else %}<td>{{ local(cell) }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endif %}
+        {% if section.note %}<p class="argilo-drx-guide__note">{{ local(section.note) }}</p>{% endif %}
+        {% if section.id == 'interpretacao' %}<div class="argilo-drx-guide__actions"><a class="ui basic button" href="{{ url_for('argiloteca.catalogo_autorizado_argilominerais') }}">{{ render_icon('catalog') }}{{ review_text('Consultar nomes de argilominerais', 'Browse clay mineral names') }}</a></div>{% endif %}
+        {% if section.id == 'painel' %}<ol class="argilo-drx-guide__workflow"><li>{{ review_text('Selecione as análises ou os arquivos temporários.', 'Select analyses or temporary files.') }}</li><li>{{ review_text('Confira amostra, preparo, radiação e faixa angular.', 'Check the sample, preparation, radiation and angular range.') }}</li><li>{{ review_text('Compare curvas, picos e hipóteses concorrentes.', 'Compare curves, peaks and competing hypotheses.') }}</li><li>{{ review_text('Registre a revisão e preserve a proveniência.', 'Record the review and preserve provenance.') }}</li></ol><div class="argilo-drx-guide__actions"><a class="ui primary button" href="{{ url_for('argiloteca.drx_comparacao') }}">{{ render_icon('drx') }}{{ review_text('Abrir comparação', 'Open comparison') }}</a><a class="ui basic button" href="{{ url_for('argiloteca.analises_index') }}">{{ render_icon('analyses') }}{{ review_text('Ver análises e arquivos', 'View analyses and files') }}</a></div>{% endif %}
+        {% if section.id == 'referencias' %}<h3 id="base-painel">{{ review_text('Fundamentação bibliográfica', 'Bibliographic foundation') }}</h3>{% include "semantic-ui/argiloteca/drx_guide_foundation.html" %}{% endif %}
+        <details class="argilo-drx-guide__source" id="texto-{{ section.id }}"><summary>{{ review_text('Texto integral', 'Full text in Portuguese') }} · {{ local(section.title) }}</summary><div lang="pt"><h3>{{ section.original_title }}</h3>{% for block in section.source %}{% if block.type == 'heading' %}<h4>{{ block.text }}</h4>{% elif block.type == 'table' %}<div class="argilo-drx-guide__table-scroll" role="region" aria-label="Tabela do documento original" tabindex="0"><table><caption class="argilo-drx-guide__source-caption">Tabela do documento original · {{ section.original_title }}</caption>{% for row in block.rows %}{% if loop.first %}<thead><tr>{% for cell in row %}<th scope="col">{{ cell }}</th>{% endfor %}</tr></thead><tbody>{% else %}<tr>{% for cell in row %}{% if loop.first %}<th scope="row">{{ cell }}</th>{% else %}<td>{{ cell }}</td>{% endif %}{% endfor %}</tr>{% endif %}{% endfor %}</tbody></table></div>{% elif block.type == 'equation' %}<p class="argilo-drx-guide__source-equation">{{ block.text }}</p>{% else %}<p>{{ block.text }}</p>{% endif %}{% endfor %}</div></details>
+      </section>
+      {% endfor %}
+      <details id="drx-full-bibliography" class="argilo-drx-guide__source"><summary>{{ review_text('Bibliografia complementar', 'Additional bibliography') }}</summary><p>{{ review_text('Referências preservadas da versão anterior do guia. Confira a publicação original antes de citar.', 'References retained from the previous guide. Check the original publication before citing.') }}</p>{% include "semantic-ui/argiloteca/drx_guide_references.html" %}</details>
+      <a class="ui basic button argilo-drx-guide__top" href="#inicio-drx">{{ render_icon('back') }}{{ review_text('Voltar ao início', 'Back to top') }}</a>
+    </div>
+  </div>
+</article>
+{% endblock %}

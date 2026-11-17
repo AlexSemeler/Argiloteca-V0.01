@@ -1,0 +1,59 @@
+{% extends "invenio_administration/base.html" %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon as admin_icon with context %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% set t = review_text %}
+{% block css %}{{ super() }}
+<link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/restricted-raw-review.css') }}?v=20261020-ui-review-2">
+{% endblock %}
+{% block page_title %}
+<h1 class="ui header">{{ t('Revisão de arquivos restritos', 'Restricted file review') }}</h1>
+<p class="rr-lead">{{ t('Confira os preparos e as evidências de vínculo antes da curadoria de um trio N/G/C.', 'Check preparations and evidence of links before curating an N/G/C trio.') }}</p>
+{% endblock %}
+{% block admin_page_content %}
+<div class="raw-review">
+<nav class="rl-tabs" aria-label="{{ t('Curadoria científica', 'Scientific curation') }}"><a aria-current="page" href="{{ url_for('argiloteca_scientific.restricted_raw_review') }}" class="ui basic button admin-action">{{ admin_icon('catalog') }} <span>{{ t('Revisão de arquivos restritos', 'Restricted file review') }}</span></a> · <a href="{{ url_for('argiloteca_scientific.admin_raw_library') }}" class="ui basic button admin-action">{{ admin_icon('drx') }} <span>{{ t('Todos os RAWs e classificações', 'All RAWs and classifications') }}</span></a> · <a href="{{ url_for('argiloteca_scientific.admin_raw_library') }}#new-trio" class="ui basic button admin-action">{{ admin_icon('catalog') }} <span>{{ t('Enviar novo trio', 'Submit new trio') }}</span></a></nav>
+<p class="rr-notice">{{ render_icon('layers') }} {{ t('Somente consulta. Os arquivos continuam restritos; esta área não libera arquivos, não publica registros e não altera classificações.', 'Read only. Files remain restricted; this area does not release files, publish records or change classifications.') }}</p>
+{% if unavailable %}
+<section class="rr-empty" role="alert"><h2>{{ t('Revisão indisponível', 'Review unavailable') }}</h2><p>{{ t('O catálogo de revisão não pôde ser carregado. Tente novamente mais tarde.', 'The review catalogue could not be loaded. Please try again later.') }}</p><a class="ui primary button admin-action" href="{{ url_for('argiloteca_scientific.restricted_raw_review') }}">{{ admin_icon('catalog') }} <span>{{ t('Tentar novamente', 'Try again') }}</span></a></section>
+{% else %}
+<p class="rr-summary">{{ catalogue.summary.files }} {{ t('arquivos restritos em', 'restricted files in') }} {{ catalogue.summary.groups }} {{ t('grupos de origem', 'source groups') }} · {{ catalogue.summary.candidates }} {{ t('possíveis trios', 'possible trios') }} · {{ catalogue.summary.confirmed_trios }} {{ t('trios confirmados', 'confirmed trios') }}.<br><span>{{ t('Auditoria de', 'Audit dated') }} {{ catalogue.reviewed_on }}. {{ t('N: natural · G: glicolado · C: calcinado · X: preparo indeterminado.', 'N: natural · G: glycolated · C: calcined · X: undetermined preparation.') }}</span></p>
+<section class="rr-candidates" aria-labelledby="rr-candidates-title">
+<h2 id="rr-candidates-title">{{ t('Possíveis vínculos N/G/C', 'Possible N/G/C links') }}</h2>
+<p>{{ t('Os nomes sugerem estes vínculos, mas não confirmam o preparo. Não há ficha disponível que indique quais versões N/G acompanham cada C.', 'Names suggest these links but do not confirm preparation. No preparation sheet is available to establish which N/G versions accompany each C.') }}</p>
+{% for c in catalogue.candidates %}
+<details class="rr-candidate"><summary>{{ render_icon('layers') }} <span>{{ t('Possível trio', 'Possible trio') }} {{ loop.index }} <small>{{ c.source_files }} {{ t('arquivos · vínculo não confirmado', 'files · unconfirmed link') }}</small></span></summary>
+<div class="rr-detail">
+<p>{{ t('Versões com dados distintos:', 'Versions with distinct data:') }} N: {{ c.distinct_versions_by_preparation.N }} · G: {{ c.distinct_versions_by_preparation.G }} · C: {{ c.distinct_versions_by_preparation.C }}.</p>
+<ul class="rr-issues"><li>{{ t('Confirmar quais versões N/G pertencem ao arquivo C.', 'Confirm which N/G versions belong with the C file.') }}</li><li>{{ t('Confirmar o preparo indicado pelos nomes concatenados.', 'Confirm the preparation suggested by concatenated names.') }}</li><li>{{ t('Esclarecer a diferença de radiação: N/G declaram aproximadamente 1,54056 Å; C declara 1,78901 Å. Comparações devem considerar o comprimento de onda de cada curva.', 'Clarify the radiation difference: N/G declare approximately 1.54056 Å; C declares 1.78901 Å. Comparisons must account for each curve’s wavelength.') }}</li></ul>
+<table class="rr-files"><caption>{{ t('Arquivos envolvidos no possível vínculo', 'Files involved in the possible link') }}</caption><thead><tr><th>{{ t('Arquivo anônimo', 'Anonymous file') }}</th><th>{{ t('Preparo sugerido', 'Suggested preparation') }}</th><th>{{ t('Formato / pontos', 'Format / points') }}</th><th>λ (Å)</th></tr></thead><tbody>
+{% for f in c.files %}<tr><td data-label="{{ t('Arquivo', 'File') }}">{{ f.anonymous_filename }}</td><td data-label="{{ t('Preparo sugerido', 'Suggested preparation') }}">{{ f.preparation_candidate }} — {{ t('a confirmar', 'to confirm') }}</td><td data-label="{{ t('Formato / pontos', 'Format / points') }}">{{ f.format }} / {{ f.points }}</td><td data-label="λ (Å)">{{ '%.5f'|format(f.wavelength_angstrom) if f.wavelength_angstrom else t('Não informado', 'Not reported') }}</td></tr>{% endfor %}
+</tbody></table>
+<a class="ui basic button admin-action" href="{{ url_for('argiloteca_scientific.restricted_raw_review', candidate=c.candidate_id) }}#rr-groups">{{ t('Ver grupos envolvidos', 'View related groups') }} {{ render_icon('arrow') }}</a>
+</div></details>
+{% endfor %}
+</section>
+<section id="rr-groups" aria-labelledby="rr-groups-title">
+<h2 id="rr-groups-title">{{ t('Grupos e pendências', 'Groups and outstanding issues') }}</h2>
+<form class="rr-filters" method="get" action="{{ url_for('argiloteca_scientific.restricted_raw_review') }}#rr-groups">
+<div><label for="rr-q">{{ t('Buscar código ou arquivo', 'Search code or file') }}</label><input id="rr-q" autocomplete="off" spellcheck="false" type="search" name="q" value="{{ q }}" placeholder="ARC-…" maxlength="100"></div>
+<div><label for="rr-issue">{{ t('Pendência', 'Outstanding issue') }}</label><select id="rr-issue" name="issue"><option value="">{{ t('Todas as pendências', 'All issues') }}</option>{% for key, label in issue_labels.items() %}<option value="{{ key }}"{% if issue == key %} selected{% endif %}>{{ t(*label) }}</option>{% endfor %}</select></div>
+<div><label for="rr-candidate">{{ t('Possível vínculo', 'Possible link') }}</label><select id="rr-candidate" name="candidate"><option value="">{{ t('Todos os grupos', 'All groups') }}</option>{% for c in catalogue.candidates %}<option value="{{ c.candidate_id }}"{% if candidate == c.candidate_id %} selected{% endif %}>{{ t('Possível trio', 'Possible trio') }} {{ loop.index }}</option>{% endfor %}</select></div>
+<button type="submit" class="ui primary button">{{ render_icon('search') }} {{ t('Filtrar', 'Filter') }}</button><a class="rr-clear admin-action ui basic button" href="{{ url_for('argiloteca_scientific.restricted_raw_review') }}#rr-groups">{{ admin_icon('catalog') }} <span>{{ t('Limpar filtros', 'Clear filters') }}</span></a>
+</form>
+<p class="rr-results" role="status">{{ total }} {{ t('grupos encontrados', 'groups found') }} · {{ t('Página', 'Page') }} {{ page }} / {{ pages }}</p>
+{% if not groups %}<div class="rr-empty"><h3>{{ t('Nenhum grupo encontrado', 'No groups found') }}</h3><p>{{ t('Confira o código ou limpe os filtros para consultar todos os grupos.', 'Check the code or clear the filters to see all groups.') }}</p></div>{% endif %}
+{% for group in groups %}
+<details class="rr-group" id="group-{{ group.code }}"><summary><span class="rr-code">{{ group.code }}</span><span class="rr-preps">{% for p in ['N','G','C','X'] %}{% if group.preparations.get(p) %}<span>{{ p }} × {{ group.preparations[p] }}</span>{% endif %}{% endfor %}</span><span class="rr-state">{{ t('Vínculo a confirmar', 'Link to confirm') if group.candidate_ids else t('Preparo a identificar', 'Preparation to identify') if group.status == 'unknown' else t('Trio incompleto', 'Incomplete trio') }}</span></summary>
+<div class="rr-detail"><h3>{{ t('Pendências para revisão', 'Issues to review') }}</h3><ul class="rr-issues">{% for key in group.issues %}<li>{{ t(*issue_labels[key]) }}</li>{% endfor %}</ul>
+<p>{{ t('Os preparos abaixo seguem a regra estrita do nome; sugestões de vínculo não substituem esses rótulos.', 'Preparations below follow the strict filename rule; suggested links do not replace these labels.') }}</p>
+<table class="rr-files"><caption>{{ t('Evidências dos arquivos deste grupo', 'File evidence for this group') }}</caption><thead><tr><th>{{ t('Arquivo anônimo', 'Anonymous file') }}</th><th>{{ t('Preparo', 'Preparation') }}</th><th>{{ t('Formato / pontos', 'Format / points') }}</th><th>λ (Å)</th></tr></thead><tbody>
+{% for f in group.files %}<tr><td data-label="{{ t('Arquivo', 'File') }}">{{ f.filename }}</td><td data-label="{{ t('Preparo', 'Preparation') }}">{{ f.preparation }}{% if f.possible_preparation and f.possible_preparation != f.preparation %}<small>{{ t('Possível', 'Possible') }} {{ f.possible_preparation }} — {{ t('a confirmar', 'to confirm') }}</small>{% endif %}</td><td data-label="{{ t('Formato / pontos', 'Format / points') }}">{{ f.format }} / {{ f.points }}<small>{{ t('Eixo 2θ (graus)', '2θ axis (degrees)') if f.axis_kind == 'two_theta_degrees' else t('Eixo nativo: unidade a confirmar', 'Native axis: unit to confirm') }}</small></td><td data-label="λ (Å)">{{ '%.5f'|format(f.wavelength_angstrom) if f.wavelength_angstrom else t('Não informado', 'Not reported') }}</td></tr>{% endfor %}
+</tbody></table>
+<p class="rr-footnote">{{ t('A recuperação estrutural foi verificada. O vínculo de preparo e a conclusão da aquisição exigem revisão curatorial. Originais, metadados de origem e classificações foram preservados.', 'Structural recovery was verified. Preparation links and acquisition completion require curatorial review. Originals, source metadata and classifications have been preserved.') }}</p>
+</div></details>
+{% endfor %}
+<nav class="rr-pager" aria-label="{{ t('Páginas de revisão', 'Review pages') }}">{% if page > 1 %}<a class="ui basic button admin-action" href="{{ page_url(page-1) }}#rr-groups">{{ admin_icon('back') }} <span>{{ t('Anterior', 'Previous') }}</span></a>{% endif %}<span>{{ page }} / {{ pages }}</span>{% if page < pages %}<a class="ui primary button admin-action" href="{{ page_url(page+1) }}#rr-groups">{{ admin_icon('catalog') }} <span>{{ t('Próxima', 'Next') }}</span></a>{% endif %}</nav>
+</section>
+{% endif %}
+</div>
+{% endblock %}

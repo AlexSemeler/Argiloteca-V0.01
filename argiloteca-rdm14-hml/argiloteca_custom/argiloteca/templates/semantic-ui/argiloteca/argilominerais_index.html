@@ -1,0 +1,37 @@
+{% extends config.BASE_TEMPLATE %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_scientific_header, render_icon, render_empty_state with context %}
+{% block css %}
+  {{ super() }}
+{% endblock %}
+{% block page_body %}
+  {{ render_scientific_header(
+    section=_("Argilominerais"), title=_("Argilominerais"),
+    subtitle=_("Explore os perfis dos argilominerais: estrutura, composição, referências e registros relacionados."),
+    breadcrumbs=[{"label": _("Início"), "href": "/"}, {"label": _("Argilominerais"), "href": None}],
+    active_module="minerals"
+  ) }}
+  <section class="argilo-mineral-index" aria-label="{{ _("Índice de argilominerais") }}">
+    <form class="argilo-mineral-search" action="{{ url_for('argiloteca.argilominerais_index') }}" method="get" role="search">
+      <label for="mineral-query">{{ _("Buscar argilomineral por nome") }}</label>
+      <div class="argilo-mineral-search__controls">
+        <input id="mineral-query" type="search" name="q" value="{{ mineral_query }}" placeholder="{{ _("Ex.: caulinita") }}">
+        <button type="submit" class="ui button">{{ render_icon('search') }} {{ _("Buscar") }}</button>
+      </div>
+      {% if mineral_query %}<a class="argilo-mineral-index__reset" href="{{ url_for('argiloteca.argilominerais_index') }}">{{ _("Limpar busca") }}</a>{% endif %}
+    </form>
+    {% set results = namespace(items=[]) %}
+    {% for item in argilo_frontpage_mineral_options %}
+      {% if not mineral_query or mineral_query|lower in item.label|lower or mineral_query|lower in item.term|lower %}
+        {% set results.items = results.items + [item] %}
+      {% endif %}
+    {% endfor %}
+    <p class="argilo-mineral-index__count" role="status">{{ _("Perfis encontrados") }}: {{ results.items|length }}</p>
+    {% if results.items %}
+      <ul class="argilo-mineral-index__list">
+        {% for item in results.items %}<li><a href="{{ item.url }}"><span>{{ item.label }}</span>{{ render_icon('arrow') }}</a></li>{% endfor %}
+      </ul>
+    {% else %}
+      {{ render_empty_state(_("Nenhum argilomineral encontrado. Tente outro nome ou limpe a busca."), _("Ver todos os argilominerais"), url_for('argiloteca.argilominerais_index')) }}
+    {% endif %}
+  </section>
+{% endblock %}

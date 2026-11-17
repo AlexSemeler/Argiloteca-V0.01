@@ -1,0 +1,29 @@
+[project]
+name = "argiloteca-rdm14-hml"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">= 3.14"
+
+[project.entry-points."invenio_base.blueprints"]
+argiloteca_rdm14_hml_views = "argiloteca_rdm14_hml.views:create_blueprint"
+
+[project.entry-points."invenio_assets.webpack"]
+argiloteca_rdm14_hml_theme = "argiloteca_rdm14_hml.webpack:theme"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["argiloteca_rdm14_hml"]
+
+[tool.isort]
+profile = "black"
+
+[tool.pydocstyle]
+add_ignore = ["D401", "D403"]
+
+[tool.pytest.ini_options]
+addopts = ["--isort", "--pydocstyle", "--doctest-glob=\"*.rst\"", "--doctest-modules", "--cov=argiloteca_rdm14_hml", "--cov-report=term-missing", "--exclude-warning-annotations"]
+testpaths = "tests argiloteca_rdm14_hml"
+live_server_scope = "module"

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_geoquimica.schema.json",
+  "title": "arg:geoquimica",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["codigo_amostra"],
+  "properties": {
+    "codigo_amostra": {"type": "string", "minLength": 1},
+    "analise_id": {"type": "string"},
+    "SiO2": {"type": ["number", "null"], "minimum": 0},
+    "Al2O3": {"type": ["number", "null"], "minimum": 0},
+    "Fe2O3": {"type": ["number", "null"], "minimum": 0},
+    "FeO": {"type": ["number", "null"], "minimum": 0},
+    "MgO": {"type": ["number", "null"], "minimum": 0},
+    "CaO": {"type": ["number", "null"], "minimum": 0},
+    "K2O": {"type": ["number", "null"], "minimum": 0},
+    "Na2O": {"type": ["number", "null"], "minimum": 0},
+    "TiO2": {"type": ["number", "null"], "minimum": 0},
+    "MnO": {"type": ["number", "null"], "minimum": 0},
+    "P2O5": {"type": ["number", "null"], "minimum": 0},
+    "PF": {"type": ["number", "null"], "minimum": 0},
+    "LOI": {"type": ["number", "null"], "minimum": 0},
+    "componente_dominante": {"type": "string"},
+    "enriquecimento_relativo": {"type": "string"},
+    "predominancia_mineral": {"type": "string"},
+    "classe_geoquimica": {"type": "string"},
+    "provenance": {"type": "object", "additionalProperties": true},
+    "observacoes": {"type": "string"}
+  }
+}

@@ -1,0 +1,122 @@
+# Overlay used after the sequential v12 -> v13 -> v14 rehearsal.
+# It points application services at the migrated database while preserving the
+# empty Phase 1 database for comparison and rollback.
+services:
+  web-ui:
+    environment:
+      - "ARGILOCLAY_URL=http://argiloclay:7861"
+      - "ARGILOTECA_DRX_RAG_URL=http://argiloclay:7861"
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://${HML_DB_USER:?set HML_DB_USER}:${HML_DB_PASSWORD:?set HML_DB_PASSWORD}@db/${HML_MIGRATED_DB_NAME:-argiloteca-rdm14-migrated}"
+      # Use a fresh index namespace for the migrated database. The original
+      # Phase 1 indices are intentionally preserved for audit/rollback.
+      - "INVENIO_SEARCH_INDEX_PREFIX=argiloteca-rdm14-migrated-"
+      - "ARGILOTECA_DRX_RAW_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_TREATMENT_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_tratamento_raw.json"
+      - "ARGILOTECA_DRX_MINERAL_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_ADVANCED_MANIFEST_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/processamento_avancado_manifest.jsonl"
+      - "ARGILOTECA_DRX_ADVANCED_RESULTS_DIR=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/curvas_avancadas"
+      - "ARGILOTECA_DRX_USE_SCIPY_SAVGOL=0"
+      - "ARGILOTECA_DRX_ANONYMOUS_POLICY=1"
+      - "ARGILOTECA_DRX_ANONYMOUS_RAW_ROOT=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/raw"
+      - "ARGILOTECA_DRX_NGC_GROUP_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/ngc_auxiliary.json"
+      - "ARGILOTECA_DRX_MINERAL_REFERENCE_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json"
+    volumes:
+      - "./argiloteca_custom/argiloteca/argiloclay:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/argiloclay:ro"
+      - "./argiloteca_custom/argiloteca/drx/api/rag_routes.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/api/rag_routes.py:ro"
+      # Only anonymous complete groups are exposed to the web processes.
+      - "./data/drx/lifecycle-v1-20261020:/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020:ro"
+      - "./data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:ro"
+  web-api:
+    environment:
+      - "ARGILOCLAY_URL=http://argiloclay:7861"
+      - "ARGILOTECA_DRX_RAG_URL=http://argiloclay:7861"
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://${HML_DB_USER:?set HML_DB_USER}:${HML_DB_PASSWORD:?set HML_DB_PASSWORD}@db/${HML_MIGRATED_DB_NAME:-argiloteca-rdm14-migrated}"
+      - "INVENIO_SEARCH_INDEX_PREFIX=argiloteca-rdm14-migrated-"
+      - "ARGILOTECA_DRX_RAW_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_TREATMENT_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_tratamento_raw.json"
+      - "ARGILOTECA_DRX_MINERAL_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_ADVANCED_MANIFEST_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/processamento_avancado_manifest.jsonl"
+      - "ARGILOTECA_DRX_ADVANCED_RESULTS_DIR=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/curvas_avancadas"
+      - "ARGILOTECA_DRX_USE_SCIPY_SAVGOL=0"
+      - "ARGILOTECA_DRX_ANONYMOUS_POLICY=1"
+      - "ARGILOTECA_DRX_ANONYMOUS_RAW_ROOT=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/raw"
+      - "ARGILOTECA_DRX_NGC_GROUP_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/ngc_auxiliary.json"
+      - "ARGILOTECA_DRX_MINERAL_REFERENCE_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json"
+    volumes:
+      - "./argiloteca_custom/argiloteca/argiloclay:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/argiloclay:ro"
+      - "./argiloteca_custom/argiloteca/drx/api/rag_routes.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/api/rag_routes.py:ro"
+      # Only anonymous complete groups are exposed to the web processes.
+      - "./data/drx/lifecycle-v1-20261020:/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020:ro"
+      - "./data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:ro"
+  argiloclay:
+    build: ./services/argiloclay-intelligence
+    image: argiloteca-argiloclay-local:20261021
+    environment:
+      ARGILOCLAY_INDEX: /app/storage/knowledge.sqlite3
+      ARGILOCLAY_USE_MODEL: "${ARGILOCLAY_USE_MODEL:-1}"
+      ARGILOCLAY_MODEL: argiloclay-evidence:1.7b
+      ARGILOCLAY_OLLAMA_URL: http://host.docker.internal:11435
+      ARGILOCLAY_MODEL_TIMEOUT: "3"
+    volumes:
+      - "./services/argiloclay-intelligence/storage:/app/storage:ro"
+      - "./services/argiloclay-intelligence/argiloclay_intelligence:/app/argiloclay_intelligence:ro"
+      - "./services/argiloclay-intelligence/data:/app/data:ro"
+    ports:
+      - "127.0.0.1:7862:7861"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 48
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:7861/api/v1/chat/status',timeout=6)"]
+      interval: 30s
+      timeout: 8s
+      retries: 3
+      start_period: 20s
+  worker:
+    # Keep the migration rehearsal bounded on the shared workstation. The
+    # default Celery auto-concurrency detected 14 CPUs and exhausted memory
+    # while OpenSearch rebuilt the migrated corpus.
+    command: ["celery -A invenio_app.celery worker --loglevel=INFO --concurrency=2"]
+    environment:
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://${HML_DB_USER:?set HML_DB_USER}:${HML_DB_PASSWORD:?set HML_DB_PASSWORD}@db/${HML_MIGRATED_DB_NAME:-argiloteca-rdm14-migrated}"
+      - "INVENIO_SEARCH_INDEX_PREFIX=argiloteca-rdm14-migrated-"
+      - "ARGILOTECA_DRX_RAW_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_TREATMENT_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_tratamento_raw.json"
+      - "ARGILOTECA_DRX_MINERAL_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_ADVANCED_MANIFEST_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/processamento_avancado_manifest.jsonl"
+      - "ARGILOTECA_DRX_ADVANCED_RESULTS_DIR=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/curvas_avancadas"
+      - "ARGILOTECA_DRX_USE_SCIPY_SAVGOL=0"
+      - "ARGILOTECA_DRX_ANONYMOUS_POLICY=1"
+      - "ARGILOTECA_DRX_ANONYMOUS_RAW_ROOT=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/raw"
+      - "ARGILOTECA_DRX_NGC_GROUP_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/ngc_auxiliary.json"
+      - "ARGILOTECA_DRX_MINERAL_REFERENCE_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json"
+    volumes:
+      # Only anonymous complete groups are exposed to the web processes.
+      - "./data/drx/lifecycle-v1-20261020:/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020:ro"
+      - "./data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:ro"
+  scheduler:
+    environment:
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://${HML_DB_USER:?set HML_DB_USER}:${HML_DB_PASSWORD:?set HML_DB_PASSWORD}@db/${HML_MIGRATED_DB_NAME:-argiloteca-rdm14-migrated}"
+      - "INVENIO_SEARCH_INDEX_PREFIX=argiloteca-rdm14-migrated-"
+      - "ARGILOTECA_DRX_RAW_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_TREATMENT_SNAPSHOT_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_tratamento_raw.json"
+      - "ARGILOTECA_DRX_MINERAL_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/classificacao_mineralogica_raw.json"
+      - "ARGILOTECA_DRX_ADVANCED_MANIFEST_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/processamento_avancado_manifest.jsonl"
+      - "ARGILOTECA_DRX_ADVANCED_RESULTS_DIR=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/curvas_avancadas"
+      - "ARGILOTECA_DRX_USE_SCIPY_SAVGOL=0"
+      - "ARGILOTECA_DRX_ANONYMOUS_POLICY=1"
+      - "ARGILOTECA_DRX_ANONYMOUS_RAW_ROOT=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/raw"
+      - "ARGILOTECA_DRX_NGC_GROUP_CLASSIFICATION_PATH=/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/ngc_auxiliary.json"
+      - "ARGILOTECA_DRX_MINERAL_REFERENCE_PATH=/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json"
+    volumes:
+      # Only anonymous complete groups are exposed to the web processes.
+      - "./data/drx/lifecycle-v1-20261020:/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020:ro"
+      - "./data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:/opt/invenio/src/.venv/lib/data/drx/saida_argiloteca_drx/webmineral_argilominerais_vocabulario.json:ro"

@@ -1,0 +1,136 @@
+{
+  "captured_on": "2026-10-18",
+  "source_documents_are_data": true,
+  "originals_modified": false,
+  "profile_version": "not supplied; README date is not a profile version",
+  "files": [
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/README.md",
+      "snapshot": "models/README.md",
+      "sha256": "78e2319e0cf924ef16af0f1e4fab6aa93efb5c8e540a4ae7df68804bf773ede2",
+      "schema_id": null,
+      "dialect": null,
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_amostra.schema.json",
+      "snapshot": "models/arg_amostra.schema.json",
+      "sha256": "a1eadcb332a959777e0d1aca8e1eeca797eb1e17f9eb7b18f900296e8f888eb7",
+      "schema_id": "https://argiloteca.local/schemas/arg_amostra.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_analise.schema.json",
+      "snapshot": "models/arg_analise.schema.json",
+      "sha256": "a2f3845492fee20e74e44e4c3fad760e3889a636efc5040cb68b06c7822ec712",
+      "schema_id": "https://argiloteca.local/schemas/arg_analise.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_argilomineral.schema.json",
+      "snapshot": "models/arg_argilomineral.schema.json",
+      "sha256": "34d2a3dfa4a083c84d88fd8f76a374f235dc67838224a4e599fa18cce9f430bb",
+      "schema_id": "https://argiloteca.local/schemas/arg_argilomineral.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_coordenada.schema.json",
+      "snapshot": "models/arg_coordenada.schema.json",
+      "sha256": "a04de04f31efa86575eb8639176f44f691cb03bcff1410d84f0bc44d92298d29",
+      "schema_id": "https://argiloteca.local/schemas/arg_coordenada.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_deposito.schema.json",
+      "snapshot": "models/arg_deposito.schema.json",
+      "sha256": "e94434b25514e726ee7ddb12c5aae7bf95e511a9567cc3cc53264a00f1518a3a",
+      "schema_id": "https://argiloteca.local/schemas/arg_deposito.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_drx.schema.json",
+      "snapshot": "models/arg_drx.schema.json",
+      "sha256": "4951c4c36178d0e266390655fa5aa1617028e965517069f02d420be19a9a083b",
+      "schema_id": "https://argiloteca.local/schemas/arg_drx.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_geoquimica.schema.json",
+      "snapshot": "models/arg_geoquimica.schema.json",
+      "sha256": "fadbf495e624f6dd59f78c6a6658cc1912cdded2737d21c271d9ff61e33dfdc3",
+      "schema_id": "https://argiloteca.local/schemas/arg_geoquimica.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_localidade.schema.json",
+      "snapshot": "models/arg_localidade.schema.json",
+      "sha256": "7a0410de7628670e4469b78bd99b67555776e2cd3e721077d0033dc3807171d9",
+      "schema_id": "https://argiloteca.local/schemas/arg_localidade.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_metodo_analitico.schema.json",
+      "snapshot": "models/arg_metodo_analitico.schema.json",
+      "sha256": "95c2bab88ca2807177478a07b2b9a805c2bb2b6d0702c08eddcffaffb5dff235",
+      "schema_id": "https://argiloteca.local/schemas/arg_metodo_analitico.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_pacote_analitico.schema.json",
+      "snapshot": "models/arg_pacote_analitico.schema.json",
+      "sha256": "d1440eaa7b5b1b90c73fd708d488072a78027f626570ec89e74b50e9f4617e29",
+      "schema_id": "https://argiloteca.local/schemas/arg_pacote_analitico.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_payload_publicacao.schema.json",
+      "snapshot": "models/arg_payload_publicacao.schema.json",
+      "sha256": "38fef9ea390ac452cbf16540a694b0503b9ec97e53b08b0ba10909f04ecabfd8",
+      "schema_id": "https://argiloteca.local/schemas/arg_payload_publicacao.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_pesquisa_campo.schema.json",
+      "snapshot": "models/arg_pesquisa_campo.schema.json",
+      "sha256": "7082346f970cd14f6e1faa295fdaa61ec09a1ab092165abd3984c97ac41bdd3e",
+      "schema_id": "https://argiloteca.local/schemas/arg_pesquisa_campo.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_publicacao.schema.json",
+      "snapshot": "models/arg_publicacao.schema.json",
+      "sha256": "7265267fbd0d880e72c2969e563f2a3e42cb3c62512b6652d5d3a749a953d6d4",
+      "schema_id": "https://argiloteca.local/schemas/arg_publicacao.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/arg_referencia_drx_webmineral.schema.json",
+      "snapshot": "models/arg_referencia_drx_webmineral.schema.json",
+      "sha256": "575dd4261b6f193c4842f3be8e13e7d969c319818e98ed16040e912eb693f103",
+      "schema_id": "https://argiloteca.local/schemas/arg_referencia_drx_webmineral.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "profile_version": null
+    },
+    {
+      "source_path": "/Users/alexandresemeler/argilas/SCHEMAS_CIENTIFICOS/catalog.json",
+      "snapshot": "models/catalog.json",
+      "sha256": "b4145b42a5742844705ab1cb549e32596966e8031df040daa42e1c61534d3aef",
+      "schema_id": null,
+      "dialect": null,
+      "profile_version": null
+    }
+  ]
+}

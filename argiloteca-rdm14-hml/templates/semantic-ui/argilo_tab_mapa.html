@@ -1,0 +1,66 @@
+{# argilo_tab_mapa.html #}
+{% from "argilo_map_components.html" import render_argilo_map_panel %}
+
+{% set cf = record.custom_fields if record.custom_fields is defined else {} %}
+{% set amostras = cf.get("arg:amostras", []) if cf else [] %}
+{% set minerais = cf.get("arg:argilominerais", []) %}
+{% set primeira_amostra = amostras[0] if amostras and amostras is sequence and amostras is not string else {} %}
+{% set lat = primeira_amostra.get("latitude") if primeira_amostra else cf.get("arg:amostra_latitude") %}
+{% set lon = primeira_amostra.get("longitude") if primeira_amostra else cf.get("arg:amostra_longitude") %}
+{% set alt = primeira_amostra.get("altitude_m") if primeira_amostra else cf.get("arg:amostra_altitude") %}
+{% set ns = namespace(point_count=0) %}
+
+{% if amostras and amostras is sequence and amostras is not string %}
+  {% for amostra in amostras %}
+    {% if amostra.get("latitude") not in [none, ''] and amostra.get("longitude") not in [none, ''] %}
+      {% set ns.point_count = ns.point_count + 1 %}
+    {% endif %}
+  {% endfor %}
+{% elif lat not in [none, ''] and lon not in [none, ''] %}
+  {% set ns.point_count = ns.point_count + 1 %}
+{% endif %}
+
+{% if minerais and minerais is sequence and minerais is not string %}
+  {% for mineral in minerais %}
+    {% if mineral.get("latitude") not in [none, ''] and mineral.get("longitude") not in [none, ''] %}
+      {% set ns.point_count = ns.point_count + 1 %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="ui three column stackable grid">
+  <div class="column">
+    <div class="ui segment arg-section arg-section-sample">
+      <strong>{{ _("Pontos georreferenciados") }}</strong><br>
+      {{ ns.point_count }}
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment arg-section arg-section-sample">
+      <strong>{{ _("Latitude principal") }}</strong><br>
+      {{ lat or '—' }}
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment arg-section arg-section-sample">
+      <strong>{{ _("Longitude principal") }}</strong><br>
+      {{ lon or '—' }}
+      {% if alt not in [none, ''] %}
+        <div class="rel-mt-1"><small>{{ _("Altitude base") }}: {{ alt }} {{ _("m") }}</small></div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{{ render_argilo_map_panel(
+  map_id="argilo-record-map-" ~ record.id,
+  api_url=url_for('argiloteca.api_pontos_argilominerais'),
+  title=_("Mapa do registro"),
+  subtitle=_("A aba carrega sob demanda e destaca em vermelho os pontos pertencentes a este registro."),
+  record_id=record.id,
+  highlight_record_id=record.id,
+  lazy=true,
+  map_height="420px",
+  empty_message=_("Este registro ainda não possui coordenadas válidas para visualização."),
+  global_map_url=url_for('argiloteca.mapa_argilominerais', highlight_record_id=record.id)
+) }}

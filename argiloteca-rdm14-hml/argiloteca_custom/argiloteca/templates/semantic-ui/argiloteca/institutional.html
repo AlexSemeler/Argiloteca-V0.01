@@ -1,0 +1,37 @@
+{% extends "invenio_app_rdm/page.html" %}
+{% set title = _('Sobre a Argiloteca') %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% block page_body %}
+<article class="ui container argilo-institutional" aria-labelledby="institutional-title">
+  <nav aria-label="{{ _('Navegação estrutural') }}"><a href="/">{{ _('Início') }}</a> / {{ _('Sobre') }}</nav>
+  <h1 id="institutional-title">{{ _('Sobre a Argiloteca') }}</h1>
+  <p class="argilo-institutional__lead">{{ _('Argiloteca é um dos resultados do Projeto de P&D: BASE DE DADOS ESTRUTURADA DE DEPÓSITOS DE ARGILAS DO BRASIL E ANÁLOGOS NO MUNDO, uma parceria entre UFRGS e Petrobras.') }}</p>
+  <p>{{ _('A Argiloteca reúne e organiza dados científicos sobre argilas e argilominerais, integrando repositório digital, coleção de referência e curadoria técnica em um mesmo ambiente de pesquisa do CPAA.') }}</p>
+  <p>{{ _('O sistema conecta amostras, vocabulários controlados, metadados geológicos, composição química e resultados analíticos para sustentar descrição mineralógica, rastreabilidade e descoberta científica.') }}</p>
+  <h2>{{ _('Consultar o acervo') }}</h2>
+  <p>{{ _('Consulte registros, vocabulários, amostras e resultados analíticos nos módulos científicos.') }}</p>
+  <p>{{ _('As condições de acesso aos dados e arquivos estão indicadas em cada registro. O depósito e a gestão de registros exigem autenticação e as permissões correspondentes.') }}</p>
+  <div class="argilo-institutional__actions">
+    <a class="ui primary button" href="{{ url_for('invenio_search_ui.search') }}">{{ render_icon('search') }} {{ _('Explorar acervo') }}</a>
+    <a class="ui basic button" href="{{ url_for('argiloteca.catalogo_autorizado_argilominerais') }}">{{ render_icon('catalog') }} {{ _('Explorar catálogo') }}</a>
+  </div>
+  <section class="argilo-institutional__team" aria-labelledby="cpaa-team-title">
+    <a class="argilo-institutional__cpaa-logo" href="https://www.ufrgs.br/argilas/">
+      <img src="{{ url_for('argiloteca.static', filename='images/partners/cpaa.png') }}" width="2048" height="1027" alt="{{ _('CPAA — Centro de Pesquisa em Argilas e Argilominerais') }}" loading="lazy">
+    </a>
+    <h2 id="cpaa-team-title">{{ _('Equipe do CPAA') }}</h2>
+    <p>{{ _('Equipe de gestão e pesquisa do CPAA.') }}</p>
+    <ul class="argilo-institutional__team-list">
+      <li><h3>André Sampaio Mexias</h3><p>{{ _('Coordenador') }}</p><a href="https://lattes.cnpq.br/0139109240245453" aria-label="{{ _('Currículo Lattes de %(name)s', name='André Sampaio Mexias') }}">{{ _('Currículo Lattes') }}</a></li>
+      <li><h3>Everton Marques Bongiolo</h3><p>{{ _('Vice-coordenador') }}</p><a href="https://lattes.cnpq.br/7782253195806070" aria-label="{{ _('Currículo Lattes de %(name)s', name='Everton Marques Bongiolo') }}">{{ _('Currículo Lattes') }}</a></li>
+      <li><h3>Marcia Elisa Boscato Gomes</h3><p>{{ _('Pesquisadora') }}</p><a href="https://lattes.cnpq.br/3088966471219169" aria-label="{{ _('Currículo Lattes de %(name)s', name='Marcia Elisa Boscato Gomes') }}">{{ _('Currículo Lattes') }}</a></li>
+      <li><h3>Lucas Cardozo Jantsch</h3><p>{{ _('Pesquisador') }}</p><a href="https://lattes.cnpq.br/8822623089265957" aria-label="{{ _('Currículo Lattes de %(name)s', name='Lucas Cardozo Jantsch') }}">{{ _('Currículo Lattes') }}</a></li>
+      <li><h3>Mauricio Dias da Silva</h3><p>{{ _('Pesquisador') }}</p><a href="https://lattes.cnpq.br/1609262029327755" aria-label="{{ _('Currículo Lattes de %(name)s', name='Mauricio Dias da Silva') }}">{{ _('Currículo Lattes') }}</a></li>
+      <li><h3>Alexandre Ribas Semeler</h3><p>{{ _('Pesquisador e bibliotecário de dados') }}</p><a href="https://lattes.cnpq.br/1564154234554393" aria-label="{{ _('Currículo Lattes de %(name)s', name='Alexandre Ribas Semeler') }}">{{ _('Currículo Lattes') }}</a></li>
+    </ul>
+    <div class="argilo-institutional__actions argilo-institutional__team-actions">
+      <a class="ui primary button" href="https://www.ufrgs.br/argilas/wp-content/uploads/2025/05/expertise_da_equipe.pdf">{{ _('Conheça toda a equipe do projeto (PDF)') }}</a>
+    </div>
+  </section>
+</article>
+{% endblock %}

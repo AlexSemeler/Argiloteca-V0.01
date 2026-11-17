@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Offline verification of the saved HTTPS harvest. No credentials or DB access.
+set -Eeuo pipefail
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common.sh"
+require_command docker
+readonly REPOSITORY_DIR="$(cd "${PROJECT_DIR}/.." && pwd)"
+readonly EVIDENCE_DIR="${1:-${REPOSITORY_DIR}/output/metadata-extension}"
+docker run --rm --network none --platform linux/amd64 --entrypoint python \
+ --mount "type=bind,src=${EVIDENCE_DIR},dst=/evidence" \
+ --mount "type=bind,src=${REPOSITORY_DIR}/.agents/skills/argiloteca-invenio-metadata,dst=/skill,readonly" \
+ --mount "type=bind,src=${PROJECT_DIR}/argiloteca_custom/argiloteca/scientific/xsd,dst=/schemas,readonly" \
+ --mount "type=bind,src=${PROJECT_DIR}/tests/scientific/xsd,dst=/aux,readonly" \
+ --mount "type=bind,src=${PROJECT_DIR}/tests/scientific,dst=/tests,readonly" \
+ argiloteca-rdm14-hml:14.0.4 /tests/verify_evidence.py

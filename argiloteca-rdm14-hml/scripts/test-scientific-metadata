@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Offline contract tests; does not connect to or mutate the homologation DB.
+set -Eeuo pipefail
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common.sh"
+require_command docker
+docker run --rm --network none --platform linux/amd64 \
+  --mount "type=bind,src=${PROJECT_DIR}/tests/scientific,dst=/tests,readonly" \
+  --mount "type=bind,src=${PROJECT_DIR}/argiloteca_custom,dst=/extension,readonly" \
+  --env PYTHONPATH=/extension --workdir /tests --entrypoint python \
+  argiloteca-rdm14-hml:14.0.4 -m unittest -v test_contract

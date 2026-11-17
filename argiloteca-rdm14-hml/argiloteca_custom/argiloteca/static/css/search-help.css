@@ -1,0 +1,11 @@
+/* Keep the native reading layout; allow technical queries to fit narrow screens. */
+.argilo-search-help { padding-bottom: 2rem; }
+.argilo-search-help code { white-space: normal; overflow-wrap: anywhere; }
+/* Keep the reading area clear when the article uses the site's wider container. */
+body:has(.argilo-search-help) .argilo-robo-launcher {
+  position: static;
+  inset: auto;
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 1rem 1rem 1rem auto;
+}

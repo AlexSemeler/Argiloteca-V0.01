@@ -1,0 +1,8 @@
+/* Normal flow keeps long administrative forms and the assistant separated. */
+body {display: block;}
+.argilo-robo-launcher {position: static !important; margin: 1rem 1rem 1rem auto;}
+.oa-clean-form {max-width: 760px; margin: 1rem 0 1.5rem;}
+.oa-clean-confirm {max-width: 760px; margin: 1.5rem 0;}
+.oa-clean-form input::placeholder {color: #6b5747 !important; opacity: 1;}
+.oa-nav [aria-current=page] {font-weight: 700;}
+.oa-workspace select {max-width: 100%;}

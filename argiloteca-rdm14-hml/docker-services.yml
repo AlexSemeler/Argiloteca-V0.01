@@ -1,0 +1,184 @@
+services:
+  app:
+    platform: linux/amd64
+    build:
+      context: ./
+      args:
+        - ENVIRONMENT=DEV
+    image: argiloteca-rdm14-hml:14.0.4
+    restart: "unless-stopped"
+    environment:
+      - "INVENIO_ACCOUNTS_SESSION_REDIS_URL=redis://cache:6379/1"
+      - "INVENIO_BROKER_URL=amqp://${HML_RABBITMQ_USER:?set HML_RABBITMQ_USER}:${HML_RABBITMQ_PASSWORD:?set HML_RABBITMQ_PASSWORD}@mq:5672/"
+      - "INVENIO_CACHE_REDIS_URL=redis://cache:6379/0"
+      - "INVENIO_CACHE_TYPE=RedisCache"
+      - "INVENIO_CELERY_BROKER_URL=amqp://${HML_RABBITMQ_USER:?set HML_RABBITMQ_USER}:${HML_RABBITMQ_PASSWORD:?set HML_RABBITMQ_PASSWORD}@mq:5672/"
+      - "INVENIO_CELERY_RESULT_BACKEND=redis://cache:6379/2"
+      - "INVENIO_COMMUNITIES_IDENTITIES_CACHE_REDIS_URL=redis://cache:6379/4"
+      - "INVENIO_SEARCH_HOSTS=['search:9200']"
+      - "INVENIO_SECRET_KEY=${INVENIO_SECRET_KEY:?set INVENIO_SECRET_KEY}"
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://${HML_DB_USER:?set HML_DB_USER}:${HML_DB_PASSWORD:?set HML_DB_PASSWORD}@db/${HML_DB_NAME:?set HML_DB_NAME}"
+      - "INVENIO_PROXYFIX_CONFIG={'x_for': 1, 'x_proto': 1}"
+      - "INVENIO_RATELIMIT_STORAGE_URL=redis://cache:6379/3"
+      # If you are deploying your site on a non-local host
+      # make sure to change those values accordingly.
+      - "INVENIO_SITE_UI_URL=https://127.0.0.1:${HML_HTTPS_PORT:-5101}"
+      - "INVENIO_SITE_API_URL=https://127.0.0.1:${HML_HTTPS_PORT:-5101}/api"
+      - "INVENIO_SERVER_NAME=127.0.0.1:${HML_HTTPS_PORT:-5101}"
+      - "INVENIO_PREFERRED_URL_SCHEME=https"
+      - "ARGILOTECA_VOCABULARY_DIR=/opt/invenio/var/instance/app_data/vocabularies"
+      - "ARGILOTECA_CURATED_MINERAL_DIR=/opt/invenio/var/instance/app_data/mineralogia"
+    # Restore the local Argiloteca presentation while retaining the v14 runtime.
+    volumes:
+      - "./invenio.cfg:/opt/invenio/var/instance/invenio.cfg:ro"
+      - "./templates:/opt/invenio/var/instance/templates:ro"
+      - "./translations:/opt/invenio/var/instance/translations:ro"
+      - "./app_data:/opt/invenio/var/instance/app_data:ro"
+      - "./argiloteca_custom/argiloteca/mineralogia.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/mineralogia.py:ro"
+      - "./argiloteca_custom/argiloteca/scientific:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/scientific:ro"
+      - "./argiloteca_custom/argiloteca/custom_fields.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/custom_fields.py:ro"
+      - "./argiloteca_custom/argiloteca/ext.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/ext.py:ro"
+      - "./argiloteca_custom/argiloteca/ext_api.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/ext_api.py:ro"
+      - "./argiloteca_custom/argiloteca/views.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/views.py:ro"
+      - "./argiloteca_custom/argiloteca/services/drx.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/services/drx.py:ro"
+      - "./argiloteca_custom/argiloteca/services/drx_report.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/services/drx_report.py:ro"
+      - "./argiloteca_custom/argiloteca/services/drx_selection_report.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/services/drx_selection_report.py:ro"
+      - "./argiloteca_custom/argiloteca/services/report_branding.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/services/report_branding.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/api/comparison_routes.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/api/comparison_routes.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/api/curve_routes.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/api/curve_routes.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/api/blueprint.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/api/blueprint.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/api/reference_routes.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/api/reference_routes.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/reference_pilot_service.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/reference_pilot_service.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/external_curve_service.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/external_curve_service.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/contracts/external_curve.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/contracts/external_curve.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/api/upload_routes.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/api/upload_routes.py:ro"
+      - "./argiloteca_custom/argiloteca/data/reference_pilot_v1.json:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/data/reference_pilot_v1.json:ro"
+      - "./argiloteca_custom/argiloteca/templates:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/templates:ro"
+      - "./argiloteca_custom/argiloteca/static:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/static:ro"
+      - "./argiloteca_custom/argiloteca_drx_core/raw_lifecycle.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca_drx_core/raw_lifecycle.py:ro"
+      - "./argiloteca_custom/argiloteca_drx_core/raw101_shadow.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca_drx_core/raw101_shadow.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/mineral_matcher.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/mineral_matcher.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/reference_pilot_v2_service.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/reference_pilot_v2_service.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/reference_pilot_ngc_shadow_service.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/reference_pilot_ngc_shadow_service.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/temporary_curve_service.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/temporary_curve_service.py:ro"
+      - "./argiloteca_custom/src/drx/webmineral_classifier.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/src/drx/webmineral_classifier.py:ro"
+      - "./argiloteca_custom/src/drx/peak_detection.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/src/drx/peak_detection.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/raw_lifecycle_batch.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/raw_lifecycle_batch.py:ro"
+      - "./argiloteca_custom/argiloteca_drx_core/raw_recovery.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca_drx_core/raw_recovery.py:ro"
+      - "./argiloteca_custom/argiloteca/drx/services/raw_recovery_batch.py:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca/drx/services/raw_recovery_batch.py:ro"
+  frontend:
+    build: ./docker/nginx/
+    image: argiloteca-rdm14-hml-frontend:14.0.4
+    restart: "unless-stopped"
+    environment:
+      HML_HTTPS_PORT: "${HML_HTTPS_PORT:-5101}"
+    # Preserve an explicitly configured local certificate across restarts.
+    volumes:
+      - "./docker/nginx/conf.d/default.conf:/etc/nginx/templates/default.conf.template:ro"
+      - "${HML_TLS_CERT:-./docker/nginx/test.crt}:/etc/ssl/certs/test.crt:ro"
+      - "${HML_TLS_KEY:-./docker/nginx/test.key}:/etc/ssl/private/test.key:ro"
+    ports:
+      - "${DOCKER_WEB_IP_BIND:-127.0.0.1}:${HML_HTTP_PORT:-5180}:80"
+      - "${DOCKER_WEB_IP_BIND:-127.0.0.1}:${HML_HTTPS_PORT:-5101}:443"
+  cache:
+    image: redis:7@sha256:c6eabf748fc7a61dbb5a705c78bcf3d6377b1127a97d0ce965c11c44ba46896f
+    restart: "unless-stopped"
+    read_only: true
+    ports:
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_REDIS_PORT:-16380}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  db:
+    image: postgres:17.10@sha256:7958605b474b3d264a969cb3a123d6aa00ad1e1fe9da8a69984dabb704d93317
+    restart: "unless-stopped"
+    environment:
+      - "POSTGRES_USER=${HML_DB_USER:?set HML_DB_USER}"
+      - "POSTGRES_PASSWORD=${HML_DB_PASSWORD:?set HML_DB_PASSWORD}"
+      - "POSTGRES_DB=${HML_DB_NAME:?set HML_DB_NAME}"
+    ports:
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_DB_PORT:-15433}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  # note: RabbitMQ uses the hostname to build the Mnesia data directory path (cf. https://www.rabbitmq.com/docs/configure)
+  #       using a randomly generated hostname "forgets" about old queued messages (e.g. celery tasks) with new builds,
+  #       and hard-coding the Mnesia path with random hostnames leads to connection issues on startup for old names
+  mq:
+    image: rabbitmq:3-management@sha256:e582c0bc7766f3342496d8485efb5a1df782b5ce3886ad017e2eaae442311f69
+    restart: "unless-stopped"
+    hostname: mq
+    environment:
+      - "RABBITMQ_DEFAULT_USER=${HML_RABBITMQ_USER:?set HML_RABBITMQ_USER}"
+      - "RABBITMQ_DEFAULT_PASS=${HML_RABBITMQ_PASSWORD:?set HML_RABBITMQ_PASSWORD}"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports:
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_RABBITMQ_MANAGEMENT_PORT:-15676}:15672"
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_RABBITMQ_PORT:-15675}:5672"
+    volumes:
+      - mq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+  flower:
+    image: mher/flower:2.0.1@sha256:51c3c3db5be343e6335e3dbca5348708932bbcca992df6a39f1dad91e3b340df
+    restart: "unless-stopped"
+    ports:
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_FLOWER_PORT:-15555}:5555"
+    command: celery --broker=amqp://${HML_RABBITMQ_USER:?set HML_RABBITMQ_USER}:${HML_RABBITMQ_PASSWORD:?set HML_RABBITMQ_PASSWORD}@mq:5672/ flower
+    depends_on:
+      mq:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5555/', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+  search:
+    image: opensearchproject/opensearch:2.19.5@sha256:4ee82ecb35d837a6186c81aaa64c8a5bce71aa956edbd87f1f684ab56af52c44
+    restart: "unless-stopped"
+    environment:
+      # Settings only for development. DO NOT use in production!
+      - bootstrap.memory_lock=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+      # Change the initial admin password according to the OpenSearch documentation:
+      # https://docs.opensearch.org/latest/security/configuration/demo-configuration/#setting-up-a-custom-admin-password
+      - "OPENSEARCH_INITIAL_ADMIN_PASSWORD=${HML_OPENSEARCH_ADMIN_PASSWORD:?set HML_OPENSEARCH_ADMIN_PASSWORD}"
+      - "DISABLE_INSTALL_DEMO_CONFIG=true"
+      - "DISABLE_SECURITY_PLUGIN=true"
+      - "discovery.type=single-node"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 2g
+    ports:
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_OPENSEARCH_PORT:-19300}:9200"
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:${HML_OPENSEARCH_METRICS_PORT:-19700}:9600"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9200 >/dev/null || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+    volumes:
+      - search_data:/usr/share/opensearch/data
+volumes:
+  db_data:
+  mq_data:
+  search_data:

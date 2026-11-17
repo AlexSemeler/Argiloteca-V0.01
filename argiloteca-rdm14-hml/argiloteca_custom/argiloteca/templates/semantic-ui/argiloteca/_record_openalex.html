@@ -1,0 +1,22 @@
+{% set complement = argilo_openalex_complements(record_ui.id) if argilo_openalex_complements is defined else none %}
+{% if complement %}
+{% set p = complement.payload %}
+<section class="argilo-openalex" aria-labelledby="argilo-openalex-title">
+  <h2 id="argilo-openalex-title">{{ render_icon('dashboard') }} {{ review_text('Topics e métricas OpenAlex','OpenAlex Topics and metrics') }}</h2>
+  <p>{{ review_text('Complementos científicos revisados para esta publicação.','Reviewed scientific complements for this publication.') }} <a href="{{ p.id }}" target="_blank" rel="noopener noreferrer">{{ review_text('Consultar no OpenAlex','View on OpenAlex') }}</a></p>
+  <dl class="argilo-openalex-values">
+    {% for key,pt,en in [('primary_topic','Tópico principal','Primary topic'),('subfield','Subárea','Subfield'),('field','Área','Field'),('domain','Domínio','Domain')] %}
+    {% set value = p.primary_topic if key=='primary_topic' else (p.primary_topic.get(key) if p.primary_topic else none) %}
+    <div><dt>{{ review_text(pt,en) }}</dt><dd>{% if value %}<a href="{{ value.id }}" target="_blank" rel="noopener noreferrer">{{ value.display_name or value.id }}</a>{% else %}{{ review_text('Não informado','Not provided') }}{% endif %}</dd></div>
+    {% endfor %}
+    <div><dt>{{ review_text('Citações na coleta','Citations at collection') }}</dt><dd>{{ p.cited_by_count if p.cited_by_count is not none else review_text('Não informado','Not provided') }}</dd></div>
+    <div><dt>FWCI</dt><dd>{{ p.fwci if p.fwci is not none else review_text('Não informado','Not provided') }}</dd></div>
+    <div><dt>{{ review_text('Percentil de citação','Citation percentile') }}</dt><dd>{% if p.citation_normalized_percentile and p.citation_normalized_percentile.value is not none %}{{ (p.citation_normalized_percentile.value*100)|round(2) }} / 100{% else %}{{ review_text('Não informado','Not provided') }}{% endif %}</dd></div>
+  </dl>
+  <p>{{ review_text('FWCI: referência mundial = 1. Citações e FWCI não são fator de impacto JIF. Dados ausentes não representam zero.','FWCI: world reference = 1. Citations and FWCI are not Journal Impact Factor. Missing data do not represent zero.') }}</p>
+  {% if p.topics %}<details><summary>{{ review_text('Ver todos os tópicos atribuídos pela fonte','View all topics assigned by the source') }}</summary><ul>{% for topic in p.topics %}<li><a href="{{ topic.id }}" target="_blank" rel="noopener noreferrer">{{ topic.display_name or topic.id }}</a>{% if topic.score is not none %} · {{ review_text('Pontuação:','Score:') }} {{ topic.score }}{% endif %}</li>{% endfor %}</ul></details>{% endif %}
+  {% if p.counts_by_year %}<details><summary>{{ review_text('Ver histórico de citações fornecido','View supplied citation history') }}</summary><div class="argilo-openalex-scroll"><table class="ui very basic compact table"><thead><tr><th>{{ review_text('Ano','Year') }}</th><th>{{ review_text('Citações','Citations') }}</th></tr></thead><tbody>{% for row in p.counts_by_year %}<tr><td>{{ row.year if row.year is not none else '—' }}</td><td>{{ row.cited_by_count if row.cited_by_count is not none else review_text('Não informado','Not provided') }}</td></tr>{% endfor %}</tbody></table></div></details>{% endif %}
+  <details><summary>{{ review_text('Fonte, datas e versão','Source, dates and version') }}</summary><dl class="argilo-openalex-values"><div><dt>{{ review_text('Atualização na fonte','Source update') }}</dt><dd>{{ p.updated_date or review_text('Não informado','Not provided') }}</dd></div><div><dt>{{ review_text('Coleta (UTC)','Collected (UTC)') }}</dt><dd>{{ p.collected_at }}</dd></div><div><dt>{{ review_text('Aplicação (UTC)','Applied (UTC)') }}</dt><dd>{{ complement.applied_at }}</dd></div><div><dt>{{ review_text('Método','Method') }}</dt><dd>{{ p.method }}</dd></div><div><dt>{{ review_text('Versão analítica','Analytical version') }}</dt><dd>{{ complement.version }}</dd></div></dl></details>
+</section>
+{% endif %}
+{% if config.ARGILOTECA_OPENALEX_ROOT and argilo_can_review_raws() %}<p><a class="ui button" href="{{ url_for('argiloteca_openalex.enrichment_index') }}">{{ render_icon('refresh') }} {{ review_text('Atualizar dados do Acervo','Update collection data') }}</a></p>{% endif %}

@@ -1,0 +1,24 @@
+/* Public scientific images and the existing Argiloteca line icons. */
+.argilo-drx-figure { margin: 0; min-width: 0; }
+.argilo-drx-figure img { display: block; width: 100%; height: auto; object-fit: contain; background: var(--arg-color-surface); }
+.argilo-drx-figure figcaption { margin-top: .75rem; color: var(--arg-color-text); font-size: 14px; line-height: 1.65; }
+.argilo-drx-figure figcaption strong { display: block; color: var(--arg-color-primary-strong); font-size: 1.05em; margin-bottom: .25rem; }
+.argilo-drx-figure__credit { display: block; margin-top: .4rem; font-size: 13px; overflow-wrap: anywhere; }
+.argilo-drx-figure__credit a { text-decoration: underline; text-underline-offset: .15em; }
+.argilo-drx-gallery { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 2rem; margin-block: 2rem 3rem; align-items: start; }
+.argilo-drx-gallery .argilo-drx-figure img { height: 340px; }
+.argilo-drx-summary .argilo-drx-figure { margin-block: 1rem 1.25rem; }
+.argilo-drx-summary .argilo-drx-figure img { max-height: 220px; }
+.argilo-drx-summary .argilo-drx-figure figcaption { font-size: 13px; }
+.argilo-drx-summary .argilo-drx-figure figcaption strong { font-size: 14px; }
+.argilo-drx-summary .argilo-drx-figure__credit { font-size: 12px; }
+.argilo-drx-summary .argilo-drx-figure__credit a { display: inline; min-height: 0; }
+.argilo-drx-summary h3,
+.argilo-drx-guide h2 { display: flex; align-items: center; gap: .65rem; }
+.argilo-drx-summary h3 > .argilo-icon,
+.argilo-drx-guide h2 > .argilo-icon { flex: 0 0 auto; width: 24px; height: 24px; }
+@media (max-width: 767px) {
+  .argilo-drx-gallery { grid-template-columns: minmax(0,1fr); gap: 1.75rem; }
+  .argilo-drx-gallery .argilo-drx-figure--instrument img { height: 320px; }
+  .argilo-drx-gallery .argilo-drx-figure--bragg img { height: auto; }
+}

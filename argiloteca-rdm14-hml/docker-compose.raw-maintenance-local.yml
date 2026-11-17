@@ -1,0 +1,15 @@
+# Local-only: narrow writable mounts for reviewed anonymous RAW removal.
+# Keep manifests, private source originals and the rest of app_data read-only.
+services:
+  web-ui:
+    volumes:
+      - ./app_data/drx-library/files:/opt/invenio/var/instance/app_data/drx-library/files:rw
+      - ./data/drx/lifecycle-v1-20261020/raw:/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/raw:rw
+  web-api:
+    volumes:
+      - ./app_data/drx-library/files:/opt/invenio/var/instance/app_data/drx-library/files:rw
+      - ./data/drx/lifecycle-v1-20261020/raw:/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/raw:rw
+  worker:
+    volumes:
+      - ./app_data/drx-library/files:/opt/invenio/var/instance/app_data/drx-library/files:rw
+      - ./data/drx/lifecycle-v1-20261020/raw:/opt/invenio/src/.venv/lib/data/drx/lifecycle-v1-20261020/raw:rw

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/common.sh"
+
+require_command docker
+require_env_file
+
+required_services=(cache db mq search web-ui web-api worker scheduler frontend flower argiloclay)
+failed=0
+
+for service in "${required_services[@]}"; do
+  container_id="$(compose_migrated ps --quiet "${service}")"
+  if [[ -z "${container_id}" ]]; then
+    printf '%-12s AUSENTE\n' "${service}"
+    failed=1
+    continue
+  fi
+
+  state="$(docker inspect --format '{{.State.Status}}' "${container_id}")"
+  health="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}sem-healthcheck{{end}}' "${container_id}")"
+  printf '%-12s estado=%-10s saúde=%s\n' "${service}" "${state}" "${health}"
+  if [[ "${state}" != "running" || ( "${health}" != "sem-healthcheck" && "${health}" != "healthy" ) ]]; then
+    failed=1
+  fi
+done
+
+exit "${failed}"

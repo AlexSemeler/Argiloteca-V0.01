@@ -1,0 +1,16 @@
+{
+  "arg:pesquisa_campo": "arg_pesquisa_campo.schema.json",
+  "arg:amostra": "arg_amostra.schema.json",
+  "arg:analise": "arg_analise.schema.json",
+  "arg:drx": "arg_drx.schema.json",
+  "arg:geoquimica": "arg_geoquimica.schema.json",
+  "arg:argilomineral": "arg_argilomineral.schema.json",
+  "arg:publicacao": "arg_publicacao.schema.json",
+  "arg:localidade": "arg_localidade.schema.json",
+  "arg:deposito": "arg_deposito.schema.json",
+  "arg:coordenada": "arg_coordenada.schema.json",
+  "arg:metodo_analitico": "arg_metodo_analitico.schema.json",
+  "arg:pacote_analitico": "arg_pacote_analitico.schema.json",
+  "arg:payload_publicacao": "arg_payload_publicacao.schema.json",
+  "arg:referencia_drx_webmineral": "arg_referencia_drx_webmineral.schema.json"
+}

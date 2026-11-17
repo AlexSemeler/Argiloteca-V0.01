@@ -1,0 +1,32 @@
+{% set t = review_text %}
+{% set labels = {
+  'chlorite_group': t('Grupo das cloritas','Chlorite group'),
+  'smectite_group': t('Grupo das esmectitas','Smectite group'),
+  'basal_14':t('Reflexão basal próxima de 14 Å','Basal reflection near 14 Å'),
+  'companion_7':t('Reflexão companheira próxima de 7 Å','Companion reflection near 7 Å'),
+  'companion_3_5':t('Reflexão companheira próxima de 3,5 Å','Companion reflection near 3.5 Å'),
+  'expansion_collapse':t('Trajetória de expansão e colapso','Expansion and collapse trajectory'),
+  'g_second_order':t('Reflexão de segunda ordem em G','Second-order reflection in G')
+} %}
+{% if report.test_only %}<p class="rr-notice"><strong>{{ t('Ensaio de teste — estes resultados não descrevem uma amostra de pesquisa confirmada.', 'Test submission — these results do not describe a confirmed research sample.') }}</strong></p>{% endif %}
+<p>{{ t('Avaliação qualitativa em modo sombra. Compatibilidade de família não confirma uma espécie. Escores e intensidades não representam probabilidades nem percentuais de fases.', 'Qualitative shadow-mode assessment. Family compatibility does not confirm a species. Scores and intensities represent neither probabilities nor phase percentages.') }}</p>
+{% if report.ngc_status != 'evaluated' %}<p class="rr-notice">{{ t('A análise conjunta está indisponível ou requer revisão do formato, comprimento de onda ou protocolo. Consulte os resultados individuais e as pendências.', 'Joint analysis is unavailable or requires review of format, wavelength or protocol. Consult the individual results and outstanding issues.') }}</p>{% endif %}
+{% for family in report.families %}
+<article class="ngc-family">
+  <div class="ngc-family-heading"><h3>{{ labels[family.family] }}</h3><strong class="ngc-status {% if family.status == 'compatible' %}ngc-compatible{% endif %}">{{ t('Compatível · revisar', 'Compatible · review') if family.status == 'compatible' else t('Inconclusivo', 'Inconclusive') }}</strong></div>
+  <p>{% if family.family == 'chlorite_group' %}{{ t('A regra verifica estabilidade da reflexão basal e reflexões companheiras nos preparos avaliados.', 'The rule checks basal reflection stability and companion reflections in the assessed preparations.') }}{% else %}{{ t('A regra compara expansão após glicolação, colapso após aquecimento e uma reflexão companheira em G.', 'The rule compares expansion after glycolation, collapse after heating and a companion reflection in G.') }}{% endif %}</p>
+  <table class="rr-files ngc-evidence-table"><caption>{{ t('Evidências selecionadas pela regra — valores d em Å', 'Rule-selected evidence — d values in Å') }}</caption><thead><tr><th>{{ t('Observação', 'Observation') }}</th><th>N · {{ t('Natural', 'Natural') }}</th><th>G · {{ t('Glicolado', 'Glycolated') }}</th><th>C · {{ t('Calcinado', 'Calcined') }}</th></tr></thead><tbody>
+  {% for evidence in family.evidence %}<tr><td data-label="{{ t('Observação','Observation') }}">{{ labels[evidence.kind] }}</td>{% for role in 'NGC' %}<td data-label="{{ role }}">{% if role not in evidence['values'] %}{{ t('Não avaliado','Not assessed') }}{% elif evidence['values'][role] %}<strong>{{ '%.3f'|format(evidence['values'][role].d_angstrom) }} Å</strong><span class="ngc-peak-coordinate">2θ {{ '%.3f'|format(evidence['values'][role].two_theta) }}°</span>{% else %}{{ t('Sem pico selecionado','No peak selected') }}{% endif %}</td>{% endfor %}</tr>{% endfor %}
+  </tbody></table>
+  <p class="ngc-reference"><a href="{{ family.source }}" target="_blank" rel="noopener noreferrer">{{ t('Fundamentação: manual USGS', 'Basis: USGS manual') }}</a></p>
+</article>
+{% else %}<p>{{ t('Não há contexto N/G/C disponível neste resultado salvo.', 'No N/G/C context is available in this saved result.') }}</p>{% endfor %}
+<h3>{{ t('Minerais candidatos por preparo', 'Mineral candidates by preparation') }}</h3>
+<p>{{ t('Escores do classificador primário já salvos, apresentados lado a lado. A tabela não combina escores nem confirma candidatos por votação.', 'Previously saved primary classifier scores, shown side by side. The table does not combine scores or confirm candidates by voting.') }}</p>
+{% if report.candidate_matrix %}<table class="rr-files ngc-candidate-table"><caption>{{ t('Resultados individuais preservados', 'Preserved individual results') }}</caption><thead><tr><th>{{ t('Mineral candidato','Candidate mineral') }}</th><th>N</th><th>G</th><th>C</th></tr></thead><tbody>{% for mineral in report.candidate_matrix %}<tr><td data-label="{{ t('Mineral candidato','Candidate mineral') }}">{{ mineral.mineral }}</td>{% for role in 'NGC' %}<td data-label="{{ role }}">{% if role in mineral.by_preparation %}{{ '%.4f'|format(mineral.by_preparation[role]) }}{% else %}{{ t('Não listado','Not listed') }}{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody></table>{% else %}<p>{{ t('Nenhum candidato primário disponível. Isso não indica ausência de argilominerais.', 'No primary candidate available. This does not indicate absence of clay minerals.') }}</p>{% endif %}
+<details class="ngc-method"><summary>{{ t('Método, proveniência e limitações', 'Method, provenance and limitations') }}</summary>
+<p>{{ t('Protótipo baseado na literatura, com limiares experimentais. A implementação atual avalia o contexto de cloritas e esmectitas; outras famílias, misturas e interestratificados exigem avaliação complementar. Temperatura, preparo e calibração instrumental não foram confirmados pelo algoritmo.', 'Literature-based prototype with experimental thresholds. The current implementation assesses chlorite and smectite context; other families, mixtures and mixed layers require additional assessment. Temperature, preparation and instrument calibration were not confirmed by the algorithm.') }}</p>
+<p>{{ t('Análise salva em', 'Analysis saved at') }} {{ report.analysis_at }} · {{ t('Regra', 'Rule') }}: <span class="rl-filename">{{ report.rule_id or t('indisponível','unavailable') }}</span></p>
+<p class="rl-filename">{{ t('Identificador da análise', 'Analysis fingerprint') }}: {{ report.analysis_fingerprint or t('indisponível','unavailable') }}</p>
+<ul class="rl-companions">{% for file in report.files %}<li>{{ file.preparation }} · {{ file.filename }} · {{ file.points }} {{ t('pontos', 'points') }} · λ {{ file.wavelength_angstrom }} Å<br><span class="ngc-digest">SHA-256 {{ file.sha256 }}</span></li>{% endfor %}</ul>
+</details>

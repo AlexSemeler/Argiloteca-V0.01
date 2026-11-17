@@ -1,0 +1,102 @@
+{#
+  SPDX-FileCopyrightText: 2021 CERN.
+  SPDX-FileCopyrightText: 2021 Northwestern University.
+  SPDX-FileCopyrightText: 2026 Argiloteca / CPAA.
+  SPDX-License-Identifier: MIT
+  Portuguese adaptation of the native InvenioRDM search guide.
+#}
+{%- extends config.BASE_TEMPLATE %}
+{%- set title = "Guia de pesquisa da Argiloteca" %}
+
+{% macro example(query) -%}
+  <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q=query, ln='pt') }}"><code>{{ query }}</code></a>
+{%- endmacro %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/search-help.css') }}?v=20261102-2">
+{% endblock css %}
+
+{%- block page_body %}
+<article class="ui container mt-25 argilo-search-help" aria-labelledby="search-help-title">
+  <h1 id="search-help-title">Guia de pesquisa da Argiloteca</h1>
+  <p>Aprenda a pesquisar argilas, argilominerais, técnicas analíticas e publicações no acervo. Clique nos exemplos para abrir as consultas na busca da Argiloteca.</p>
+  <p>Parte do acervo tem metadados em inglês. Experimente também os nomes nesse idioma: {{ example('caulinita OR kaolinite') }} ou {{ example('esmectita OR smectite') }}. Os resultados dependem dos registros disponíveis e dos filtros selecionados.</p>
+
+  <h2 id="busca-simples">Busca simples: um ou mais termos</h2>
+  <p><strong>Exemplo:</strong> {{ example('caulinita esmectita') }}</p>
+  <p>A consulta encontra registros que contêm <code>caulinita</code> <strong>ou</strong> <code>esmectita</code> nos campos pesquisáveis. Ela equivale a {{ example('caulinita OR esmectita') }}. Digitar duas palavras sem operador não exige que ambas estejam presentes.</p>
+
+  <h2 id="termos-obrigatorios">Exigir a presença de termos</h2>
+  <p>Use <code>AND</code> ou o sinal <code>+</code> antes de cada termo obrigatório. Escreva os operadores <code>AND</code>, <code>OR</code> e <code>NOT</code> em maiúsculas, mesmo nas consultas em português.</p>
+  <p><strong>Exemplo:</strong> {{ example('caulinita AND esmectita') }}</p>
+  <p>Para localizar registros que mencionam caulinita em inglês e a técnica de difração de raios X (DRX), use {{ example('kaolinite AND "X-ray diffraction"') }} ou {{ example('+kaolinite +"X-ray diffraction"') }}.</p>
+
+  <h2 id="excluir-termos">Excluir termos</h2>
+  <p><strong>Exemplos:</strong> {{ example('kaolinite NOT halloysite') }} ou {{ example('+kaolinite -halloysite') }}</p>
+  <p>Essas consultas exigem <code>kaolinite</code> e excluem registros que também contêm <code>halloysite</code>. Use <code>NOT</code> ou <code>-</code> para retirar termos dos resultados.</p>
+
+  <h2 id="frases">Pesquisar uma expressão</h2>
+  <p><strong>Exemplo:</strong> {{ example('"X-ray diffraction"') }}</p>
+  <p>As aspas procuram os termos da expressão na mesma sequência. São úteis para técnicas como difração de raios X ou expressões como {{ example('"clay minerals"') }}.</p>
+
+  <h2 id="campos">Pesquisar em um campo específico</h2>
+  <p><strong>Exemplo:</strong> {{ example('metadata.title:kaolinite') }}</p>
+  <p>O prefixo <code>metadata.title:</code> restringe a consulta ao título. Para reunir vários termos no mesmo campo, use parênteses: {{ example('metadata.title:(kaolinite OR smectite)') }}.</p>
+  <p>Estes campos podem ajudar a refinar sua pesquisa:</p>
+  <ul>
+    <li><code>metadata.title</code>: título do registro.</li>
+    <li><code>metadata.description</code>: descrição ou resumo.</li>
+    <li><code>metadata.publication_date</code>: data de publicação.</li>
+    <li><code>metadata.resource_type.id</code>: identificador do tipo de recurso.</li>
+    <li><code>metadata.subjects.subject</code>: texto dos assuntos declarados.</li>
+    <li><code>metadata.identifiers.identifier</code>: identificadores adicionais declarados, como DOI de uma fonte externa.</li>
+  </ul>
+  <p>Por exemplo, {{ example('metadata.resource_type.id:dataset AND kaolinite') }} restringe a busca a conjuntos de dados que mencionam <code>kaolinite</code>. Preserve os nomes dos campos e o identificador <code>dataset</code> como estão escritos.</p>
+
+  <h2 id="combinar">Combinar termos, campos e datas</h2>
+  <p><strong>Exemplo:</strong> {{ example('metadata.title:kaolinite AND metadata.publication_date:[2020-01-01 TO 2025-12-31]') }}</p>
+  <p>Essa consulta exige <code>kaolinite</code> no título e limita a data de publicação ao período de 1º de janeiro de 2020 a 31 de dezembro de 2025. Você pode combinar buscas simples, expressões entre aspas e campos na mesma consulta.</p>
+
+  <h2 id="intervalos">Pesquisar por intervalo de datas</h2>
+  <p><strong>Exemplo:</strong> {{ example('metadata.publication_date:[2020-01-01 TO 2025-12-31]') }}</p>
+  <p>Use datas no formato <code>AAAA-MM-DD</code> e escreva <code>TO</code> em maiúsculas. Os colchetes <code>[]</code> incluem as datas dos limites; as chaves <code>{}</code> excluem esses limites. Um asterisco indica um limite aberto.</p>
+  <ul>
+    <li>{{ example('metadata.publication_date:{* TO 2020-01-01}') }}: publicações anteriores a 1º de janeiro de 2020.</li>
+    <li>{{ example('metadata.publication_date:[2020-01-01 TO *]') }}: publicações a partir de 1º de janeiro de 2020, incluindo esse dia.</li>
+  </ul>
+  <p>Datas parciais são expandidas para o início do período: <code>2020</code> corresponde a <code>2020-01-01</code>, e <code>2020-06</code> a <code>2020-06-01</code>. Para abranger um ano inteiro, informe explicitamente a data inicial e a final.</p>
+
+  <h2 id="ordenacao">Ordenar os resultados</h2>
+  <p>Na lista de resultados, use a ordenação disponível para escolher a melhor correspondência, os registros mais recentes ou os mais antigos. A ordenação por correspondência considera a relevância dos termos da consulta. Os filtros da busca permitem refinar o conjunto encontrado.</p>
+
+  <h2 id="expressoes-regulares">Pesquisar padrões com expressões regulares</h2>
+  <p><strong>Exemplo:</strong> {{ example('metadata.identifiers.identifier:/10[.]17632.*/') }}</p>
+  <p>O exemplo procura identificadores adicionais que começam com <code>10.17632</code>, prefixo DOI usado pelo Mendeley Data. Em uma expressão regular, <code>[.]</code> representa um ponto literal e <code>.*</code> aceita a sequência restante.</p>
+  <p>O padrão deve corresponder ao valor inteiro do campo. Esse campo é diferente de <code>pids.doi.identifier</code>, reservado ao DOI próprio do registro: um DOI de uma publicação importada pode estar entre os identificadores adicionais.</p>
+
+  <h2 id="campos-ausentes">Encontrar campos preenchidos ou ausentes</h2>
+  <p><strong>Com assunto declarado:</strong> {{ example('_exists_:metadata.subjects.subject') }}</p>
+  <p><strong>Sem assunto declarado:</strong> {{ example('NOT _exists_:metadata.subjects.subject') }}</p>
+  <p>Use <code>_exists_:</code> para exigir um valor em um campo e <code>NOT _exists_:</code> para localizar sua ausência. A presença de um assunto não significa que todos os demais metadados estejam completos.</p>
+
+  <h2 id="recursos-avancados">Outros recursos de pesquisa</h2>
+  <h3>Dar mais peso a um campo</h3>
+  <p><strong>Exemplo:</strong> {{ example('metadata.title:kaolinite^5 OR metadata.description:kaolinite') }}</p>
+  <p>O operador <code>^5</code> aumenta o peso da ocorrência no título em relação à descrição. Ele influencia a ordenação por correspondência, sem alterar os metadados dos registros.</p>
+
+  <h3>Buscar uma grafia aproximada</h3>
+  <p><strong>Exemplo:</strong> {{ example('kaolinte~') }}</p>
+  <p>O operador <code>~</code> procura grafias próximas, como <code>kaolinite</code> no exemplo. Ele pode ajudar quando há um erro de digitação; confira os termos encontrados.</p>
+
+  <h3>Permitir proximidade entre palavras</h3>
+  <p><strong>Exemplo:</strong> {{ example('"clay minerals"~3') }}</p>
+  <p>O número após a expressão permite maior flexibilidade na posição dos termos, em comparação com a busca da expressão sem <code>~3</code>. Isso pode encontrar as palavras próximas mesmo quando há outras palavras entre elas.</p>
+
+  <h3>Usar curingas</h3>
+  <p><strong>Exemplos:</strong> {{ example('kaolin*') }} e {{ example('smectit?') }}</p>
+  <p>O asterisco <code>*</code> substitui zero ou mais caracteres; o ponto de interrogação <code>?</code> substitui um único caractere. Assim, <code>kaolin*</code> pode encontrar termos como <code>kaolinite</code>, e <code>smectit?</code> pode encontrar <code>smectite</code>. Consultas com curingas podem ser mais lentas; prefira um termo completo quando souber a grafia.</p>
+
+  <p><a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', ln='pt') }}">Abrir a busca da Argiloteca</a></p>
+</article>
+{%- endblock page_body %}

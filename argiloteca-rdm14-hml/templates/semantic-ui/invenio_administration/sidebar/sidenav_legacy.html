@@ -1,0 +1,43 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% set icons={'dashboard':'dashboard','communities':'communities','records':'catalog','drafts':'upload','vocabulary-types':'minerals','pages':'catalog','banners':'image','domains':'map','OAI-PMH':'layers','users':'communities','requests':'requests','moderation':'communities','jobs':'refresh'} %}
+<nav aria-label="{{ _('Áreas da administração') }}" class="argilo-admin-navigation">
+{% if argilo_can_review_raws() %}
+{% if config.ARGILOTECA_OPENALEX_ROOT %}
+<section class="argilo-admin-nav-group"><h2>{{ review_text('Povoamento', 'Import data') }}</h2>
+{% if config.ARGILOTECA_POPULATION_ENABLED %}<a href="{{ url_for('argiloteca_population.index') }}"{% if request.blueprint == 'argiloteca_population' and request.endpoint in ('argiloteca_population.index','argiloteca_population.records') %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('dashboard') }}<span>{{ review_text('Visão integrada','Integrated overview') }}</span></a>{% endif %}
+<a href="{{ url_for('argiloteca_openalex.index') }}"{% if request.blueprint == 'argiloteca_openalex' and not request.endpoint.startswith(('argiloteca_openalex.duplicates','argiloteca_openalex.manual','argiloteca_openalex.statistics','argiloteca_openalex.author','argiloteca_openalex.orcid','argiloteca_openalex.enrichment')) %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('upload') }}<span>{{ review_text('Importação OpenAlex', 'OpenAlex import') }}</span></a>
+<a href="{{ url_for('argiloteca_pangaea.index') }}"{% if request.blueprint == 'argiloteca_pangaea' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('upload') }}<span>{{ review_text('Importação PANGAEA', 'PANGAEA import') }}</span></a>
+{% if config.ARGILOTECA_REPOSITORIES_ENABLED %}
+<a href="{{ url_for('argiloteca_repositories.index') }}"{% if request.blueprint == 'argiloteca_repositories' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('layers') }}<span>{{ review_text('Repositórios OAI e PDFs', 'OAI repositories and PDFs') }}</span></a>
+{% endif %}
+{% if config.ARGILOTECA_MENDELEY_ENABLED %}
+<a href="{{ url_for('argiloteca_mendeley.index') }}"{% if request.blueprint == 'argiloteca_mendeley' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('upload') }}<span>{{ review_text('Importação Mendeley Data', 'Mendeley Data import') }}</span></a>
+{% endif %}
+<a href="{{ url_for('argiloteca_openalex.enrichment_index') }}"{% if request.endpoint and request.endpoint.startswith('argiloteca_openalex.enrichment') %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('refresh') }}<span>{{ review_text('Atualizar dados do Acervo','Update collection data') }}</span></a>
+{% if not config.ARGILOTECA_POPULATION_ENABLED %}<a href="{{ url_for('argiloteca_openalex.statistics_index') }}"{% if request.endpoint and request.endpoint.startswith('argiloteca_openalex.statistics') %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('dashboard') }}<span>{{ review_text('Estatísticas do povoamento','Population statistics') if config.ARGILOTECA_POPULATION_ENABLED else review_text('Estatísticas OpenAlex','OpenAlex statistics') }}</span></a>{% endif %}
+<a href="{{ url_for('argiloteca_openalex.authors_index') }}"{% if request.endpoint and (request.endpoint.startswith(('argiloteca_openalex.author','argiloteca_openalex.orcid')) or request.endpoint in ('argiloteca_population.authors','argiloteca_population.author','argiloteca_population.job_detail')) %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('communities') }}<span>{{ review_text('Autores e ORCID','Authors and ORCID') }}</span></a>
+<a href="{{ url_for('argiloteca_openalex.duplicates_index') }}"{% if request.endpoint and request.endpoint.startswith('argiloteca_openalex.duplicates') %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('layers') }}<span>{{ review_text('Duplicados DOI/OpenAlex', 'DOI/OpenAlex duplicates') }}</span></a>
+<a href="{{ url_for('argiloteca_openalex.manual_index') }}"{% if request.endpoint and request.endpoint.startswith('argiloteca_openalex.manual') %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('communities') }}<span>{{ review_text('Registros sem classificação', 'Unclassified records') }}</span></a>
+<a href="{{ url_for('argiloteca_maintenance.index') }}"{% if request.blueprint == 'argiloteca_maintenance' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('trash') }}<span>{{ review_text('Remover e arquivar', 'Remove and archive') }}</span></a>
+</section>
+{% endif %}
+<section class="argilo-admin-nav-group"><h2>{{ review_text('Conectar o acervo','Connect the collection') }}</h2>
+<a href="{{ url_for('argiloteca_knowledge.index') }}"{% if request.blueprint == 'argiloteca_knowledge' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('catalog') }}<span>{{ review_text('Conhecimento do ArgiloClay','ArgiloClay knowledge') }}</span></a>
+{% if config.ARGILOTECA_OPENALEX_ROOT %}<a href="{{ url_for('argiloteca_maintenance.index') }}"{% if request.blueprint == 'argiloteca_maintenance' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('trash') }}<span>{{ review_text('Remover e arquivar', 'Remove and archive') }}</span></a>
+{% endif %}
+<a href="{{ url_for('argiloteca_scientific.connections_admin') }}"{% if request.endpoint == 'argiloteca_scientific.connections_admin' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('connections') }}<span>{{ review_text('Conexões científicas','Scientific connections') }}</span></a>
+<a href="{{ url_for('argiloteca_scientific.catalog_admin') }}"{% if request.endpoint in ['argiloteca_scientific.catalog_admin','argiloteca_scientific.catalog_edit'] %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('minerals') }}<span>{{ review_text('Catálogo de argilominerais', 'Clay mineral catalog') }}</span></a>
+<a href="{{ url_for('argiloteca_scientific.map_admin') }}"{% if request.endpoint == 'argiloteca_scientific.map_admin' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('map') }}<span>{{ review_text('Dados do mapa', 'Map data') }}</span></a>
+<a href="{{ url_for('argiloteca_scientific.restricted_raw_review') }}"{% if request.endpoint == 'argiloteca_scientific.restricted_raw_review' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('layers') }}<span>{{ review_text('Revisão de arquivos restritos', 'Restricted file review') }}</span></a>
+<a href="{{ url_for('argiloteca_scientific.admin_raw_library') }}"{% if request.endpoint in ['argiloteca_scientific.admin_raw_library','argiloteca_scientific.admin_raw_detail'] %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('analyses') }}<span>{{ review_text('Arquivos RAW e classificações', 'RAW files and classifications') }}</span></a>
+<a href="{{ url_for('argiloteca_scientific.drx_link_admin') }}"{% if request.endpoint == 'argiloteca_scientific.drx_link_admin' %} class="is-active" aria-current="page"{% endif %}>{{ render_icon('layers') }}<span>{{ review_text('Registros e dados DRX', 'Records and DRX data') }}</span></a>
+</section>
+{% endif %}
+{% for item in current_menu.submenu('admin_navigation').children|sort(attribute='order') if item.visible recursive %}
+  {% if item.children %}
+    <section class="argilo-admin-nav-group"><h2>{{ _('Tarefas de processamento') if item.name == 'jobs' else _('Moderação de usuários') if item.name == 'moderation' else _('Sistema') if item.name == 'System' else item.text|safe }}</h2>{{ loop(item.children|sort(attribute='order')) }}</section>
+  {% else %}
+    <a href="{{ item.url }}"{% if item.active %} class="is-active" aria-current="page"{% endif %}>{{ render_icon(icons.get(item.name,'catalog')) }}<span>{{ _('Tarefas de processamento') if item.name == 'jobs' else _('Moderação de usuários') if item.name == 'moderation' else _('Sistema') if item.name == 'System' else item.text|safe }}</span></a>
+  {% endif %}
+{% endfor %}
+</nav>

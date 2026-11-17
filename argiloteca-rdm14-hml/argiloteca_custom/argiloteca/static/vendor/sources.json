@@ -1,0 +1,74 @@
+[
+  {
+    "file": "leaflet-1.9.4/leaflet.js",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js",
+    "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
+    "bytes": 147552
+  },
+  {
+    "file": "leaflet-1.9.4/leaflet.css",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css",
+    "sha256": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "bytes": 14806
+  },
+  {
+    "file": "leaflet-1.9.4/images/marker-icon.png",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/marker-icon.png",
+    "sha256": "574c3a5cca85f4114085b6841596d62f00d7c892c7b03f28cbfa301deb1dc437",
+    "bytes": 1466
+  },
+  {
+    "file": "leaflet-1.9.4/images/marker-icon-2x.png",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+    "sha256": "00179c4c1ee830d3a108412ae0d294f55776cfeb085c60129a39aa6fc4ae2528",
+    "bytes": 2464
+  },
+  {
+    "file": "leaflet-1.9.4/images/marker-shadow.png",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/marker-shadow.png",
+    "sha256": "264f5c640339f042dd729062cfc04c17f8ea0f29882b538e3848ed8f10edb4da",
+    "bytes": 618
+  },
+  {
+    "file": "leaflet-1.9.4/images/layers.png",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/layers.png",
+    "sha256": "1dbbe9d028e292f36fcba8f8b3a28d5e8932754fc2215b9ac69e4cdecf5107c6",
+    "bytes": 696
+  },
+  {
+    "file": "leaflet-1.9.4/images/layers-2x.png",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/images/layers-2x.png",
+    "sha256": "066daca850d8ffbef007af00b06eac0015728dee279c51f3cb6c716df7c42edf",
+    "bytes": 1259
+  },
+  {
+    "file": "leaflet-markercluster-1.5.3/leaflet.markercluster.js",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js",
+    "sha256": "1e4e1d22972a3926f48598e0caf14e3fe7049835d428a344fed4f9e3665b3508",
+    "bytes": 34136
+  },
+  {
+    "file": "leaflet-markercluster-1.5.3/MarkerCluster.css",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css",
+    "sha256": "614dea0a98ff3f4ead74f04918f6b1d1b9ba435c25b5fc23b21a394d1e3e4d87",
+    "bytes": 872
+  },
+  {
+    "file": "leaflet-markercluster-1.5.3/MarkerCluster.Default.css",
+    "source": "https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css",
+    "sha256": "61258232d98d64dc2a7b1e02130d67421bc5b9bda5994eef70228ff97570c170",
+    "bytes": 1287
+  },
+  {
+    "file": "plotly-2.35.2/plotly.min.js",
+    "source": "https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js",
+    "sha256": "6d21266ce1bd7d9e5ab4e115989c70c20de0382fd973a8f26ab58619eba4d603",
+    "bytes": 4558696
+  },
+  {
+    "file": "cytoscape-3.29.2/cytoscape.min.js",
+    "source": "https://cdn.jsdelivr.net/npm/cytoscape@3.29.2/dist/cytoscape.min.js",
+    "sha256": "4d1ba05f57890d46e90ffb603e7d665bf9466e1d674e030f93d8e6e63b958587",
+    "bytes": 372530
+  }
+]

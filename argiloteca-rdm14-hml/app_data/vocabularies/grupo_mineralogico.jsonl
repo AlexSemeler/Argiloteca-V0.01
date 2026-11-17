@@ -1,0 +1,12 @@
+{"id": "kaolin_group", "title": {"en": "Kaolin group", "pt": "Grupo da caulinita"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "smectite_group", "title": {"en": "Smectite group", "pt": "Grupo das esmectitas"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "illite_mica", "title": {"en": "Illite and mica-related group", "pt": "Grupo ilita e micas relacionadas"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "chlorite_group", "title": {"en": "Chlorite group", "pt": "Grupo das cloritas"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "vermiculite_group", "title": {"en": "Vermiculite group", "pt": "Grupo da vermiculita"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "palygorskite_sepiolite_group", "title": {"en": "Palygorskite-Sepiolite group", "pt": "Grupo paligorsquita-sepiolita"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "serpentine_group", "title": {"en": "Serpentine group", "pt": "Grupo da serpentina"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "pyrophyllite_talc", "title": {"en": "Pyrophyllite-Talc group", "pt": "Grupo pirofilita-talco"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "short_range_order", "title": {"en": "Short-range order minerals", "pt": "Minerais de baixa ordem estrutural"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "layered_double_hydroxide", "title": {"en": "Layered double hydroxides", "pt": "Hidróxidos duplos lamelares"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "mixed_layer", "title": {"en": "Mixed-layer clay minerals", "pt": "Argilominerais interestratificados"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}
+{"id": "clay_material", "title": {"en": "Clay materials", "pt": "Materiais argilosos"}, "props": {"category": "group", "source": "Argiloteca/CMS"}}

@@ -1,0 +1,26 @@
+/* Native administrative shell, Argiloteca tokens and readable editing surfaces. */
+.mineral-curation { max-width: 1150px; color: var(--arg-color-text); }
+.mineral-curation p { max-width: 72ch; overflow-wrap: anywhere; }
+.mc-actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin: 1rem 0; }
+.mc-actions .ui.button { margin: 0; min-height: 44px; }
+.mc-search { margin: 2rem 0; max-width: 46rem; }
+.mc-search label { font-weight: 700; }
+.mc-search input { flex: 1; min-width: 12rem; min-height: 44px; padding: .75rem; font: inherit; font-size: 16px; border: 1px solid var(--arg-color-control-border); border-radius: 6px; background: var(--arg-color-surface); color: var(--arg-color-text); }
+.mc-table-wrap { overflow-x: auto; }
+.mc-table-wrap caption { text-align: left; font-weight: 700; margin-bottom: 1rem; }
+.mc-secondary { display: block; font-weight: 400; color: var(--arg-color-muted); margin-top: .4rem; }
+.mc-editor { max-width: 58rem; }
+.mineral-curation fieldset { border: 0; border-top: 1px solid var(--arg-color-border); margin: 2rem 0; padding: 1.5rem 0 0; min-width: 0; }
+.mineral-curation legend { padding: 0 1rem 0 0; font-size: 1.25rem; font-weight: 700; }
+.mc-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem 1.5rem; }
+.mineral-curation .ui.form input, .mineral-curation .ui.form textarea, .mineral-curation .ui.form select { font: inherit; font-size: 16px; min-height: 44px; color: var(--arg-color-text); background: var(--arg-color-surface); border-color: var(--arg-color-control-border); }
+.mineral-curation input[readonly] { background: var(--arg-color-surface-analytic); }
+.mineral-curation :focus-visible { outline: 3px solid var(--arg-color-focus); outline-offset: 3px; }
+.mineral-curation ::selection { background: var(--arg-color-primary-strong); color: white; }
+.mineral-curation input, .mineral-curation textarea { caret-color: var(--arg-color-primary-strong); }
+.mc-records { list-style: none; padding: 0; }
+.mc-records li { display: flex; gap: 1rem; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-top: 1px solid var(--arg-color-border); }
+.mc-records li > div { min-width: 0; overflow-wrap: anywhere; }
+.mc-records .ui.button { flex-shrink: 0; }
+.mc-selected { background: var(--arg-color-surface-analytic); padding: 1.5rem; margin: 2rem 0; border: 1px solid var(--arg-color-border); border-radius: 8px; }
+@media (max-width: 767px) { .mc-fields { grid-template-columns: 1fr; gap: .5rem; } .mc-records li { align-items: flex-start; flex-direction: column; } .mc-selected { padding: 1rem; } .mc-search .mc-actions input { width: 100%; flex-basis: 100%; } }

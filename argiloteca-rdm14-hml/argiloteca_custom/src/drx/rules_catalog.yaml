@@ -1,0 +1,31 @@
+version: argiloteca.drx.rules.v1
+engine_version: argiloteca.drx.ngc.v4
+policy: non_confirmatory_rule_based_evidence
+catalog_status: canonical_runtime_catalog
+imports:
+  - ../../argiloteca_drx/diagnostics/rules_catalog.yaml
+automatic_states:
+  - compatible_by_rules
+  - possible_candidate
+  - probable_candidate
+  - strongly_supported_candidate
+curatorial_states:
+  - curator_confirmed
+  - curator_rejected
+  - curator_inconclusive
+score_weights:
+  behaviors: 0.35
+  required_peaks: 0.35
+  treatments: 0.20
+  metadata: 0.10
+score_thresholds:
+  compatible_by_rules: [0, 20]
+  possible_candidate: [20, 45]
+  probable_candidate: [45, 75]
+  strongly_supported_candidate: [75, 100]
+safeguards:
+  confirmation_requires_curatorial_review: true
+  isolated_peak_max_state: possible_candidate
+  incomplete_treatments_max_state: possible_candidate
+  d060_is_auxiliary: true
+  rag_or_ml_cannot_confirm: true

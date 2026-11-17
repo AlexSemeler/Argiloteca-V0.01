@@ -1,0 +1,29 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% from "semantic-ui/argiloteca/_partnership.html" import partnership_marks with context %}
+{% block footer_top %}
+<div class="footer-top argilo-institutional-footer">
+  <div class="ui container">
+    <div class="argilo-footer-identity">
+      <div>
+        <h2>Argiloteca — CPAA</h2>
+        <p>{{ _("Argiloteca é um dos resultados do Projeto de P&D: BASE DE DADOS ESTRUTURADA DE DEPÓSITOS DE ARGILAS DO BRASIL E ANÁLOGOS NO MUNDO, uma parceria entre UFRGS e Petrobras.") }}</p>
+        <p>{{ _("Informações científicas sobre argilas e argilominerais") }}</p>
+        <a href="{{ url_for('argiloteca.institutional') }}">{{ _("Sobre a Argiloteca e a parceria") }}</a>
+      </div>
+      {{ partnership_marks() }}
+    </div>
+    <div class="argilo-footer-bottom">
+      <address class="argilo-footer-contact" aria-label="{{ _('Contato do CPAA') }}">
+        <ul>
+          <li>{{ render_icon('pin') }}<span>Campus do Vale, Agronomia 9500</span></li>
+          <li>{{ render_icon('phone') }}<a href="tel:+555133086569">51 3308 – 65 69</a></li>
+          <li><a href="https://wa.me/555133086569" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener noreferrer" style="min-width: 44px; justify-content: center; text-decoration: none;"><i class="large whatsapp icon" aria-hidden="true" style="margin: 0;"></i></a></li>
+          <li>{{ render_icon('mail') }}<a href="mailto:argilas@ufrgs.br">argilas@ufrgs.br</a></li>
+        </ul>
+      </address>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block footer_top_right %}{% endblock %}

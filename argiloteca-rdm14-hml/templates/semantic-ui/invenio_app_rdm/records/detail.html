@@ -1,0 +1,97 @@
+{# Scientific presentation from Argiloteca 12; data, access and files use the v14 base. #}
+{% extends "argiloteca/v14/detail_base.html" %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_module_nav, render_breadcrumb, render_icon with context %}
+{% from "argilo_map_components.html" import render_argilo_map_css, render_argilo_map_js, render_argilo_map_panel with context %}
+
+{% block css %}
+  {{ super() }}
+  {{ render_argilo_map_css() }}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/scientific-connections.css') }}?v=20261021-2">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-home-record.css') }}?v=20261016-ui-1">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-record-detail.css') }}?v=20261026-acervo-1">
+{% endblock %}
+{% block page_body %}
+<div class="argilo-record-page">
+  <div class="argilo-page-header argilo-record-navigation">
+    {{ render_breadcrumb([{"label": _("Início"), "href": "/"}, {"label": _("Registros"), "href": url_for('invenio_search_ui.search')}, {"label": _("Registro"), "href": None}]) }}
+
+  </div>
+  {{ super() }}
+</div>
+{% endblock %}
+{% block record_title %}
+  {{ super() }}
+  <section class="argilo-record-science-bridge" aria-label="{{ _("Exploração científica relacionada ao registro") }}">
+                  <h2>{{ _("Do registro ao dado analítico") }}</h2>
+                  <p>{{ _("Continue a partir deste registro para visualizar pacote analítico, difratogramas, mapa, rede e sínteses químicas sem perder o vínculo com o acervo.") }}</p>
+                  <div class="argilo-record-science-bridge__cards">
+                    <a class="argilo-record-science-card" href="{{ url_for('argiloteca.pacote_analitico', record_id=record_ui.id) }}">
+                      <strong>{{ render_icon("analyses") }} {{ _("Pacote analítico") }}</strong>
+                      <span>{{ _("Arquivos, amostras, métodos e resultados vinculados.") }}</span>
+                    </a>
+                    <a class="argilo-record-science-card" href="{{ url_for('argiloteca.drx_comparacao', record_id=record_ui.id, source='record') }}">
+                      <strong>{{ render_icon("drx") }} {{ _("Comparação DRX") }}</strong>
+                      <span>{{ _("Difratogramas, picos e candidatos mineralógicos.") }}</span>
+                    </a>
+                    <a class="argilo-record-science-card" href="{{ url_for('argiloteca.mapa_argilominerais', highlight_record_id=record_ui.id) }}">
+                      <strong>{{ render_icon("map") }} {{ _("Mapa") }}</strong>
+                      <span>{{ _("Contexto espacial e registros georreferenciados.") }}</span>
+                    </a>
+                  </div>
+                </section>
+{% endblock %}
+{% block record_content %}
+  {{ super() }}
+  {% include "semantic-ui/argiloteca/_record_openalex.html" %}
+  {% if argilo_can_review_raws() %}<p><a class="ui button" href="{{ url_for('argiloteca_scientific.connections_admin',record_id=record_ui.id) }}">{{ render_icon('connections') }} {{ review_text('Gerenciar conexões com DRX, mapa e catálogo','Manage XRD, map and catalog connections') }}</a></p>{% endif %}
+  {% with connection_record_id=record_ui.id %}{% include "semantic-ui/argiloteca/_record_connections.html" %}{% endwith %}
+  {% if current_user.is_authenticated and permissions is defined and permissions.can_edit %}
+    <p><a class="ui basic button" href="/scientific/records/{{ record_ui.id }}">{{ _("Metadados científicos") }}</a> <a class="ui basic button" href="/scientific/records/{{ record_ui.id }}/export">{{ _("Argiloteca XML") }}</a></p>
+  {% endif %}
+  {% with record=record_ui %}
+    {% set cf = record.custom_fields|default({}) %}
+    {% if cf.get('arg:pesquisas_campo') or cf.get('arg:amostras') or cf.get('arg:analises') or cf.get('arg:composicao_quimica_global') or cf.get('arg:proporcoes_resultados_principais') or cf.get('arg:publicacoes_relacionadas') %}
+      {% include "argilo_traceability_readonly.html" %}
+    {% endif %}
+  {% endwith %}
+{% endblock %}
+{% block record_sidebar %}
+
+            {% set cf = record.custom_fields if record.custom_fields is defined else {} %}
+            {% set amostras_sidebar = cf.get("arg:amostras", []) if cf else [] %}
+            {% set argilominerais_sidebar = cf.get("arg:argilominerais", []) if cf else [] %}
+            {% set sidebar_geo = namespace(has_geo=false) %}
+            {% for amostra in amostras_sidebar %}
+              {% if amostra.get("latitude") is not none and amostra.get("longitude") is not none %}
+                {% set sidebar_geo.has_geo = true %}
+              {% endif %}
+            {% endfor %}
+            {% if not sidebar_geo.has_geo %}
+              {% for mineral in argilominerais_sidebar %}
+                {% if mineral.get("latitude") is not none and mineral.get("longitude") is not none %}
+                  {% set sidebar_geo.has_geo = true %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if sidebar_geo.has_geo or amostras_sidebar or argilominerais_sidebar %}
+              {{ render_argilo_map_panel(
+                map_id="argilo-record-sidebar-map-" ~ record_ui.id,
+                api_url=url_for('argiloteca.api_pontos_argilominerais'),
+                title=_("Geographic coverage"),
+                subtitle=_("Distribuição geográfica de amostras e ocorrências de argilominerais mapeados em Trabalhos de campo."),
+                record_id=record_ui.id,
+                highlight_record_id=record_ui.id,
+                lazy=true,
+                map_height="320px",
+                empty_message=_("Este registro ainda não possui coordenadas válidas para visualização."),
+                global_map_url=url_for('argiloteca.mapa_argilominerais', highlight_record_id=record_ui.id)
+              ) }}
+            {% endif %}
+            
+          
+  {{ super() }}
+{% endblock %}
+{% block javascript %}
+  {{ super() }}
+  {{ render_argilo_map_js() }}
+{% endblock %}

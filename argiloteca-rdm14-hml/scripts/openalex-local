@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Preserve every active local overlay when adding/restarting OpenAlex services.
+set -euo pipefail
+OPENALEX_APP="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OPENALEX_FILES="$(docker inspect argiloteca-rdm14-hml-web-ui-1 --format '{{index .Config.Labels "com.docker.compose.project.config_files"}}')"
+OPENALEX_ARGS=()
+IFS=',' read -r -a OPENALEX_LIST <<< "$OPENALEX_FILES"
+for OPENALEX_FILE in "${OPENALEX_LIST[@]}"; do
+  [[ "$OPENALEX_FILE" == "$OPENALEX_APP"/* && -f "$OPENALEX_FILE" ]] || { echo 'Overlay local ausente ou fora do projeto.' >&2; exit 1; }
+  OPENALEX_ARGS+=(-f "$OPENALEX_FILE")
+done
+if [[ ",$OPENALEX_FILES," != *",$OPENALEX_APP/docker-compose.openalex.yml,"* ]]; then
+  OPENALEX_ARGS+=(-f "$OPENALEX_APP/docker-compose.openalex.yml")
+fi
+cd "$OPENALEX_APP"
+docker compose --project-name argiloteca-rdm14-hml "${OPENALEX_ARGS[@]}" up -d --no-deps web-ui web-api worker scheduler
+docker exec argiloteca-rdm14-hml-web-ui-1 python -c 'from invenio_app.factory import create_ui; app=create_ui(); context=app.app_context(); context.push(); from argiloteca.openalex.models import install_tables; install_tables(); print("Tabelas OpenAlex prontas")'
+docker exec argiloteca-rdm14-hml-web-ui-1 invenio collect
+docker exec argiloteca-rdm14-hml-frontend-1 nginx -s reload

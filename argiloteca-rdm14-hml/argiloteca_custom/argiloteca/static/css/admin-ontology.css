@@ -1,0 +1,161 @@
+/* The administrative hierarchy follows the five scientific entities. */
+.au-navigation { display:block; }
+.au-navigation .au-nav-group { margin:1.1rem 0 0; border-top:1px solid var(--arg-color-border,#d9cec6); padding-top:.5rem; }
+.au-navigation summary { cursor:pointer; padding:.65rem .75rem; min-height:44px; font-weight:700; color:var(--arg-color-primary-strong,#6f4f34); line-height:1.4; }
+.au-navigation summary::marker { color:var(--arg-color-primary-strong,#6f4f34); }
+.au-navigation a { font-size:.95rem; padding:.55rem .75rem; gap:.6rem; line-height:1.4; }
+.au-navigation .argilo-icon { flex:0 0 20px; }
+.au-native-group { margin:.35rem 0 .5rem .5rem; }
+.au-native-group summary { font-size:.9rem; }
+.au-breadcrumb { display:flex; flex-wrap:wrap; gap:.45rem; margin:0 0 1rem; color:var(--arg-color-muted,#6c5d52); font-size:.9rem; }
+.au-breadcrumb a { text-underline-offset:.2em; }
+.au-module-source { display:flex; align-items:center; gap:1.5rem; min-height:45px; margin:0 0 .75rem; }
+.au-module-source>img { display:block; width:150px; max-height:46px; object-fit:contain; object-position:left center; }
+.au-module-source>img[src$="pangaea.png"], .au-module-source>img[src$="ufsc.svg"] { width:70px; }
+.au-oai-logos { display:flex; align-items:center; gap:1.25rem; }
+.au-oai-logos img { width:64px; height:42px; object-fit:contain; }
+.au-page-heading { display:flex; justify-content:space-between; align-items:start; gap:1.5rem; margin-bottom:1.8rem; }
+.au-page-heading h1 { margin-top:0; }
+.au-page-heading p, .au-lead { max-width:70ch; line-height:1.65; font-size:1.05rem; }
+.au-page-heading p { margin-bottom:0; }
+.au-home, .au-sources-page, .au-entity-page { max-width:1180px; color:var(--arg-color-text,#3f332b); }
+.au-home h2, .au-sources-page h2, .au-entity-page h2 { font-size:1.35rem; line-height:1.4; margin:0 0 .65rem; }
+.au-home h3, .au-sources-page h3 { font-size:1.05rem; line-height:1.4; margin:0 0 .2rem; }
+.au-home p, .au-sources-page p, .au-entity-page p { max-width:75ch; line-height:1.65; }
+.au-science { padding:0 0 1.5rem; border-bottom:1px solid var(--arg-color-border,#d9cec6); }
+.au-chain { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); list-style:none; padding:0; margin:1.25rem 0 1rem; background:var(--arg-color-surface,#fff); border:1px solid var(--arg-color-border,#d9cec6); }
+.au-chain li { min-width:0; }
+.au-chain li+li { border-left:1px solid var(--arg-color-border,#d9cec6); }
+.au-chain a { display:grid; grid-template-rows:auto auto 1fr auto; height:100%; min-height:186px; padding:1.2rem 1rem; gap:.45rem; color:var(--arg-color-primary-strong,#6f4f34); text-decoration:none; }
+.au-chain a:hover { background:var(--arg-color-surface-soft,#f1e9df); }
+.au-chain .argilo-icon { width:28px;height:28px; }
+.au-chain strong { font-family:var(--arg-font-heading,Catamaran,sans-serif); font-size:1.2rem; }
+.au-chain span { color:var(--arg-color-text,#3f332b); font-size:.9rem; line-height:1.5; }
+.au-chain small { font-size:.86rem; color:var(--arg-color-primary-strong,#6f4f34); font-variant-numeric:tabular-nums; padding-top:.3rem; }
+.au-science-footer, .au-inline-actions { display:flex; align-items:center; flex-wrap:wrap; gap:.6rem 1.5rem; margin:1rem 0; }
+.au-science-footer a, .au-inline-actions a { display:inline-flex; gap:.5rem; align-items:center; min-height:44px; text-underline-offset:.2em; }
+.au-note { font-size:.88rem; color:var(--arg-color-muted,#6c5d52); }
+.au-directory-toolbar { display:flex; align-items:end; justify-content:space-between; gap:1.5rem; margin:2rem 0 1rem; }
+.au-directory-toolbar h2 { margin:0; }
+.au-tool-search { flex:0 1 330px; }
+.au-tool-search label { display:block; font-weight:700; margin-bottom:.4rem; }
+.au-tool-search>div { display:flex; background:#fff; border:1px solid #9a8779; border-radius:var(--arg-radius-control,4px); }
+.au-tool-search input { border:0; background:transparent; padding:.7rem .75rem; min-height:44px; width:100%; }
+.au-tool-search button { background:transparent; border:0; border-left:1px solid var(--arg-color-border,#d9cec6); color:var(--arg-color-primary-strong,#6f4f34); cursor:pointer; min-width:44px; }
+.au-directory-section { margin:1.6rem 0 0; }
+.au-section-heading { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.au-section-heading>a { display:inline-flex; align-items:center; gap:.5rem; min-height:44px; flex-shrink:0; }
+.au-section-heading p { margin:0; }
+.au-source-list { list-style:none; margin:1rem 0 0; padding:0; background:var(--arg-color-surface,#fff); border-top:1px solid var(--arg-color-border,#d9cec6); }
+.au-source-row { display:grid; grid-template-columns:140px minmax(0,1fr) auto; align-items:center; gap:1.25rem; padding:1.15rem 1.25rem; border-bottom:1px solid var(--arg-color-border,#d9cec6); }
+.au-source-logo { width:130px; height:48px; display:flex; align-items:center; justify-content:flex-start; }
+.au-source-logo img { max-width:125px; max-height:46px; object-fit:contain; }
+.au-source-logo img[src$="ufsc.svg"] { width:46px; }
+.au-source-copy p { font-size:.93rem; margin:0; }
+.au-row-action { display:inline-flex; gap:.7rem; align-items:center; min-height:44px; font-weight:700; white-space:normal; }
+.au-unavailable { font-size:.9rem; color:var(--arg-color-muted,#6c5d52); max-width:20ch; }
+.au-directory-columns { display:grid; grid-template-columns:1fr 1fr; column-gap:3rem; }
+.au-task-list { list-style:none; margin:1rem 0 0; padding:0; border-top:1px solid var(--arg-color-border,#d9cec6); }
+.au-task-list>li { border-bottom:1px solid var(--arg-color-border,#d9cec6); }
+.au-task-list a { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.65rem .15rem; min-height:50px; line-height:1.5; }
+.au-task-list a>span { display:flex; align-items:center; gap:.65rem; }
+.au-task-list a:hover { background:var(--arg-color-surface-soft,#f1e9df); }
+.au-tool-brand { width:60px; height:24px; object-fit:contain; }
+.au-import-support { max-width:560px; }
+.au-system-summary { border-top:1px solid var(--arg-color-border,#d9cec6); margin-top:2.5rem; padding-top:1.5rem; }
+.au-system-links { display:flex; flex-wrap:wrap; list-style:none; gap:.4rem 1.5rem; padding:0; }
+.au-system-links a { display:inline-flex; align-items:center; min-height:44px; }
+.au-source-method { margin-top:2rem; border-top:1px solid var(--arg-color-border,#d9cec6); padding-top:1.5rem; }
+.au-source-method ol { padding-left:1.5rem; line-height:1.9; }
+.au-entity-switch { display:flex; flex-wrap:wrap; gap:.5rem 1.25rem; border-bottom:1px solid var(--arg-color-border,#d9cec6); margin:1.5rem 0; padding-bottom:.6rem; }
+.au-entity-switch a { display:inline-flex; gap:.5rem; align-items:center; min-height:44px; padding:.4rem; }
+.au-entity-switch a[aria-current] { font-weight:700; box-shadow:0 -2px var(--arg-color-accent,#c76b22) inset; }
+.au-entity-tools { margin:1.5rem 0 2rem; }
+.au-record-filters { display:flex; flex-wrap:wrap; gap:1rem; align-items:end; margin:1rem 0; }
+.au-record-filters .field { margin:0 !important; flex:1 1 200px; }
+.au-record-filters .field:first-of-type { flex:2 1 300px; }
+.au-record-filters button { min-height:44px; }
+.au-record-filters>a { display:inline-flex; align-items:center; min-height:44px; }
+.au-record-list { list-style:none; margin:1rem 0; padding:0; border-top:1px solid var(--arg-color-border,#d9cec6); }
+.au-record-list>li { display:grid; grid-template-columns:minmax(0,1fr) 140px 160px; align-items:center; gap:1.5rem; padding:1rem 0; border-bottom:1px solid var(--arg-color-border,#d9cec6); }
+.au-record-list>li>div>a { font-weight:700; }
+.au-record-list small { display:block; margin-top:.35rem; font-size:.86rem; color:var(--arg-color-muted,#6c5d52); }
+.au-record-list>li>a { display:inline-flex; align-items:center; min-height:44px; gap:.5rem; }
+.au-record-list .au-entity-empty { display:block; padding:1.5rem 0; }
+.au-sr { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+.au-search-empty { margin:1.5rem 0; padding:1rem; background:var(--arg-color-surface,#fff); }
+.au-home [hidden] { display:none !important; }
+.au-home :focus-visible, .au-navigation :focus-visible, .au-entity-page :focus-visible, .au-sources-page :focus-visible { outline:3px solid #875334; outline-offset:3px; }
+.au-home ::selection, .au-entity-page ::selection, .au-sources-page ::selection { background:#eed2bc;color:#352218; }
+.au-home input, .au-entity-page input { caret-color:#6f4f34; }
+@media (max-width:1100px) {
+ .au-chain a { padding:1rem .65rem; }
+ .au-chain strong { font-size:1.1rem; }
+ .au-source-row { grid-template-columns:110px minmax(0,1fr) auto;gap:1rem; }
+ .au-source-logo { width:105px; }
+ .au-source-logo img { max-width:100px; }
+}
+@media (max-width:991px) {
+ .argilo-admin-navigation.au-navigation { display:block; }
+ .au-navigation .au-nav-group { margin-top:.6rem; }
+}
+@media (max-width:700px) {
+ .au-page-heading, .au-section-heading, .au-directory-toolbar { align-items:stretch;flex-direction:column;gap:1rem; }
+ .au-page-heading .ui.button { align-self:start; }
+ .au-chain { grid-template-columns:1fr; }
+ .au-chain li+li { border-left:0;border-top:1px solid var(--arg-color-border,#d9cec6); }
+ .au-chain a { grid-template-columns:32px 1fr auto; grid-template-rows:auto auto; min-height:0;gap:.3rem .75rem; padding:1rem; }
+ .au-chain .argilo-icon { grid-row:1/3; }
+ .au-chain span { grid-column:2/4; grid-row:2; }
+ .au-chain small { grid-column:3;grid-row:1;padding:0;align-self:center; }
+ .au-chain strong { font-size:1.15rem; }
+ .au-tool-search { flex-basis:auto; }
+ .au-source-row { grid-template-columns:76px minmax(0,1fr);gap:.6rem 1rem; padding:1rem .5rem; }
+ .au-source-logo { width:72px;height:44px; }
+ .au-source-logo img { max-width:72px;max-height:42px; }
+ .au-source-row>.au-row-action,.au-source-row>.au-unavailable { grid-column:2;justify-self:start; }
+ .au-source-copy p { font-size:.9rem; }
+ .au-directory-columns { grid-template-columns:1fr; }
+ .au-record-filters { display:block; }
+ .au-record-filters .field { margin-bottom:1rem !important; }
+ .au-record-list>li { grid-template-columns:1fr;gap:.5rem; }
+ .au-record-list small { overflow-wrap:anywhere; }
+ .au-module-source { margin-top:.5rem; }
+ .au-entity-switch { gap:.25rem .6rem; }
+}
+@media (prefers-reduced-motion:no-preference) {
+ .au-navigation summary { transition:background-color 160ms ease-out; }
+}
+
+.au-assistant { display:flex; justify-content:flex-end; padding:1.25rem 2rem; background:var(--arg-color-surface-page,#f5f2ed); }
+.au-assistant .argilo-robo-launcher { position:static !important; margin:0 !important; }
+/* The native shell fixes its height to a viewport. This directory needs normal
+   document flow so long tools and the assistant footer cannot overlap. */
+body:has(.argilo-admin-shell) { height:auto; min-height:100vh; }
+.invenio-administration.argilo-admin-shell { height:auto !important; flex:1 0 auto; }
+.au-assistant { flex:0 0 auto; }
+
+/* Entity colors express the scientific chain; names and icons always accompany them. */
+[data-au-entity="campo"] { --au-entity-ink:#285e46; --au-entity-soft:#e5f2ea; }
+[data-au-entity="amostra"] { --au-entity-ink:#765817; --au-entity-soft:#fbefd0; }
+[data-au-entity="analise"] { --au-entity-ink:#245e78; --au-entity-soft:#e4f1f8; }
+[data-au-entity="argilomineral"] { --au-entity-ink:#814321; --au-entity-soft:#f7e6d9; }
+[data-au-entity="publicacoes"] { --au-entity-ink:#624577; --au-entity-soft:#f0e8f7; }
+.au-chain [data-au-entity] { background:var(--au-entity-soft); }
+.au-chain [data-au-entity] a, .au-chain [data-au-entity] small { color:var(--au-entity-ink); }
+.au-chain [data-au-entity] a:hover { background:var(--au-entity-soft); box-shadow:0 -3px var(--au-entity-ink) inset; }
+.au-chain [data-au-entity] a:focus-visible { outline-color:var(--au-entity-ink); outline-offset:-4px; }
+.au-navigation a[data-au-entity] { color:var(--au-entity-ink); }
+.au-navigation a[data-au-entity]:hover, .au-navigation a[data-au-entity].is-active { color:var(--au-entity-ink); background:var(--au-entity-soft); }
+.au-navigation a[data-au-entity] .argilo-icon { color:var(--au-entity-ink); }
+.au-entity-page>.au-entity-switch { background:var(--au-entity-soft); padding:.5rem .75rem; }
+.au-entity-page .au-entity-switch a[aria-current] { color:var(--au-entity-ink); box-shadow:0 -2px var(--au-entity-ink) inset; }
+[data-au-area="povoamento"] { --au-area-ink:#245e78; --au-area-soft:#e4f1f8; }
+[data-au-area="curadoria"] { --au-area-ink:#285e46; --au-area-soft:#e5f2ea; }
+[data-au-area="preservacao"] { --au-area-ink:#624577; --au-area-soft:#f0e8f7; }
+.au-directory-section[data-au-area] h2 { color:var(--au-area-ink); }
+.au-nav-group[data-au-area]>summary { color:var(--au-area-ink); background:var(--au-area-soft); }
+/* Clip the unfocused skip link instead of translating a fixed element outside
+   the viewport; scrolling/full-page rendering must never paint it on the map. */
+.argilo-admin-skip:not(:focus) { width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; transform:none; }
+.argilo-admin-skip:focus { width:auto; height:auto; max-width:calc(100vw - 1rem); overflow:visible; clip-path:none; white-space:normal; transform:none; z-index:10000; outline:3px solid #245e78; outline-offset:2px; color:#245e78; }

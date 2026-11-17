@@ -1,0 +1,20 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% macro resource_links(record_id, resources, t) -%}
+<nav class="sc-resource-links" aria-label="{{ t('Explorar dados do registro','Explore record data') }}">
+  <a href="{{ url_for('argiloteca.drx_comparacao',record_id=record_id,source='record') }}">{{ render_icon('drx') }} {{ t('DRX','XRD') }} <span>{{ resources.drx }}</span></a>
+  {% if resources.points %}<a href="{{ url_for('argiloteca.mapa_argilominerais',highlight_record_id=record_id,record_id=record_id) }}">{{ render_icon('map') }} {{ t('Ver coordenadas no mapa','View coordinates on map') }}</a>{% else %}<span>{{ render_icon('map') }} {{ t('Sem coordenadas declaradas','No declared coordinates') }}</span>{% endif %}
+  <a href="{{ url_for('argiloteca_scientific.connections_public',pid=record_id) }}">{{ render_icon('connections') }} {{ t('Explorar conexões','Explore connections') }}</a>
+</nav>
+{%- endmacro %}
+{% macro reference_image(term, t) -%}
+{% set image=term.get('reusable_image') or {} %}
+{% if image.get('image_url') %}
+<figure class="sc-reference-image">
+  <img src="{{ image.image_url }}" alt="{{ t('Imagem de referência de','Reference image of') }} {{ term.nome_pt or term.nome_en }}" width="200" height="160" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+  <figcaption><strong>{{ term.nome_pt or term.nome_en }}</strong><span>{{ image.scope_label }}</span>
+    {% if image.page_url %}<a href="{{ image.page_url }}" target="_blank" rel="noopener noreferrer">{{ image.source }}</a>{% endif %}
+    <details><summary>{{ t('Crédito e licença','Credit and license') }}</summary><p>{{ image.credit }}</p><p>{{ image.license }}</p><p>{{ image.scope_note }}</p></details>
+  </figcaption>
+</figure>
+{% endif %}
+{%- endmacro %}

@@ -1,0 +1,34 @@
+{#
+    -*- coding: utf-8 -*-
+    Copyright (C) 2022-2024 CERN.
+    Copyright (C) 2024 KTH Royal Institute of Technology.
+
+    Invenio App RDM is free software; you can redistribute it and/or modify it
+    under the terms of the MIT License; see LICENSE file for more details.
+#}
+
+<div class="footer-bottom sub-footer">
+  <div class="ui container">
+    <div class="ui stackable grid">
+      <div class="twelve wide column argilo-footer-credits">
+        {%- block footer_bottom_left %}
+          <p>{{ _("Banco de Dados de Argilas e Argilominerais") }} · {{ _("Desenvolvido com") }}
+          <a href="https://inveniosoftware.org/products/rdm/" target="_blank" rel="noopener noreferrer">{{ _("InvenioRDM") }}</a></p>
+          {# Confirmed by /api/v1/chat/status; generation.py defines the async model.
+             The evidence-selection profile in ARGILOCLAY_MODEL is not active. #}
+          {% set model_link %}<a href="https://huggingface.co/Qwen/Qwen3-0.6B" target="_blank" rel="noopener noreferrer">Qwen3 0.6B</a>{% endset %}
+          {% set runtime_link %}<a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a>{% endset %}
+          {# Only trusted, static links above are interpolated into this message. #}
+          <p><strong>ArgiloClay:</strong> {{ _("Modelo de geração: %(model)s via %(runtime)s", model=model_link, runtime=runtime_link) | safe }}</p>
+        {%- endblock footer_bottom_left %}
+      </div>
+      <div class="four wide column right aligned">
+        {%- block footer_bottom_right %}
+          {%- if config.I18N_LANGUAGES %}
+            {% include "semantic-ui/argiloteca/language_selector.html" %}
+          {%- endif %}
+        {%- endblock footer_bottom_right %}
+      </div>
+    </div>
+  </div>
+</div>

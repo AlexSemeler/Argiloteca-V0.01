@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Reviewed homologation overlay. Does not target the remote production project.
+set -Eeuo pipefail
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
+compose_migrated --file "${PROJECT_DIR}/docker-compose.argiloclay-fix.yml" "$@"

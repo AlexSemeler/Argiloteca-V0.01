@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_deposito.schema.json",
+  "title": "arg:deposito",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["deposito_id", "nome"],
+  "properties": {
+    "deposito_id": {"type": "string", "minLength": 1},
+    "nome": {"type": "string", "minLength": 1},
+    "tipo": {"type": "string"},
+    "substancia": {"type": "string"},
+    "titular": {"type": "string"},
+    "fase_processo": {"type": "string"},
+    "processo_anm": {"type": "string"},
+    "area_ha": {"type": ["number", "null"], "minimum": 0},
+    "localidade": {"$ref": "arg_localidade.schema.json"},
+    "coordenada": {"$ref": "arg_coordenada.schema.json"},
+    "fonte": {"type": "string"},
+    "url_fonte": {"type": "string", "format": "uri"},
+    "observacoes": {"type": "string"}
+  }
+}

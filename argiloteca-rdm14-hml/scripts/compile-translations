@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Compile catalogs using the application's Babel/Jinja runtime, without host dependencies.
+set -Eeuo pipefail
+source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/common.sh"
+require_command docker
+
+docker run --rm --network none --platform linux/amd64 \
+  --user "$(id -u):$(id -g)" --entrypoint python \
+  --mount "type=bind,src=${PROJECT_DIR}/scripts/manage_translations.py,dst=/tmp/manage_translations.py,readonly" \
+  --mount "type=bind,src=${PROJECT_DIR}/templates,dst=/work/templates,readonly" \
+  --mount "type=bind,src=${PROJECT_DIR}/argiloteca_custom/argiloteca/templates,dst=/work/argiloteca_custom/argiloteca/templates,readonly" \
+  --mount "type=bind,src=${PROJECT_DIR}/argiloteca_custom/argiloteca/static/js,dst=/work/argiloteca_custom/argiloteca/static/js,readonly" \
+  --mount "type=bind,src=${PROJECT_DIR}/argiloteca_custom/argiloteca/static/i18n,dst=/work/argiloteca_custom/argiloteca/static/i18n" \
+  --mount "type=bind,src=${PROJECT_DIR}/translations,dst=/work/translations" \
+  argiloteca-rdm14-hml:14.0.4 /tmp/manage_translations.py compile --root /work

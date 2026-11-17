@@ -1,0 +1,7 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon as icon with context %}
+<nav class="oa-nav pop-nav" aria-label="{{ oa_t('Povoamento','Population') }}">
+<a class="ui basic button admin-action" href="{{ url_for('argiloteca_population.index') }}">{{ icon('dashboard') }} <span>{{ oa_t('Visão integrada','Integrated overview') }}</span></a>
+<a class="ui basic button admin-action" href="{{ url_for('argiloteca_population.records',analysis=analysis.id if analysis else '') }}">{{ icon('catalog') }} <span>{{ oa_t('Registros','Records') }}</span></a>
+<a class="ui basic button admin-action" href="{{ url_for('argiloteca_population.authors',analysis=analysis.id if analysis else '') }}">{{ icon('communities') }} <span>{{ oa_t('Autores e ORCID','Authors and ORCID') }}</span></a>
+{% if config.ARGILOTECA_REPOSITORIES_ENABLED %}<a class="ui basic button admin-action" href="{{ url_for('argiloteca_repositories.pdf_index') }}">{{ icon('download') }} <span>PDFs</span></a>{% endif %}
+</nav>

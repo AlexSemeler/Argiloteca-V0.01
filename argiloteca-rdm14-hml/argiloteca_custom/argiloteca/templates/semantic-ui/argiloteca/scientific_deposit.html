@@ -1,0 +1,63 @@
+{% extends "invenio_app_rdm/page.html" %}
+{% from "semantic-ui/argiloteca/deposit_navigation.html" import deposit_navigation with context %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% set title = st('Scientific metadata','Metadados científicos') %}
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/argiloteca-workflows.css') }}?v=20261020-ui-review-3">
+<link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/scientific-metadata.css') }}?v=20261019-cpaa-workflows-1">
+{% endblock %}
+{% block page_body %}
+{{ deposit_navigation(scientific=true, record_id=science_config.record.get('id'), readonly=science_config.read_only) }}
+<section class="ui container arg-science-editor" id="science-main" aria-label="{{ title }}">
+  <form id="science-form" class="ui form" novalidate>
+    <div class="science-editor-layout">
+      <div class="science-editor-content">
+        <div id="science-errors" role="alert" tabindex="-1"></div>
+        <section id="science-bibliography" class="science-panel"></section>
+        <section class="science-panel science-profile-panel" aria-labelledby="science-profile-title">
+          <h2 id="science-profile-title">{{ st('Scientific metadata','Metadados científicos') }}</h2>
+          <p>{{ st('Connect field campaigns, samples and analytical results through their identifiers. Expand a section to add or review its data.','Relacione pesquisas de campo, amostras e resultados analíticos pelos identificadores. Expanda uma seção para incluir ou revisar seus dados.') }}</p>
+          <nav class="science-relationships" aria-label="{{ st('Relationships between scientific sections','Relações entre seções científicas') }}">
+            <a href="#science-section-arg-pesquisas_campo">{{ render_icon('map') }} {{ st('Field campaigns','Pesquisas de campo') }}</a><span aria-hidden="true">{{ render_icon('arrow') }}</span><a href="#science-section-arg-amostras">{{ render_icon('minerals') }} {{ st('Samples','Amostras') }}</a><span aria-hidden="true">{{ render_icon('arrow') }}</span><a href="#science-section-arg-analises">{{ render_icon('analyses') }} {{ st('Analyses','Análises') }}</a>
+          </nav>
+          <label class="science-profile"><input type="checkbox" id="science-profile"> {{ st('Use the scientific profile','Usar o perfil científico') }}</label>
+          <p class="science-help">{{ st('Drafts may be incomplete. Scientific validation is required before publication.','Rascunhos podem estar incompletos. A validação científica é obrigatória antes da publicação.') }}</p>
+        </section>
+        <div id="science-blocks"></div>
+      </div>
+      <aside class="science-editor-sidebar" aria-label="{{ st('Deposit actions','Ações do depósito') }}">
+        <section class="science-panel science-deposit-actions">
+          <h2>{{ st('Deposit','Depósito') }}</h2>
+          <p class="science-record-state" id="science-record-state"></p>
+          <div id="science-status" role="status" aria-live="polite" aria-atomic="true"></div>
+          {% if not science_config.read_only %}
+          <p>{{ st('Save your draft before switching forms. The same identifier links both descriptions.','Salve o rascunho antes de alternar os formulários. O mesmo identificador conecta as duas descrições.') }}</p>
+          <div class="science-actions">
+            <button type="button" class="ui primary button" id="science-save">{{ render_icon('upload') }} {{ st('Save draft','Salvar rascunho') }}</button>
+            <button type="button" class="ui positive button" id="science-publish">{{ st('Publish','Publicar') }}</button>
+          </div>
+          <div id="science-publish-confirm" class="science-publication-review" hidden>
+            <p>{{ st('Publish this record? Check its description and scientific relationships before confirming.','Publicar este registro? Confira a descrição e as relações científicas antes de confirmar.') }}</p>
+            <button type="button" class="ui positive button" id="science-confirm-publish">{{ st('Confirm publication','Confirmar publicação') }}</button>
+            <button type="button" class="ui basic button" id="science-cancel-publish">{{ st('Cancel','Cancelar') }}</button>
+          </div>
+          {% elif science_config.can_edit %}
+          <button type="button" class="ui primary button" id="science-begin-edit">{{ st('Start editing','Iniciar edição') }}</button>
+          {% endif %}
+          <div id="science-record-links"></div>
+        </section>
+        <section class="science-form-guide">
+          <h2>{{ st('On this form','Neste formulário') }}</h2>
+          <a href="#science-bibliography">{{ st('Basic information','Informações básicas') }}</a>
+          <a href="#science-profile-title">{{ st('Scientific metadata','Metadados científicos') }}</a>
+          <p>{{ st('Files, licenses and access conditions are managed under Description and files.','Arquivos, licenças e condições de acesso são gerenciados em Descrição e arquivos.') }}</p>
+          <details><summary>{{ st('Profile information','Informações do perfil') }}</summary><p>{{ st('Experimental profile for homologation','Perfil experimental de homologação') }} {{ science_config.profile_version }}</p><p>{{ st('Identifiers, units and original values are preserved.','Identificadores, unidades e valores originais são preservados.') }}</p></details>
+        </section>
+      </aside>
+    </div>
+  </form>
+</section>
+<script nonce="{{ csp_nonce() }}" type="application/json" id="science-config">{{ science_config|tojson }}</script>
+<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static',filename='js/scientific-metadata.js') }}?v=20261018-workflows-2" defer></script>
+{% endblock %}

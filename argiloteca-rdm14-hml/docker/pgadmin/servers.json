@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "argiloteca-rdm14-hml-db",
+      "Group": "Servers",
+      "Host": "argiloteca-rdm14-hml-db-1",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "argiloteca-rdm14-hml",
+      "SSLMode": "prefer"
+    }
+  }
+}

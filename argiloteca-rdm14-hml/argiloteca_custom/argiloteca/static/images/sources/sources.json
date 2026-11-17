@@ -1,0 +1,60 @@
+{
+  "openalex.png": {
+    "brand": "OpenAlex",
+    "source_url": "https://openalex.org/brand-assets/openalex-lockup.png",
+    "source_page": "https://openalex.org/",
+    "retrieved_date": "2026-10-31",
+    "sha256": "8ee6cca50fab8ff0122d1d96bca7f5230f7efef988f5ca7d8fab5383d06effd0",
+    "transformations": "Origin metadata embedded; image pixels unchanged.",
+    "usage": "Identify the existing source integration; no endorsement claim.",
+    "original_sha256": "79e0e6fb9c8857bfd1314b8ab57cbacebcdd794512091ce27024a9155313cf07"
+  },
+  "pangaea.png": {
+    "brand": "PANGAEA",
+    "source_url": "https://www.pangaea.de/assets/v.2d6f89e80fb0ee2bf039f8938c1ebe6a/layout-images/pangaea-logo.png",
+    "source_page": "https://www.pangaea.de/",
+    "retrieved_date": "2026-10-31",
+    "sha256": "5d4e0c956b20578866818b9ed022f67badbef72ad9fe1f3e2b957352b107a43c",
+    "transformations": "Origin metadata embedded; image pixels unchanged.",
+    "usage": "Identify the existing source integration; no endorsement claim.",
+    "original_sha256": "6c9e19a4eca49e7028c6a8d9d1cab980333ad802a5db8868924f9717d57751fb"
+  },
+  "lume.png": {
+    "brand": "LUME UFRGS",
+    "source_url": "https://lume.ufrgs.br/themes/Mirage2Novo/images/logo_lume.png",
+    "source_page": "https://lume.ufrgs.br/",
+    "retrieved_date": "2026-10-31",
+    "sha256": "3edc07dfbdc831edb72278e6fbc2cb0f75aef35143b51de0d27373dcf0d2abe4",
+    "transformations": "Origin metadata embedded; image pixels unchanged.",
+    "usage": "Identify the existing source integration; no endorsement claim.",
+    "original_sha256": "c018c473cbf948262f39f4b7be893154a2dad1a757cd41cb77987c25b876cbb9"
+  },
+  "ufsc.svg": {
+    "brand": "UFSC",
+    "source_url": "https://identidade.ufsc.br/wp-content/themes/brasilGovInterno/img/brasao_site_ufsc.svg",
+    "source_page": "https://identidade.ufsc.br/",
+    "retrieved_date": "2026-10-31",
+    "sha256": "b3837bb755c056633ce510064c652d275733b729e15d063c866f32fb776d248f",
+    "transformations": "none",
+    "usage": "Identify the existing source integration; no endorsement claim."
+  },
+  "orcid.png": {
+    "brand": "ORCID",
+    "source_url": "https://info.orcid.org/wp-content/uploads/2021/01/orcid-logo.png",
+    "source_page": "https://info.orcid.org/brand-guidelines/",
+    "retrieved_date": "2026-10-31",
+    "sha256": "bd7e8ec89ca044ddb5bbe7ff27c72ce63c4492577e4d4c56eeb4282f3a933f3b",
+    "transformations": "Origin metadata embedded; image pixels unchanged.",
+    "usage": "Identify the existing source integration; no endorsement claim.",
+    "original_sha256": "e74b20c186b1a2091a1b8f408957c0052751186d78209f2e852a9799146187a7"
+  },
+  "mendeley.svg": {
+    "brand": "Mendeley Data",
+    "source_url": "https://data.mendeley.com/",
+    "source_page": "https://data.mendeley.com/",
+    "retrieved_date": "2026-10-31",
+    "sha256": "11030564d7c857d88461256437c68a6b78d6dd3984bf1cf0628097a0c1af1c46",
+    "transformations": "Official inline SVG extracted; added standalone SVG xmlns only.",
+    "usage": "Identify source integration; no endorsement claim."
+  }
+}

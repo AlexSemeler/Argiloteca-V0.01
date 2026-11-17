@@ -1,0 +1,46 @@
+{#
+  SPDX-FileCopyrightText: 2015-2024 CERN.
+  SPDX-FileCopyrightText: 2021 New York University.
+  SPDX-License-Identifier: MIT
+#}
+
+{%- extends "invenio_theme/page.html" -%}
+
+{% block css %}
+  {{ super() }}
+  <script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static', filename='i18n/' ~ current_i18n.language ~ '.js') }}?v=20261020-reference-pilot-2"></script>
+  <script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static', filename='js/argiloteca-i18n.js') }}?v=20261020-reference-pilot-2"></script>
+  <link rel="preload" href="{{ url_for('argiloteca.static', filename='fonts/catamaran/catamaran-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-theme.css') }}?v=20261024-footer-technologies-1">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-scientific.css') }}?v=20261016-ui-3">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-mobile.css') }}?v=20261016-mobile-2">
+  {% include "semantic-ui/argiloteca/language_selector_styles.html" %}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloclay-robo.css') }}?v=20261019-3">
+{% endblock %}
+
+{%- block body_inner %}
+
+  {%- block page_header %}
+    {% include config.THEME_HEADER_TEMPLATE %}
+  {%- endblock page_header %}
+
+  <main id="main">
+    <div class="invenio-page-body">
+      {%- block page_body %}
+        {% include "invenio_theme/body.html" %}
+      {%- endblock page_body %}
+    </div>
+  </main>
+
+  {%- block page_footer %}
+    <footer id="rdm-footer-element">
+        {% include config.THEME_FOOTER_TEMPLATE %}
+      {%- block footer_bottom %}
+        {% include "invenio_app_rdm/site_footer.html" %}
+      {%- endblock footer_bottom %}
+    </footer>
+  {%- endblock page_footer %}
+
+  {% include "semantic-ui/argiloteca/argiloclay_robo.html" %}
+
+{%- endblock body_inner %}

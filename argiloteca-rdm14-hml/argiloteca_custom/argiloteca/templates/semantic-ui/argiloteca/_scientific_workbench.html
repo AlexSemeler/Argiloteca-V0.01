@@ -1,0 +1,16 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% macro workbench_header(active, title, subtitle, fullscreen_role) -%}
+  <header class="awb-header">
+    <div class="awb-navigation">
+      <nav class="awb-views {% if active == 'drx' %}argilo-drx__context-actions{% else %}argilo-package__actions{% endif %}" aria-label="{{ _('Navegação científica') }}">
+        <a href="{{ ('/analises/' + (record_id or context_record_id)) if (record_id or context_record_id) else url_for('argiloteca.analises_index') }}" {% if active == 'analyses' %}aria-current="page"{% endif %}>{% if active == 'drx' %}{{ render_icon('analyses') }}{% endif %}{{ _('Análises') }}</a>
+        <a href="{{ url_for('argiloteca.drx_comparacao', record_id=(record_id or context_record_id), source='record') if (record_id or context_record_id) else url_for('argiloteca.drx_comparacao') }}" aria-label="{{ _('Comparação DRX') }}" {% if active == 'drx' %}aria-current="page"{% endif %}>{% if active == 'drx' %}{{ render_icon('drx') }}{% endif %}<span class="awb-view-long">{{ _('Comparação DRX') }}</span><span class="awb-view-short" aria-hidden="true">DRX</span></a>
+      </nav>
+      <div class="awb-header-actions">
+        <span class="awb-expanded-language">{% include "semantic-ui/argiloteca/language_selector.html" %}</span>
+        <button class="ui button" type="button" data-role="{{ fullscreen_role }}">{{ render_icon('expand') }} <span data-button-label>{{ _('Tela cheia') }}</span></button>
+      </div>
+    </div>
+    <div class="awb-title"><div><h1 id="awb-title">{{ title }}</h1><p>{{ subtitle }}</p></div><a class="awb-help{% if active == 'drx' %} ui basic button{% endif %}" href="{{ url_for('argiloteca.drx_guide') }}">{{ render_icon('catalog') }} {{ _('Entenda a técnica e o painel DRX') }}</a></div>
+  </header>
+{%- endmacro %}

@@ -1,0 +1,4 @@
+{% set feedback = get_flashed_messages(with_categories=true) %}
+{% if feedback %}<div id="admin-feedback" tabindex="-1">
+{% for category, message in feedback %}<div class="ui {{ 'positive' if category=='success' else 'negative' if category=='error' else 'warning' if category=='warning' else 'info' }} message" role="{{ 'alert' if category in ['error','warning'] else 'status' }}">{{ message }}</div>{% endfor %}
+</div>{% endif %}

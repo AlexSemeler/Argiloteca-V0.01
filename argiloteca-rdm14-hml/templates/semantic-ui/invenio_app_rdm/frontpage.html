@@ -1,0 +1,49 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_module_nav, render_breadcrumb, render_icon with context %}
+{#
+  Copyright (C) 2019-2020 CERN.
+  Copyright (C) 2019-2020 Northwestern University.
+  Copyright (C) 2021 New York University.
+
+  Invenio App RDM is free software; you can redistribute it and/or modify it
+  under the terms of the MIT License; see LICENSE file for more details.
+#}
+{% from "invenio_app_rdm/macros/records_list.html" import records_list %}
+{% from "invenio_communities/macros/communities_carousel.html" import communities_carousel %}
+
+{%- extends "invenio_theme/frontpage.html" %}
+
+{%- block page_header %}
+  {%- include "invenio_app_rdm/header_frontpage.html" %}
+{%- endblock page_header %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-home-record.css') }}?v=20261019-home-drx-1">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/drx-media.css') }}?v=20261019-1">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-recent-records.css') }}?v=20261019-cpaa-type-2">
+{% endblock %}
+{%- block page_body %}
+
+  {%- block intro_section %}
+    {% if show_intro_section %}
+      {% include "invenio_app_rdm/intro_section.html" %}
+    {% endif %}
+  {%- endblock intro_section %}
+
+  {%- block top_banner %}
+    {{ communities_carousel() }}
+  {%- endblock top_banner %}
+
+  {%- block grid_section %}
+    <section class="argilo-recent-section" aria-label="{{ _('Registros recentes') }}">
+      <div class="argilo-recent-records ui container">
+        <a class="argilo-section-browse" href="{{ url_for('invenio_search_ui.search') }}">{{ _('Ver todos os registros') }} {{ render_icon('arrow') }}</a>
+        {{ records_list(title=_('Registros recentes'), fetch_url='/api/records?sort=newest&size=3') }}
+      </div>
+    </section>
+  {%- endblock grid_section %}
+
+  {%- block bottom_section %}
+  {%- endblock bottom_section %}
+
+{%- endblock page_body %}

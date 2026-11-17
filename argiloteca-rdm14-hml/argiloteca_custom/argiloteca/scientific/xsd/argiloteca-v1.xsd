@@ -1,0 +1,1388 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:a="https://127.0.0.1:5101/schemas/argiloteca/v1/" targetNamespace="https://127.0.0.1:5101/schemas/argiloteca/v1/" elementFormDefault="qualified">
+  <xs:complexType name="GenericValue" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="property" type="a:GenericValue"/>
+      <xs:element name="item" type="a:GenericValue"/>
+    </xs:choice>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="kind" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="object"/>
+          <xs:enumeration value="array"/>
+          <xs:enumeration value="string"/>
+          <xs:enumeration value="number"/>
+          <xs:enumeration value="boolean"/>
+          <xs:enumeration value="null"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="termo_catalogoType">
+    <xs:sequence>
+      <xs:element name="slug" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+            <xs:pattern value="[a-z0-9]+(-[a-z0-9]+)*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome_pt" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome_en" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome_cientifico_padronizado" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="grupo_mineralogico" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="classe_estrutural" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="formula_ideal" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao_curta" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao_classica" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao_proveniencia" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="situacao" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="ativo"/>
+            <xs:enumeration value="retirado"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sinonimos" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" maxOccurs="100">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="external_uri" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2000"/>
+            <xs:pattern value="https?://.+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="source_sha256" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[a-f0-9]{64}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="enriquecimento" minOccurs="0" type="a:GenericValue"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="geoquimicaType">
+    <xs:sequence>
+      <xs:element name="codigo_amostra" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="analise_id" minOccurs="0" type="xs:string"/>
+      <xs:element name="SiO2" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Al2O3" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Fe2O3" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="FeO" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="MgO" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CaO" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="K2O" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Na2O" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="TiO2" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="MnO" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="P2O5" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PF" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="LOI" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="componente_dominante" minOccurs="0" type="xs:string"/>
+      <xs:element name="enriquecimento_relativo" minOccurs="0" type="xs:string"/>
+      <xs:element name="predominancia_mineral" minOccurs="0" type="xs:string"/>
+      <xs:element name="classe_geoquimica" minOccurs="0" type="xs:string"/>
+      <xs:element name="provenance" minOccurs="0" type="a:GenericValue"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="referencia_drx_webmineralType">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z0-9][a-z0-9_-]*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="argilomineral_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z0-9][a-z0-9_-]*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mineral" minOccurs="0" type="xs:string"/>
+      <xs:element name="title_pt" minOccurs="0" type="xs:string"/>
+      <xs:element name="category" minOccurs="0" type="xs:string"/>
+      <xs:element name="family" minOccurs="0" type="xs:string"/>
+      <xs:element name="vocabulary_source" minOccurs="0" type="xs:string"/>
+      <xs:element name="source" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="WebMineral"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="source_url" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="webmineral_url" minOccurs="0" type="xs:string"/>
+      <xs:element name="local_html" minOccurs="0" type="xs:string"/>
+      <xs:element name="source_status" minOccurs="0" type="xs:string"/>
+      <xs:element name="usage" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="triagem_drx"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="validation_status" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="auxiliary_not_confirmatory"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="reference_kind" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="xray_powder_diffraction"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="has_drx_reference" minOccurs="1" type="xs:boolean"/>
+      <xs:element name="lines_count" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="lines" minOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="d_angstrom" minOccurs="1">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minExclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="relative_intensity" minOccurs="1">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="has_chemical_composition" minOccurs="0" type="xs:boolean"/>
+      <xs:element name="chemical_formula" minOccurs="0" type="xs:string"/>
+      <xs:element name="empirical_formula" minOccurs="0" type="xs:string"/>
+      <xs:element name="chemical_composition" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="chemical_formula" minOccurs="0" type="xs:string"/>
+            <xs:element name="empirical_formula" minOccurs="0" type="xs:string"/>
+            <xs:element name="molecular_weight_g_mol" minOccurs="0" nillable="true">
+              <xs:simpleType>
+                <xs:restriction base="xs:decimal">
+                  <xs:minInclusive value="0"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="total_oxide_percent" minOccurs="0" nillable="true">
+              <xs:simpleType>
+                <xs:restriction base="xs:decimal">
+                  <xs:minInclusive value="0"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="elements_count" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                  <xs:minInclusive value="0"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="oxides_count" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                  <xs:minInclusive value="0"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="elements" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="element" minOccurs="1" type="xs:string"/>
+                        <xs:element name="symbol" minOccurs="1" type="xs:string"/>
+                        <xs:element name="weight_percent" minOccurs="1">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                              <xs:minInclusive value="0"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="oxides" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="oxide" minOccurs="1" type="xs:string"/>
+                        <xs:element name="weight_percent" minOccurs="1">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:decimal">
+                              <xs:minInclusive value="0"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="source_element" minOccurs="0" type="xs:string"/>
+                        <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="composition_entries" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="item" minOccurs="0" type="a:GenericValue" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="has_crystallography" minOccurs="0" type="xs:boolean"/>
+      <xs:element name="has_structural_classification" minOccurs="0" type="xs:boolean"/>
+      <xs:element name="has_structure_reference" minOccurs="0" type="xs:boolean"/>
+      <xs:element name="has_auxiliary_qc" minOccurs="0" type="xs:boolean"/>
+      <xs:element name="webmineral_crystallography" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="has_crystallography" minOccurs="0" type="xs:boolean"/>
+            <xs:element name="xray_summary" minOccurs="0" type="xs:string"/>
+            <xs:element name="axial_ratios" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="raw" minOccurs="0" type="xs:string"/>
+                  <xs:element name="a_to_b" minOccurs="0" nillable="true" type="xs:decimal"/>
+                  <xs:element name="b_to_b" minOccurs="0" nillable="true" type="xs:decimal"/>
+                  <xs:element name="c_to_b" minOccurs="0" nillable="true" type="xs:decimal"/>
+                  <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="cell_parameters" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="raw" minOccurs="0" type="xs:string"/>
+                  <xs:element name="has_cell_parameters" minOccurs="0" type="xs:boolean"/>
+                  <xs:element name="a_angstrom" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minExclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="b_angstrom" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minExclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="c_angstrom" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minExclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="alpha_deg" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="beta_deg" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="gamma_deg" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="volume_angstrom3" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minExclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="calculated_density_g_cm3" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="z" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="crystal_system" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="raw" minOccurs="0" type="xs:string"/>
+                  <xs:element name="crystal_system" minOccurs="0" type="xs:string"/>
+                  <xs:element name="hm_symbol" minOccurs="0" type="xs:string"/>
+                  <xs:element name="space_group" minOccurs="0" type="xs:string"/>
+                  <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="webmineral_classification" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="has_structural_classification" minOccurs="0" type="xs:boolean"/>
+            <xs:element name="dana" minOccurs="0" type="a:GenericValue"/>
+            <xs:element name="strunz" minOccurs="0" type="a:GenericValue"/>
+            <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="webmineral_structure_reference" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="has_structure_reference" minOccurs="0" type="xs:boolean"/>
+            <xs:element name="jpowd_model" minOccurs="0" type="xs:string"/>
+            <xs:element name="structure_reference" minOccurs="0" type="xs:string"/>
+            <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="webmineral_auxiliary_qc" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="has_auxiliary_qc" minOccurs="0" type="xs:boolean"/>
+            <xs:element name="density" minOccurs="0" type="a:GenericValue"/>
+            <xs:element name="electron_density" minOccurs="0" type="a:GenericValue"/>
+            <xs:element name="photoelectric" minOccurs="0" type="a:GenericValue"/>
+            <xs:element name="radioactivity" minOccurs="0" type="a:GenericValue"/>
+            <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="webmineral_descriptive_properties" minOccurs="0" type="a:GenericValue"/>
+      <xs:element name="classifier_feature_groups" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" type="xs:string" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="classifier_feature_count" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="errors" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" type="xs:string" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="source_snapshot" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="source_file" minOccurs="1">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:minLength value="1"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="generated_at" minOccurs="0" type="xs:string"/>
+            <xs:element name="sha256" minOccurs="1">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="[a-fA-F0-9]{64}"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="metodo_analiticoType">
+    <xs:sequence>
+      <xs:element name="metodo_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipo" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="drx"/>
+            <xs:enumeration value="xrd"/>
+            <xs:enumeration value="geoquimica"/>
+            <xs:enumeration value="frx"/>
+            <xs:enumeration value="icp"/>
+            <xs:enumeration value="mev"/>
+            <xs:enumeration value="ftir"/>
+            <xs:enumeration value="granulometria"/>
+            <xs:enumeration value="extracao_pdf"/>
+            <xs:enumeration value="outro"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" type="xs:string"/>
+      <xs:element name="laboratorio" minOccurs="0" type="xs:string"/>
+      <xs:element name="equipamento" minOccurs="0" type="xs:string"/>
+      <xs:element name="condicoes_analise" minOccurs="0" type="xs:string"/>
+      <xs:element name="versao_processamento" minOccurs="0" type="xs:string"/>
+      <xs:element name="fonte_metodo" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coordenadaType">
+    <xs:sequence>
+      <xs:element name="latitude" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-90"/>
+            <xs:maxInclusive value="90"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="longitude" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-180"/>
+            <xs:maxInclusive value="180"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="altitude_m" minOccurs="0" nillable="true" type="xs:decimal"/>
+      <xs:element name="datum" minOccurs="0" type="xs:string"/>
+      <xs:element name="epsg" minOccurs="0" type="xs:string"/>
+      <xs:element name="precisao_m" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fonte" minOccurs="0" type="xs:string"/>
+      <xs:element name="metodo_obtencao" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="conexao_cientificaType">
+    <xs:sequence>
+      <xs:element name="record_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z0-9]{5}-[a-z0-9]{5}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="papel" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="dados"/>
+            <xs:enumeration value="publicacao"/>
+            <xs:enumeration value="termo"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="relacao" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="issupplementedby"/>
+            <xs:enumeration value="issupplementto"/>
+            <xs:enumeration value="references"/>
+            <xs:enumeration value="isreferencedby"/>
+            <xs:enumeration value="describes"/>
+            <xs:enumeration value="isdescribedby"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="evidencia" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="10"/>
+            <xs:maxLength value="1500"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="slug" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+            <xs:pattern value="[a-z0-9]+(-[a-z0-9]+)*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="native_relation_created" minOccurs="0" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="depositoType">
+    <xs:sequence>
+      <xs:element name="deposito_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipo" minOccurs="0" type="xs:string"/>
+      <xs:element name="substancia" minOccurs="0" type="xs:string"/>
+      <xs:element name="titular" minOccurs="0" type="xs:string"/>
+      <xs:element name="fase_processo" minOccurs="0" type="xs:string"/>
+      <xs:element name="processo_anm" minOccurs="0" type="xs:string"/>
+      <xs:element name="area_ha" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="localidade" minOccurs="0" type="a:localidadeType"/>
+      <xs:element name="coordenada" minOccurs="0" type="a:coordenadaType"/>
+      <xs:element name="fonte" minOccurs="0" type="xs:string"/>
+      <xs:element name="url_fonte" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amostraType">
+    <xs:sequence>
+      <xs:element name="codigo_amostra" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="campanha_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="data_coleta" minOccurs="0" type="xs:date"/>
+      <xs:element name="responsavel_coleta" minOccurs="0" type="xs:string"/>
+      <xs:element name="local_coleta" minOccurs="0" type="xs:string"/>
+      <xs:element name="descricao_local" minOccurs="0" type="xs:string"/>
+      <xs:element name="latitude" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-90"/>
+            <xs:maxInclusive value="90"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="longitude" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-180"/>
+            <xs:maxInclusive value="180"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="altitude_m" minOccurs="0" nillable="true" type="xs:decimal"/>
+      <xs:element name="coordenada" minOccurs="0" type="a:coordenadaType"/>
+      <xs:element name="localidade" minOccurs="0" type="a:localidadeType"/>
+      <xs:element name="deposito" minOccurs="0" type="a:depositoType"/>
+      <xs:element name="contexto_geologico" minOccurs="0" type="xs:string"/>
+      <xs:element name="tempo_geologico" minOccurs="0" type="xs:string"/>
+      <xs:element name="rocha_hospedeira" minOccurs="0" type="xs:string"/>
+      <xs:element name="tipo_amostra" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes_campo" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="analiseType">
+    <xs:sequence>
+      <xs:element name="analise_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo_amostra" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="metodo" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="metodo_analitico" minOccurs="0" type="a:metodo_analiticoType"/>
+      <xs:element name="data_analise" minOccurs="0" type="xs:date"/>
+      <xs:element name="laboratorio" minOccurs="0" type="xs:string"/>
+      <xs:element name="equipamento" minOccurs="0" type="xs:string"/>
+      <xs:element name="condicoes_analise" minOccurs="0" type="xs:string"/>
+      <xs:element name="resultado_principal" minOccurs="0" type="xs:string"/>
+      <xs:element name="interpretacao" minOccurs="0" type="xs:string"/>
+      <xs:element name="arquivo_resultado" minOccurs="0" type="xs:string"/>
+      <xs:element name="checksum_resultado" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="argilomineralType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="nome" minOccurs="1" type="xs:string"/>
+          <xs:element name="nome_cientifico_padronizado" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="nome_cientifico_padronizado" minOccurs="1" type="xs:string"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:element name="codigo_amostra" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sinonimos" minOccurs="0" type="xs:string"/>
+      <xs:element name="formula_ideal" minOccurs="0" type="xs:string"/>
+      <xs:element name="grupo" minOccurs="0" type="xs:string"/>
+      <xs:element name="grupo_mineralogico" minOccurs="0" type="xs:string"/>
+      <xs:element name="subgrupo_mineralogico" minOccurs="0" type="xs:string"/>
+      <xs:element name="descricao" minOccurs="0" type="xs:string"/>
+      <xs:element name="descricao_curta" minOccurs="0" type="xs:string"/>
+      <xs:element name="estrutura_cristalina" minOccurs="0" type="xs:string"/>
+      <xs:element name="classe_estrutural" minOccurs="0" type="xs:string"/>
+      <xs:element name="sistema_cristalino" minOccurs="0" type="xs:string"/>
+      <xs:element name="classificacao_strunz" minOccurs="0" type="xs:string"/>
+      <xs:element name="classificacao_dana" minOccurs="0" type="xs:string"/>
+      <xs:element name="propriedades_especiais" minOccurs="0" type="xs:string"/>
+      <xs:element name="propriedades_relevantes" minOccurs="0" type="xs:string"/>
+      <xs:element name="origem_formacao" minOccurs="0" type="xs:string"/>
+      <xs:element name="ambiente_tipico_formacao" minOccurs="0" type="xs:string"/>
+      <xs:element name="era_geologica" minOccurs="0" type="xs:string"/>
+      <xs:element name="formacao_geologica" minOccurs="0" type="xs:string"/>
+      <xs:element name="usos_aplicacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="external_source" minOccurs="0" type="xs:string"/>
+      <xs:element name="external_id" minOccurs="0" type="xs:string"/>
+      <xs:element name="external_uri" minOccurs="0" type="xs:string"/>
+      <xs:element name="fonte_descricao" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacao_proveniencia" minOccurs="0" type="xs:string"/>
+      <xs:element name="licenca_fonte" minOccurs="0" type="xs:string"/>
+      <xs:element name="data_ultima_sincronizacao" minOccurs="0" type="xs:string"/>
+      <xs:element name="latitude" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-90"/>
+            <xs:maxInclusive value="90"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="longitude" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-180"/>
+            <xs:maxInclusive value="180"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="altitude" minOccurs="0" nillable="true" type="xs:decimal"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="publicacaoType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="record_id" minOccurs="1" type="xs:string"/>
+          <xs:element name="identificador_externo" minOccurs="0" type="xs:string"/>
+          <xs:element name="doi" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="10\.[^\s/]+/.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="url" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="identificador_externo" minOccurs="1" type="xs:string"/>
+          <xs:element name="doi" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="10\.[^\s/]+/.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="url" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="doi" minOccurs="1">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="10\.[^\s/]+/.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="url" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="url" minOccurs="1" type="xs:string"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:element name="tipo" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="titulo" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="autores" minOccurs="0" type="xs:string"/>
+      <xs:element name="ano" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{4}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fonte_ou_revista" minOccurs="0" type="xs:string"/>
+      <xs:element name="codigo_amostra" minOccurs="0" type="xs:string"/>
+      <xs:element name="codigo_analise" minOccurs="0" type="xs:string"/>
+      <xs:element name="argilomineral_nome" minOccurs="0" type="xs:string"/>
+      <xs:element name="relacao_com_registro" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="papel_da_amostra" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localidadeType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="nome" minOccurs="1">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="latitude" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal">
+                <xs:minInclusive value="-90"/>
+                <xs:maxInclusive value="90"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="longitude" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal">
+                <xs:minInclusive value="-180"/>
+                <xs:maxInclusive value="180"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="latitude" minOccurs="1">
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal">
+                <xs:minInclusive value="-90"/>
+                <xs:maxInclusive value="90"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="longitude" minOccurs="1">
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal">
+                <xs:minInclusive value="-180"/>
+                <xs:maxInclusive value="180"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:choice>
+      <xs:element name="descricao" minOccurs="0" type="xs:string"/>
+      <xs:element name="pais" minOccurs="0" type="xs:string"/>
+      <xs:element name="uf" minOccurs="0" type="xs:string"/>
+      <xs:element name="municipio" minOccurs="0" type="xs:string"/>
+      <xs:element name="bacia" minOccurs="0" type="xs:string"/>
+      <xs:element name="formacao_geologica" minOccurs="0" type="xs:string"/>
+      <xs:element name="contexto_geologico" minOccurs="0" type="xs:string"/>
+      <xs:element name="altitude_m" minOccurs="0" nillable="true" type="xs:decimal"/>
+      <xs:element name="coordenada" minOccurs="0" type="a:coordenadaType"/>
+      <xs:element name="fonte" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pacote_analiticoType">
+    <xs:sequence>
+      <xs:element name="pacote_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="record_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="analysis_type" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="generated_at" minOccurs="0" type="xs:string"/>
+      <xs:element name="versao_processamento" minOccurs="0" type="xs:string"/>
+      <xs:element name="source" minOccurs="0" type="a:GenericValue"/>
+      <xs:element name="summary" minOccurs="0" type="a:GenericValue"/>
+      <xs:element name="items" minOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:choice>
+                  <xs:element name="drx" minOccurs="1" type="a:drxType"/>
+                  <xs:element name="generic" minOccurs="1" type="a:GenericValue"/>
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="manifest_path" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pesquisa_campoType">
+    <xs:sequence>
+      <xs:element name="campanha_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="titulo" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="data_inicio" minOccurs="0" type="xs:date"/>
+      <xs:element name="data_fim" minOccurs="0" type="xs:date"/>
+      <xs:element name="responsavel" minOccurs="0" type="xs:string"/>
+      <xs:element name="equipe" minOccurs="0" type="xs:string"/>
+      <xs:element name="area_estudo" minOccurs="0" type="xs:string"/>
+      <xs:element name="objetivo" minOccurs="0" type="xs:string"/>
+      <xs:element name="fonte" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="drxType">
+    <xs:sequence>
+      <xs:element name="analise_id" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo_amostra" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="arquivo_raw" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="raw_sha256" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[a-fA-F0-9]{64}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tamanho_bytes" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="formato_raw" minOccurs="0" type="xs:string"/>
+      <xs:element name="preparo" minOccurs="0" type="xs:string"/>
+      <xs:element name="processamento_id" minOccurs="0" type="xs:string"/>
+      <xs:element name="versao_processamento" minOccurs="0" type="xs:string"/>
+      <xs:element name="data_processamento" minOccurs="0" type="xs:string"/>
+      <xs:element name="two_theta_min" minOccurs="0" nillable="true" type="xs:decimal"/>
+      <xs:element name="two_theta_max" minOccurs="0" nillable="true" type="xs:decimal"/>
+      <xs:element name="numero_pontos" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="picos" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="two_theta" minOccurs="1" type="xs:decimal"/>
+                  <xs:element name="intensidade" minOccurs="0" nillable="true" type="xs:decimal"/>
+                  <xs:element name="d_spacing" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="fwhm" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="prominencia" minOccurs="0" nillable="true" type="xs:decimal"/>
+                  <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="minerais_candidatos" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="mineral" minOccurs="1">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="score" minOccurs="0" nillable="true">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="confianca" minOccurs="0" type="xs:string"/>
+                  <xs:element name="evidencia" minOccurs="0" type="xs:string"/>
+                  <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="relatorio_html" minOccurs="0" type="xs:string"/>
+      <xs:element name="relatorio_pdf" minOccurs="0" type="xs:string"/>
+      <xs:element name="observacoes" minOccurs="0" type="xs:string"/>
+      <xs:element name="wavelength_angstrom" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="axis_provenance" minOccurs="0" type="xs:string"/>
+      <xs:element name="primary_status" minOccurs="0" type="xs:string"/>
+      <xs:element name="vinculo" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="record_id" minOccurs="1" type="xs:string"/>
+            <xs:element name="state" minOccurs="1">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="confirmed"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="revision" minOccurs="1">
+              <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                  <xs:minInclusive value="1"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="curva_url" minOccurs="0" type="xs:string"/>
+      <xs:element name="arquivo_url" minOccurs="0" type="xs:string"/>
+      <xs:element name="evidencias_estruturais" minOccurs="0" type="a:GenericValue"/>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NativeMetadataType">
+    <xs:sequence>
+      <xs:element name="title" minOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="publication_date" minOccurs="1" type="xs:string"/>
+      <xs:element name="resource_type" minOccurs="1" type="a:GenericValue"/>
+      <xs:element name="creators" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" type="a:GenericValue" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="description" minOccurs="0" type="xs:string"/>
+      <xs:element name="publisher" minOccurs="0" type="xs:string"/>
+      <xs:element name="identifiers" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" minOccurs="0" type="a:GenericValue" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="a:GenericValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="argiloteca">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="metadata" type="a:NativeMetadataType"/>
+        <xs:element name="termo_catalogo" minOccurs="0" type="a:termo_catalogoType"/>
+        <xs:element name="pesquisas_campo" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:pesquisa_campoType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="amostras" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:amostraType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="analises" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:analiseType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="composicao_quimica_global" minOccurs="0" type="a:geoquimicaType"/>
+        <xs:element name="argilominerais" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:argilomineralType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="publicacoes_relacionadas" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:publicacaoType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pacotes_analiticos" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:pacote_analiticoType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="referencias_drx_webmineral" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:referencia_drx_webmineralType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="conexoes_cientificas" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" type="a:conexao_cientificaType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="legacy" type="a:GenericValue" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="recordId" type="xs:string" use="required"/>
+      <xs:attribute name="profileVersion" type="xs:string" use="required"/>
+      <xs:attribute name="profiled" type="xs:boolean" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

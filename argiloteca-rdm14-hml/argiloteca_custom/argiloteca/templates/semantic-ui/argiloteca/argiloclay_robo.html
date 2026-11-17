@@ -1,0 +1,11 @@
+{# Shared contextual entry point; no document or file contents are sent here. #}
+<a class="argilo-robo-launcher" href="{{ url_for('argiloteca.argiloclay_chat') }}" target="ArgiloClayRobo" rel="noopener"
+   {% if (config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED and request.path.startswith('/administration')) or request.blueprint in ('argiloteca_openalex', 'argiloteca_pangaea', 'argiloteca_mendeley','argiloteca_repositories','argiloteca_population','argiloteca_admin_ui') %}style="position: static; inset: auto; margin: 1rem 1rem 1rem auto; width: fit-content; max-width: calc(100% - 2rem)"{% endif %}
+   aria-label="{{ _('Abrir ArgiloClay-Robo em uma nova janela') }}" title="ArgiloClay-Robo">
+  <img src="{{ url_for('argiloteca.static', filename='images/argiloclay-robo-v1.png') }}"
+       alt="" width="48" height="52" decoding="async">
+  <span>ArgiloClay-Robo</span>
+</a>
+<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static', filename='js/argiloclay-launcher.js') }}?v=20261021-connected-3" defer></script>
+<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static', filename='js/scientific-fullscreen.js') }}?v=20261024-label-1"
+        data-enter-label="{{ _('Tela cheia') }}" data-exit-label="{{ _('Sair da tela cheia') }}" defer></script>

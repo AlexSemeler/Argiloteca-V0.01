@@ -1,0 +1,8 @@
+<div class="argilo-language-selector" role="group" aria-label="{{ _('Idioma da interface') }}">
+  <a class="argilo-language-option"
+     href="{{ url_for('invenio_i18n.set_lang', lang_code='pt', next=argilo_language_next|default(request.full_path)) }}"
+     lang="pt-BR" hreflang="pt" aria-label="Português" title="Português" {% if current_i18n.language == 'pt' %}aria-current="true"{% endif %}>PT</a>
+  <a class="argilo-language-option"
+     href="{{ url_for('invenio_i18n.set_lang', lang_code='en', next=argilo_language_next|default(request.full_path)) }}"
+     lang="en" hreflang="en" aria-label="English" title="English" {% if current_i18n.language == 'en' %}aria-current="true"{% endif %}>EN</a>
+</div>

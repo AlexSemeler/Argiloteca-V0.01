@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/common.sh"
+
+require_command docker
+"${SCRIPT_DIR}/generate-env"
+require_env_file
+
+set -a
+source "${ENV_FILE}"
+set +a
+
+compose config --quiet
+compose build --pull
+compose up --detach cache db mq search
+
+for service in cache db mq search; do
+  printf 'Aguardando %s...\n' "${service}"
+  for attempt in {1..60}; do
+    container_id="$(compose ps --quiet "${service}")"
+    health="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "${container_id}" 2>/dev/null || true)"
+    [[ "${health}" == "healthy" || "${health}" == "running" ]] && break
+    [[ "${attempt}" -eq 60 ]] && die "tempo esgotado aguardando ${service}"
+    sleep 2
+  done
+done
+
+compose up --detach web-ui web-api
+
+for attempt in {1..60}; do
+  container_id="$(compose ps --quiet web-ui)"
+  state="$(docker inspect --format '{{.State.Status}}' "${container_id}" 2>/dev/null || true)"
+  [[ "${state}" == "running" ]] && break
+  [[ "${attempt}" -eq 60 ]] && die "tempo esgotado aguardando web-ui"
+  sleep 2
+done
+
+if [[ ! -f "${PROJECT_DIR}/.phase1-setup-complete" ]]; then
+  table_count="$(compose exec --no-TTY db psql -U "${HML_DB_USER}" -d "${HML_DB_NAME}" -Atc "select count(*) from pg_tables where schemaname='public';")"
+  [[ "${table_count}" == "0" ]] || die "banco não vazio sem marcador de setup; revisão manual obrigatória"
+
+  compose exec --no-TTY web-ui invenio db init create
+  compose exec --no-TTY web-ui invenio files location create --default default-location /opt/invenio/var/instance/data
+  compose exec --no-TTY web-ui invenio roles create admin
+  compose exec --no-TTY web-ui invenio access allow superuser-access role admin
+  compose exec --no-TTY web-ui invenio index init
+  compose exec --no-TTY web-ui invenio rdm-records custom-fields init
+  compose exec --no-TTY web-ui invenio communities custom-fields init
+  compose exec --no-TTY web-ui invenio rdm fixtures
+  compose exec --no-TTY web-ui invenio queues declare
+  compose exec --no-TTY web-ui invenio rdm-records fixtures
+  touch "${PROJECT_DIR}/.phase1-setup-complete"
+fi
+
+compose up --detach
+printf 'Bootstrap concluído sem dados demonstrativos. Execute scripts/test.\n'

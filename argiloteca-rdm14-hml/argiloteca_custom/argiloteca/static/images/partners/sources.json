@@ -1,0 +1,17 @@
+{
+  "retrieved": "2026-10-18",
+  "assets": [
+    {
+      "file": "ufrgs.svg",
+      "source": "https://www.ufrgs.br/site/wp-content/uploads/2025/05/Logo-UFRGS-SVG.zip",
+      "sha256": "0eea6bf14be6bca21b53bdecc125d4ced66fb70617cfe42a507447d9797ff582",
+      "modified": false
+    },
+    {
+      "file": "petrobras.svg",
+      "source": "https://petrobras.com.br/documents/2677942/2678045/logo.svg/64b59d8a-d175-c374-189d-af798dea2241?version=1.0&t=1686665076000",
+      "sha256": "e1b089de179fd0304aae8c9dd15b16c2b66c4ef255e877621b53f19226193349",
+      "modified": false
+    }
+  ]
+}

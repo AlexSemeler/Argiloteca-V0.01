@@ -1,0 +1,26 @@
+{% extends "invenio_app_rdm/page.html" %}
+{% set title = st('Scientific search','Busca científica') %}
+{% block page_body %}
+<section class="ui container" id="science-main">
+<h1>{{ title }}</h1>
+<p>{{ st('Combine fields from the same sample, analysis or mineral. Filters preserve relationships within each item.','Combine campos da mesma amostra, análise ou mineral. Os filtros preservam as relações de cada item.') }}</p>
+<form class="ui form" id="science-search">
+<div class="four fields">
+<div class="field"><label for="arg-campaign">{{ st("Campaign ID","Código da campanha") }}</label><input id="arg-campaign" name="arg_campaign"></div>
+<div class="field"><label for="arg-sample">{{ st('Sample ID','Código da amostra') }}</label><input id="arg-sample" name="arg_sample"></div>
+<div class="field"><label for="arg-method">{{ st('Method','Método') }}</label><input id="arg-method" name="arg_method"></div>
+<div class="field"><label for="arg-mineral">{{ st('Mineral','Mineral') }}</label><input id="arg-mineral" name="arg_mineral"></div>
+</div>
+<button class="ui primary button" type="submit">{{ st('Search','Buscar') }}</button>
+<a class="ui button" href="/scientific/deposit">{{ st('New scientific record','Novo registro científico') }}</a>
+</form>
+<aside id="science-search-facets" aria-label="{{ st("Scientific facets","Facetas científicas") }}"></aside>
+<div id="science-search-status" role="status" aria-live="polite"></div><ul id="science-search-results"></ul>
+</section>
+<script nonce="{{ csp_nonce() }}">
+document.getElementById('science-search').addEventListener('submit',async function(event){
+ event.preventDefault();const status=document.getElementById('science-search-status'),list=document.getElementById('science-search-results');list.replaceChildren();
+ try{const response=await fetch('/scientific/search.json?'+new URLSearchParams(new FormData(event.target)));const data=await response.json();if(!response.ok)throw Error(data.message||response.statusText);status.textContent=String(data.hits.total)+' {{ st("record(s)","registro(s)") }}';for(const hit of data.hits.hits){const item=document.createElement('li'),link=document.createElement('a');link.href='/scientific/records/'+encodeURIComponent(hit.id);link.textContent=hit.metadata.title;item.append(link);list.append(item);}const facets=document.getElementById('science-search-facets');facets.replaceChildren();for(const [key,target,label] of [['arg_samples','arg-campaign','{{ st("Campaigns","Campanhas") }}'],['arg_analyses','arg-method','{{ st("Methods","Métodos") }}'],['arg_minerals','arg-mineral','{{ st("Minerals","Minerais") }}']]){const values=data.scientific_facets?.[key]?.values?.buckets||[];if(!values.length)continue;const group=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=label;group.append(legend);for(const value of values){const button=document.createElement('button');button.type='button';button.className='ui small basic button';button.textContent=value.key+' ('+value.doc_count+')';button.onclick=()=>{document.getElementById(target).value=value.key;event.target.requestSubmit();};group.append(button);}facets.append(group);}}catch(error){status.textContent=error.message;}
+});
+</script>
+{% endblock %}

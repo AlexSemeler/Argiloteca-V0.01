@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "argiloteca"
+version = "0.1.0"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+  "weasyprint>=69,<70",
+  "beautifulsoup4>=4.15,<5",
+  "jsonschema>=4.26,<5",
+  "lxml>=6.1,<7",
+  "rfc3986-validator==0.1.1",
+  # HML amd64/Rosetta: newer wheels hang on floating remainder during SciPy import.
+  # Validated with SciPy 1.18.1 and CPAA N/G/C; see docs/scipy_runtime_compatibility.md.
+  "numpy==2.3.5",
+  "pandas>=2.2,<4",
+  "pybaselines>=1.2,<2",
+  "scipy>=1.15,<2",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["argiloteca*", "src*"]
+
+[tool.setuptools.package-data]
+argiloteca = [
+  "data/*.json",
+  "data/reference_pilot_sources/*",
+  "scientific/schemas/*.json",
+  "scientific/xsd/*.xsd",
+  "static/**/*",
+  "templates/**/*",
+]
+argiloteca_drx = [
+  "diagnostics/data/*.json",
+  "diagnostics/*.yaml",
+]
+"src.drx" = ["rules_catalog.yaml"]
+
+[project.entry-points."invenio_base.apps"]
+argiloteca = "argiloteca.ext:ArgilotecaUIExtension"
+
+[project.entry-points."invenio_base.api_apps"]
+argiloteca = "argiloteca.ext_api:ArgilotecaAPIExtension"
+
+[project.entry-points."invenio_assets.webpack"]
+argiloteca_theme = "argiloteca.webpack:theme"

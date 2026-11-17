@@ -1,0 +1,24 @@
+/* Administrative actions share the incumbent control and SVG icon system. */
+.argilo-admin-content :is(a,button).admin-action.ui.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55em;
+  min-height: 44px;
+  max-width: 100%;
+  margin: .25rem .35rem .25rem 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  line-height: 1.35;
+}
+.argilo-admin-content .admin-action .argilo-icon {flex: 0 0 20px; width: 20px; height: 20px;}
+.argilo-admin-content a.admin-action.ui.basic.button {color: #563a27 !important; background: #fffdf9 !important;}
+.argilo-admin-content a.admin-action.ui.basic.button:hover {background: #f0e6d9 !important;}
+.argilo-admin-content a.admin-action[aria-current=page] {font-weight: 700; box-shadow: 0 0 0 2px #70492f inset;}
+.argilo-admin-content .admin-action:focus-visible {outline: 3px solid #8b4a24; outline-offset: 3px;}
+.argilo-admin-content .oa-nav {gap: .4rem .6rem;}
+@media (max-width: 700px) {
+  .argilo-admin-content .oa-nav .admin-action {flex: 1 1 220px;}
+  .argilo-admin-content .admin-action {text-align: center;}
+}

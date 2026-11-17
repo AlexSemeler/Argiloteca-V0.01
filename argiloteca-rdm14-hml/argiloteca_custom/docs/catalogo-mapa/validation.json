@@ -1,0 +1,86 @@
+{
+  "catalog": {
+    "status": "valid",
+    "verb": "ListRecords",
+    "pages": 9,
+    "identifiers": 81,
+    "payloads_schema_validated": 81,
+    "records_with_independent_xpath_checks": 81,
+    "expected_errors": [],
+    "granularity": null,
+    "deletedRecord": null,
+    "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+  },
+  "mixed": {
+    "status": "valid",
+    "verb": "ListRecords",
+    "pages": 131,
+    "identifiers": 1308,
+    "payloads_schema_validated": 1308,
+    "records_with_independent_xpath_checks": 1308,
+    "expected_errors": [],
+    "granularity": null,
+    "deletedRecord": null,
+    "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+  },
+  "get-record": {
+    "status": "valid",
+    "verb": "GetRecord",
+    "pages": 1,
+    "identifiers": 1,
+    "payloads_schema_validated": 1,
+    "records_with_independent_xpath_checks": 0,
+    "expected_errors": [],
+    "granularity": null,
+    "deletedRecord": null,
+    "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+  },
+  "incremental": {
+    "status": "valid",
+    "verb": "ListRecords",
+    "pages": 9,
+    "identifiers": 81,
+    "payloads_schema_validated": 81,
+    "records_with_independent_xpath_checks": 0,
+    "expected_errors": [],
+    "granularity": null,
+    "deletedRecord": null,
+    "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+  },
+  "identify": {
+    "status": "valid",
+    "verb": "Identify",
+    "pages": 1,
+    "identifiers": 0,
+    "payloads_schema_validated": 0,
+    "records_with_independent_xpath_checks": 0,
+    "expected_errors": [],
+    "granularity": "YYYY-MM-DDThh:mm:ssZ",
+    "deletedRecord": "no",
+    "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+  },
+  "formats": {
+    "status": "valid",
+    "verb": "ListMetadataFormats",
+    "pages": 1,
+    "identifiers": 0,
+    "payloads_schema_validated": 0,
+    "records_with_independent_xpath_checks": 0,
+    "expected_errors": [],
+    "granularity": null,
+    "deletedRecord": null,
+    "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+  },
+  "identifiers": {
+    "status": "valid",
+    "verb": "ListIdentifiers",
+    "pages": 9,
+    "identifiers": 81,
+    "payloads_schema_validated": 0,
+    "records_with_independent_xpath_checks": 0,
+    "expected_errors": [],
+    "granularity": null,
+    "deletedRecord": null,
+    "limits": "Does not prove DB persistence, access policy, datestamp changes or external reachability by itself"
+  }
+}

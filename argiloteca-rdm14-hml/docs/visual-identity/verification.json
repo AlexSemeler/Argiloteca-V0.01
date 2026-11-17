@@ -1,0 +1,192 @@
+{
+  "date": "2026-10-18",
+  "runtime": "invenio-app-rdm 14.0.4",
+  "scope": "Local homologation visual refinement",
+  "external_publication": "Deferred at explicit user request; no domain/DNS/hosting changes made",
+  "brand_assets": {
+    "original_vectors_preserved": true,
+    "new_svg_bytes": 14062,
+    "manifest": "argiloteca_custom/argiloteca/static/images/partners/sources.json"
+  },
+  "template_syntax": {
+    "passed": true,
+    "count": 45
+  },
+  "translation_catalogs": {
+    "en": 3718,
+    "pt": 3718,
+    "marked_ui_messages": 1529,
+    "status": "passed"
+  },
+  "initial_browser_matrix": {
+    "pages": [
+      "home",
+      "search",
+      "record",
+      "about"
+    ],
+    "locales": [
+      "en",
+      "pt"
+    ],
+    "widths": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "cases": 32,
+    "http_200": 32,
+    "page_errors": [],
+    "console_errors": [],
+    "minimum_measured_changed_text_contrast": 6.45
+  },
+  "interaction_checks": {
+    "mobileMenu": {
+      "expanded": "true",
+      "aboutVisible": true,
+      "closedWithEscape": "false"
+    },
+    "search": {
+      "url": "https://127.0.0.1:5101/search?q=kaolinite&l=list&p=1&s=10&sort=bestmatch",
+      "hasTitle": 1
+    },
+    "mineral": {
+      "value": "allophane",
+      "url": "https://127.0.0.1:5101/argilominerais/allophane",
+      "h1": [
+        "Alofana"
+      ]
+    },
+    "keyboard": {
+      "text": "Ir para o conteúdo principal",
+      "outline": "rgb(121, 85, 63) solid 3px",
+      "focusVisible": true
+    },
+    "depositAccess": {
+      "url": "https://127.0.0.1:5101/login/?next=%2Fscientific%2Fdeposit",
+      "passwordField": 1
+    },
+    "partnerLinks": [
+      {
+        "name": "Universidade Federal do Rio Grande do Sul — site oficial",
+        "url": "https://www.ufrgs.br/site/"
+      },
+      {
+        "name": "Petrobras — site oficial",
+        "url": "https://petrobras.com.br/"
+      }
+    ],
+    "partnerFocus": {
+      "outline": "rgb(121, 85, 63) solid 3px",
+      "visible": true
+    },
+    "reducedMotion": true,
+    "search_above_fold_390px": {
+      "top": 221.1875,
+      "bottom": 281.1875
+    }
+  },
+  "tablet_and_cache_correction": {
+    "cause": "Native relaxed grid margins exceeded the tablet container by 7px. Initial confirmation reused the previous cached CSS URL.",
+    "fix": "Scoped tablet margins and versioned CSS URLs partnership-2.",
+    "targeted_browser_verification": {
+      "locale": "pt",
+      "widths": [
+        390,
+        768
+      ],
+      "paths": [
+        "/",
+        "/search?q=kaolinite",
+        "/records/fw6s9-hkp39"
+      ],
+      "cases": 6,
+      "all_overflow_px": 0,
+      "mobile_home_search_bounds_px": [
+        221.1875,
+        281.1875
+      ],
+      "status": "passed"
+    }
+  },
+  "empty_search": {
+    "status": "passed",
+    "correctedPortuguese": true,
+    "visible_copy": "Início\nBusca\nBuscar registros\n\nExplore o acervo e refine os resultados pelos filtros disponíveis.\n\nVersões\nVer todas as versões\nAjuda\nGuia de busca\nNão encontramos resultados para 'argiloteca_no_result_20261018'\nRecomeçar\nDica!\n\nmetadata.publication_date:[2025-01-01 TO *] lhe dará todas as publicações de 2025 até hoje.\n\nPara mais dicas, confira o nosso guia de pesquisa para definir consultas de pesquisa avançadas.",
+    "react_assets_rebuild": "completed with frozen lockfile; final image active"
+  },
+  "filters": {
+    "status": "passed",
+    "url": "https://127.0.0.1:5101/search?q=kaolinite&f=resource_type%3Adataset&l=list&p=1&s=10&sort=bestmatch",
+    "checked": true
+  },
+  "local_regressions": {
+    "record_api": "fw6s9-hkp39, Functional Kaolinite, HTTP success",
+    "OAI_Identify": "valid XML, no protocol error",
+    "OAI_ListMetadataFormats": "valid XML, no protocol error",
+    "TLS": "local CA verification enabled for curl"
+  },
+  "detector": {
+    "skill": "Impeccable 4.6.0",
+    "manual_scan_findings": [],
+    "evidence": "../../../output/playwright/brand-detector.json"
+  },
+  "runtime_activation": {
+    "status": "complete",
+    "image": "argiloteca-rdm14-hml:partnership-20261018",
+    "image_sha256": "b0624dc7ce310c4a47b41f21d484ca58b6cc843671e7d0db26cbeff6152fce80",
+    "canonical_tag": "argiloteca-rdm14-hml:14.0.4",
+    "preserved_image": "argiloteca-rdm14-hml:before-partnership-20261018",
+    "same_image_services": [
+      "web-ui",
+      "web-api",
+      "worker",
+      "scheduler"
+    ],
+    "all_healthy": true,
+    "docker_recovery": "Docker Engine became unresponsive. User explicitly authorized restart; the stuck VM/backend were terminated, Docker restarted, all previously running containers restored, and the prior local TLS paths restored. Build then completed.",
+    "tls_regression": "CA-verified HTTPS home and record API HTTP 200; OAI Identify and ListMetadataFormats passed after rollout."
+  },
+  "limitations": [
+    "Chromium only; no Safari/Firefox or physical device",
+    "No real browser zoom or assistive technology validation",
+    "No full accessibility conformance claim",
+    "No authenticated publish/edit cycle repeated for this presentation change"
+  ],
+  "final_browser_matrix": {
+    "cases": 32,
+    "pages": [
+      "home",
+      "search",
+      "record",
+      "about"
+    ],
+    "locales": [
+      "en",
+      "pt"
+    ],
+    "widths": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "http_200": 32,
+    "all_overflow_px": 0,
+    "broken_images": 0,
+    "page_errors": [],
+    "console_errors": [],
+    "minimum_measured_changed_text_contrast": 6.45,
+    "evidence": "../../../output/playwright/brand-release-check.json"
+  },
+  "final_capture_validation": {
+    "fresh_browser_session": true,
+    "institutional_h1_count": 1,
+    "institutional_header_count": 1,
+    "institutional_footer_count": 1,
+    "evidence": "../../../output/playwright/brand-captures.log",
+    "final_mobile_institutional": "../../../output/playwright/brand-final-about-mobile.png",
+    "final_mobile_footer": "../../../output/playwright/brand-partnership-footer-mobile.png"
+  }
+}

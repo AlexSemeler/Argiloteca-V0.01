@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_amostra.schema.json",
+  "title": "arg:amostra",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["codigo_amostra", "campanha_id"],
+  "properties": {
+    "codigo_amostra": {"type": "string", "minLength": 1},
+    "campanha_id": {"type": "string", "minLength": 1},
+    "data_coleta": {"type": "string", "format": "date"},
+    "responsavel_coleta": {"type": "string"},
+    "local_coleta": {"type": "string"},
+    "descricao_local": {"type": "string"},
+    "latitude": {"type": ["number", "null"], "minimum": -90, "maximum": 90},
+    "longitude": {"type": ["number", "null"], "minimum": -180, "maximum": 180},
+    "altitude_m": {"type": ["number", "null"]},
+    "coordenada": {"$ref": "arg_coordenada.schema.json"},
+    "localidade": {"$ref": "arg_localidade.schema.json"},
+    "deposito": {"$ref": "arg_deposito.schema.json"},
+    "contexto_geologico": {"type": "string"},
+    "tempo_geologico": {"type": "string"},
+    "rocha_hospedeira": {"type": "string"},
+    "tipo_amostra": {"type": "string"},
+    "observacoes_campo": {"type": "string"}
+  }
+}

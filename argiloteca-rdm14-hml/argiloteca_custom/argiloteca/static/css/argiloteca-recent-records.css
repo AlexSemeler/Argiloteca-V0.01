@@ -1,0 +1,32 @@
+/* Only the LIRA-style recent-record presentation is retained. */
+.argilo-recent-section { background: #ffffff; }
+.argilo-recent-records, .argilo-recent-records :is(h2,.header,.ui.button) { font-family: Arial, "Helvetica Neue", sans-serif; }
+.argilo-recent-records #records-list :is(h2, h3, h4, .header) { font-family: var(--arg-font-heading); }
+.argilo-recent-records .argilo-section-browse { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; min-height: 44px; }
+.argilo-recent-records.ui.container { position: relative; padding-block: 4rem; }
+.argilo-recent-records .argilo-section-browse { position: absolute; top: calc(4rem - .6rem); right: 0; }
+.argilo-recent-records #records-list > .ui.container { width: 100%; margin: 0 !important; }
+.argilo-recent-records #records-list > .ui.container > h2 { font-weight: 500; font-size: 1.4rem; margin: 0 0 2rem; padding-right: 230px; }
+.argilo-recent-records #records-list .ui.items { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; margin: 0; }
+.argilo-recent-records #records-list .ui.items > .item { margin: 0; padding: 0; border: 0; min-width: 0; }
+.argilo-recent-records #records-list .ui.items > .item > .content { min-width: 0; }
+.argilo-recent-records #records-list .ui.items > .item .header { font-size: 1.1rem; line-height: 1.5; margin-top: .75rem; overflow-wrap: anywhere; }
+.argilo-recent-records #records-list .ui.items > .item .header a { color: var(--arg-color-primary-strong); }
+.argilo-recent-records #records-list .creatibutors { margin-block: .8rem; line-height: 1.5; }
+.argilo-recent-records #records-list .description { color: var(--arg-color-muted); line-height: 1.65; }
+.argilo-recent-records #records-list .labels-actions { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; }
+.argilo-recent-records #records-list .labels-actions .ui.label { margin: 0; }
+.argilo-recent-records #records-list .labels-actions .theme-primary { background: #f3f3f3; color: var(--arg-color-text); }
+.argilo-recent-records #records-list .extra:not(.labels-actions) { color: var(--arg-color-muted); }
+.argilo-recent-records #records-list .mt-10 { margin-top: 2rem; }
+
+.argilo-recent-records .argilo-loading-records { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; min-height: 220px; }
+.argilo-recent-records .argilo-loading-records .ui.placeholder { margin: 0; height: 180px; }
+@media (max-width: 767px) {
+  .argilo-recent-records.ui.container { padding-block: 2.5rem; }
+  .argilo-recent-records .argilo-section-browse { position: static; margin-bottom: 1rem; }
+  .argilo-recent-records #records-list > .ui.container > h2 { padding-right: 0; margin-bottom: 1.5rem; }
+  .argilo-recent-records #records-list .ui.items { grid-template-columns: minmax(0,1fr); gap: 2.5rem; }
+  .argilo-recent-records .argilo-loading-records { grid-template-columns: minmax(0,1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .argilo-recent-records .argilo-loading-records .ui.placeholder { animation: none; } }

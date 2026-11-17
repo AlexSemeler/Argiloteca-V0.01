@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_publicacao.schema.json",
+  "title": "arg:publicacao",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["tipo", "titulo", "relacao_com_registro"],
+  "anyOf": [
+    {"required": ["record_id"]},
+    {"required": ["identificador_externo"]},
+    {"required": ["doi"]},
+    {"required": ["url"]}
+  ],
+  "properties": {
+    "tipo": {"type": "string", "minLength": 1},
+    "titulo": {"type": "string", "minLength": 1},
+    "autores": {"type": "string"},
+    "ano": {"type": "string", "pattern": "^[0-9]{4}$"},
+    "doi": {"type": "string", "pattern": "^10\\.[^\\s/]+/.+"},
+    "url": {"type": "string", "format": "uri"},
+    "fonte_ou_revista": {"type": "string"},
+    "record_id": {"type": "string"},
+    "identificador_externo": {"type": "string"},
+    "codigo_amostra": {"type": "string"},
+    "codigo_analise": {"type": "string"},
+    "argilomineral_nome": {"type": "string"},
+    "relacao_com_registro": {"type": "string", "minLength": 1},
+    "papel_da_amostra": {"type": "string"},
+    "observacoes": {"type": "string"}
+  }
+}

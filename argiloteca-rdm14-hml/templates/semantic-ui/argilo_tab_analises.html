@@ -1,0 +1,43 @@
+{# argilo_tab_analises.html #}
+{% from "_argilo_helpers.html" import get_cf, field_row %}
+
+<div class="ui stacked segment arg-section arg-section-analysis">
+  <h3 class="ui dividing header">{{ _("Métodos de identificação") }}</h3>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Descrição do método"), get_cf(record, "arg:metodo_descricao")) }}
+    {{ field_row(_("Técnicas utilizadas"), get_cf(record, "arg:metodo_tecnicas_utilizadas")) }}
+  </div>
+</div>
+
+<div class="ui stacked segment arg-section arg-section-analysis">
+  <h3 class="ui dividing header">{{ _("Metodologias de coleta") }}</h3>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Nome da metodologia"), get_cf(record, "arg:metodologia_nome")) }}
+    {{ field_row(_("Descrição da metodologia"), get_cf(record, "arg:metodologia_descricao")) }}
+    {{ field_row(_("Equipamento utilizado"), get_cf(record, "arg:metodologia_equipamento_utilizado")) }}
+    {{ field_row(_("Objetivo da coleta"), get_cf(record, "arg:metodologia_objetivo")) }}
+  </div>
+</div>
+
+<div class="ui stacked segment arg-section arg-section-analysis">
+  <h3 class="ui dividing header">{{ _("Equipamentos de laboratório") }}</h3>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Nome do equipamento"), get_cf(record, "arg:equipamento_nome")) }}
+    {{ field_row(_("Descrição do equipamento"), get_cf(record, "arg:equipamento_descricao")) }}
+    {{ field_row(_("Fabricante"), get_cf(record, "arg:equipamento_fabricante")) }}
+  </div>
+</div>
+
+<div class="ui stacked segment arg-section arg-section-analysis">
+  <h3 class="ui dividing header">{{ _("Análise de amostra") }}</h3>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Descrição da análise"), get_cf(record, "arg:analise_descricao")) }}
+    {{ field_row(_("Resultado"), get_cf(record, "arg:analise_resultado")) }}
+    {{ field_row(_("Data da análise"), get_cf(record, "arg:analise_data")) }}
+    {{ field_row(_("Equipamento da análise"), get_cf(record, "arg:analise_equipamento")) }}
+  </div>
+</div>

@@ -1,0 +1,356 @@
+/* Ajuste de proporção do logo CPAA na navbar */
+.rdm-logo {
+  width: auto !important;
+  max-height: 5.35714286rem;
+}
+
+/* Mantem o link de acessibilidade visivel ao foco */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1001;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:root {
+  --arg-color-primary: #8A6148;
+  --arg-color-primary-strong: #6F4C36;
+  --arg-color-secondary: #2F6F73;
+  --arg-color-support: #C2A27A;
+  --arg-color-text: #223039;
+  --arg-color-text-muted: #5F6B65;
+  --arg-color-surface: #FFFFFF;
+  --arg-color-surface-page: #F5F2EC;
+  --arg-color-surface-soft: #F7F3EE;
+  --arg-color-surface-analytic: #EDF2EF;
+  --arg-color-border: #D3CDC2;
+  --arg-color-border-soft: rgba(34, 48, 57, 0.10);
+  --arg-color-shadow: rgba(34, 48, 57, 0.08);
+
+  --arg-color-campaign: #6F7B45;
+  --arg-color-campaign-soft: #EEF1E3;
+  --arg-color-sample: #A06A3A;
+  --arg-color-sample-soft: #F4E8DC;
+  --arg-color-mineral: #5C6F8C;
+  --arg-color-mineral-soft: #E8EDF5;
+  --arg-color-analysis: #2F6F73;
+  --arg-color-analysis-soft: #E2EFF0;
+  --arg-color-chemistry: #B65F3A;
+  --arg-color-chemistry-soft: #F7E5DD;
+  --arg-color-relation: #6A5D7B;
+  --arg-color-relation-soft: #ECE8F1;
+  --arg-color-publication: #4E5E66;
+  --arg-color-publication-soft: #E7ECEE;
+
+  --arg-color-valid: #2E6F52;
+  --arg-color-valid-soft: #EAF4EE;
+  --arg-color-partial: #B1843B;
+  --arg-color-partial-soft: #FBF5E8;
+  --arg-color-pending: #8A6A4A;
+  --arg-color-pending-soft: #F5EEE7;
+  --arg-color-inconsistent: #C15A2C;
+  --arg-color-inconsistent-soft: #F9E9E0;
+  --arg-color-critical: #9E3D33;
+  --arg-color-critical-soft: #FAEEEE;
+  --arg-color-optional: #A3AAA6;
+  --arg-color-optional-soft: #F2F4F3;
+
+  --arg-chart-ferruginosa: #B65F3A;
+  --arg-chart-aluminosa: #5C6F8C;
+  --arg-chart-silicosa: #7A8F53;
+  --arg-chart-magnesiana: #2F6F73;
+  --arg-chart-calcica: #C49A43;
+  --arg-chart-neutral: #8E9391;
+  --arg-chart-mean: #223039;
+  --arg-chart-edge: #9AA7AD;
+  --arg-chart-grid: #D8DEE2;
+}
+
+body {
+  background: var(--arg-color-surface-page);
+  color: var(--arg-color-text);
+}
+
+a {
+  color: var(--arg-color-primary-strong);
+}
+
+a:hover,
+a:focus {
+  color: #523728;
+}
+
+.ui.primary.button,
+.ui.primary.buttons .button {
+  background: var(--arg-color-primary);
+  color: #fff;
+}
+
+.ui.primary.button:hover,
+.ui.primary.button:focus,
+.ui.primary.buttons .button:hover,
+.ui.primary.buttons .button:focus {
+  background: var(--arg-color-primary-strong);
+  color: #fff;
+}
+
+.ui.signup.button,
+.ui.button.signup {
+  background: var(--arg-color-valid);
+  color: #fff;
+}
+
+.ui.positive.message {
+  background: var(--arg-color-valid-soft);
+  color: var(--arg-color-valid);
+}
+
+.ui.warning.message {
+  background: var(--arg-color-partial-soft);
+  color: #7B5A1F;
+}
+
+.ui.error.message,
+.ui.negative.message {
+  background: var(--arg-color-critical-soft);
+  color: var(--arg-color-critical);
+}
+
+.ui.info.message {
+  background: var(--arg-color-analysis-soft);
+  color: var(--arg-color-secondary);
+}
+
+.arg-page-hero-copy {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.arg-section {
+  border: 1px solid var(--arg-color-border-soft);
+  border-left: 5px solid var(--arg-accent, var(--arg-color-primary));
+  border-radius: 0.9rem;
+  background: var(--arg-surface, var(--arg-color-surface));
+  box-shadow: 0 10px 24px var(--arg-color-shadow);
+}
+
+.arg-section > .ui.dividing.header:first-child,
+.arg-section .argilo-section-header,
+.arg-section .argilomineral-block-title,
+.arg-section .argilo-stage-kicker {
+  color: var(--arg-accent, var(--arg-color-primary));
+}
+
+.arg-section-campaign {
+  --arg-accent: var(--arg-color-campaign);
+  --arg-surface: linear-gradient(180deg, #FCFDF9 0%, var(--arg-color-campaign-soft) 100%);
+}
+
+.arg-section-sample {
+  --arg-accent: var(--arg-color-sample);
+  --arg-surface: linear-gradient(180deg, #FEFCFA 0%, var(--arg-color-sample-soft) 100%);
+}
+
+.arg-section-mineral {
+  --arg-accent: var(--arg-color-mineral);
+  --arg-surface: linear-gradient(180deg, #FCFCFE 0%, var(--arg-color-mineral-soft) 100%);
+}
+
+.arg-section-analysis {
+  --arg-accent: var(--arg-color-analysis);
+  --arg-surface: linear-gradient(180deg, #FBFDFC 0%, var(--arg-color-analysis-soft) 100%);
+}
+
+.arg-section-chemistry {
+  --arg-accent: var(--arg-color-chemistry);
+  --arg-surface: linear-gradient(180deg, #FEFCFA 0%, var(--arg-color-chemistry-soft) 100%);
+}
+
+.arg-section-relation {
+  --arg-accent: var(--arg-color-relation);
+  --arg-surface: linear-gradient(180deg, #FCFBFD 0%, var(--arg-color-relation-soft) 100%);
+}
+
+.arg-section-publication {
+  --arg-accent: var(--arg-color-publication);
+  --arg-surface: linear-gradient(180deg, #FCFDFD 0%, var(--arg-color-publication-soft) 100%);
+}
+
+.arg-section .item .header,
+.arg-section .description,
+.arg-section p,
+.arg-section li,
+.arg-section td,
+.arg-section dd {
+  color: var(--arg-color-primary-strong);
+}
+
+.arg-section .text-muted,
+.arg-section small,
+.arg-section dt,
+.arg-section .argilo-label,
+.arg-section .argilo-stage-intro {
+  color: var(--arg-color-primary);
+}
+
+.arg-section h1,
+.arg-section h2,
+.arg-section h3,
+.arg-section h4,
+.arg-section h5,
+.arg-section h6,
+.arg-section .ui.header,
+.arg-section strong,
+.arg-section th,
+.arg-section .header {
+  color: var(--arg-color-primary-strong);
+}
+
+.arg-section .ui.message,
+.arg-section .ui.table,
+.arg-section .ui.list,
+.arg-section .ui.items > .item > .content > .description,
+.arg-section .ui.items > .item > .content > .header {
+  color: var(--arg-color-primary-strong);
+}
+
+.argilo-stage,
+.argilo-stage-main,
+.argilo-stage-side,
+.argilo-geo-card,
+.argilo-map-atlas .argilo-map-atlas-sidebar,
+.argilo-map-atlas .argilo-map-atlas-stat-value,
+.argilo-map-atlas .argilo-map-atlas-legend-item,
+.argilo-map-atlas .argilo-map-atlas-overlay-card,
+.argilo-geo-network__panel,
+.argilo-geo-network__summary,
+.argilo-geo-network__details,
+.argilo-geo-network__overview-card,
+.argilo-geo-atlas__panel,
+.argilo-geo-atlas__block,
+.argilo-geo-atlas__stats,
+.argilo-geo-atlas__stat-value,
+.argilo-geo-atlas__bar-label,
+.argilo-geo-atlas__bar-value,
+.argilo-geo-atlas__legend-item,
+.argilo-geo-atlas__table,
+.argilo-geo-atlas__table th,
+.argilo-geo-atlas__table td {
+  color: var(--arg-color-primary-strong);
+}
+
+.argilo-stage .text-muted,
+.argilo-stage small,
+.argilo-stage dt,
+.argilo-geo-network__panel label,
+.argilo-geo-network__details dt,
+.argilo-geo-network__overview-meta,
+.argilo-geo-atlas__panel label,
+.argilo-geo-atlas__status,
+.argilo-geo-atlas__block-header p,
+.argilo-geo-atlas__stat-label,
+.argilo-geo-atlas__table small {
+  color: var(--arg-color-primary);
+}
+
+.argilo-map-atlas .argilo-map-atlas-header,
+.argilo-map-atlas .argilo-map-atlas-header h1,
+.argilo-map-atlas .argilo-map-atlas-header h2,
+.argilo-map-atlas .argilo-map-atlas-header h3,
+.argilo-map-atlas .argilo-map-atlas-header p,
+.argilo-map-atlas .argilo-map-atlas-title,
+.argilo-map-atlas .argilo-map-atlas-subtitle,
+.argilo-map-atlas .argilo-map-atlas-actions,
+.argilo-map-atlas .argilo-map-atlas-actions a,
+.argilo-map-atlas .argilo-map-atlas-actions button,
+.argilo-map-atlas .argilo-map-atlas-toolbar,
+.argilo-map-atlas .argilo-map-atlas-toolbar .argilo-map-atlas-button,
+.argilo-map-atlas .argilo-map-atlas-meta,
+.argilo-map-atlas .argilo-map-atlas-meta span,
+.argilo-map-panel .argilo-map-meta,
+.argilo-map-panel .argilo-map-status,
+.argilo-map-panel .argilo-map-toolbar h3,
+.argilo-map-panel .argilo-map-toolbar p,
+.argilo-map-panel .argilo-map-toolbar a,
+.argilo-map-panel .argilo-map-toolbar button {
+  color: inherit;
+}
+
+.arg-validation-ok,
+.arg-validation-warning,
+.arg-validation-pending,
+.arg-validation-error,
+.arg-validation-optional {
+  border-radius: 0.7rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid transparent;
+}
+
+.arg-validation-ok {
+  background: var(--arg-color-valid-soft);
+  border-color: rgba(46, 111, 82, 0.24);
+}
+
+.arg-validation-warning {
+  background: var(--arg-color-partial-soft);
+  border-color: rgba(177, 132, 59, 0.28);
+}
+
+.arg-validation-pending {
+  background: var(--arg-color-pending-soft);
+  border-color: rgba(138, 106, 74, 0.24);
+}
+
+.arg-validation-error {
+  background: var(--arg-color-critical-soft);
+  border-color: rgba(158, 61, 51, 0.25);
+}
+
+.arg-validation-optional {
+  background: var(--arg-color-optional-soft);
+  border-color: rgba(163, 170, 166, 0.35);
+  border-style: dashed;
+}
+
+.argilo-sections .argilo-section-header {
+  background: transparent;
+}
+
+.argilo-mineral-popup-trigger:focus {
+  outline: 2px solid var(--arg-color-secondary);
+  outline-offset: 2px;
+}
+
+.argilo-mineral-popup-trigger {
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.argilo-field-description {
+  margin-top: 0.35rem;
+}
+
+.argilo-popup-summary {
+  margin-bottom: 0.5rem;
+}
+
+.argilo-inline-spacer {
+  margin-top: 0.35rem;
+}
+
+.argilo-map-popup-action {
+  margin-top: 0.75rem;
+}

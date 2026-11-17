@@ -1,0 +1,5 @@
+Flask>=3.1,<4
+gunicorn>=23,<24; sys_platform != 'win32'
+pypdf>=6,<7
+fonttools>=4,<5
+mcp>=1.20,<2

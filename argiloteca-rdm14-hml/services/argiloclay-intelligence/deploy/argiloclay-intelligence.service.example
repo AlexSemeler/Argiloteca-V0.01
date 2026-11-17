@@ -1,0 +1,23 @@
+[Unit]
+Description=ArgiloClay evidence pilot - isolated from the existing RAG
+After=network.target
+[Service]
+User=vmx000080
+WorkingDirectory=/home/vmx000080/argiloclay-intelligence
+Environment=ARGILOCLAY_USE_MODEL=0
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=ARGILOCLAY_INDEX=/home/vmx000080/argiloclay-intelligence/storage/knowledge.sqlite3
+ExecStart=/home/vmx000080/argiloclay-intelligence/.venv/bin/gunicorn --bind 127.0.0.1:7861 --workers 1 --threads 2 --timeout 10 argiloclay_intelligence.api:app
+Restart=on-failure
+RestartSec=10
+MemoryMax=512M
+CPUQuota=100%
+TasksMax=32
+Nice=10
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+UMask=0077
+[Install]
+WantedBy=multi-user.target

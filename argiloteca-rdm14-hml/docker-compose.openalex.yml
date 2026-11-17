@@ -1,0 +1,44 @@
+{
+  "services": {
+    "web-ui": {
+      "environment": {
+        "ARGILOTECA_OPENALEX_ROOT": "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex",
+        "ARGILOTECA_OPENALEX_QUEUE": "/opt/invenio/var/instance/openalex-queue"
+      },
+      "volumes": [
+        "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:ro",
+        "./data/openalex-admin-queue:/opt/invenio/var/instance/openalex-queue:rw"
+      ]
+    },
+    "web-api": {
+      "environment": {
+        "ARGILOTECA_OPENALEX_ROOT": "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex",
+        "ARGILOTECA_OPENALEX_QUEUE": "/opt/invenio/var/instance/openalex-queue"
+      },
+      "volumes": [
+        "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:ro",
+        "./data/openalex-admin-queue:/opt/invenio/var/instance/openalex-queue:rw"
+      ]
+    },
+    "worker": {
+      "environment": {
+        "ARGILOTECA_OPENALEX_ROOT": "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex",
+        "ARGILOTECA_OPENALEX_QUEUE": "/opt/invenio/var/instance/openalex-queue"
+      },
+      "volumes": [
+        "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:ro",
+        "./data/openalex-admin-queue:/opt/invenio/var/instance/openalex-queue:rw"
+      ]
+    },
+    "scheduler": {
+      "environment": {
+        "ARGILOTECA_OPENALEX_ROOT": "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex",
+        "ARGILOTECA_OPENALEX_QUEUE": "/opt/invenio/var/instance/openalex-queue"
+      },
+      "volumes": [
+        "/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:/Users/alexandresemeler/Argiloteca/homologacao/inveniordm-14.0.4/povoamento/openalex:ro",
+        "./data/openalex-admin-queue:/opt/invenio/var/instance/openalex-queue:rw"
+      ]
+    }
+  }
+}

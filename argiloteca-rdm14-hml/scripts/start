@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/common.sh"
+
+require_command docker
+"${SCRIPT_DIR}/generate-env"
+require_env_file
+
+if ! docker image inspect argiloteca-rdm14-hml:14.0.4 >/dev/null 2>&1; then
+  die "imagem da aplicação ausente; execute scripts/bootstrap uma única vez"
+fi
+
+"${SCRIPT_DIR}/compile-translations"
+
+compose_migrated config --quiet
+compose_migrated up --detach
+# Nginx resolves upstream names at load time. Recreated web containers can swap
+# IP addresses; reload after Compose has established the current endpoints.
+compose_migrated exec -T frontend nginx -s reload
+printf 'Homologação iniciada. Use scripts/status para acompanhar a saúde.\n'

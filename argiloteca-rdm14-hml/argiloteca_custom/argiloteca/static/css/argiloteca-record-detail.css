@@ -1,0 +1,195 @@
+/* Accepted OpenAlex complements inherit the native record typography. */
+.argilo-openalex { margin: 2rem 0; padding: 1.5rem 0; border-block: 1px solid var(--arg-color-border, #d8cec4); }
+.argilo-openalex h2 { display: flex; align-items: center; gap: .5rem; }
+.argilo-openalex p { max-width: 72ch; }
+.argilo-openalex-values { margin: 1.25rem 0; }
+.argilo-openalex-values > div { display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 2fr); gap: .75rem; padding: .45rem 0; }
+.argilo-openalex-values dt { font-weight: 700; }
+.argilo-openalex-values dd { margin: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.argilo-openalex summary { padding: .65rem 0; cursor: pointer; font-weight: 700; }
+.argilo-openalex-scroll { overflow-x: auto; }
+.argilo-openalex a:focus-visible, .argilo-openalex summary:focus-visible { outline: 2px solid var(--arg-color-primary, #754323); outline-offset: 3px; }
+@media (max-width: 600px) { .argilo-openalex-values > div { grid-template-columns: 1fr; gap: .2rem; } }
+/* Record lifecycle follows the native Invenio additional-details grid. */
+#argiloteca-lifecycle-heading { font-family: var(--arg-font-heading); }
+#argiloteca-traceability .argilo-lifecycle-toggle {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  min-height: 44px;
+  padding: .5rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--arg-color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+#argiloteca-traceability .argilo-lifecycle-toggle .icon { flex-shrink: 0; }
+#argiloteca-traceability .argilo-flow-row {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--arg-color-border-soft);
+  align-items: start;
+}
+#argiloteca-traceability .argilo-flow-row:last-child { border-bottom: 0; }
+#argiloteca-traceability .argilo-flow-row > .column {
+  min-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#argiloteca-traceability .argilo-flow-heading h3 { margin: 0; }
+#argiloteca-traceability .argilo-stage {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#argiloteca-traceability .argilo-stage-intro {
+  max-width: 72ch;
+  margin: 0 0 1rem;
+  color: var(--arg-color-text-muted);
+  line-height: 1.6;
+}
+#argiloteca-traceability .ui.items { margin: 0; }
+#argiloteca-traceability .ui.items > .item > .content > .header {
+  color: var(--arg-color-text);
+  overflow-wrap: anywhere;
+}
+#argiloteca-traceability .argilo-field-description {
+  display: grid;
+  gap: .5rem;
+  line-height: 1.5;
+}
+#argiloteca-traceability .argilo-metadata-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 28%) minmax(0, 1fr);
+  gap: .25rem 1rem;
+  align-items: baseline;
+}
+#argiloteca-traceability .argilo-metadata-row > strong,
+#argiloteca-traceability .argilo-metadata-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#argiloteca-traceability .argilo-metadata-value .ui.label {
+  margin: 0 .25rem .25rem 0;
+  white-space: normal;
+}
+#argiloteca-traceability .argilo-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+#argiloteca-traceability .argilo-stage-main,
+#argiloteca-traceability .argilo-stage-side { min-width: 0; }
+#argiloteca-traceability .argilo-stage-side {
+  padding-top: 1rem;
+  border-top: 1px solid var(--arg-color-border-soft);
+}
+#argiloteca-traceability .argilo-stage-side:has([data-geochemical-composition-chart]:empty) {
+  display: none;
+}
+#argiloteca-traceability [data-geochemical-composition-chart] { min-height: 360px; }
+#argiloteca-traceability .argilo-method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0 1.5rem;
+}
+#argiloteca-traceability .argilo-method-card { min-width: 0; }
+#argiloteca-traceability .argilo-method-card h4 { margin: 0 0 .5rem; }
+#argiloteca-traceability .argilo-method-card p {
+  margin: 0 0 .75rem;
+  color: var(--arg-color-text-muted);
+  line-height: 1.5;
+}
+#argiloteca-traceability .argilo-method-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+#argiloteca-traceability .argilo-method-actions .ui.button { margin: 0; }
+#argiloteca-traceability .arg-section-relation .ui.stacked.segment {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+#argiloteca-traceability .arg-section-relation .ui.stacked.segment::after { display: none; }
+#argiloteca-traceability .arg-section-relation .ui.dividing.header {
+  margin-top: 0;
+  border-bottom: 0;
+}
+@media only screen and (max-width: 767px) {
+  #argiloteca-traceability .argilo-flow-heading { margin-bottom: .75rem; }
+  #argiloteca-traceability .argilo-metadata-row { grid-template-columns: minmax(0, 1fr); }
+  #argiloteca-traceability .argilo-flow-row { padding: 1.25rem 0; }
+}
+
+      .argilo-record-science-bridge {
+        border: 1px solid var(--arg-color-border-soft, #d9e1dc);
+        border-radius: 10px;
+        background: #fffdf8;
+        padding: 1rem;
+        margin: 1rem 0 1.2rem;
+      }
+      .argilo-record-science-bridge__kicker {
+        margin: 0 0 .25rem;
+        color: var(--arg-color-secondary, #5e6f63);
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+      }
+      .argilo-record-science-bridge h2 {
+        margin: 0 0 .35rem;
+        font-size: 1.15rem;
+        color: var(--arg-color-text, #24342b);
+      }
+      .argilo-record-science-bridge p {
+        margin: 0 0 .8rem;
+        color: var(--arg-color-text-muted, #5e6b63);
+        line-height: 1.45;
+      }
+      .argilo-record-science-bridge__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: .65rem;
+      }
+      .argilo-record-science-card {
+        display: block;
+        min-height: 100%;
+        border: 1px solid var(--arg-color-border-soft, #d9e1dc);
+        border-radius: 8px;
+        background: #fff;
+        padding: .75rem .8rem;
+        color: inherit;
+      }
+      .argilo-record-science-card:hover {
+        border-color: var(--arg-color-primary, #6e8a68);
+        box-shadow: 0 6px 18px rgba(27, 43, 34, .08);
+      }
+      .argilo-record-science-card strong {
+        display: block;
+        margin-bottom: .25rem;
+        color: var(--arg-color-text, #24342b);
+      }
+      .argilo-record-science-card span {
+        display: block;
+        color: var(--arg-color-text-muted, #5e6b63);
+        font-size: .9rem;
+        line-height: 1.35;
+      }
+
+/* Match the reading scale without opening collapsed native sections. */
+#argiloteca-traceability { font-size: 16px; }
+#argiloteca-traceability .argilo-stage-intro { font-size: 17px; }
+#argiloteca-traceability .argilo-lifecycle-toggle { color: var(--arg-color-primary-strong); }
+.argilo-record-science-card span { font-size: 14px; }
+.argilo-record-science-card strong { color: var(--arg-color-primary-strong); }

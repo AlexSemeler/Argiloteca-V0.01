@@ -1,0 +1,14 @@
+{% extends config.BASE_TEMPLATE %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_module_nav with context %}
+{%- set community_slug = (community.slug if community else '')|default('', true)|string|trim %}
+{%- set community_revision = (community.revision_id if community else '')|default('', true)|string|trim %}
+{% block css %}
+  {{ super() }}
+  {% if community and community_slug and community_revision %}
+    <link rel="stylesheet" href="/communities/{{ community_slug }}/community-theme-{{ community_revision }}.css">
+  {% endif %}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-search-community.css') }}?v=20261016-ui-1">
+{% endblock %}
+{% block page_header %}
+  {{ super() }}
+{% endblock %}

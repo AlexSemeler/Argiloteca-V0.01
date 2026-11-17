@@ -1,0 +1,8 @@
+{% set connection_graph=argilo_record_connections(connection_record_id) %}
+{% if connection_graph.outgoing or connection_graph.incoming %}
+<section class="sc-inline-connections" aria-label="{{ review_text('Conexões científicas','Scientific connections') }}">
+<h2>{{ render_icon('connections') }} {{ review_text('Conexões científicas','Scientific connections') }}</h2>
+<ul>{% for entry in connection_graph.outgoing %}<li><a href="{{ entry.url }}">{{ entry.record.metadata.title }}</a><p>{{ entry.link.evidencia }}</p></li>{% endfor %}{% for entry in connection_graph.incoming %}<li><a href="{{ entry.url }}">{{ entry.record.metadata.title }}</a><p>{{ entry.link.evidencia }}</p></li>{% endfor %}</ul>
+<a href="{{ url_for('argiloteca_scientific.connections_public',pid=connection_record_id) }}">{{ review_text('Explorar registros, DRX, mapa e catálogo relacionados','Explore related records, XRD, map and catalog') }}</a>
+</section>
+{% endif %}

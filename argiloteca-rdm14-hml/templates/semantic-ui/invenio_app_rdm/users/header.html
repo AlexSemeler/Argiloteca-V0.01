@@ -1,0 +1,30 @@
+{# Based on Invenio App RDM, Copyright (C) 2022 CERN, MIT License. #}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+<div class="ui container fluid page-subheader-outer shadowless with-submenu ml-0-mobile mr-0-mobile mb-0 pb-0 rel-pt-2" id="dashboard-user-header-container">
+  <div class="ui container page-subheader flex justify-space-between align-items-center">
+    <div class="ui items unstackable m-0">
+      <div class="item">
+        <div class="ui image dashboard-header-avatar"><img src="{{ user_avatar }}" alt="" /></div>
+        <div class="middle aligned content rel-pl-1">
+          <h1 class="ui medium header" aria-label="{{ _("Your dashboard") }}">{{ current_userprofile.full_name or current_user.username or current_userprofile.email or _("Anonymous user") }}</h1>
+          {% if current_userprofile.affiliations %}<div class="meta">{{ current_userprofile.affiliations }}</div>{% endif %}
+        </div>
+      </div>
+    </div>
+    {% if active_dashboard_menu_item == "uploads" %}
+      <a class="ui tiny primary button argilo-workspace-action m-0" href="/uploads/new">{{ render_icon('upload') }} {{ _("New upload") }}</a>
+    {% endif %}
+    {% if active_dashboard_menu_item == "communities" %}
+      <a class="ui tiny primary button argilo-workspace-action m-0" href="/communities/new">{{ render_icon('communities') }} {{ _("New community") }}</a>
+    {% endif %}
+  </div>
+  <nav class="ui container secondary pointing menu page-subheader pl-0 argilo-dashboard-tabs" aria-label="{{ _("Seções do meu painel") }}">
+    {% for item in current_menu.submenu('dashboard').children if item.visible %}
+      {% if item.url %}
+      <a class="item {{ 'active' if active_dashboard_menu_item == item.name }}" href="{{ item.url }}" {% if active_dashboard_menu_item == item.name %}aria-current="page"{% endif %}>
+        {{ render_icon({'uploads':'upload', 'communities':'communities', 'requests':'requests'}.get(item.name, 'arrow')) }} {{ item.text }}
+      </a>
+      {% else %}<span class="item disabled" aria-disabled="true">{{ item.text }}</span>{% endif %}
+    {% endfor %}
+  </nav>
+</div>

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_conexao_cientifica.schema.json",
+  "title": "Conexão curatorial entre registros científicos",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "papel",
+    "relacao",
+    "evidencia"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{5}-[a-z0-9]{5}$"
+    },
+    "papel": {
+      "type": "string",
+      "enum": [
+        "dados",
+        "publicacao",
+        "termo"
+      ]
+    },
+    "relacao": {
+      "type": "string",
+      "enum": [
+        "issupplementedby",
+        "issupplementto",
+        "references",
+        "isreferencedby",
+        "describes",
+        "isdescribedby"
+      ]
+    },
+    "evidencia": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 1500
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 100
+    },
+    "native_relation_created": {
+      "type": "boolean",
+      "writeOnly": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "papel": {
+            "const": "termo"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "slug"
+        ],
+        "properties": {
+          "relacao": {
+            "const": "references"
+          }
+        }
+      }
+    }
+  ]
+}

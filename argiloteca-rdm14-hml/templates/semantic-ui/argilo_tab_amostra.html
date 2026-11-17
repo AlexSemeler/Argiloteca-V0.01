@@ -1,0 +1,26 @@
+{# argilo_tab_amostra.html #}
+{% from "_argilo_helpers.html" import get_cf, field_row %}
+
+<div class="ui stacked segment arg-section arg-section-sample">
+  <h3 class="ui dividing header">{{ _("Amostra") }}</h3>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Data de coleta"), get_cf(record, "arg:amostra_data_coleta")) }}
+    {{ field_row(_("Local de coleta"), get_cf(record, "arg:amostra_local_coleta")) }}
+    {{ field_row(_("Descrição do local"), get_cf(record, "arg:amostra_descricao_local")) }}
+    {{ field_row(_("Tipo de amostra"), get_cf(record, "arg:amostra_tipo_amostra")) }}
+    {{ field_row(_("Latitude da amostra"), get_cf(record, "arg:amostra_latitude")) }}
+    {{ field_row(_("Longitude da amostra"), get_cf(record, "arg:amostra_longitude")) }}
+    {{ field_row(_("Altitude da amostra (m)"), get_cf(record, "arg:amostra_altitude")) }}
+  </div>
+</div>
+
+<div class="ui stacked segment arg-section arg-section-campaign">
+  <h3 class="ui dividing header">{{ _("Pesquisa de campo") }}</h3>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Local/campanha"), get_cf(record, "arg:pesquisa_local")) }}
+    {{ field_row(_("Data da campanha"), get_cf(record, "arg:pesquisa_data")) }}
+    {{ field_row(_("Responsável"), get_cf(record, "arg:pesquisa_responsavel")) }}
+  </div>
+</div>

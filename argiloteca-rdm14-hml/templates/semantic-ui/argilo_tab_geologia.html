@@ -1,0 +1,13 @@
+{# argilo_tab_geologia.html #}
+{% from "_argilo_helpers.html" import get_cf, field_row %}
+
+<div class="ui stacked segment arg-section arg-section-campaign">
+  <h3 class="ui dividing header">{{ _("Origem e formação") }}</h3>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Ambiente de formação"), get_cf(record, "arg:origem_ambiente_formacao")) }}
+    {{ field_row(_("Tipo de rocha hospedeira"), get_cf(record, "arg:origem_tipo_rocha")) }}
+    {{ field_row(_("Era geológica (detalhada)"), get_cf(record, "arg:origem_era_geologica")) }}
+    {{ field_row(_("Formações / unidades geológicas"), get_cf(record, "arg:origem_formacao_geologica")) }}
+  </div>
+</div>

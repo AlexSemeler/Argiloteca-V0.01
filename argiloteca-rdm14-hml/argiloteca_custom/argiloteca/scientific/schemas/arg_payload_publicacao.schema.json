@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_payload_publicacao.schema.json",
+  "title": "arg:payload_publicacao",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["metadata", "access", "files", "custom_fields"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["title", "publication_date", "resource_type"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "publication_date": {"type": "string"},
+        "resource_type": {"type": "object", "additionalProperties": true},
+        "creators": {"type": "array"},
+        "description": {"type": "string"},
+        "publisher": {"type": "string"},
+        "identifiers": {"type": "array"}
+      }
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "record": {"type": "string"},
+        "files": {"type": "string"}
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "enabled": {"type": "boolean"}
+      }
+    },
+    "custom_fields": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "arg:pesquisas_campo": {
+          "type": "array",
+          "items": {"$ref": "arg_pesquisa_campo.schema.json"}
+        },
+        "arg:amostras": {
+          "type": "array",
+          "items": {"$ref": "arg_amostra.schema.json"}
+        },
+        "arg:analises": {
+          "type": "array",
+          "items": {"$ref": "arg_analise.schema.json"}
+        },
+        "arg:composicao_quimica_global": {"$ref": "arg_geoquimica.schema.json"},
+        "arg:argilominerais": {
+          "type": "array",
+          "items": {"$ref": "arg_argilomineral.schema.json"}
+        },
+        "arg:publicacoes_relacionadas": {
+          "type": "array",
+          "items": {"$ref": "arg_publicacao.schema.json"}
+        },
+        "arg:pacotes_analiticos": {
+          "type": "array",
+          "items": {"$ref": "arg_pacote_analitico.schema.json"}
+        }
+      }
+    }
+  }
+}

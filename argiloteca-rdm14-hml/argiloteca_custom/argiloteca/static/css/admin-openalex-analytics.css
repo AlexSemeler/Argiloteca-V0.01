@@ -1,0 +1,14 @@
+.oa-workspace .oa-number {min-width: 9rem; font-variant-numeric: tabular-nums;}
+.oa-workspace meter {display: block; width: 100%; max-width: 12rem; height: 1rem; accent-color: #70492f;}
+.oa-workspace meter::-moz-meter-bar {background: #70492f;}
+.oa-evidence {padding-block: .6rem; border-top: 1px solid #c9b9a8;}
+.oa-evidence p {margin-block: .35rem;}
+.oa-orcid-select {max-width: 42rem;}
+.oa-author-select {display: inline-flex; align-items: start; gap: .5rem;}
+.oa-author-select input {flex-shrink: 0;}
+.oa-workspace .oa-choice-note {font-size: .95rem; color: #594334;}
+@media(max-width:700px) {.oa-workspace .oa-number {min-width: 0;} .oa-orcid-select {width: 100%;}}
+
+.oa-workspace .oa-orcid-save-form,
+.oa-workspace .oa-orcid-save-form details {min-width: 0; max-width: 100%;}
+.oa-workspace .oa-orcid-save-form .oa-review-note {width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box; resize: vertical; white-space: pre-wrap; overflow-wrap: anywhere;}

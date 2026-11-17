@@ -1,0 +1,16 @@
+# Ignore local virtualenv (if present)
+.venv/
+__pycache__/
+*.py[cod]
+
+# Never copy local credentials or runtime state into application images.
+.env
+.invenio.private
+.phase1-setup-complete
+.git/
+docker/nginx/test.key
+
+# The DRX rehearsal corpus is bind-mounted read-only.  Keeping it out of the
+# image avoids a multi-gigabyte build context and makes corpus refreshes
+# independently auditable by checksum.
+data/

@@ -1,0 +1,9 @@
+/* Manual curation keeps the assistant after the review workspace so it never
+   covers record evidence, destination choices or the confirmation controls. */
+/* The native full-height flex body can shrink the admin grid while its
+   contents overflow. Normal document flow keeps the assistant after them. */
+body {display: block;}
+.argilo-robo-launcher {
+  position: static !important;
+  margin: 1rem 1rem 1rem auto;
+}

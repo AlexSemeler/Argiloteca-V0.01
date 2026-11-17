@@ -1,0 +1,20 @@
+{# Copyright (C) 2020 CERN, Northwestern University. MIT License.
+   Retains the InvenioRDM search component and its configuration. #}
+{% extends config.BASE_TEMPLATE %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_scientific_header, render_icon with context %}
+{% set title = _("Search results") %}
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-search-community.css') }}?v=20261016-ui-1">
+{% endblock %}
+{% block javascript %}
+  {{ super() }}
+  {{ webpack['invenio-app-rdm-search.js'] }}
+{% endblock %}
+{% block page_body %}
+  {{ render_scientific_header(section=_("Busca"), title=_("Buscar registros"), subtitle=_("Explore o acervo e refine os resultados pelos filtros disponíveis."), breadcrumbs=[{"label": _("Início"), "href": "/"}, {"label": _("Busca"), "href": None}]) }}
+  <div class="ui container argilo-discovery-search">
+    {% if config.ARGILOTECA_OPENALEX_ROOT and argilo_can_review_raws() %}<p class="argilo-acervo-update"><a class="ui button" href="{{ url_for('argiloteca_openalex.enrichment_index') }}">{{ render_icon('refresh') }} {{ review_text('Atualizar dados do Acervo','Update collection data') }}</a></p>{% endif %}
+    <div data-invenio-search-config='{{ search_app_rdm_config(app_id="InvenioAppRdm.Search") | tojson }}'></div>
+  </div>
+{% endblock %}

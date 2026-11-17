@@ -1,0 +1,25 @@
+{# Preserve Invenio's native account forms and add the shared language selector. #}
+{% extends "invenio_theme/page_cover.html" %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="preload" href="{{ url_for('argiloteca.static', filename='fonts/catamaran/catamaran-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloteca-theme.css') }}?v=20261019-cpaa-type-2">
+  {% include "semantic-ui/argiloteca/language_selector_styles.html" %}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloclay-robo.css') }}?v=20261019-3">
+{% endblock %}
+
+{% block page_header %}
+  {{ super() }}
+  {% include "semantic-ui/argiloteca/language_selector.html" %}
+{% endblock %}
+
+{% block page_footer %}
+  {{ super() }}
+  {% include "semantic-ui/argiloteca/argiloclay_robo.html" %}
+{% endblock %}
+
+{% block site_banner %}
+  {% from "invenio_banners/banner.html" import banner %}
+  {{ banner() }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% macro deposit_navigation(scientific=false, record_id=none, readonly=false) %}
+<header class="argilo-deposit-heading ui container">
+  <nav class="ui breadcrumb" aria-label="{{ _('Localização') }}"><a class="section" href="/me/uploads">{{ _('Meu painel') }}</a><span class="divider" aria-hidden="true">/</span><span class="active section">{{ _('Depósito científico') if scientific else _('Depósito') }}</span></nav>
+  <h1>{{ _('Metadados científicos') if readonly else _('Editar depósito') if record_id else _('Novo depósito') }}</h1>
+  <p>{{ _('Descrição geral, arquivos e metadados científicos fazem parte do mesmo registro.') }}</p>
+  <nav class="argilo-deposit-tabs" aria-label="{{ _('Formulários do registro') }}">
+    <a href="{{ '/uploads/' ~ record_id if record_id else '/uploads/new' }}"{% if not scientific %} aria-current="page"{% endif %}>{{ render_icon('upload') }} {{ _('Descrição e arquivos') }}</a>
+    <a href="{{ '/scientific/deposit/' ~ record_id if record_id else '/scientific/deposit' }}"{% if scientific %} aria-current="page"{% endif %}>{{ render_icon('analyses') }} {{ _('Metadados científicos') }}</a>
+    <a href="/scientific/search">{{ render_icon('search') }} {{ _('Busca científica') }}</a>
+  </nav>
+</header>
+{% endmacro %}

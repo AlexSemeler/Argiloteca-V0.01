@@ -1,0 +1,20 @@
+{
+  "services": {
+    "web-ui": {
+      "environment": {
+        "ARGILOTECA_DRX_NEURAL_EVIDENCE_INDEX": "/opt/argiloteca-neural/neural_evidence_index.json"
+      },
+      "volumes": [
+        "../output/neural-catalog-rag-20261023/public-neural:/opt/argiloteca-neural:ro"
+      ]
+    },
+    "web-api": {
+      "environment": {
+        "ARGILOTECA_DRX_NEURAL_EVIDENCE_INDEX": "/opt/argiloteca-neural/neural_evidence_index.json"
+      },
+      "volumes": [
+        "../output/neural-catalog-rag-20261023/public-neural:/opt/argiloteca-neural:ro"
+      ]
+    }
+  }
+}

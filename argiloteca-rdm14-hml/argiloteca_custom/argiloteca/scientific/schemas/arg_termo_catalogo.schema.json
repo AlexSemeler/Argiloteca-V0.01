@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_termo_catalogo.schema.json",
+  "title": "Termo autorizado do catálogo Argiloteca",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "nome_pt",
+    "nome_en",
+    "nome_cientifico_padronizado",
+    "situacao"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 100
+    },
+    "nome_pt": {
+      "type": "string",
+      "maxLength": 20000,
+      "minLength": 1
+    },
+    "nome_en": {
+      "type": "string",
+      "maxLength": 20000,
+      "minLength": 1
+    },
+    "nome_cientifico_padronizado": {
+      "type": "string",
+      "maxLength": 20000,
+      "minLength": 1
+    },
+    "grupo_mineralogico": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "classe_estrutural": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "formula_ideal": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "descricao_curta": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "descricao_classica": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "observacao_proveniencia": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "situacao": {
+      "type": "string",
+      "enum": [
+        "ativo",
+        "retirado"
+      ]
+    },
+    "sinonimos": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "maxItems": 100
+    },
+    "external_uri": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2000,
+      "pattern": "^https?://.+$"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "enriquecimento": {
+      "type": "object",
+      "description": "Instantâneo estruturado do perfil público anterior, com fontes, créditos e licenças preservados."
+    }
+  }
+}

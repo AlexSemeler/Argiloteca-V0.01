@@ -1,0 +1,594 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_module_nav, render_breadcrumb, render_icon with context %}
+{% from "_argilo_helpers.html" import mineral_name_popup, mineral_source_link %}
+{% set cf = record.custom_fields if record.custom_fields is defined else {} %}
+{% set campanhas = cf.get("arg:pesquisas_campo", []) if cf else [] %}
+{% set amostras = cf.get("arg:amostras", []) if cf else [] %}
+{% set analises = cf.get("arg:analises", []) if cf else [] %}
+{% set argilominerais = cf.get("arg:argilominerais", []) if cf else [] %}
+{% set evidencias_mineralogicas = cf.get("arg:evidencias_mineralogicas", []) if cf else [] %}
+{% set publicacoes = cf.get("arg:publicacoes_relacionadas", []) if cf else [] %}
+{% set composicao_global = cf.get("arg:composicao_quimica_global", {}) if cf else {} %}
+{% set descricao_componentes = cf.get("arg:descricao_componentes") if cf else none %}
+{% set composicao_descricao_componentes = cf.get("arg:composicao_descricao_componentes") if cf else none %}
+{% set composicao_proporcoes = cf.get("arg:composicao_proporcoes") if cf else none %}
+{% set file_entries = record.files.entries if record.files is defined and record.files and record.files.entries else {} %}
+{% set has_structured_traceability = campanhas or amostras or analises or composicao_global or descricao_componentes or composicao_descricao_componentes or composicao_proporcoes or publicacoes %}
+
+{% if has_structured_traceability %}
+  <section id="argiloteca-traceability" class="ui fluid accordion rel-mt-3" aria-labelledby="argiloteca-lifecycle-heading">
+    <h2 id="argiloteca-lifecycle-heading" class="title m-0">
+      <button type="button" id="argiloteca-lifecycle-trigger" class="trigger argilo-lifecycle-toggle"
+              aria-expanded="false" aria-controls="argiloteca-lifecycle-panel">
+        <i class="caret right icon" aria-hidden="true"></i>
+        {{ _("Ciclo de Vida dos Dados de Pesquisa") }}
+      </button>
+    </h2>
+    <div id="argiloteca-lifecycle-panel" class="content argilo-lifecycle-content"
+         role="region" aria-labelledby="argiloteca-lifecycle-trigger">
+      <div class="ui divider"></div>
+      {% if campanhas %}
+        <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Trabalhos de Campo") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-campaign">
+              <p class="argilo-stage-intro">
+                {{ _("Plano de proveniência que documenta a campanha, sua temporalidade e a responsabilidade científica associada à coleta do material.") }}
+              </p>
+              <div class="ui relaxed divided items">
+                {% for campanha in campanhas %}
+                  <div class="item">
+                    <div class="content">
+                      <div class="header">{{ campanha.get("campanha_id", "—") }}</div>
+                        <div class="description argilo-field-description">
+                        <div class="argilo-metadata-row"><strong>{{ _("Rastreabilidade") }}:</strong><span class="argilo-metadata-value"><span class="ui tiny basic label">{{ campanha.get("traceability_status", "observed") }}</span></span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Título") }}:</strong><span class="argilo-metadata-value">{{ campanha.get("titulo", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Datas") }}:</strong><span class="argilo-metadata-value">{{ campanha.get("data_inicio", "—") }}{% if campanha.get("data_fim") %} → {{ campanha.get("data_fim") }}{% endif %}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Responsável") }}:</strong><span class="argilo-metadata-value">{{ campanha.get("responsavel", "—") }}</span></div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if amostras %}
+        <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Amostras") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-sample">
+              <p class="argilo-stage-intro">
+                {{ _("Plano material do registro, com identificação da amostra, localização de coleta, contexto geológico e coordenadas associadas.") }}
+              </p>
+              <div class="ui relaxed divided items">
+                {% for amostra in amostras %}
+                  <div class="item">
+                    <div class="content">
+                      <div class="header">{{ amostra.get("codigo_amostra", "—") }}</div>
+                      <div class="description argilo-field-description">
+                        <div class="argilo-metadata-row"><strong>{{ _("Rastreabilidade") }}:</strong><span class="argilo-metadata-value"><span class="ui tiny basic label">{{ amostra.get("traceability_status", "observed") }}</span></span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Localização") }}:</strong><span class="argilo-metadata-value">{{ amostra.get("local_coleta", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Contexto geológico") }}:</strong><span class="argilo-metadata-value">{{ amostra.get("contexto_geologico", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Coordenadas") }}:</strong><span class="argilo-metadata-value">
+                          {% if amostra.get("latitude") is not none and amostra.get("longitude") is not none %}
+                            {{ amostra.get("latitude") }}, {{ amostra.get("longitude") }}
+                          {% else %}
+                            —
+                          {% endif %}
+                        </span></div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if analises %}
+        <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Análises") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-analysis">
+              <p class="argilo-stage-intro">
+                {{ _("Plano de evidência analítica que registra método, amostra vinculada, resultado principal e eventual arquivo de suporte.") }}
+              </p>
+              {% set methods = namespace(items=[]) %}
+              {% for analise in analises %}
+                {% set metodo = analise.get("metodo") %}
+                {% if metodo and metodo not in methods.items %}
+                  {% set _ = methods.items.append(metodo) %}
+                {% endif %}
+              {% endfor %}
+              <div class="argilo-method-grid" aria-label="{{ _("Métodos analíticos associados ao registro") }}">
+                <article class="argilo-method-card">
+                  <h4>{{ _("DRX - Difração de raios X") }}</h4>
+                  <p>{{ _("Pacote analítico com arquivos .RAW, picos detectados, candidatos mineralógicos e visualização dos difratogramas.") }}</p>
+                  <div class="argilo-method-actions">
+                    <a class="ui tiny primary button" href="{{ url_for('argiloteca.pacote_analitico', record_id=record.id) }}">
+                      {{ render_icon("analyses") }} {{ _("Abrir análise DRX") }}
+                    </a>
+                    <a class="ui tiny button" href="{{ url_for('argiloteca.drx_comparacao') }}">
+                      {{ render_icon("drx") }} {{ _("Comparar DRX") }}
+                    </a>
+                  </div>
+                </article>
+                <article class="argilo-method-card argilo-method-card--pending">
+                  <h4>{{ _("Outros métodos analíticos") }}</h4>
+                  <p>
+                    {% if methods.items %}
+                      {{ _("Métodos já descritos no registro:") }} {{ methods.items|join(", ") }}.
+                    {% else %}
+                      {{ _("Novos métodos podem ser incorporados como pacotes analíticos sem misturar os arquivos brutos ao resumo do registro.") }}
+                    {% endif %}
+                  </p>
+                  <span class="ui tiny basic label">{{ _("Preparado para expansão") }}</span>
+                </article>
+              </div>
+              <div class="ui relaxed divided items">
+                {% for analise in analises %}
+                  {% set arquivo_key = analise.get("arquivo_resultado") %}
+                  {% set arquivo = file_entries.get(arquivo_key) if arquivo_key and file_entries else none %}
+                  <div class="item">
+                    <div class="content">
+                      <div class="header">{{ analise.get("analise_id", "—") }}</div>
+                      <div class="description argilo-field-description">
+                        <div class="argilo-metadata-row"><strong>{{ _("Rastreabilidade") }}:</strong><span class="argilo-metadata-value"><span class="ui tiny basic label">{{ analise.get("traceability_status", "pending_curation") }}</span> <span class="ui tiny basic label">{{ analise.get("evidence_level", "weak") }}</span></span></div>
+                        {% if analise.get("requires_human_review") %}
+                          <div class="ui mini warning message">{{ _("Esta análise requer revisão humana antes de ser tratada como confirmada.") }}</div>
+                        {% endif %}
+                        <div class="argilo-metadata-row"><strong>{{ _("Método") }}:</strong><span class="argilo-metadata-value">{{ analise.get("metodo", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Amostra") }}:</strong><span class="argilo-metadata-value">{{ analise.get("codigo_amostra", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Resultado") }}:</strong><span class="argilo-metadata-value">{{ analise.get("resultado_principal", "—") }}</span></div>
+                        {% if arquivo_key %}
+                          <div class="argilo-metadata-row">
+                            <strong>{{ _("Arquivo vinculado") }}:</strong>
+                            <span class="argilo-metadata-value">
+                            {% if arquivo %}
+                              <a href="/records/{{ record.id }}/files/{{ arquivo_key }}?download=1">{{ arquivo_key }}</a>
+                            {% else %}
+                              {{ arquivo_key }}
+                            {% endif %}
+                            </span>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if composicao_global or descricao_componentes or composicao_descricao_componentes or composicao_proporcoes %}
+        <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Composição química (global)") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-chemistry">
+              <p class="argilo-stage-intro">
+                {{ _("Síntese quantitativa do registro, reunindo teores estruturados, descrição composicional e visualização analítica comparativa.") }}
+              </p>
+              {% set composicao_codigo_amostra = composicao_global.get("codigo_amostra") if composicao_global else none %}
+              {% set composicao_amostra = namespace(item=none) %}
+              {% if composicao_codigo_amostra and amostras %}
+                {% for amostra in amostras %}
+                  {% if amostra.get("codigo_amostra") == composicao_codigo_amostra %}
+                    {% set composicao_amostra.item = amostra %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% set etapa4_samples = namespace(items=[]) %}
+              {% for amostra in amostras %}
+                {% set sample_code = amostra.get("codigo_amostra") %}
+                {% if sample_code %}
+                  {% set _ = etapa4_samples.items.append(amostra) %}
+                {% endif %}
+              {% endfor %}
+              {% if not etapa4_samples.items and composicao_codigo_amostra %}
+                {% set _ = etapa4_samples.items.append({"codigo_amostra": composicao_codigo_amostra}) %}
+              {% endif %}
+              {% set component_summary = composicao_descricao_componentes or descricao_componentes %}
+              {% set chem = namespace(valid_items=[]) %}
+              {% for oxide in ["SiO2", "Al2O3", "Fe2O3", "FeO", "MgO", "CaO", "Na2O", "K2O", "TiO2", "MnO", "P2O5", "PF", "LOI"] %}
+                {% set value = composicao_global.get(oxide) if composicao_global else none %}
+                {% if value is number and value >= 0 %}
+                  {% set _ = chem.valid_items.append((oxide, value)) %}
+                {% endif %}
+              {% endfor %}
+
+              {% set chemistry_chart_payload = {
+                "record_id": record.id,
+                "record_title": (record.metadata.title if record.metadata is defined and record.metadata.title is defined else record.id),
+                "primary_label": (
+                  composicao_codigo_amostra
+                  if composicao_codigo_amostra
+                  else (
+                    amostras[0].get("codigo_amostra")
+                    if amostras and amostras[0].get("codigo_amostra")
+                    else (
+                      record.metadata.title if record.metadata is defined and record.metadata.title is defined else record.id
+                    )
+                  )
+                ),
+                "primary_sample_code": composicao_codigo_amostra,
+                "primary_sample_location": (
+                  composicao_amostra.item.get("local_coleta")
+                  if composicao_amostra.item and composicao_amostra.item.get("local_coleta")
+                  else (
+                    amostras[0].get("local_coleta")
+                    if amostras and amostras[0].get("local_coleta")
+                    else none
+                  )
+                ),
+                "primary_composition": composicao_global,
+                "samples": amostras,
+                "analyses": analises,
+              } %}
+
+              <div class="argilo-stage-grid">
+                <div class="argilo-stage-main">
+                  {% if etapa4_samples.items|length > 1 %}
+                    <div class="ui form argilo-inline-spacer">
+                      <label for="argilo-etapa4-sample-{{ record.id }}">{{ _("Selecionar amostra analisada") }}</label>
+                      <select
+                        id="argilo-etapa4-sample-{{ record.id }}"
+                        class="ui dropdown"
+                        data-role="argilo-etapa4-sample-select"
+                      >
+                        {% for sample in etapa4_samples.items %}
+                          {% set sample_code = sample.get("codigo_amostra") %}
+                          <option
+                            value="{{ sample_code }}"
+                            {% if sample_code == composicao_codigo_amostra %}selected{% endif %}
+                          >
+                            {{ sample_code }}{% if sample.get("local_coleta") %} — {{ sample.get("local_coleta") }}{% endif %}
+                          </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  {% endif %}
+
+                  {% for sample in etapa4_samples.items %}
+                    {% set selected_code = sample.get("codigo_amostra") %}
+                    {% set is_composition_sample = selected_code == composicao_codigo_amostra %}
+                    <div
+                      data-role="argilo-etapa4-sample-panel"
+                      data-sample-code="{{ selected_code }}"
+                      {% if etapa4_samples.items|length > 1 and not is_composition_sample %}hidden{% endif %}
+                    >
+                      <div class="ui mini message {% if is_composition_sample %}{{ _("arg-validation-ok") }}{% else %}{{ _("warning") }}{% endif %}">
+                        <strong>{{ _("Amostra associada") }}:</strong>
+                        {{ selected_code or "—" }}
+                        {% if is_composition_sample %}
+                          <div class="text-muted argilo-inline-spacer">
+                            <strong>{{ _("Rastreabilidade") }}:</strong>
+                            <span class="ui tiny basic label">{{ composicao_global.get("traceability_status", "pending_curation") }}</span>
+                            <span class="ui tiny basic label">{{ composicao_global.get("assertion_type", "automatic_inference") }}</span>
+                            <span class="ui tiny basic label">{{ composicao_global.get("evidence_level", "weak") }}</span>
+                          </div>
+                          {% if composicao_global.get("requires_human_review") %}
+                            <div class="ui mini warning message">
+                              {{ _("Composição química global pode sugerir candidatos, mas não confirma argilominerais sem evidência mineralógica direta.") }}
+                            </div>
+                          {% endif %}
+                        {% else %}
+                          <div class="text-muted argilo-inline-spacer">
+                            {{ _("Esta amostra está vinculada ao registro, mas ainda não possui composição química global estruturada nesta Etapa 4.") }}
+                          </div>
+                        {% endif %}
+                        {% if sample.get("local_coleta") %}
+                          <div class="text-muted argilo-inline-spacer">
+                            <strong>{{ _("Localização") }}:</strong>
+                            {{ sample.get("local_coleta") }}
+                          </div>
+                        {% endif %}
+                      </div>
+
+                      {% if is_composition_sample %}
+                        {% if composicao_proporcoes %}
+                          <h4 class="ui tiny header">{{ _("Resumo químico") }}</h4>
+                          {% if component_summary %}
+                            <p class="text-muted">{{ component_summary }}</p>
+                          {% endif %}
+                          <div class="ui relaxed divided list">
+                            {% for item in composicao_proporcoes.split(';') %}
+                              {% if item|trim %}
+                                <div class="item">
+                                  <div class="content">{{ item|trim }}</div>
+                                </div>
+                              {% endif %}
+                            {% endfor %}
+                          </div>
+                        {% elif component_summary %}
+                          <p class="text-muted">{{ component_summary }}</p>
+                        {% endif %}
+
+                        {% if chem.valid_items %}
+                          <div class="ui hidden divider"></div>
+                          <h4 class="ui tiny header">{{ _("Teores estruturados") }}</h4>
+                          <table class="ui very basic compact celled table">
+                            <thead>
+                              <tr>
+                                <th>{{ _("Óxido") }}</th>
+                                <th>{{ _("Teor percentual") }}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for oxide, value in chem.valid_items %}
+                                <tr>
+                                  <td>{{ oxide }}</td>
+                                  <td>{{ value }}</td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        {% endif %}
+                      {% else %}
+                        {% set related_analyses = namespace(items=[]) %}
+                        {% for analise in analises %}
+                          {% if analise.get("codigo_amostra") == selected_code %}
+                            {% set _ = related_analyses.items.append(analise) %}
+                          {% endif %}
+                        {% endfor %}
+                        {% if related_analyses.items %}
+                          <h4 class="ui tiny header">{{ _("Análises vinculadas à amostra") }}</h4>
+                          <div class="ui relaxed divided list">
+                            {% for analise in related_analyses.items %}
+                              <div class="item">
+                                <div class="content">
+                                  <strong>{{ analise.get("analise_id", "—") }}</strong>
+                                  <div class="description">
+                                    {{ analise.get("metodo", "—") }}{% if analise.get("resultado_principal") %} — {{ analise.get("resultado_principal") }}{% endif %}
+                                  </div>
+                                </div>
+                              </div>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+
+                <aside class="argilo-stage-side" aria-label="{{ _("Visualização analítica") }}">
+                  <h4 class="ui tiny header">{{ _("Visualização analítica") }}</h4>
+                  <p class="text-muted">
+                    {{ _("Modo padrão em barras, com comparação radar entre séries disponíveis e diagrama ternário em modo avançado.") }}
+                  </p>
+                  <div
+                    data-geochemical-composition-chart
+                    data-payload='{{ chemistry_chart_payload | tojson }}'
+                  ></div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if etapa4_samples.items|length > 1 %}
+          <script nonce="{{ csp_nonce() }}">
+            (function () {
+              const root = document.getElementById("argiloteca-traceability");
+              if (!root) return;
+              const select = root.querySelector('[data-role="argilo-etapa4-sample-select"]');
+              if (!select) return;
+              const panels = Array.from(root.querySelectorAll('[data-role="argilo-etapa4-sample-panel"]'));
+              const updatePanels = function () {
+                panels.forEach(function (panel) {
+                  panel.hidden = panel.dataset.sampleCode !== select.value;
+                });
+              };
+              select.addEventListener("change", updatePanels);
+              updatePanels();
+            })();
+          </script>
+        {% endif %}
+      {% endif %}
+
+      {% if evidencias_mineralogicas %}
+        <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Evidência mineralógica") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-analysis">
+              <p class="argilo-stage-intro">
+                {{ _("Elo científico entre composição química e identificação mineralógica. Sem esta evidência, o mineral permanece candidato, menção documental ou enriquecimento externo.") }}
+              </p>
+              <div class="ui relaxed divided items">
+                {% for evidencia in evidencias_mineralogicas %}
+                  <div class="item">
+                    <div class="content">
+                      <div class="header">{{ evidencia.get("normalized_mineral_name") or evidencia.get("mineral_name_detected", "—") }}</div>
+                      <div class="description argilo-field-description">
+                        <div class="argilo-metadata-row"><strong>{{ _("Relação com a amostra") }}:</strong><span class="argilo-metadata-value"><span class="ui tiny basic label">{{ evidencia.get("relation_to_sample", "candidate_in_sample") }}</span></span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Fonte") }}:</strong><span class="argilo-metadata-value">{{ evidencia.get("source_type", "unknown") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Nível de evidência") }}:</strong><span class="argilo-metadata-value">{{ evidencia.get("evidence_level", "weak") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Trecho / evidência") }}:</strong><span class="argilo-metadata-value">{{ evidencia.get("evidence_text") or evidencia.get("source_excerpt", "—") }}</span></div>
+                        {% if evidencia.get("requires_human_review") %}
+                          <div class="ui mini warning message">{{ _("Evidência ainda pendente de curadoria científica.") }}</div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if argilominerais %}
+        <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Argilominerais identificados ou candidatos") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-mineral">
+              <p class="argilo-stage-intro">
+                {{ _("Plano interpretativo do registro. Minerais enriquecidos por Mindat, vocabulário local ou composição química não são exibidos como confirmação automática da amostra.") }}
+              </p>
+              {% set grupos_minerais = [
+                ("Identificados na amostra", "confirmed_in_sample"),
+                ("Candidatos inferidos", "candidate_in_sample"),
+                ("Mencionados no documento", "mentioned_in_document"),
+                ("Enriquecimento externo / Mindat", "external_reference_only"),
+                (_("Pendentes de curadoria"), "vocabulary_expansion")
+              ] %}
+              <div class="ui relaxed divided items">
+                {% for grupo_label, relacao_alvo in grupos_minerais %}
+                  {% set grupo_ns = namespace(items=[]) %}
+                  {% for item in argilominerais %}
+                    {% set relacao_item = item.get("relation_to_sample", "candidate_in_sample") %}
+                    {% if relacao_item == relacao_alvo or (relacao_alvo == "external_reference_only" and item.get("external_source")) %}
+                      {% set _ = grupo_ns.items.append(item) %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if grupo_ns.items %}
+                    <div class="item">
+                      <div class="content">
+                        <h4 class="ui tiny header">{{ _(grupo_label) }}</h4>
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% for item in grupo_ns.items %}
+                    {% set nome = item.get("nome", "—") %}
+                    {% set grupo = item.get("grupo_mineralogico") or item.get("grupo", "—") %}
+                    {% set resumo = item.get("descricao_curta") %}
+                  <div class="item">
+                    <div class="content">
+                      <div class="header">{{ mineral_name_popup(item, nome, resumo) }}</div>
+                      <div class="description argilo-field-description">
+                        <div class="argilo-metadata-row"><strong>{{ _("Rastreabilidade") }}:</strong><span class="argilo-metadata-value"><span class="ui tiny basic label">{{ item.get("traceability_status", "pending_curation") }}</span> <span class="ui tiny basic label">{{ item.get("relation_to_sample", "candidate_in_sample") }}</span> <span class="ui tiny basic label">{{ item.get("evidence_level", "weak") }}</span></span></div>
+                        {% if item.get("requires_human_review") %}
+                          <div class="ui mini warning message">{{ _("Este argilomineral não deve ser lido como identificação confirmada da amostra sem curadoria ou evidência direta.") }}</div>
+                        {% endif %}
+                        <div class="argilo-metadata-row"><strong>{{ _("Amostra associada") }}:</strong><span class="argilo-metadata-value">{{ item.get("codigo_amostra", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Grupo mineral") }}:</strong><span class="argilo-metadata-value">{{ grupo }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Nome científico padronizado") }}:</strong><span class="argilo-metadata-value">{{ item.get("nome_cientifico_padronizado", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Fórmula ideal") }}:</strong><span class="argilo-metadata-value">{{ item.get("formula_ideal", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Classe estrutural") }}:</strong><span class="argilo-metadata-value">{{ item.get("classe_estrutural", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Sistema cristalino") }}:</strong><span class="argilo-metadata-value">{{ item.get("sistema_cristalino", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Descrição mineralógica") }}:</strong><span class="argilo-metadata-value">{{ item.get("descricao", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Estrutura cristalina") }}:</strong><span class="argilo-metadata-value">{{ item.get("estrutura_cristalina", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Propriedades especiais") }}:</strong><span class="argilo-metadata-value">{{ item.get("propriedades_especiais", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Propriedades relevantes") }}:</strong><span class="argilo-metadata-value">{{ item.get("propriedades_relevantes", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Origem / formação (resumo)") }}:</strong><span class="argilo-metadata-value">{{ item.get("origem_formacao", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Ambiente típico de formação") }}:</strong><span class="argilo-metadata-value">{{ item.get("ambiente_tipico_formacao", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Era geológica") }}:</strong><span class="argilo-metadata-value">{{ item.get("era_geologica", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Formação geológica") }}:</strong><span class="argilo-metadata-value">{{ item.get("formacao_geologica", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Usos e aplicações") }}:</strong><span class="argilo-metadata-value">{{ item.get("usos_aplicacoes", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Fonte da síntese") }}:</strong><span class="argilo-metadata-value">{{ item.get("fonte_descricao", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Proveniência") }}:</strong><span class="argilo-metadata-value">{{ item.get("observacao_proveniencia", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Fonte externa") }}:</strong><span class="argilo-metadata-value">{{ mineral_source_link(item) }}</span></div>
+                        {% if item.get("validation_notes") %}
+                          <div class="argilo-metadata-row"><strong>{{ _("Nota de validação") }}:</strong><span class="argilo-metadata-value">{{ item.get("validation_notes") }}</span></div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if publicacoes %}
+        <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Publicações e documentação científica") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-publication">
+              <p class="argilo-stage-intro">
+                {{ _("Camada de formalização, validação, circulação e memória científica associada ao registro.") }}
+              </p>
+              <div class="ui relaxed divided items">
+                {% for publicacao in publicacoes %}
+                  <div class="item">
+                    <div class="content">
+                      <div class="header">{{ publicacao.get("titulo", "—") }}</div>
+                      <div class="description argilo-field-description">
+                        <div class="argilo-metadata-row"><strong>{{ _("Tipo") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("tipo", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Autores") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("autores", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Ano") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("ano", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Fonte / revista") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("fonte_ou_revista", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Relação com o registro") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("relacao_com_registro", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Amostra") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("codigo_amostra", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Análise") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("codigo_analise", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Argilomineral") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("argilomineral_nome", "—") }}</span></div>
+                        <div class="argilo-metadata-row"><strong>{{ _("Papel da amostra") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("papel_da_amostra", "—") }}</span></div>
+                        {% if publicacao.get("doi") %}
+                          <div class="argilo-metadata-row">
+                            <strong>{{ _("DOI") }}:</strong>
+                            <span class="argilo-metadata-value">
+                            <a href="https://doi.org/{{ publicacao.get('doi') }}" target="_blank" rel="noopener noreferrer">
+                              {{ publicacao.get("doi") }}
+                            </a>
+                            </span>
+                          </div>
+                        {% endif %}
+                        {% if publicacao.get("url") %}
+                          <div class="argilo-metadata-row">
+                            <strong>{{ _("URL") }}:</strong>
+                            <span class="argilo-metadata-value">
+                            <a href="{{ publicacao.get('url') }}" target="_blank" rel="noopener noreferrer">
+                              {{ publicacao.get("url") }}
+                            </a>
+                            </span>
+                          </div>
+                        {% endif %}
+                        {% if publicacao.get("record_id") %}
+                          <div class="argilo-metadata-row">
+                            <strong>{{ _("Record vinculado") }}:</strong>
+                            <span class="argilo-metadata-value">
+                            <a href="/records/{{ publicacao.get('record_id') }}">{{ publicacao.get("record_id") }}</a>
+                            </span>
+                          </div>
+                        {% endif %}
+                        {% if publicacao.get("identificador_externo") %}
+                          <div class="argilo-metadata-row"><strong>{{ _("Identificador externo") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("identificador_externo") }}</span></div>
+                        {% endif %}
+                        {% if publicacao.get("observacoes") %}
+                          <div class="argilo-metadata-row"><strong>{{ _("Observações") }}:</strong><span class="argilo-metadata-value">{{ publicacao.get("observacoes") }}</span></div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="ui grid argilo-flow-row">
+          <div class="sixteen wide mobile four wide tablet three wide computer column argilo-flow-heading">
+            <h3 class="ui header">{{ _("Relações, usos e documentação complementar") }}</h3>
+          </div>
+          <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column argilo-flow-content">
+            <div class="argilo-stage arg-section-relation">
+            <p class="argilo-stage-intro">
+              {{ _("Seção final para relações estruturadas, campos narrativos de apoio e usos declarados no registro.") }}
+            </p>
+            {% include "argilo_tab_relacoes.html" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}

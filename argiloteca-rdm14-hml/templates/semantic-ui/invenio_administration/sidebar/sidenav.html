@@ -1,0 +1,15 @@
+{% if config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED and admin_ux %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon as icon with context %}
+{% set native_icons={'dashboard':'dashboard','communities':'communities','records':'catalog','drafts':'upload','vocabulary-types':'layers','pages':'document','banners':'image','domains':'map','OAI-PMH':'connections','users':'communities','requests':'requests','moderation':'shield','jobs':'refresh'} %}
+{% macro native_nodes(nodes) %}{% for node in nodes|sort(attribute='order') if node.visible and node.name!='dashboard' %}{% if node.children %}<details class="au-native-group"{% if node.active or node.children|selectattr('active')|list %} open{% endif %}><summary>{{ _('Sistema') if node.name=='System' else node.text|safe }}</summary>{{ native_nodes(node.children) }}</details>{% else %}<a href="{{ node.url }}"{% if node.active %} class="is-active" aria-current="page"{% endif %}>{{ icon(native_icons.get(node.name,'catalog')) }}<span>{{ _('Tarefas de processamento') if node.name=='jobs' else _('Moderação de usuários') if node.name=='moderation' else node.text|safe }}</span></a>{% endif %}{% endfor %}{% endmacro %}
+<nav aria-label="{{ au_t('Áreas da administração','Administration areas') }}" class="argilo-admin-navigation au-navigation">
+<a href="{{ url_for('administration.dashboard',ln=request.args.get('ln')) }}"{% if request.endpoint=='administration.dashboard' %} class="is-active" aria-current="page"{% endif %}>{{ icon('home') }}<span>{{ au_t('Visão geral','Overview') }}</span></a>
+{% if admin_ux.allowed %}
+<details class="au-nav-group" open><summary>{{ au_t('Cadeia científica','Scientific chain') }}</summary><div>{% for item in admin_ux.entities %}<a data-au-entity="{{ item.id }}" href="{{ item.href }}"{% if request.view_args and request.view_args.get('entity')==item.id %} class="is-active" aria-current="page"{% endif %}>{{ icon(item.icon) }}<span>{{ item.label }}</span></a>{% endfor %}</div></details>
+{% for group in admin_ux.groups if group['items'] %}<details class="au-nav-group" data-au-area="{{ group.id }}"{% if admin_ux.active in group['items']|map(attribute='id')|list or group.id=='povoamento' %} open{% endif %}><summary>{{ group.label }}</summary><div>{% for item in group['items'] %}<a href="{{ item.href }}"{% if admin_ux.active==item.id %} class="is-active" aria-current="page"{% endif %}>{{ icon(item.icon) }}<span>{{ item.label }}</span></a>{% endfor %}</div></details>{% endfor %}
+{% endif %}
+<details class="au-nav-group au-native"{% if request.endpoint!='administration.dashboard' and not admin_ux.active %} open{% endif %}><summary>{{ au_t('Gestão do repositório','Repository management') }}</summary><div>
+{{ native_nodes(current_menu.submenu('admin_navigation').children) }}
+</div></details>
+</nav>
+{% else %}{% include "invenio_administration/sidebar/sidenav_legacy.html" %}{% endif %}

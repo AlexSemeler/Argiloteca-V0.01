@@ -1,0 +1,47 @@
+{% set custom_fields = record.custom_fields if record.custom_fields is defined else {} %}
+
+{% set ns = namespace(filtered_custom_fields={}) %}
+
+{% for key, value in custom_fields.items() %}
+  {% if not key.startswith('arg:') %}
+    {% set _ = ns.filtered_custom_fields.update({key: value}) %}
+  {% endif %}
+{% endfor %}
+
+{% if ns.filtered_custom_fields %}
+  {% set human_labels = {
+    "code:repository_url": _("Repositório de código"),
+    "code:developmentStatus": _("Status de desenvolvimento"),
+    "code:programmingLanguage": _("Linguagem de programação"),
+    "code:programmingLanguages": _("Linguagens de programação")
+  } %}
+  {% set visible = namespace(items=[]) %}
+
+  {% for key, value in ns.filtered_custom_fields.items() %}
+    {% if value is string and value|trim %}
+      {% set label = human_labels.get(key, key.replace(':', ' - ').replace('_', ' ')|title) %}
+      {% set _ = visible.items.append((label, value)) %}
+    {% elif value is number %}
+      {% set label = human_labels.get(key, key.replace(':', ' - ').replace('_', ' ')|title) %}
+      {% set _ = visible.items.append((label, value)) %}
+    {% elif value is sequence and value is not string and value|length > 0 and (value[0] is string) %}
+      {% set label = human_labels.get(key, key.replace(':', ' - ').replace('_', ' ')|title) %}
+      {% set _ = visible.items.append((label, value|join(", "))) %}
+    {% endif %}
+  {% endfor %}
+
+  {% if visible.items %}
+    <div class="ui basic segment rel-mt-2 p-0">
+      <h3 class="ui small dividing header">{{ _("Metadados adicionais do registro") }}</h3>
+      <p class="text-muted">
+        {{ _("Campos complementares mantidos para enriquecer a descrição do registro, exibidos aqui em formato curado e legível.") }}
+      </p>
+      <dl class="ui very basic table">
+        {% for label, value in visible.items %}
+          <dt class="ui tiny header">{{ label }}</dt>
+          <dd style="margin-bottom: 1rem;">{{ value }}</dd>
+        {% endfor %}
+      </dl>
+    </div>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,29 @@
+/* Shared, compact entry point; the native popover handles dismissal and focus. */
+.argilo-robo-launcher {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 64px;
+  padding: .35rem .9rem .35rem .45rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--arg-color-primary-strong, #6f4f34);
+  color: #fff;
+  box-shadow: 0 4px 16px rgb(47 42 36 / 16%);
+  cursor: pointer;
+  font: 700 .9rem/1.2 var(--arg-font-ui, sans-serif);
+}
+.argilo-robo-launcher:hover { background: var(--arg-color-primary-hover, #543a26); }
+.argilo-robo-launcher img { object-fit: contain; flex-shrink: 0; }
+.argilo-robo-launcher:is(:hover, :visited) { color: #fff; text-decoration: none; }
+#rdm-footer-element { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
+.argilo-admin-shell #admin-main-content { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
+@media (max-width: 599px) {
+  .argilo-robo-launcher { width: 64px; height: 64px; padding: 6px 8px; justify-content: center; }
+  .argilo-robo-launcher span { display: none; }
+}
+@media print { .argilo-robo-launcher { display: none !important; } }

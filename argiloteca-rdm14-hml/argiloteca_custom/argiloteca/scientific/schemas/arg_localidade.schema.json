@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_localidade.schema.json",
+  "title": "arg:localidade",
+  "type": "object",
+  "additionalProperties": true,
+  "anyOf": [
+    {"required": ["nome"]},
+    {"required": ["latitude", "longitude"]}
+  ],
+  "properties": {
+    "nome": {"type": "string", "minLength": 1},
+    "descricao": {"type": "string"},
+    "pais": {"type": "string"},
+    "uf": {"type": "string"},
+    "municipio": {"type": "string"},
+    "bacia": {"type": "string"},
+    "formacao_geologica": {"type": "string"},
+    "contexto_geologico": {"type": "string"},
+    "latitude": {"type": "number", "minimum": -90, "maximum": 90},
+    "longitude": {"type": "number", "minimum": -180, "maximum": 180},
+    "altitude_m": {"type": ["number", "null"]},
+    "coordenada": {"$ref": "arg_coordenada.schema.json"},
+    "fonte": {"type": "string"},
+    "observacoes": {"type": "string"}
+  }
+}

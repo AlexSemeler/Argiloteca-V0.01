@@ -1,0 +1,168 @@
+/***********************************************
+    Invenio RDM Site Variables – Argilas12
+    Apenas ajusta cores de marca; mantém layout.
+***********************************************/
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor: #8A6148;                  // cor principal Argiloteca
+@secondaryColor: #2F6F73;
+@featuredListBackgroundColor: #D9C5B3;
+@primaryDarkenColor: darken(@primaryColor, 8%);
+
+// backwards compatibility
+@brandColor: @primaryColor;
+@brand-primary: @primaryColor;
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+@darkGray: #223039;
+@green: #2E6F52;
+@signupColor: @green;
+
+@accessRightOpen: @green;
+@accessRightRestricted: @red;
+@accessRightEmbargoed: @yellow;
+@accessRightMetadataOnly: @teal;
+
+@restricted-components-background-color: #faeeee;
+@restricted-components-border-color:     #d8b1ab;
+@embargoed-components-background-color:  #fbf5e8;
+@embargoed-components-border-color:      #d0bd93;
+
+@footerLightColor: @primaryColor;
+@footerDarkColor: darken(@primaryColor, 15%);
+@subFooterColor:  @footerDarkColor;
+@footerTextLightColor: #ffffff;
+@footerTextDarkColor:  #ffffff;
+
+@positiveColor: #2E6F52;
+@warningColor: #B1843B;
+@errorColor: #9E3D33;
+@infoColor: @secondaryColor;
+@errorTextColor: #9E3D33;
+@focusedFormBorderColor: darken(@primaryColor, 5%);
+@focusedFormMutedBorderColor: @focusedFormBorderColor;
+
+@highlightHeaderColor: #E8E1D8;
+@highlightBackgroundColor: @highlightHeaderColor;
+@highlightBackgroundColorHover:  darken(saturate(@highlightHeaderColor, 20), 15, relative);
+@highlightLandingPageBackgroundColor: rgba(138, 97, 72, 0.72);
+@selectedColor: #E8E1D8;
+
+@navbarBackgroundImage: linear-gradient(
+  12deg,
+  @primaryColor,
+  @primaryColor 15%,
+  fade(lighten(@primaryColor, 10%), 75%)
+);
+@navbarBackgroundColor: @primaryColor;
+@versionActiveColor: #D8E9EA;
+
+@mutedAccordionHeaderColor: @primaryColor;
+@defaultBrandColor: @primaryColor;
+@defaultPadding: 1rem;
+@defaultMargin: 1rem;
+
+/* texto “muted” usado em accordions etc. */
+@textMutedColor: fade(@textColor, 60%);
+@textMutedColorDarken: darken(@textMutedColor, 10%);
+
+/*-------------------
+      Links
+--------------------*/
+
+@linkColor: #6F4C36;
+@linkUnderline: none;
+@linkHoverColor: #523728;
+@linkHoverUnderline: underline;
+
+
+/*-------------------
+    Breakpoints
+--------------------*/
+@mobileBreakpoint            : 320px;
+@tabletBreakpoint            : 768px;
+@computerBreakpoint          : 1280px;
+@largeMonitorBreakpoint      : 1680px;
+@widescreenMonitorBreakpoint : 1920px;
+
+
+/*-------------------
+      Fonts
+--------------------*/
+
+@fontSizeBase: 14px;
+@font-size-small: 12px;
+@font-size-tiny: 10px;
+@font-size-massive: 36px;
+@fontName: 'Helvetica';
+
+
+/*-------------------
+     Em Sizes
+--------------------*/
+
+@75px : unit( (75 / @emSize), rem);
+@relative75px : unit( (75 / @emSize), em);
+
+
+/*-------------------
+  negative spacing
+--------------------*/
+@coverPageDefaultMargin: 0;
+
+/* borders */
+@dashedBorder: 2px dashed @borderColor;
+@defaultBorder: 1px solid @solidBorderColor;
+
+/* checkboxes */
+@checkboxSize: @relative17px;
+
+/* tables */
+@cellVerticalPadding: @relativeMini;
+@cellHorizontalPadding: @relativeMini;
+
+/* images */
+@userDashboardAvatarSize: 40px;
+@communityItemLogoWidth: 115px;
+
+/* separators */
+@listSeparator: ";";
+@listCommaSeparator: ",";
+
+
+/***********************************************
+  Fallbacks adicionados pelo v15.15
+  Mantidos sem apagar customizações existentes
+***********************************************/
+@fontSize: 14px;
+@emSize: 14px;
+@relativeFontSize: 1em;
+@relativeLineHeight: 1.4285;
+@lineHeight: 1.4285em;
+@headerLineHeight: 1.28571429em;
+@textColor: #223039;
+@bodyFontFamily: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont: @bodyFontFamily;
+@fontSmoothing: antialiased;
+@pageBackground: #F5F2EC;
+@pageOverflowX: auto;
+@pageOverflowY: scroll;
+@pageMinWidth: 320px;
+@pageMaxWidth: 100%;
+@pageMargin: 0px;
+@pagePadding: 0px;
+@useCustomScrollbars: false;
+@scrollbarWidth: 0px;
+@loadFonts: false;
+@loadUIOverrides: false;
+@mobileBreakpoint: 320px;
+@tabletBreakpoint: 768px;
+@computerBreakpoint: 1280px;
+@largeMonitorBreakpoint: 1680px;
+@widescreenMonitorBreakpoint: 1920px;

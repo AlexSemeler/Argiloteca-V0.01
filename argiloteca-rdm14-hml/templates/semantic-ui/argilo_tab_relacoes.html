@@ -1,0 +1,19 @@
+{# argilo_tab_relacoes.html #}
+{% from "_argilo_helpers.html" import get_cf, field_row %}
+{% set cf = record.custom_fields if record.custom_fields is defined else {} %}
+{% set publicacoes = cf.get("arg:publicacoes_relacionadas", []) if cf else [] %}
+
+<div class="ui stacked segment arg-section arg-section-relation">
+  <h3 class="ui dividing header">{{ _("Usos e aplicações") }}</h3>
+  <p class="text-muted">
+    {{ _("Campos declarativos sobre aplicação científica, tecnológica e industrial do material descrito no registro.") }}
+  </p>
+
+  <div class="ui relaxed divided items">
+    {{ field_row(_("Argilomineral relacionado"), get_cf(record, "arg:usos_argilomineral_nome")) }}
+    {{ field_row(_("Descrição geral dos usos"), get_cf(record, "arg:usos_descricao")) }}
+    {{ field_row(_("Aplicações industriais"), get_cf(record, "arg:usos_aplicacoes_industriais")) }}
+    {{ field_row(_("Aplicações tecnológicas"), get_cf(record, "arg:usos_aplicacoes_tecnologicas")) }}
+    {{ field_row(_("Aplicações científicas"), get_cf(record, "arg:usos_aplicacoes_cientificas")) }}
+  </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://argiloteca.local/schemas/arg_analise.schema.json",
+  "title": "arg:analise",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["analise_id", "codigo_amostra", "metodo"],
+  "properties": {
+    "analise_id": {"type": "string", "minLength": 1},
+    "codigo_amostra": {"type": "string", "minLength": 1},
+    "metodo": {"type": "string", "minLength": 1},
+    "metodo_analitico": {"$ref": "arg_metodo_analitico.schema.json"},
+    "data_analise": {"type": "string", "format": "date"},
+    "laboratorio": {"type": "string"},
+    "equipamento": {"type": "string"},
+    "condicoes_analise": {"type": "string"},
+    "resultado_principal": {"type": "string"},
+    "interpretacao": {"type": "string"},
+    "arquivo_resultado": {"type": "string"},
+    "checksum_resultado": {"type": "string"},
+    "observacoes": {"type": "string"}
+  }
+}

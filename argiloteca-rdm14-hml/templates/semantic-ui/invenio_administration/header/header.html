@@ -1,0 +1,13 @@
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+<header class="argilo-admin-header">
+  <a class="argilo-admin-brand" href="{{ url_for('administration.dashboard') }}">
+    <img src="{{ url_for('static',filename=config.THEME_LOGO) }}" alt="CPAA" width="88" height="52">
+    <span><strong>Argiloteca</strong><span>{{ _('Administração') }}</span></span>
+  </a>
+  <button type="button" class="ui basic button argilo-admin-toggle" id="argilo-admin-toggle" aria-controls="admin-side-menu" aria-expanded="true">{{ render_icon('dashboard') }} {{ _('Seções') }}</button>
+  <nav class="argilo-admin-utilities" aria-label="{{ _('Navegação da conta') }}">
+    <a href="/">{{ render_icon('home') }} {{ _('Voltar ao acervo') }}</a>
+    {% include "semantic-ui/argiloteca/language_selector.html" %}
+    {% include "invenio_administration/header/header_login.html" %}
+  </nav>
+</header>

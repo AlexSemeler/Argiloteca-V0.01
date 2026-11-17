@@ -1,0 +1,52 @@
+{# Local presentation only; native resource views retain their permissions and data contracts. #}
+{% extends "argiloteca_admin_native/invenio_administration/base.html" %}
+{% block css %}
+  {{ super() }}
+  <link rel="preload" href="{{ url_for('argiloteca.static', filename='fonts/catamaran/catamaran-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/argiloteca-theme.css') }}?v=20261020-ui-review-2">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/argiloteca-workflows.css') }}?v=20261020-ui-review-3">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/scientific-connections.css') }}?v=20261021-2">
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/admin-actions.css') }}?v=20261024-1">
+  {% include "semantic-ui/argiloteca/language_selector_styles.html" %}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/argiloclay-robo.css') }}?v=20261019-3">
+  {% if config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED %}<link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/admin-bulk.css') }}?v=20261101-2"><link rel="stylesheet" href="{{ url_for('argiloteca.static',filename='css/admin-ontology.css') }}?v=20261031-4">{% endif %}
+{% endblock %}
+{% block bypasslinks %}<a class="argilo-admin-skip" href="#admin-main-content">{{ _('Ir para o conteúdo principal') }}</a>{% endblock %}
+{% block body_inner %}
+<div class="invenio-administration argilo-admin-shell">
+  {% block admin_topnav %}{% include "invenio_administration/header/header.html" %}{% endblock %}
+  {% block admin_side_column %}
+  <aside id="admin-side-menu" class="argilo-admin-sidebar" aria-label="{{ _('Navegação administrativa') }}">
+    {% block admin_sidenav_menu %}{% include "invenio_administration/sidebar/sidenav.html" %}{% endblock %}
+    {% if config.ADMINISTRATION_DISPLAY_VERSIONS %}
+    <details class="argilo-admin-versions"><summary>{{ _('Versões do sistema') }}</summary>
+      <dl>{% for package, version in config.ADMINISTRATION_DISPLAY_VERSIONS %}<dt>{{ package }}</dt><dd>{{ version }}</dd>{% endfor %}</dl>
+    </details>
+    {% endif %}
+  </aside>
+  {% endblock %}
+  {% block admin_main_column %}
+  <main id="admin-main-content" tabindex="-1">
+    <div class="ui fluid container argilo-admin-content">
+      {% block admin_feedback %}{% endblock %}
+      {% if config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED %}{% include "semantic-ui/argiloteca/_admin_module_context.html" %}{% endif %}
+      {% block page_title %}<h1 class="ui header">{{ title or name }}</h1>{% endblock %}
+      {% block admin_page_content %}{% endblock %}
+      {% if not config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED and request.blueprint in ('argiloteca_openalex','argiloteca_pangaea','argiloteca_mendeley','argiloteca_repositories','argiloteca_population','argiloteca_admin_ui','argiloteca_knowledge') %}
+        {% include "semantic-ui/argiloteca/argiloclay_robo.html" %}
+      {% endif %}
+    </div>
+  </main>
+  {% endblock %}
+</div>
+{% if config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED %}<div class="au-assistant">{% include "semantic-ui/argiloteca/argiloclay_robo.html" %}</div>
+{% elif request.blueprint not in ('argiloteca_openalex','argiloteca_pangaea','argiloteca_mendeley','argiloteca_repositories','argiloteca_population','argiloteca_admin_ui','argiloteca_knowledge') %}
+  {% include "semantic-ui/argiloteca/argiloclay_robo.html" %}
+{% endif %}
+{% endblock %}
+{% block javascript %}
+{% if config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static',filename='js/admin-bulk.js') }}?v=20261101-2" defer></script>{% endif %}
+  {{ super() }}
+  {% if config.ARGILOTECA_ADMIN_ONTOLOGY_ENABLED %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static',filename='js/admin-ontology.js') }}?v=20261031-1" defer></script>{% endif %}
+  <script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static',filename='js/argiloteca-workflows.js') }}?v=20261020-ui-review-3" defer></script>
+{% endblock %}

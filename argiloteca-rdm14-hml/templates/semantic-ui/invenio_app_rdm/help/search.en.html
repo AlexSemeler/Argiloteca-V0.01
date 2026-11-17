@@ -1,0 +1,102 @@
+{#
+  SPDX-FileCopyrightText: 2021 CERN.
+  SPDX-FileCopyrightText: 2021 Northwestern University.
+  SPDX-FileCopyrightText: 2026 Argiloteca / CPAA.
+  SPDX-License-Identifier: MIT
+  English counterpart of the Argiloteca Portuguese search guide.
+#}
+{%- extends config.BASE_TEMPLATE %}
+{%- set title = "Argiloteca search guide" %}
+
+{% macro example(query) -%}
+  <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q=query, ln='en') }}"><code>{{ query }}</code></a>
+{%- endmacro %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('argiloteca.static', filename='css/search-help.css') }}?v=20261102-2">
+{% endblock css %}
+
+{%- block page_body %}
+<article class="ui container mt-25 argilo-search-help" aria-labelledby="search-help-title">
+  <h1 id="search-help-title">Argiloteca search guide</h1>
+  <p>Learn how to search the collection for clays, clay minerals, analytical techniques and publications. Click the examples to open these queries in the Argiloteca search.</p>
+  <p>Records use Portuguese and English mineral names. Try both forms: {{ example('caulinita OR kaolinite') }} or {{ example('esmectita OR smectite') }}. Results depend on the available records and selected filters.</p>
+
+  <h2 id="busca-simples">Simple search: one or more terms</h2>
+  <p><strong>Example:</strong> {{ example('caulinita esmectita') }}</p>
+  <p>This query finds records containing <code>caulinita</code> <strong>or</strong> <code>esmectita</code> in searchable fields. These are the Portuguese names for kaolinite and smectite. It is equivalent to {{ example('caulinita OR esmectita') }}. Entering two words without an operator does not require both words to be present.</p>
+
+  <h2 id="termos-obrigatorios">Require terms to be present</h2>
+  <p>Use <code>AND</code> or put <code>+</code> before each required term. Write the operators <code>AND</code>, <code>OR</code> and <code>NOT</code> in uppercase, including queries that use Portuguese terms.</p>
+  <p><strong>Example:</strong> {{ example('caulinita AND esmectita') }}</p>
+  <p>To find records mentioning kaolinite and X-ray diffraction (XRD, or DRX in Portuguese), use {{ example('kaolinite AND "X-ray diffraction"') }} or {{ example('+kaolinite +"X-ray diffraction"') }}.</p>
+
+  <h2 id="excluir-termos">Exclude terms</h2>
+  <p><strong>Examples:</strong> {{ example('kaolinite NOT halloysite') }} or {{ example('+kaolinite -halloysite') }}</p>
+  <p>These queries require <code>kaolinite</code> and exclude records that also contain <code>halloysite</code>. Use <code>NOT</code> or <code>-</code> to leave terms out of the results.</p>
+
+  <h2 id="frases">Search for a phrase</h2>
+  <p><strong>Example:</strong> {{ example('"X-ray diffraction"') }}</p>
+  <p>Quotation marks search for the terms in the same sequence. They are useful for techniques such as X-ray diffraction or phrases such as {{ example('"clay minerals"') }}.</p>
+
+  <h2 id="campos">Search a specific field</h2>
+  <p><strong>Example:</strong> {{ example('metadata.title:kaolinite') }}</p>
+  <p>The prefix <code>metadata.title:</code> restricts the query to the title. Use parentheses to group several terms in the same field: {{ example('metadata.title:(kaolinite OR smectite)') }}.</p>
+  <p>These fields can help refine your search:</p>
+  <ul>
+    <li><code>metadata.title</code>: record title.</li>
+    <li><code>metadata.description</code>: description or abstract.</li>
+    <li><code>metadata.publication_date</code>: publication date.</li>
+    <li><code>metadata.resource_type.id</code>: resource type identifier.</li>
+    <li><code>metadata.subjects.subject</code>: text of the declared subjects.</li>
+    <li><code>metadata.identifiers.identifier</code>: declared additional identifiers, such as a DOI from an external source.</li>
+  </ul>
+  <p>For example, {{ example('metadata.resource_type.id:dataset AND kaolinite') }} restricts the search to datasets mentioning <code>kaolinite</code>. Keep field names and the identifier <code>dataset</code> exactly as written.</p>
+
+  <h2 id="combinar">Combine terms, fields and dates</h2>
+  <p><strong>Example:</strong> {{ example('metadata.title:kaolinite AND metadata.publication_date:[2020-01-01 TO 2025-12-31]') }}</p>
+  <p>This query requires <code>kaolinite</code> in the title and limits the publication date to January 1, 2020 through December 31, 2025. You can combine simple searches, quoted phrases and field searches in the same query.</p>
+
+  <h2 id="intervalos">Search a date range</h2>
+  <p><strong>Example:</strong> {{ example('metadata.publication_date:[2020-01-01 TO 2025-12-31]') }}</p>
+  <p>Use dates in <code>YYYY-MM-DD</code> format and write <code>TO</code> in uppercase. Square brackets <code>[]</code> include the boundary dates; curly brackets <code>{}</code> exclude those boundaries. An asterisk denotes an open boundary.</p>
+  <ul>
+    <li>{{ example('metadata.publication_date:{* TO 2020-01-01}') }}: publications before January 1, 2020.</li>
+    <li>{{ example('metadata.publication_date:[2020-01-01 TO *]') }}: publications from January 1, 2020 onward, including that day.</li>
+  </ul>
+  <p>Partial dates expand to the start of the period: <code>2020</code> becomes <code>2020-01-01</code>, and <code>2020-06</code> becomes <code>2020-06-01</code>. To cover a whole year, specify the starting and ending dates explicitly.</p>
+
+  <h2 id="ordenacao">Sort the results</h2>
+  <p>Use the sorting options in the results list to choose the best match, newest records or oldest records. Best-match sorting considers the relevance of your query terms. Search filters let you refine the set of results.</p>
+
+  <h2 id="expressoes-regulares">Search patterns with regular expressions</h2>
+  <p><strong>Example:</strong> {{ example('metadata.identifiers.identifier:/10[.]17632.*/') }}</p>
+  <p>This example searches additional identifiers beginning with <code>10.17632</code>, the DOI prefix used by Mendeley Data. In a regular expression, <code>[.]</code> represents a literal dot and <code>.*</code> matches the remaining sequence.</p>
+  <p>The pattern must match the entire field value. This field differs from <code>pids.doi.identifier</code>, which holds the record's own DOI: the DOI of an imported publication may be stored among its additional identifiers.</p>
+
+  <h2 id="campos-ausentes">Find populated or missing fields</h2>
+  <p><strong>With a declared subject:</strong> {{ example('_exists_:metadata.subjects.subject') }}</p>
+  <p><strong>Without a declared subject:</strong> {{ example('NOT _exists_:metadata.subjects.subject') }}</p>
+  <p>Use <code>_exists_:</code> to require a value in a field and <code>NOT _exists_:</code> to find its absence. A declared subject does not mean that all other metadata fields are complete.</p>
+
+  <h2 id="recursos-avancados">More search features</h2>
+  <h3>Give a field more weight</h3>
+  <p><strong>Example:</strong> {{ example('metadata.title:kaolinite^5 OR metadata.description:kaolinite') }}</p>
+  <p>The operator <code>^5</code> gives an occurrence in the title more weight than one in the description. It affects best-match sorting without changing record metadata.</p>
+
+  <h3>Search for an approximate spelling</h3>
+  <p><strong>Example:</strong> {{ example('kaolinte~') }}</p>
+  <p>The operator <code>~</code> searches for similar spellings, such as <code>kaolinite</code> in this example. It can help with a typing error; check the terms found.</p>
+
+  <h3>Allow proximity between words</h3>
+  <p><strong>Example:</strong> {{ example('"clay minerals"~3') }}</p>
+  <p>The number after the phrase allows more flexibility in term positions than the same phrase without <code>~3</code>. It can find the words near each other even when other words appear between them.</p>
+
+  <h3>Use wildcards</h3>
+  <p><strong>Examples:</strong> {{ example('kaolin*') }} and {{ example('smectit?') }}</p>
+  <p>The asterisk <code>*</code> replaces zero or more characters; the question mark <code>?</code> replaces a single character. For example, <code>kaolin*</code> may find terms such as <code>kaolinite</code>, and <code>smectit?</code> may find <code>smectite</code>. Wildcard searches can be slower; use a complete term when you know its spelling.</p>
+
+  <p><a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', ln='en') }}">Open the Argiloteca search</a></p>
+</article>
+{%- endblock page_body %}

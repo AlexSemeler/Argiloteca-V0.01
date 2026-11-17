@@ -1,0 +1,23 @@
+{% extends admin_base_template %}
+{% from "semantic-ui/argiloteca/_scientific_page.html" import render_icon with context %}
+{% block page_title %}<h1 class="ui header">{{ _('Administração da Argiloteca') }}</h1><p class="argilo-workflow-lead">{{ review_text('Organize o acervo e conecte publicações, dados e evidências científicas.', 'Organize the collection and connect publications, data and scientific evidence.') }}</p>{% endblock %}
+{% block admin_page_content %}
+{% if argilo_can_review_raws() %}
+<section class="sc-admin-intro">
+  <div><h2>{{ render_icon('connections') }} {{ review_text('Conectar o acervo', 'Connect the collection') }}</h2><p>{{ review_text('Comece por um registro bibliográfico ou conjunto de dados. Relacione fontes, revise vínculos DRX e encontre os termos e as coordenadas já descritos no acervo.', 'Start with a bibliographic record or dataset. Relate sources, review XRD links and find terms and coordinates already described in the collection.') }}</p><a class="ui primary button" href="{{ url_for('argiloteca_scientific.connections_admin') }}">{{ render_icon('connections') }} {{ review_text('Gerenciar conexões científicas', 'Manage scientific connections') }}</a></div>
+  <div class="sc-route"><span>{{ render_icon('analyses') }} {{ review_text('Publicação e dados', 'Publication and data') }}</span>{{ render_icon('arrow') }}<span>{{ render_icon('drx') }} {{ review_text('DRX e evidências', 'XRD and evidence') }}</span>{{ render_icon('arrow') }}<span>{{ render_icon('map') }} {{ review_text('Catálogo e mapa', 'Catalog and map') }}</span></div>
+</section>
+{% endif %}
+<div class="argilo-admin-directory">
+{% if argilo_can_review_raws() %}
+<section class="argilo-admin-directory-group"><h2>{{ review_text('Curadoria científica', 'Scientific curation') }}</h2><ul><li><a href="{{ url_for('argiloteca_scientific.catalog_admin') }}"><span>{{ render_icon('catalog') }} {{ review_text('Nomes e referências dos argilominerais', 'Clay mineral names and references') }}</span>{{ render_icon('arrow') }}</a></li><li><a href="{{ url_for('argiloteca_scientific.map_admin') }}"><span>{{ render_icon('map') }} {{ review_text('Coordenadas e pontos do mapa', 'Coordinates and map points') }}</span>{{ render_icon('arrow') }}</a></li><li><a href="{{ url_for('argiloteca_scientific.restricted_raw_review') }}"><span>{{ render_icon('requests') }} {{ review_text('Revisão de arquivos restritos', 'Restricted file review') }}</span>{{ render_icon('arrow') }}</a></li><li><a href="{{ url_for('argiloteca_scientific.admin_raw_library') }}"><span>{{ render_icon('drx') }} {{ review_text('Arquivos RAW e classificações', 'RAW files and classifications') }}</span>{{ render_icon('arrow') }}</a></li><li><a href="{{ url_for('argiloteca_scientific.admin_raw_library') }}#new-trio"><span>{{ review_text('Enviar e classificar novo trio', 'Submit and classify new trio') }}</span>{{ render_icon('upload') }}</a></li></ul></section>
+{% endif %}
+{% for group in current_menu.submenu('admin_navigation').children|sort(attribute='order') if group.visible and group.children %}
+  <section class="argilo-admin-directory-group">
+    <h2>{{ _('Sistema') if group.name == 'System' else group.text|safe }}</h2>
+    <ul>{% for item in group.children|sort(attribute='order') if item.visible %}<li><a href="{{ item.url }}"><span>{{ _('Tarefas de processamento') if item.name == 'jobs' else _('Moderação de usuários') if item.name == 'moderation' else _('Sistema') if item.name == 'System' else item.text|safe }}</span>{{ render_icon('arrow') }}</a></li>{% endfor %}</ul>
+  </section>
+{% endfor %}
+</div>
+<section class="argilo-admin-authoring"><h2>{{ _('Depósito de dados') }}</h2><p>{{ _('Descreva o registro e seus arquivos no depósito geral. Use o depósito científico para relacionar campanhas, amostras e resultados do mesmo registro.') }}</p><div class="argilo-workflow-links"><a class="ui primary button" href="/uploads/new">{{ render_icon('upload') }} {{ _('Novo depósito') }}</a><a class="ui basic button" href="/scientific/deposit">{{ render_icon('analyses') }} {{ _('Depósito científico') }}</a></div></section>
+{% endblock %}

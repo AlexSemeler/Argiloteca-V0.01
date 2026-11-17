@@ -1,0 +1,91 @@
+{
+  "services": {
+    "web-ui": {
+      "volumes": [
+        "./argiloteca_custom/argiloteca:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca:ro"
+      ]
+    },
+    "web-api": {
+      "volumes": [
+        "./argiloteca_custom/argiloteca:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca:ro"
+      ]
+    },
+    "worker": {
+      "volumes": [
+        "./argiloteca_custom/argiloteca:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca:ro",
+        "../output/argiloclay-fix-20261022/hml-storage:/var/lib/argiloclay-sync"
+      ],
+      "environment": {
+        "ARGILOCLAY_SYNC_INDEX": "/var/lib/argiloclay-sync/knowledge.sqlite3"
+      }
+    },
+    "scheduler": {
+      "volumes": [
+        "./argiloteca_custom/argiloteca:/opt/invenio/src/.venv/lib/python3.14/site-packages/argiloteca:ro",
+        "../output/argiloclay-fix-20261022/hml-storage:/var/lib/argiloclay-sync"
+      ],
+      "environment": {
+        "ARGILOCLAY_SYNC_INDEX": "/var/lib/argiloclay-sync/knowledge.sqlite3",
+        "ARGILOCLAY_SYNC_INTERVAL_SECONDS": "300"
+      },
+      "command": [
+        "celery -A invenio_app.celery beat --scheduler argiloteca.argiloclay.scheduler:ArgiloClayScheduler --loglevel=INFO"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "from pathlib import Path; assert b'ArgiloClayScheduler' in Path('/proc/1/cmdline').read_bytes()"
+        ],
+        "interval": "30s",
+        "timeout": "5s",
+        "retries": 3,
+        "start_period": "20s"
+      }
+    },
+    "argiloclay": {
+      "environment": {
+        "ARGILOCLAY_USE_MODEL": "0",
+        "ARGILOCLAY_ASYNC_GENERATION": "1",
+        "ARGILOCLAY_OLLAMA_URL": "http://host.docker.internal:11434",
+        "ARGILOCLAY_LEGACY_URL": "http://argiloclay-drx-hml:7860"
+      },
+      "volumes": [
+        "../output/argiloclay-fix-20261022/hml-storage:/app/storage:ro"
+      ]
+    },
+    "argiloclay-drx-hml": {
+      "image": "argiloteca-argiloclay-local:20261021",
+      "restart": "unless-stopped",
+      "command": [
+        "gunicorn",
+        "--bind",
+        "0.0.0.0:7860",
+        "--workers",
+        "1",
+        "--threads",
+        "2",
+        "--timeout",
+        "15",
+        "rag_engine.interface.production_app:app"
+      ],
+      "environment": {
+        "ARGILO_RAG_DRX_INDEX": "/app/drx-storage/drx_catalog.sqlite3",
+        "ARGILO_RAG_KNOWLEDGE_INDEX": "/app/drx-storage/knowledge.sqlite3",
+        "ARGILO_RAG_INTERPRETATION_ENABLED": "0"
+      },
+      "volumes": [
+        "../output/rdm14-production-20261022/runtime/rag_engine:/app/rag_engine:ro",
+        "../output/rdm14-production-20261022/runtime/drx-storage:/app/drx-storage:ro"
+      ],
+      "mem_limit": "512m",
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ]
+    }
+  }
+}

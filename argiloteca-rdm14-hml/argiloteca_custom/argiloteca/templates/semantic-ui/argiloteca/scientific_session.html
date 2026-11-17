@@ -1,0 +1,3 @@
+<script nonce="{{ csp_nonce() }}" src="{{ url_for('argiloteca.static', filename='js/scientific-session.js') }}?v=20261020-4"
+        data-user="{{ current_user.get_id() if current_user.is_authenticated else 'public' }}"
+        data-save-error="{{ _('Não foi possível preservar a comparação neste navegador. Mantenha esta página aberta e tente novamente antes de alternar entre os painéis.') }}"></script>
