@@ -1,0 +1,2280 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://argiloteca.ufrgs.br/vocab/scheme/argilominerais>
+    a skos:ConceptScheme ;
+    skos:prefLabel "Argilominerais da Argiloteca"@pt ;
+    skos:prefLabel "Argiloteca clay minerals"@en .
+
+<https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos>
+    a skos:ConceptScheme ;
+    skos:prefLabel "Grupos mineralogicos da Argiloteca"@pt ;
+    skos:prefLabel "Argiloteca mineralogical groups"@en .
+
+<https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico>
+    a skos:ConceptScheme ;
+    skos:prefLabel "Tempo geologico"@pt ;
+    skos:prefLabel "Geological time"@en .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/allophane>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Alofana"@pt ;
+    skos:prefLabel "Allophane"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/short_range_order> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/allophane> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "short_range_order" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/amesite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Amesita"@pt ;
+    skos:prefLabel "Amesite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/amesite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/antigorite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Antigorita"@pt ;
+    skos:prefLabel "Antigorite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/antigorite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/baileychlore>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Baileycloro"@pt ;
+    skos:prefLabel "Baileychlore"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/baileychlore> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/beidellite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Beidellita"@pt ;
+    skos:prefLabel "Beidellite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/beidellite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/bentonite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Bentonita"@pt ;
+    skos:prefLabel "Bentonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "clay_material" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/berthierine>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Berthierina"@pt ;
+    skos:prefLabel "Berthierine"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/berthierine> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/bertossaite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Bertossaíta"@pt ;
+    skos:prefLabel "Bertossaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/bertossaite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/biotite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Biotita"@pt ;
+    skos:prefLabel "Biotite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/biotite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mica_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/brammallite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Brammalita"@pt ;
+    skos:prefLabel "Brammallite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/brammallite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/celadonite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Celadonita"@pt ;
+    skos:prefLabel "Celadonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/celadonite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/chamosite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Chamosita"@pt ;
+    skos:prefLabel "Chamosite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/chamosite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clorita"@pt ;
+    skos:prefLabel "Chlorite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "group" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite-smectite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clorita/Esmectita"@pt ;
+    skos:prefLabel "Chlorite/Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "interstratified" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite-vermiculite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clorita/Vermiculita"@pt ;
+    skos:prefLabel "Chlorite/Vermiculite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "interstratified" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/chrysotile>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Crisotila"@pt ;
+    skos:prefLabel "Chrysotile"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/chrysotile> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/clinochlore>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clinocloro"@pt ;
+    skos:prefLabel "Clinochlore"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/clinochlore> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/clintonite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clintonita"@pt ;
+    skos:prefLabel "Clintonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/clintonite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mica_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/cookeite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Cookeíta"@pt ;
+    skos:prefLabel "Cookeite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/cookeite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/corrensite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Corrensita"@pt ;
+    skos:prefLabel "Corrensite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/corrensite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "interstratified" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/cronstedtite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Cronstedtita"@pt ;
+    skos:prefLabel "Cronstedtite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/cronstedtite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/dickite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Dickita"@pt ;
+    skos:prefLabel "Dickite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/dickite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/donbassite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Donbassita"@pt ;
+    skos:prefLabel "Donbassite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/donbassite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/endellite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Endellita"@pt ;
+    skos:prefLabel "Endellite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/endellite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/falcondoite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Falcondoíta"@pt ;
+    skos:prefLabel "Falcondoite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/falcondoite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/fullers-earth>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Terra de Fuller"@pt ;
+    skos:prefLabel "Fuller's Earth"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "clay_material" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/glauconite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Glauconita"@pt ;
+    skos:prefLabel "Glauconite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/glauconite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/greenalite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Greenalita"@pt ;
+    skos:prefLabel "Greenalite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/greenalite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/greenwoodite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Greenwoodita"@pt ;
+    skos:prefLabel "Greenwoodite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/halloysite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Haloisita"@pt ;
+    skos:prefLabel "Halloysite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/halloysite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/hectorite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hectorita"@pt ;
+    skos:prefLabel "Hectorite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/hectorite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/hisingerite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hisingerita"@pt ;
+    skos:prefLabel "Hisingerite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/short_range_order> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/hisingerite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "short_range_order" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/hydrobiotite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hidrobiotita"@pt ;
+    skos:prefLabel "Hydrobiotite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/vermiculite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/hydrobiotite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "vermiculite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "interstratified" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/hydrotalcite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hidrotalcita"@pt ;
+    skos:prefLabel "Hydrotalcite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/hydrotalcite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "group" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/illite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Ilita"@pt ;
+    skos:prefLabel "Illite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/illite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "series" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/illite-smectite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Ilita/Esmectita"@pt ;
+    skos:prefLabel "Illite/Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "interstratified" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/imogolite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Imogolita"@pt ;
+    skos:prefLabel "Imogolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/short_range_order> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/imogolite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "short_range_order" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/iowaite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Iowaita"@pt ;
+    skos:prefLabel "Iowaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/iowaite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/kalifersite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Kalifersita"@pt ;
+    skos:prefLabel "Kalifersite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/kalifersite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/kaolin>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Caulim"@pt ;
+    skos:prefLabel "Kaolin"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "kaolin_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "group" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/kaolinite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Caulinita"@pt ;
+    skos:prefLabel "Kaolinite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/kaolinite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/kaolinite-smectite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Caulinita/Esmectita"@pt ;
+    skos:prefLabel "Kaolinite/Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "interstratified" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/kerolite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Kerolita"@pt ;
+    skos:prefLabel "Kerolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/lepidolite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Lepidolita"@pt ;
+    skos:prefLabel "Lepidolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/lepidolite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mica_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/lizardite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Lizardita"@pt ;
+    skos:prefLabel "Lizardite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/lizardite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/loughlinite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Loughlinita"@pt ;
+    skos:prefLabel "Loughlinite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/loughlinite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/manandonite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Manandonita"@pt ;
+    skos:prefLabel "Manandonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/manandonite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/manasseite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Manasseíta"@pt ;
+    skos:prefLabel "Manasseite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/manasseite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/margarite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Margarita"@pt ;
+    skos:prefLabel "Margarite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/margarite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mica_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/minnesotaite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Minnesotaíta"@pt ;
+    skos:prefLabel "Minnesotaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/minnesotaite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "pyrophyllite_talc_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/montmorillonite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Montmorilonita"@pt ;
+    skos:prefLabel "Montmorillonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/motukoreaite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Motukoreaita"@pt ;
+    skos:prefLabel "Motukoreaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/motukoreaite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/muscovite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Muscovita"@pt ;
+    skos:prefLabel "Muscovite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/muscovite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mica_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/nacrite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Nacrita"@pt ;
+    skos:prefLabel "Nacrite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/nacrite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/nimite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Nimita"@pt ;
+    skos:prefLabel "Nimite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/nimite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/nontronite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Nontronita"@pt ;
+    skos:prefLabel "Nontronite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/nontronite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/odinite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Odinita"@pt ;
+    skos:prefLabel "Odinite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/odinite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/palygorskite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Paligorsquita"@pt ;
+    skos:prefLabel "Palygorskite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/palygorskite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/paragonite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Paragonita"@pt ;
+    skos:prefLabel "Paragonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/paragonite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mica_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/pennantite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Pennantita"@pt ;
+    skos:prefLabel "Pennantite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/pennantite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/phlogopite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Flogopita"@pt ;
+    skos:prefLabel "Phlogopite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/phlogopite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "mica_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/pimelite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Pimelita"@pt ;
+    skos:prefLabel "Pimelite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/pimelite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/pyrophyllite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Pirofilita"@pt ;
+    skos:prefLabel "Pyrophyllite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/pyrophyllite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "pyrophyllite_talc" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/raite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Raita"@pt ;
+    skos:prefLabel "Raite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/raite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/saponite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Saponita"@pt ;
+    skos:prefLabel "Saponite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/saponite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/sauconite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sauconita"@pt ;
+    skos:prefLabel "Sauconite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/sauconite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/sepiolite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sepiolita"@pt ;
+    skos:prefLabel "Sepiolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/sepiolite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/sericite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sericita"@pt ;
+    skos:prefLabel "Sericite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "clay_material" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/serpentine>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Serpentina"@pt ;
+    skos:prefLabel "Serpentine"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "serpentine_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "group" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/smectite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Esmectita"@pt ;
+    skos:prefLabel "Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "group" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/stevensite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Stevensita"@pt ;
+    skos:prefLabel "Stevensite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/stevensite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/stilpnomelane>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Stilpnomelana"@pt ;
+    skos:prefLabel "Stilpnomelane"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/stilpnomelane> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "phyllosilicate_related" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/sudoite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sudoíta"@pt ;
+    skos:prefLabel "Sudoite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/sudoite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/swinefordite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Swinefordita"@pt ;
+    skos:prefLabel "Swinefordite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/swinefordite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/talc>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Talco"@pt ;
+    skos:prefLabel "Talc"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/talc> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "pyrophyllite_talc" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/tuperssuatsiaite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Tuperssuatsiaita"@pt ;
+    skos:prefLabel "Tuperssuatsiaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/tuperssuatsiaite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/vermiculite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Vermiculita"@pt ;
+    skos:prefLabel "Vermiculite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/vermiculite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "vermiculite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "group" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/volkonskoite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Volkonskoita"@pt ;
+    skos:prefLabel "Volkonskoite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/windhoekite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Windhoekita"@pt ;
+    skos:prefLabel "Windhoekite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/yakhontovite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Yakhontovita"@pt ;
+    skos:prefLabel "Yakhontovite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/yakhontovite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/argilominerais/yofortierite>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Yofortierita"@pt ;
+    skos:prefLabel "Yofortierite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://argiloteca.ufrgs.br/ontology/status> "preferred" ;
+    <https://argiloteca.ufrgs.br/ontology/grupo_mineralogico> <https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://argiloteca.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://argiloteca.ufrgs.br/ontology/drx_reference> <https://argiloteca.ufrgs.br/vocab/referencias-drx-webmineral/yofortierite> ;
+    <https://argiloteca.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://argiloteca.ufrgs.br/ontology/category> "species" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/chlorite_group>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo das cloritas"@pt ;
+    skos:prefLabel "Chlorite group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/clay_material>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Materiais argilosos"@pt ;
+    skos:prefLabel "Clay materials"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/illite_mica>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo ilita e micas relacionadas"@pt ;
+    skos:prefLabel "Illite and mica-related group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/kaolin_group>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo da caulinita"@pt ;
+    skos:prefLabel "Kaolin group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/layered_double_hydroxide>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Hidróxidos duplos lamelares"@pt ;
+    skos:prefLabel "Layered double hydroxides"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/mixed_layer>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Argilominerais interestratificados"@pt ;
+    skos:prefLabel "Mixed-layer clay minerals"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo paligorsquita-sepiolita"@pt ;
+    skos:prefLabel "Palygorskite-Sepiolite group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/pyrophyllite_talc>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo pirofilita-talco"@pt ;
+    skos:prefLabel "Pyrophyllite-Talc group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/serpentine_group>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo da serpentina"@pt ;
+    skos:prefLabel "Serpentine group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/short_range_order>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Minerais de baixa ordem estrutural"@pt ;
+    skos:prefLabel "Short-range order minerals"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/smectite_group>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo das esmectitas"@pt ;
+    skos:prefLabel "Smectite group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/grupos/vermiculite_group>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/grupos-mineralogicos> ;
+    skos:prefLabel "Grupo da vermiculita"@pt ;
+    skos:prefLabel "Vermiculite group"@en ;
+    dcterms:source "Argiloteca/CMS" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/arqueano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Arqueano"@pt ;
+    skos:prefLabel "Archean"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "eon" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "4000.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2500.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/calabriano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Calabriano"@pt ;
+    skos:prefLabel "Calabrian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/pleistoceno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "idade" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1.8" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.774" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/calymmiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Calymmiano"@pt ;
+    skos:prefLabel "Calymmian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1600.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1400.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/cambriano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Cambriano"@pt ;
+    skos:prefLabel "Cambrian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "538.8" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "486.85" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/carbonifero>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Carbonífero"@pt ;
+    skos:prefLabel "Carboniferous"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "358.86" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "298.9" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/cenozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Cenozoico"@pt ;
+    skos:prefLabel "Cenozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/fanerozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "66.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/chibaniano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Chibaniano"@pt ;
+    skos:prefLabel "Chibanian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/pleistoceno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "idade" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "0.774" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.129" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/cisuraliano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Cisuraliano"@pt ;
+    skos:prefLabel "Cisuralian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/permiano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "298.9" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "272.3" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/cretaceo>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Cretáceo"@pt ;
+    skos:prefLabel "Cretaceous"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "145.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "66.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/cretaceo_inferior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Cretáceo Inferior"@pt ;
+    skos:prefLabel "Lower Cretaceous"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cretaceo> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "145.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "100.5" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/cretaceo_superior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Cretáceo Superior"@pt ;
+    skos:prefLabel "Upper Cretaceous"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cretaceo> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "100.5" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "66.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/criogeniano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Criogeniano"@pt ;
+    skos:prefLabel "Cryogenian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/neoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "720.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "635.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/devoniano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Devoniano"@pt ;
+    skos:prefLabel "Devonian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "419.62" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "358.86" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/devoniano_inferior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Devoniano Inferior"@pt ;
+    skos:prefLabel "Lower Devonian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/devoniano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "419.62" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "393.47" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/devoniano_medio>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Devoniano Médio"@pt ;
+    skos:prefLabel "Middle Devonian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/devoniano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "393.47" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "382.31" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/devoniano_superior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Devoniano Superior"@pt ;
+    skos:prefLabel "Upper Devonian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/devoniano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "382.31" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "358.86" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/ectasiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Ectasiano"@pt ;
+    skos:prefLabel "Ectasian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1400.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1200.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/ediacarano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Ediacarano"@pt ;
+    skos:prefLabel "Ediacaran"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/neoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "635.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "538.8" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/eoarqueano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Eoarqueano"@pt ;
+    skos:prefLabel "Eoarchean"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/arqueano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "4000.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "3600.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/eoceno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Eoceno"@pt ;
+    skos:prefLabel "Eocene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "56.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "33.9" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/fanerozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Fanerozoico"@pt ;
+    skos:prefLabel "Phanerozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "eon" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "538.8" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/furongiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Furongiano"@pt ;
+    skos:prefLabel "Furongian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cambriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "497.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "486.85" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/gelasiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Gelasiano"@pt ;
+    skos:prefLabel "Gelasian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/pleistoceno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "idade" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2.58" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1.8" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/greenlandiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Greenlandiano"@pt ;
+    skos:prefLabel "Greenlandian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/holoceno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "idade" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "0.0117" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0082" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/guadalupiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Guadalupiano"@pt ;
+    skos:prefLabel "Guadalupian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/permiano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "272.3" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "259.51" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/hadeano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Hadeano"@pt ;
+    skos:prefLabel "Hadean"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "eon" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "4567.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "4000.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/holoceno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Holoceno"@pt ;
+    skos:prefLabel "Holocene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/quaternario> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "0.0117" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/jurassico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Jurássico"@pt ;
+    skos:prefLabel "Jurassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "201.4" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "145.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/jurassico_inferior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Jurássico Inferior"@pt ;
+    skos:prefLabel "Lower Jurassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/jurassico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "201.4" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "174.7" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/jurassico_medio>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Jurássico Médio"@pt ;
+    skos:prefLabel "Middle Jurassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/jurassico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "174.7" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "161.5" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/jurassico_superior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Jurássico Superior"@pt ;
+    skos:prefLabel "Upper Jurassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/jurassico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "161.5" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "145.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/llandovery>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Llandovery"@pt ;
+    skos:prefLabel "Llandovery"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/siluriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "443.1" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "433.4" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/lopingiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Lopingiano"@pt ;
+    skos:prefLabel "Lopingian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/permiano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "259.51" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "251.902" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/ludlow>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Ludlow"@pt ;
+    skos:prefLabel "Ludlow"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/siluriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "427.4" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "423.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/megalayano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Megalayano"@pt ;
+    skos:prefLabel "Meghalayan"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/holoceno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "idade" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "0.0042" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesoarqueano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Mesoarqueano"@pt ;
+    skos:prefLabel "Mesoarchean"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/arqueano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "3200.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2800.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesoproterozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Mesoproterozoico"@pt ;
+    skos:prefLabel "Mesoproterozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/proterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1600.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1000.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Mesozoico"@pt ;
+    skos:prefLabel "Mesozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/fanerozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "251.902" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "66.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/miaolingiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Miaolingiano"@pt ;
+    skos:prefLabel "Miaolingian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cambriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "509.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "497.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/mioceno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Mioceno"@pt ;
+    skos:prefLabel "Miocene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/neogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "23.04" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "5.333" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/mississippiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Mississippiano"@pt ;
+    skos:prefLabel "Mississippian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/carbonifero> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "358.86" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "323.4" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/neoarqueano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Neoarqueano"@pt ;
+    skos:prefLabel "Neoarchean"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/arqueano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2800.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2500.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/neogeno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Neógeno"@pt ;
+    skos:prefLabel "Neogene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cenozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "23.04" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2.58" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/neogeno_inferior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Neógeno Inferior"@pt ;
+    skos:prefLabel "Lower Neogene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/neogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "23.04" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "5.333" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/neogeno_superior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Neógeno Superior"@pt ;
+    skos:prefLabel "Upper Neogene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/neogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "5.333" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2.58" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/neoproterozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Neoproterozoico"@pt ;
+    skos:prefLabel "Neoproterozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/proterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1000.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "538.8" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/northgrippiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Northgrippiano"@pt ;
+    skos:prefLabel "Northgrippian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/holoceno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "idade" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "0.0082" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0042" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/oligoceno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Oligoceno"@pt ;
+    skos:prefLabel "Oligocene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "33.9" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "23.04" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/ordoviciano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Ordoviciano"@pt ;
+    skos:prefLabel "Ordovician"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "486.85" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "443.1" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/ordoviciano_inferior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Ordoviciano Inferior"@pt ;
+    skos:prefLabel "Lower Ordovician"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/ordoviciano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "486.85" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "470.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/ordoviciano_medio>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Ordoviciano Médio"@pt ;
+    skos:prefLabel "Middle Ordovician"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/ordoviciano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "470.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "458.2" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/ordoviciano_superior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Ordoviciano Superior"@pt ;
+    skos:prefLabel "Upper Ordovician"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/ordoviciano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "458.2" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "443.1" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/orosiriano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Orosiriano"@pt ;
+    skos:prefLabel "Orosirian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2050.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1800.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleoarqueano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Paleoarqueano"@pt ;
+    skos:prefLabel "Paleoarchean"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/arqueano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "3600.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "3200.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleoceno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Paleoceno"@pt ;
+    skos:prefLabel "Paleocene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "66.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "56.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Paleógeno"@pt ;
+    skos:prefLabel "Paleogene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cenozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "66.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "23.04" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno_inferior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Paleógeno Inferior"@pt ;
+    skos:prefLabel "Lower Paleogene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "66.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "33.9" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno_superior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Paleógeno Superior"@pt ;
+    skos:prefLabel "Upper Paleogene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "33.9" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "23.04" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleoproterozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Paleoproterozoico"@pt ;
+    skos:prefLabel "Paleoproterozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/proterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2500.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1600.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Paleozoico"@pt ;
+    skos:prefLabel "Paleozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/fanerozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "era" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "538.8" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "251.902" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/pensilvaniano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Pensilvaniano"@pt ;
+    skos:prefLabel "Pennsylvanian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/carbonifero> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "323.4" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "298.9" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/permiano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Permiano"@pt ;
+    skos:prefLabel "Permian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "298.9" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "251.902" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/pleistoceno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Pleistoceno"@pt ;
+    skos:prefLabel "Pleistocene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/quaternario> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2.58" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0117" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/plioceno>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Plioceno"@pt ;
+    skos:prefLabel "Pliocene"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/neogeno> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "5.333" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2.58" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/pridoli>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Pridoli"@pt ;
+    skos:prefLabel "Pridoli"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/siluriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "423.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "419.62" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/proterozoico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Proterozoico"@pt ;
+    skos:prefLabel "Proterozoic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "eon" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2500.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "538.8" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/quaternario>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Quaternário"@pt ;
+    skos:prefLabel "Quaternary"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cenozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2.58" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "0.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/rhyaciano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Rhyaciano"@pt ;
+    skos:prefLabel "Rhyacian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2300.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2050.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/serie_2_cambriana>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Série 2 Cambriana"@pt ;
+    skos:prefLabel "Cambrian Series 2"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cambriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "521.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "509.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/sideriano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Sideriano"@pt ;
+    skos:prefLabel "Siderian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "2500.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "2300.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/siluriano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Siluriano"@pt ;
+    skos:prefLabel "Silurian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "443.1" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "419.62" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/statheriano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Statheriano"@pt ;
+    skos:prefLabel "Statherian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/paleoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1800.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1600.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/steniano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Steniano"@pt ;
+    skos:prefLabel "Stenian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1200.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "1000.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/terraneuviano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Terreneuviano"@pt ;
+    skos:prefLabel "Terreneuvian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/cambriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "538.8" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "521.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/toniano>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Toniano"@pt ;
+    skos:prefLabel "Tonian"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/neoproterozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "1000.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "720.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/triassico>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Triássico"@pt ;
+    skos:prefLabel "Triassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/mesozoico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "periodo" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "251.902" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "201.4" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/triassico_inferior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Triássico Inferior"@pt ;
+    skos:prefLabel "Lower Triassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/triassico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "251.902" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "247.2" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/triassico_medio>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Triássico Médio"@pt ;
+    skos:prefLabel "Middle Triassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/triassico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "247.2" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "237.0" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/triassico_superior>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Triássico Superior"@pt ;
+    skos:prefLabel "Upper Triassic"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/triassico> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "237.0" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "201.4" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "true" .
+
+<https://argiloteca.ufrgs.br/vocab/tempo-geologico/wenlock>
+    a skos:Concept ;
+    skos:inScheme <https://argiloteca.ufrgs.br/vocab/scheme/tempo-geologico> ;
+    skos:prefLabel "Wenlock"@pt ;
+    skos:prefLabel "Wenlock"@en ;
+    dcterms:source "International Commission on Stratigraphy" ;
+    skos:broader <https://argiloteca.ufrgs.br/vocab/tempo-geologico/siluriano> ;
+    <https://argiloteca.ufrgs.br/ontology/nivel> "epoca" ;
+    <https://argiloteca.ufrgs.br/ontology/inicio_ma> "433.4" ;
+    <https://argiloteca.ufrgs.br/ontology/fim_ma> "427.4" ;
+    <https://argiloteca.ufrgs.br/ontology/source_chart_version> "ICS 2024-12" ;
+    <https://argiloteca.ufrgs.br/ontology/source_uri> "https://stratigraphy.org/chart/" ;
+    <https://argiloteca.ufrgs.br/ontology/informal> "false" .
+
+<https://argiloteca.ufrgs.br/ontology/>
+    a owl:Ontology ;
+    rdfs:label "Ontologia da Argiloteca"@pt .
+
+<https://argiloteca.ufrgs.br/ontology/grupo_mineralogico>
+    a owl:ObjectProperty ;
+    rdfs:label "grupo mineralogico"@pt ;
+    rdfs:label "mineralogical group"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:isDefinedBy <https://argiloteca.ufrgs.br/ontology/> .
