@@ -1,0 +1,1057 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais>
+    a skos:ConceptScheme ;
+    skos:prefLabel "Argilominerais da Argiloteca"@pt ;
+    skos:prefLabel "Argiloteca clay minerals"@en .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/allophane>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Alofana"@pt ;
+    skos:prefLabel "Allophane"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/short_range_order> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/allophane> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "short_range_order" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/amesite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Amesita"@pt ;
+    skos:prefLabel "Amesite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/amesite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/antigorite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Antigorita"@pt ;
+    skos:prefLabel "Antigorite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/antigorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/baileychlore>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Baileycloro"@pt ;
+    skos:prefLabel "Baileychlore"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/baileychlore> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/beidellite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Beidellita"@pt ;
+    skos:prefLabel "Beidellite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/beidellite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/bentonite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Bentonita"@pt ;
+    skos:prefLabel "Bentonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "clay_material" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/berthierine>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Berthierina"@pt ;
+    skos:prefLabel "Berthierine"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/berthierine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/bertossaite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Bertossaíta"@pt ;
+    skos:prefLabel "Bertossaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/bertossaite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/biotite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Biotita"@pt ;
+    skos:prefLabel "Biotite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/biotite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mica_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/brammallite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Brammalita"@pt ;
+    skos:prefLabel "Brammallite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/brammallite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/celadonite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Celadonita"@pt ;
+    skos:prefLabel "Celadonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/celadonite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chamosite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Chamosita"@pt ;
+    skos:prefLabel "Chamosite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/chamosite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clorita"@pt ;
+    skos:prefLabel "Chlorite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "group" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite-smectite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clorita/Esmectita"@pt ;
+    skos:prefLabel "Chlorite/Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "interstratified" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite-vermiculite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clorita/Vermiculita"@pt ;
+    skos:prefLabel "Chlorite/Vermiculite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "interstratified" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chrysotile>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Crisotila"@pt ;
+    skos:prefLabel "Chrysotile"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/chrysotile> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/clinochlore>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clinocloro"@pt ;
+    skos:prefLabel "Clinochlore"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/clinochlore> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/clintonite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Clintonita"@pt ;
+    skos:prefLabel "Clintonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/clintonite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mica_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/cookeite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Cookeíta"@pt ;
+    skos:prefLabel "Cookeite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/cookeite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/corrensite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Corrensita"@pt ;
+    skos:prefLabel "Corrensite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/corrensite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "interstratified" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/cronstedtite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Cronstedtita"@pt ;
+    skos:prefLabel "Cronstedtite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/cronstedtite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/dickite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Dickita"@pt ;
+    skos:prefLabel "Dickite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/dickite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/donbassite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Donbassita"@pt ;
+    skos:prefLabel "Donbassite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/donbassite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/endellite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Endellita"@pt ;
+    skos:prefLabel "Endellite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/endellite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/falcondoite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Falcondoíta"@pt ;
+    skos:prefLabel "Falcondoite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/falcondoite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/fullers-earth>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Terra de Fuller"@pt ;
+    skos:prefLabel "Fuller's Earth"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "clay_material" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/glauconite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Glauconita"@pt ;
+    skos:prefLabel "Glauconite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/glauconite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/greenalite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Greenalita"@pt ;
+    skos:prefLabel "Greenalite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/greenalite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/greenwoodite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Greenwoodita"@pt ;
+    skos:prefLabel "Greenwoodite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/halloysite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Haloisita"@pt ;
+    skos:prefLabel "Halloysite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/halloysite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/hectorite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hectorita"@pt ;
+    skos:prefLabel "Hectorite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/hectorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/hisingerite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hisingerita"@pt ;
+    skos:prefLabel "Hisingerite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/short_range_order> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/hisingerite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "short_range_order" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/hydrobiotite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hidrobiotita"@pt ;
+    skos:prefLabel "Hydrobiotite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/vermiculite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/hydrobiotite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "vermiculite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "interstratified" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/hydrotalcite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Hidrotalcita"@pt ;
+    skos:prefLabel "Hydrotalcite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/hydrotalcite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "group" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/illite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Ilita"@pt ;
+    skos:prefLabel "Illite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/illite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "series" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/illite-smectite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Ilita/Esmectita"@pt ;
+    skos:prefLabel "Illite/Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "interstratified" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/imogolite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Imogolita"@pt ;
+    skos:prefLabel "Imogolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/short_range_order> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/imogolite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "short_range_order" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/iowaite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Iowaita"@pt ;
+    skos:prefLabel "Iowaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/iowaite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kalifersite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Kalifersita"@pt ;
+    skos:prefLabel "Kalifersite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/kalifersite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolin>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Caulim"@pt ;
+    skos:prefLabel "Kaolin"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "kaolin_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "group" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolinite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Caulinita"@pt ;
+    skos:prefLabel "Kaolinite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/kaolinite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolinite-smectite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Caulinita/Esmectita"@pt ;
+    skos:prefLabel "Kaolinite/Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/mixed_layer> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mixed_layer" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "interstratified" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kerolite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Kerolita"@pt ;
+    skos:prefLabel "Kerolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/lepidolite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Lepidolita"@pt ;
+    skos:prefLabel "Lepidolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/lepidolite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mica_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/lizardite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Lizardita"@pt ;
+    skos:prefLabel "Lizardite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/lizardite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/loughlinite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Loughlinita"@pt ;
+    skos:prefLabel "Loughlinite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/loughlinite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/manandonite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Manandonita"@pt ;
+    skos:prefLabel "Manandonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/manandonite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/manasseite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Manasseíta"@pt ;
+    skos:prefLabel "Manasseite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/manasseite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/margarite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Margarita"@pt ;
+    skos:prefLabel "Margarite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/margarite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mica_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/minnesotaite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Minnesotaíta"@pt ;
+    skos:prefLabel "Minnesotaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/minnesotaite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "pyrophyllite_talc_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/montmorillonite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Montmorilonita"@pt ;
+    skos:prefLabel "Montmorillonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/motukoreaite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Motukoreaita"@pt ;
+    skos:prefLabel "Motukoreaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/layered_double_hydroxide> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/motukoreaite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "layered_double_hydroxide" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/muscovite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Muscovita"@pt ;
+    skos:prefLabel "Muscovite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/muscovite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mica_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/nacrite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Nacrita"@pt ;
+    skos:prefLabel "Nacrite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/kaolin_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/nacrite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "kaolin_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/kaolin> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/nimite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Nimita"@pt ;
+    skos:prefLabel "Nimite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/nimite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/nontronite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Nontronita"@pt ;
+    skos:prefLabel "Nontronite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/nontronite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/odinite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Odinita"@pt ;
+    skos:prefLabel "Odinite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/odinite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/palygorskite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Paligorsquita"@pt ;
+    skos:prefLabel "Palygorskite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/palygorskite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/paragonite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Paragonita"@pt ;
+    skos:prefLabel "Paragonite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/paragonite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mica_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/pennantite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Pennantita"@pt ;
+    skos:prefLabel "Pennantite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/pennantite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/phlogopite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Flogopita"@pt ;
+    skos:prefLabel "Phlogopite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/illite_mica> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/phlogopite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "mica_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/pimelite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Pimelita"@pt ;
+    skos:prefLabel "Pimelite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/pimelite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/pyrophyllite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Pirofilita"@pt ;
+    skos:prefLabel "Pyrophyllite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/pyrophyllite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "pyrophyllite_talc" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/raite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Raita"@pt ;
+    skos:prefLabel "Raite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/raite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/saponite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Saponita"@pt ;
+    skos:prefLabel "Saponite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/saponite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/sauconite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sauconita"@pt ;
+    skos:prefLabel "Sauconite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/sauconite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/sepiolite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sepiolita"@pt ;
+    skos:prefLabel "Sepiolite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/sepiolite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/sericite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sericita"@pt ;
+    skos:prefLabel "Sericite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/clay_material> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "illite_mica" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "clay_material" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/serpentine>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Serpentina"@pt ;
+    skos:prefLabel "Serpentine"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/serpentine_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "serpentine_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "group" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Esmectita"@pt ;
+    skos:prefLabel "Smectite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "group" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/stevensite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Stevensita"@pt ;
+    skos:prefLabel "Stevensite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/stevensite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/stilpnomelane>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Stilpnomelana"@pt ;
+    skos:prefLabel "Stilpnomelane"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/stilpnomelane> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "phyllosilicate_related" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/sudoite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Sudoíta"@pt ;
+    skos:prefLabel "Sudoite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/chlorite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/sudoite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "chlorite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/chlorite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/swinefordite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Swinefordita"@pt ;
+    skos:prefLabel "Swinefordite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/swinefordite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/talc>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Talco"@pt ;
+    skos:prefLabel "Talc"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/pyrophyllite_talc> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/talc> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "pyrophyllite_talc" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/tuperssuatsiaite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Tuperssuatsiaita"@pt ;
+    skos:prefLabel "Tuperssuatsiaite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/tuperssuatsiaite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/vermiculite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Vermiculita"@pt ;
+    skos:prefLabel "Vermiculite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/vermiculite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "vermiculite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "group" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/volkonskoite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Volkonskoita"@pt ;
+    skos:prefLabel "Volkonskoite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/windhoekite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Windhoekita"@pt ;
+    skos:prefLabel "Windhoekite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/yakhontovite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Yakhontovita"@pt ;
+    skos:prefLabel "Yakhontovite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/smectite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/yakhontovite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "smectite_group" ;
+    skos:broader <https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/smectite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
+
+<https://vmx000080.nuvem.ufrgs.br/vocab/argilominerais/yofortierite>
+    a skos:Concept ;
+    skos:inScheme <https://vmx000080.nuvem.ufrgs.br/vocab/scheme/argilominerais> ;
+    skos:prefLabel "Yofortierita"@pt ;
+    skos:prefLabel "Yofortierite"@en ;
+    dcterms:source "CMS Glossary of Clay Science (2020)" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/status> "preferred" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/grupo_mineralogico> <https://vmx000080.nuvem.ufrgs.br/vocab/grupos/palygorskite_sepiolite_group> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/has_drx_reference> true ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/drx_reference> <https://vmx000080.nuvem.ufrgs.br/vocab/referencias-drx-webmineral/yofortierite> ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/family> "palygorskite_sepiolite_group" ;
+    <https://vmx000080.nuvem.ufrgs.br/ontology/category> "species" .
